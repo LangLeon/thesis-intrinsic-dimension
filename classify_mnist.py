@@ -4,7 +4,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from mnist import mnist
+
 import argparse
+
+import csv
+
 
 class Baseline(nn.Module):
     def __init__(self):
@@ -63,6 +67,8 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function):
     return train_loss, train_acc, val_loss, val_acc
 
 
+
+
 def main():
 
     torch.manual_seed(ARGS.seed)
@@ -88,7 +94,15 @@ def main():
         val_losses.append(val_loss)
         val_accuracies.append(val_acc)
 
-    print(train_losses, train_accuracies, val_losses, val_accuracies)
+    rows = zip(train_losses,train_accuracies,val_losses,val_accuracies)
+
+    with open("logs/first_file.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow(["train_loss", "train_accuracy", "val_loss", "val_accuracy"])
+        for row in rows:
+            writer.writerow(row)
+    f.close()
+
 
 
 if __name__ == "__main__":

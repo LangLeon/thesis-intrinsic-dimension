@@ -1,5 +1,8 @@
-# ignore data
+# ignore mnist data, logs, plots for now
 /data
+/logs
+
+
 
 # ignore pycache
 /__pycache__
