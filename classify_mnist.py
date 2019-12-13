@@ -11,9 +11,6 @@ class Baseline(nn.Module):
         self.fc1 = nn.Linear(784, 200)
         self.fc2 = nn.Linear(200, 200)
         self.fc3 = nn.Linear(200, 10)
-        nn.init.kaiming_uniform_(self.fc1.weight)
-        nn.init.kaiming_uniform_(self.fc2.weight)
-        nn.init.kaiming_uniform_(self.fc3.weight)
 
     def forward(self, x):
         x1 = F.relu(self.fc1(x))
@@ -23,6 +20,8 @@ class Baseline(nn.Module):
 
 def train_batch(model, batch, optimizer, loss_function):
     image, label = batch
+    image.to(device)
+    label.to(device)
     optimizer.zero_grad()
     prediction = model(image)
     loss = torch.sum(loss_function(prediction, label))
@@ -61,6 +60,7 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function):
     print("Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
 
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 n_epochs = 3
 batch_size = 64
@@ -68,14 +68,13 @@ learning_rate = 0.001
 # momentum = 0.5
 
 random_seed = 1
-torch.backends.cudnn.enabled = False
 torch.manual_seed(random_seed)
 
 
-train_loader, val_loader, test_loader = mnist(batch_size = batch_size)
+train_loader, val_loader, _ = mnist(batch_size = batch_size)
 
-model = Baseline()
-optimizer = torch.optim.Adam(model.parameters(), learning_rate)
+model = Baseline().to(device)
+optimizer = torch.optim.SGD(model.parameters(), learning_rate)
 
 criterion = nn.CrossEntropyLoss()
 
