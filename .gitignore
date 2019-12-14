@@ -1,6 +1,5 @@
 # ignore mnist data, logs, plots for now
 /data
-/logs
 
 
 

@@ -4,10 +4,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from mnist import mnist
+from plotting import plot_data
 
 import argparse
-
 import csv
+import os
+import datetime
 
 
 class Baseline(nn.Module):
@@ -81,6 +83,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
 
+    epochs = []
     train_losses = []
     train_accuracies = []
     val_losses = []
@@ -89,31 +92,38 @@ def main():
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
         train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion)
+        epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
         val_losses.append(val_loss)
         val_accuracies.append(val_acc)
 
-    rows = zip(train_losses,train_accuracies,val_losses,val_accuracies)
+    rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
-    with open("logs/first_file.csv", "w") as f:
+    timestamp = str(datetime.datetime.utcnow())
+    file_name = "lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size, timestamp)
+    full_file_name = os.path.join("logs/", file_name)
+
+    with open(full_file_name, "w") as f:
         writer = csv.writer(f)
-        writer.writerow(["train_loss", "train_accuracy", "val_loss", "val_accuracy"])
+        writer.writerow(["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy"])
         for row in rows:
             writer.writerow(row)
     f.close()
+
+    plot_data(full_file_name)
 
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n_epochs', default=10, type=int,
-                        help='max number of epochs')
-    parser.add_argument('--batch_size', default=64, type=int,
-                        help='max number of epochs')
     parser.add_argument('--lr', default=0.001, type=float,
                         help='max number of epochs')
     parser.add_argument('--seed', default=1, type=int,
+                        help='max number of epochs')
+    parser.add_argument('--n_epochs', default=10, type=int,
+                        help='max number of epochs')
+    parser.add_argument('--batch_size', default=64, type=int,
                         help='max number of epochs')
 
     ARGS = parser.parse_args()
