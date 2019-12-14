@@ -6,57 +6,12 @@ import torch.nn.functional as F
 from mnist import mnist
 from plotting import plot_data
 from models import models
+from train_helpers import train_epoch
 
 import argparse
 import csv
 import os
 import datetime
-from collections import OrderedDict
-
-
-def train_batch(model, batch, optimizer, loss_function):
-    image, label = batch
-    image.to(device)
-    label.to(device)
-    optimizer.zero_grad()
-    prediction = model(image)
-    loss = torch.sum(loss_function(prediction, label))
-    if model.training:
-        loss.backward()
-        optimizer.step()
-    accuracy = (torch.argmax(prediction, 1) == label).sum().float() / prediction.shape[0]
-    return loss.item(), accuracy.item()
-
-def epoch_iter(model, data, optimizer, loss_function):
-    avg_loss = 0
-    t = 0
-    total_loss = 0
-    total_accuracy = 0
-
-    for (x, label) in data:
-
-        loss, accuracy = train_batch(model, (x, label), optimizer, loss_function)
-        if t % 20 == 0:
-            print("Batch: {}; loss: {}; acc: {}".format(t, round(loss,2), round(accuracy,2)))
-        total_loss += loss
-        total_accuracy += accuracy
-        t+= 1
-
-    loss_avg = total_loss / t
-    accuracy_avg = total_accuracy / t
-
-    return loss_avg, accuracy_avg
-
-def train_epoch(model, train_loader, val_loader, optimizer, loss_function):
-    model.train()
-    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function)
-    print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(train_loss, train_acc))
-
-    model.eval()
-    val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function)
-    print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
-    return train_loss, train_acc, val_loss, val_acc
-
 
 
 
@@ -80,7 +35,7 @@ def main():
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion, device)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
