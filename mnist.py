@@ -7,7 +7,7 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision
 
-# utils file taking from the UVA deep learning course
+# utils file taken from the UVA deep learning course
 class toTensor:
     def __init__(self):
         pass
