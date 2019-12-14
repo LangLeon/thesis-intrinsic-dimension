@@ -2,6 +2,7 @@ import torch
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.nn.utils.convert_parameters import parameters_to_vector
 
 from mnist import mnist
 from plotting import plot_data
@@ -30,8 +31,18 @@ def log_results(epochs, train_loses, train_accuracies, val_losses, val_accuracie
     plot_data(full_file_name)
 
 
-def create_random_matrix(model, ARGS.d_dim):
-    print(model.parameters())
+def create_random_matrix_and_start_params(model, d_dim):
+    params_0 = parameters_to_vector(model.parameters())
+    D_dim = params_0.shape[0]
+    dist = torch.distributions.normal.Normal(0, 1)
+    E = dist.sample((D_dim, d_dim))
+
+    # normalization of columns ---> Approximately orthonormal vectors, we hope!
+    En = torch.norm(E, p=2, dim=0).detach()
+    E = E.div(En.expand_as(E))
+
+    return E, params_0
+
 
 
 def main():
@@ -43,7 +54,8 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        E = create_random_matrix(model, ARGS.d_dim)
+        E, params_0 = create_random_matrix(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
+        params_d = torch.zeros(ARGS.d_dim) # params_D = E*params_d + params_0
 
     epochs = []
     train_losses = []
@@ -53,7 +65,16 @@ def main():
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion, device)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(
+            model,
+            train_loader,
+            val_loader,
+            optimizer,
+            criterion,
+            device,
+            E,
+            params_d,
+            params_0)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
@@ -76,7 +97,7 @@ if __name__ == "__main__":
                         help='batch size')
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
-    parser.add_argument('--subspace_training', default=False, type=Bool
+    parser.add_argument('--subspace_training', default=False, action='store_true',
                         help='Whether to train in the subspace or not')
     parser.add_argument('--d_dim', default=0, type=int,
                         help='Dimension of random subspace to be trained in')
