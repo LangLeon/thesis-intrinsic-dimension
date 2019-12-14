@@ -7,6 +7,7 @@ from torch.nn.utils.convert_parameters import parameters_to_vector
 from mnist import mnist
 from plotting import plot_data
 from models import models
+from models import Subspace_model
 from train_helpers import train_epoch
 
 import argparse
@@ -56,6 +57,7 @@ def main():
     if ARGS.subspace_training:
         E, params_0 = create_random_matrix(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
         params_d = torch.zeros(ARGS.d_dim) # params_D = E*params_d + params_0
+        model = Subspace_model(model, E, params_d, params_0)
 
     epochs = []
     train_losses = []
@@ -65,16 +67,7 @@ def main():
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(
-            model,
-            train_loader,
-            val_loader,
-            optimizer,
-            criterion,
-            device,
-            E,
-            params_d,
-            params_0)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
