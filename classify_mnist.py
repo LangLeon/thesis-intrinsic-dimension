@@ -13,35 +13,7 @@ import csv
 import os
 import datetime
 
-
-
-def main():
-
-    torch.manual_seed(ARGS.seed)
-
-    train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
-
-    model = models[ARGS.model]().to(device)
-    optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
-
-    criterion = nn.CrossEntropyLoss()
-
-
-    epochs = []
-    train_losses = []
-    train_accuracies = []
-    val_losses = []
-    val_accuracies = []
-
-    for epoch in range(ARGS.n_epochs):
-        print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion, device)
-        epochs.append(epoch + 1)
-        train_losses.append(train_loss)
-        train_accuracies.append(train_acc)
-        val_losses.append(val_loss)
-        val_accuracies.append(val_acc)
-
+def log_results(epochs, train_loses, train_accuracies, val_losses, val_accuracies):
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
     timestamp = str(datetime.datetime.utcnow())
@@ -58,6 +30,39 @@ def main():
     plot_data(full_file_name)
 
 
+def create_random_matrix(model, ARGS.d_dim):
+    print(model.parameters())
+
+
+def main():
+    torch.manual_seed(ARGS.seed)
+
+    train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
+    model = models[ARGS.model]().to(device)
+    optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
+    criterion = nn.CrossEntropyLoss()
+
+    if ARGS.subspace_training:
+        E = create_random_matrix(model, ARGS.d_dim)
+
+    epochs = []
+    train_losses = []
+    train_accuracies = []
+    val_losses = []
+    val_accuracies = []
+
+    for epoch in range(ARGS.n_epochs):
+        print("Epoch {} start".format(epoch+1))
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model, train_loader, val_loader, optimizer, criterion, device)
+        epochs.append(epoch + 1)
+        train_losses.append(train_loss)
+        train_accuracies.append(train_acc)
+        val_losses.append(val_loss)
+        val_accuracies.append(val_acc)
+
+    log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies)
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -71,6 +76,10 @@ if __name__ == "__main__":
                         help='batch size')
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
+    parser.add_argument('--subspace_training', default=False, type=Bool
+                        help='Whether to train in the subspace or not')
+    parser.add_argument('--d_dim', default=0, type=int,
+                        help='Dimension of random subspace to be trained in')
 
     ARGS = parser.parse_args()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
