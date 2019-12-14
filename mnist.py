@@ -40,28 +40,14 @@ class toFloat:
 
 def mnist(root='./data/', batch_size=128, download=True):
 
-    """
     train_transforms = transforms.Compose([
-      torchvision.transforms.ToTensor(),
-      torchvision.transforms.Normalize(
-        (0.1307,), (0.3081,)), Flatten()
-    ])
-    """
-
-    train_transforms = transforms.Compose([
-        transforms.Pad(int(np.ceil(28 * 0.05)), padding_mode='edge'),
-        transforms.RandomAffine(degrees=0, translate=(0.05, 0.05)),
-        transforms.CenterCrop(28),
         toTensor(),
         toFloat(),
-        Flatten()
     ])
 
     data_transforms = transforms.Compose([
-        transforms.ToTensor(),
         toTensor(),
         toFloat(),
-        Flatten()
     ])
 
     dataset = torchvision.datasets.MNIST(

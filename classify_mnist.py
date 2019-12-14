@@ -5,25 +5,14 @@ import torch.nn.functional as F
 
 from mnist import mnist
 from plotting import plot_data
+from models import models
 
 import argparse
 import csv
 import os
 import datetime
+from collections import OrderedDict
 
-
-class Baseline(nn.Module):
-    def __init__(self):
-        super(Baseline, self).__init__()
-        self.fc1 = nn.Linear(784, 200)
-        self.fc2 = nn.Linear(200, 200)
-        self.fc3 = nn.Linear(200, 10)
-
-    def forward(self, x):
-        x1 = F.relu(self.fc1(x))
-        x2 = F.relu(self.fc2(x1))
-        out = self.fc3(x2)
-        return out
 
 def train_batch(model, batch, optimizer, loss_function):
     image, label = batch
@@ -77,7 +66,7 @@ def main():
 
     train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
 
-    model = Baseline().to(device)
+    model = models[ARGS.model]().to(device)
     optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
 
     criterion = nn.CrossEntropyLoss()
@@ -118,13 +107,15 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--lr', default=0.001, type=float,
-                        help='max number of epochs')
+                        help='learning rate')
     parser.add_argument('--seed', default=1, type=int,
-                        help='max number of epochs')
+                        help='seed')
     parser.add_argument('--n_epochs', default=10, type=int,
                         help='max number of epochs')
     parser.add_argument('--batch_size', default=64, type=int,
-                        help='max number of epochs')
+                        help='batch size')
+    parser.add_argument('--model', default="MLP", type=str,
+                        help='the model to be tested')
 
     ARGS = parser.parse_args()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
