@@ -55,7 +55,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        E, params_0 = create_random_matrix(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
+        E, params_0 = create_random_matrix_and_start_params(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
         params_d = torch.zeros(ARGS.d_dim) # params_D = E*params_d + params_0
         model = Subspace_model(model, E, params_d, params_0)
 
