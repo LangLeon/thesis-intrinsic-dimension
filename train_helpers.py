@@ -7,9 +7,10 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function, devic
     train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, device)
     print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(train_loss, train_acc))
 
-    model.eval()
-    val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, device)
-    print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
+    with torch.no_grad():
+        model.eval()
+        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, device)
+        print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
     return train_loss, train_acc, val_loss, val_acc
 
 
@@ -42,6 +43,6 @@ def train_batch(model, batch, optimizer, loss_function, device):
     loss = torch.sum(loss_function(prediction, label))
     if model.training:
         loss.backward()
-        # optimizer.step() Don't just do an optimizer step, since we will do it manually anyway right now!
+        optimizer.step()
     accuracy = (torch.argmax(prediction, 1) == label).sum().float() / prediction.shape[0]
     return loss.item(), accuracy.item()
