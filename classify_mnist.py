@@ -8,6 +8,7 @@ from plotting import plot_data
 from models import models
 from models import Subspace_model
 from train_helpers import train_epoch
+from custom_optimizer import SGD
 
 import argparse
 import csv
@@ -55,7 +56,7 @@ def main():
         E = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
         model = Subspace_model(model, E)
 
-    optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
+    optimizer = SGD(model.parameters(), ARGS.lr)
     epochs = []
     train_losses = []
     train_accuracies = []
