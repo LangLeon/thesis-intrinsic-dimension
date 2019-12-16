@@ -2,7 +2,6 @@ import torch
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.nn.utils.convert_parameters import parameters_to_vector
 
 from mnist import mnist
 from plotting import plot_data
@@ -32,17 +31,16 @@ def log_results(epochs, train_loses, train_accuracies, val_losses, val_accuracie
     plot_data(full_file_name)
 
 
-def create_random_matrix_and_start_params(model, d_dim):
-    params_0 = parameters_to_vector(model.parameters())
-    D_dim = params_0.shape[0]
+def create_random_embedding(model, d_dim):
+    D_dim = sum(p.numel() for p in model.parameters() if p.requires_grad) # Number of trainable parameters
     dist = torch.distributions.normal.Normal(0, 1)
     E = dist.sample((D_dim, d_dim))
 
-    # normalization of columns ---> Approximately orthonormal vectors, we hope!
+    # normalization of columns ---> Approximately orthonormal vectors, since high-dimensional!
     En = torch.norm(E, p=2, dim=0).detach()
     E = E.div(En.expand_as(E))
 
-    return E, params_0
+    return E
 
 
 
@@ -51,15 +49,13 @@ def main():
 
     train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
     model = models[ARGS.model]().to(device)
-    optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        print("This happened")
-        E, params_0 = create_random_matrix_and_start_params(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-        params_d = torch.zeros(ARGS.d_dim) # params_D = E*params_d + params_0
-        model = Subspace_model(model, E, params_d, params_0)
+        E = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
+        model = Subspace_model(model, E)
 
+    optimizer = torch.optim.SGD(model.parameters(), ARGS.lr)
     epochs = []
     train_losses = []
     train_accuracies = []
@@ -93,7 +89,7 @@ if __name__ == "__main__":
                         help='the model to be tested')
     parser.add_argument('--subspace_training', default=False, action='store_true',
                         help='Whether to train in the subspace or not')
-    parser.add_argument('--d_dim', default=0, type=int,
+    parser.add_argument('--d_dim', default=1000, type=int,
                         help='Dimension of random subspace to be trained in')
 
     ARGS = parser.parse_args()
