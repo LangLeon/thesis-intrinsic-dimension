@@ -14,7 +14,7 @@ import csv
 import os
 import datetime
 
-def log_results(epochs, train_loses, train_accuracies, val_losses, val_accuracies):
+def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies):
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
     timestamp = str(datetime.datetime.utcnow())
