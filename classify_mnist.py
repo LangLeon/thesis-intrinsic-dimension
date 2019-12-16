@@ -6,9 +6,8 @@ import torch.nn.functional as F
 from mnist import mnist
 from plotting import plot_data
 from models import models
-from models import Subspace_model
 from train_helpers import train_epoch
-from custom_optimizer import SGD
+from custom_optimizer import custom_SGD
 
 import argparse
 import csv
@@ -40,8 +39,17 @@ def create_random_embedding(model, d_dim):
     # normalization of columns ---> Approximately orthonormal vectors, since high-dimensional!
     En = torch.norm(E, p=2, dim=0).detach()
     E = E.div(En.expand_as(E))
+    params = list(model.parameters())
+    sizes = [len(param.view(-1)) for param in params]
+    E_split = []
+    pointer = 0
+    for param in params:
+        size = len(param.view(-1))
+        E_split.append(E[pointer:pointer+size])
+        pointer=pointer+size
 
-    return E
+    assert len(E_split) == len(params)
+    return E_split
 
 
 
@@ -53,15 +61,15 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        E = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-        model = Subspace_model(model, E)
+        E_split = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
 
-    optimizer = SGD(model.parameters(), ARGS.lr)
+    optimizer = custom_SGD(model.parameters(), E_split, ARGS.lr)
     epochs = []
     train_losses = []
     train_accuracies = []
     val_losses = []
     val_accuracies = []
+    #import pdb; pdb.set_trace()
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))

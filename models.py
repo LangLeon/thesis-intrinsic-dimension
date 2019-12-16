@@ -38,7 +38,7 @@ def vector_to_parameters(vec, parameters):
 
 
 
-class Subspace_model(nn.Module):
+#class Subspace_model(nn.Module):
     """
     Wraps a model in order to train it in a subspace
     """
