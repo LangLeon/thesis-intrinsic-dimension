@@ -36,8 +36,8 @@ def epoch_iter(model, data, optimizer, loss_function, device):
 
 def train_batch(model, batch, optimizer, loss_function, device):
     image, label = batch
-    image.to(device)
-    label.to(device)
+    image = image.to(device)
+    label = label.to(device)
     optimizer.zero_grad()
     prediction = model(image)
     loss = torch.sum(loss_function(prediction, label))
