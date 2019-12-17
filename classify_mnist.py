@@ -118,7 +118,7 @@ def main():
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device, ARGS.print_freq)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device, ARGS.print_freq, ARGS.print_prec)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
@@ -148,6 +148,8 @@ if __name__ == "__main__":
                         help='Dimension of random subspace to be trained in')
     parser.add_argument('--print_freq', default=20, type=int,
                         help='How often the loss and accuracy should be printed')
+    parser.add_argument('--print_prec', default=2, type=int,
+                        help='The precision with which to print losses and accuracy.')
 
     ARGS = parser.parse_args()
 
