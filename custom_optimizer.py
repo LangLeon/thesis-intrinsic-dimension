@@ -18,6 +18,7 @@ class custom_SGD(Optimizer):
 
         defaults = dict(lr=lr)
         super(custom_SGD, self).__init__(params, defaults)
+        assert len(self.param_groups) == 1, "The optimizer can currently only deal with one parameter group"
         self.E_split = E_split
         self.d_dim = E_split[0].shape[1]
         self.params_d = torch.zeros(self.d_dim)
@@ -25,28 +26,21 @@ class custom_SGD(Optimizer):
     def __setstate__(self, state):
         super(custom_SGD, self).__setstate__(state)
 
-    def step(self, closure=None):
+    def step(self):
 
         grad_d = torch.zeros(self.d_dim)
+
         for group in self.param_groups:
             for i in range(len(group['params'])):
                 p = group['params'][i]
-                if p.grad is None:
-                    continue
-                E = self.E_split[i]
+                assert p.grad is not None, "The optimizer currently can only deal with a full model gradient, due to the embedding E."
                 # Create subspace gradient
-                if p.grad is None:
-                    continue
                 d_p = p.grad.data
-                grad_d += d_p.view(-1).data @ E.data
+                grad_d += d_p.view(-1).data @ self.E_split[i].data
             self.params_d.data.add_(-group['lr'],grad_d)
 
 
         for group in self.param_groups:
             for i in range(len(group['params'])):
                 p = group['params'][i]
-                if p.grad is None:
-                    continue
-                E = self.E_split[i]
-
-                p.data = (E @ self.params_d).reshape(p.data.shape)
+                p.data = (self.E_split[i] @ self.params_d).reshape(p.data.shape)

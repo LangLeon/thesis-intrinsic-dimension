@@ -74,7 +74,6 @@ def main():
     train_accuracies = []
     val_losses = []
     val_accuracies = []
-    #import pdb; pdb.set_trace()
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
