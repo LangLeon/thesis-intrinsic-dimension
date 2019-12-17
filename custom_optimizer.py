@@ -39,7 +39,7 @@ class custom_SGD(Optimizer):
                     continue
                 d_p = p.grad.data
                 grad_d += d_p.view(-1).data @ E.data
-            self.params_d.data._add(-group['lr'],grad_d)
+            self.params_d.data.add_(-group['lr'],grad_d)
 
 
         for group in self.param_groups:
