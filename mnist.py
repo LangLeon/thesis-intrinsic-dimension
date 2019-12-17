@@ -22,14 +22,6 @@ class toTensor:
         return torch.from_numpy(img)
 
 
-class Flatten:
-    def __init__(self):
-        pass
-
-    def __call__(self, img):
-        return img.view(-1)
-
-
 class toFloat:
     def __init__(self):
         pass
@@ -40,21 +32,17 @@ class toFloat:
 
 def mnist(root='./data/', batch_size=128, download=True):
 
-    train_transforms = transforms.Compose([
+    transformation = transforms.Compose([
         toTensor(),
         toFloat(),
-    ])
-
-    data_transforms = transforms.Compose([
-        toTensor(),
-        toFloat(),
+        torchvision.transforms.Normalize((0.1307,), (0.3081,))
     ])
 
     dataset = torchvision.datasets.MNIST(
-        root, train=True, transform=train_transforms, target_transform=None,
+        root, train=True, transform=transformation, target_transform=None,
         download=True)
     test_set = torchvision.datasets.MNIST(
-        root, train=False, transform=data_transforms, target_transform=None,
+        root, train=False, transform=transformation, target_transform=None,
         download=True)
 
     train_dataset = data.dataset.Subset(dataset, np.arange(40000))

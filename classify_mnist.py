@@ -33,15 +33,16 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
 
 
 def create_random_embedding(model, d_dim):
-    D_dim = sum(p.numel() for p in model.parameters() if p.requires_grad) # Number of trainable parameters
+    D_dim = sum(p.numel() for p in model.parameters())
     dist = torch.distributions.normal.Normal(0, 1)
     E = dist.sample((D_dim, d_dim))
 
-    # normalization of columns ---> Approximately orthonormal vectors, since high-dimensional!
-    En = torch.norm(E, p=2, dim=0).detach()
+    # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
+    En = torch.norm(E, p=2, dim=0)
     E = E.div(En.expand_as(E))
+
+    # Split E into one component for each parameter, i.e. tensor, in the model
     params = list(model.parameters())
-    sizes = [len(param.view(-1)) for param in params]
     E_split = []
     pointer = 0
     for param in params:
@@ -49,7 +50,9 @@ def create_random_embedding(model, d_dim):
         E_split.append(E[pointer:pointer+size])
         pointer=pointer+size
 
-    assert len(E_split) == len(params)
+    assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
+    for i in range(len(params)):
+        assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
     return E_split
 
 
@@ -88,7 +91,7 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    
+
     parser.add_argument('--lr', default=0.001, type=float,
                         help='learning rate')
     parser.add_argument('--seed', default=1, type=int,
@@ -105,6 +108,7 @@ if __name__ == "__main__":
                         help='Dimension of random subspace to be trained in')
 
     ARGS = parser.parse_args()
+
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     main()
