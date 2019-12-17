@@ -12,7 +12,7 @@ before!
 
 class custom_SGD(Optimizer):
 
-    def __init__(self, params, E_split, lr=required):
+    def __init__(self, params, E_split, E_split_transpose, lr=required):
         if lr is not required and lr < 0.0:
             raise ValueError("Invalid learning rate: {}".format(lr))
 
@@ -20,6 +20,7 @@ class custom_SGD(Optimizer):
         super(custom_SGD, self).__init__(params, defaults)
         assert len(self.param_groups) == 1, "The optimizer can currently only deal with one parameter group"
         self.E_split = E_split
+        self.E_split_transpose = E_split_transpose
         self.d_dim = E_split[0].shape[1]
         self.params_d = torch.zeros(self.d_dim)
 
@@ -36,11 +37,12 @@ class custom_SGD(Optimizer):
                 assert p.grad is not None, "The optimizer currently can only deal with a full model gradient, due to the embedding E."
                 # Create subspace gradient
                 d_p = p.grad.data
-                grad_d += d_p.view(-1).data @ self.E_split[i].data
-            self.params_d.data.add_(-group['lr'],grad_d)
+                grad_d += torch.sparse.mm(self.E_split_transpose[i], d_p.view(-1,1)).view(-1) # d_p.view(-1).data @ self.E_split[i].data
+            self.params_d.data.add_(-group['lr'],grad_d.view(-1))
 
 
         for group in self.param_groups:
             for i in range(len(group['params'])):
                 p = group['params'][i]
-                p.data = (self.E_split[i] @ self.params_d).reshape(p.data.shape)
+                #import pdb; pdb.set_trace()
+                p.data = torch.sparse.mm(self.E_split[i],self.params_d.view(-1,1)).reshape(p.data.shape)

@@ -91,9 +91,10 @@ def create_random_embedding(model, d_dim):
         assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
 
     for i in range(len(E_split)):
-        E_split[i] = to_sparse(E_split[i])
+        E_split[i] = to_sparse(E_split[i]).to(device)
 
-    return E_split
+    E_split_transpose = [E.transpose(0,1) for E in E_split]
+    return E_split, E_split_transpose
 
 
 
@@ -105,8 +106,8 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        E_split = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-        optimizer = custom_SGD(model.parameters(), E_split, ARGS.lr)
+        E_split, E_split_transpose = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
+        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, ARGS.lr)
     else:
         optimizer = SGD(model.parameters(), ARGS.lr)
     epochs = []
@@ -117,7 +118,7 @@ def main():
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device, ARGS.print_freq)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
@@ -145,6 +146,8 @@ if __name__ == "__main__":
                         help='Whether to train in the subspace or not')
     parser.add_argument('--d_dim', default=1000, type=int,
                         help='Dimension of random subspace to be trained in')
+    parser.add_argument('--print_freq', default=20, type=int,
+                        help='How often the loss and accuracy should be printed')
 
     ARGS = parser.parse_args()
 

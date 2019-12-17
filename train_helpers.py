@@ -1,20 +1,19 @@
 import torch
 
 
-
-def train_epoch(model, train_loader, val_loader, optimizer, loss_function, device):
+def train_epoch(model, train_loader, val_loader, optimizer, loss_function, device, print_freq):
     model.train()
-    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, device)
+    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, device, print_freq)
     print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(train_loss, train_acc))
 
     with torch.no_grad():
         model.eval()
-        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, device)
+        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, device, print_freq)
         print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
     return train_loss, train_acc, val_loss, val_acc
 
 
-def epoch_iter(model, data, optimizer, loss_function, device):
+def epoch_iter(model, data, optimizer, loss_function, device, print_freq):
     t = 0
     total_loss = 0
     total_accuracy = 0
@@ -22,7 +21,7 @@ def epoch_iter(model, data, optimizer, loss_function, device):
     for (x, label) in data:
 
         loss, accuracy = train_batch(model, (x, label), optimizer, loss_function, device)
-        if t % 20 == 0:
+        if t % print_freq == 0:
             print("Batch: {}; loss: {}; acc: {}".format(t, round(loss,2), round(accuracy,2)))
         total_loss += loss
         total_accuracy += accuracy
