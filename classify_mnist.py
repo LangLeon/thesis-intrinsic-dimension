@@ -2,6 +2,7 @@ import torch
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.optim import SGD
 
 from mnist import mnist
 from plotting import plot_data
@@ -62,8 +63,9 @@ def main():
 
     if ARGS.subspace_training:
         E_split = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-
-    optimizer = custom_SGD(model.parameters(), E_split, ARGS.lr)
+        optimizer = custom_SGD(model.parameters(), E_split, ARGS.lr)
+    else:
+        optimizer = SGD(model.parameters(), ARGS.lr)
     epochs = []
     train_losses = []
     train_accuracies = []
@@ -86,6 +88,7 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    
     parser.add_argument('--lr', default=0.001, type=float,
                         help='learning rate')
     parser.add_argument('--seed', default=1, type=int,

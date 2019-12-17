@@ -38,9 +38,8 @@ class custom_SGD(Optimizer):
                 if p.grad is None:
                     continue
                 d_p = p.grad.data
-                grad_d += d_p.view(-1) @ E
-            self.params_d -= group['lr'] * grad_d
-            #import pdb; pdb.set_trace()
+                grad_d += d_p.view(-1).data @ E.data
+            self.params_d.data._add(-group['lr'],grad_d)
 
 
         for group in self.param_groups:
