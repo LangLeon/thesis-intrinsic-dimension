@@ -22,8 +22,8 @@ class custom_SGD(Optimizer):
         self.E_split = E_split
         self.E_split_transpose = E_split_transpose
         self.d_dim = E_split[0].shape[1]
-        self.params_d = torch.zeros(self.d_dim)
         self.device = device
+        self.params_d = torch.zeros(self.d_dim).to(device)
 
     def __setstate__(self, state):
         super(custom_SGD, self).__setstate__(state)
