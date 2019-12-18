@@ -23,7 +23,7 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
     timestamp = str(datetime.datetime.utcnow())
-    file_name = "lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size, timestamp)
+    file_name = "subspace_{}_d_dim_{}_model_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(ARGS.subspace_training, ARGS.d_dim, ARGS.model, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size, timestamp)
     full_file_name = os.path.join("logs/", file_name)
 
     with open(full_file_name, "w") as f:
@@ -132,7 +132,7 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--lr', default=0.001, type=float,
+    parser.add_argument('--lr', default=0.1, type=float,
                         help='learning rate')
     parser.add_argument('--seed', default=1, type=int,
                         help='seed')
