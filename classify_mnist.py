@@ -19,11 +19,11 @@ import csv
 import os
 import datetime
 
-def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies):
+def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, subspace_training=None, d_dim=None, model=None, lr=None, seed=None, n_epochs=None, batch_size=None):
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
     timestamp = str(datetime.datetime.utcnow())
-    file_name = "subspace_{}_d_dim_{}_model_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(ARGS.subspace_training, ARGS.d_dim, ARGS.model, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size, timestamp)
+    file_name = "subspace_{}_d_dim_{}_model_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(subspace_training, d_dim, model, lr, seed, n_epochs, batch_size, timestamp)
     full_file_name = os.path.join("logs/", file_name)
 
     with open(full_file_name, "w") as f:
@@ -59,7 +59,7 @@ def to_sparse(x):
     values = x[tuple(indices[i] for i in range(indices.shape[0]))]
     return sparse_tensortype(indices, values, x.size())
 
-def create_random_embedding(model, d_dim):
+def create_random_embedding(model, d_dim, device):
     D_dim = sum(p.numel() for p in model.parameters())
 
     """
@@ -96,29 +96,27 @@ def create_random_embedding(model, d_dim):
     E_split_transpose = [E.transpose(0,1) for E in E_split]
     return E_split, E_split_transpose
 
+def train_model_once(seed, batch_size, model, subspace_training, d_dim, lr, n_epochs, print_freq, print_prec, device):
+    torch.manual_seed(seed)
 
-
-def main():
-    torch.manual_seed(ARGS.seed)
-
-    train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
-    model = models[ARGS.model]().to(device)
+    train_loader, val_loader, _ = mnist(batch_size = batch_size)
+    model = models[model]().to(device)
     criterion = nn.CrossEntropyLoss()
 
-    if ARGS.subspace_training:
-        E_split, E_split_transpose = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, device, ARGS.lr)
+    if subspace_training:
+        E_split, E_split_transpose = create_random_embedding(model, d_dim, device) # random embedding R^d_dim ---> R^D_dim
+        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, device, lr)
     else:
-        optimizer = SGD(model.parameters(), ARGS.lr)
+        optimizer = SGD(model.parameters(), lr)
     epochs = []
     train_losses = []
     train_accuracies = []
     val_losses = []
     val_accuracies = []
 
-    for epoch in range(ARGS.n_epochs):
+    for epoch in range(n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,device, ARGS.print_freq, ARGS.print_prec)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,print_freq, print_prec, device)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
@@ -127,6 +125,12 @@ def main():
 
     log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies)
 
+    return min(train_losses), max(train_accuracies), min(val_losses), max(val_accuracies)
+
+
+
+def main():
+    train_model_once(ARGS.seed, ARGS.batch_size, ARGS.model, ARGS.subspace_training, ARGS.d_dim, ARGS.lr, ARGS.n_epochs, ARGS.print_freq, ARGS.print_prec, device)
 
 
 if __name__ == "__main__":

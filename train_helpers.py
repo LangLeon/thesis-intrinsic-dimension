@@ -1,19 +1,19 @@
 import torch
 
 
-def train_epoch(model, train_loader, val_loader, optimizer, loss_function, device, print_freq, print_prec):
+def train_epoch(model, train_loader, val_loader, optimizer, loss_function, print_freq, print_prec, device):
     model.train()
-    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, device, print_freq, print_prec)
+    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, print_freq, print_prec, device)
     print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(round(train_loss, print_prec), round(train_acc, print_prec)))
 
     with torch.no_grad():
         model.eval()
-        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, device, print_freq, print_prec)
+        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function,print_freq, print_prec, device)
         print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
     return train_loss, train_acc, val_loss, val_acc
 
 
-def epoch_iter(model, data, optimizer, loss_function, device, print_freq, print_prec):
+def epoch_iter(model, data, optimizer, loss_function, print_freq, print_prec, device):
     t = 0
     total_loss = 0
     total_accuracy = 0
