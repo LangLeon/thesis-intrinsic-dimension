@@ -12,7 +12,7 @@ before!
 
 class custom_SGD(Optimizer):
 
-    def __init__(self, params, E_split, E_split_transpose, lr=required):
+    def __init__(self, params, E_split, E_split_transpose, device, lr=required):
         if lr is not required and lr < 0.0:
             raise ValueError("Invalid learning rate: {}".format(lr))
 
@@ -23,13 +23,14 @@ class custom_SGD(Optimizer):
         self.E_split_transpose = E_split_transpose
         self.d_dim = E_split[0].shape[1]
         self.params_d = torch.zeros(self.d_dim)
+        self.device = device
 
     def __setstate__(self, state):
         super(custom_SGD, self).__setstate__(state)
 
     def step(self):
 
-        grad_d = torch.zeros(self.d_dim)
+        grad_d = torch.zeros(self.d_dim).to(self.device)
 
         for group in self.param_groups:
             for i in range(len(group['params'])):

@@ -107,7 +107,7 @@ def main():
 
     if ARGS.subspace_training:
         E_split, E_split_transpose = create_random_embedding(model, ARGS.d_dim) # random embedding R^d_dim ---> R^D_dim
-        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, ARGS.lr)
+        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, device, ARGS.lr)
     else:
         optimizer = SGD(model.parameters(), ARGS.lr)
     epochs = []
