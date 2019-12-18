@@ -5,13 +5,10 @@ import torch
 
 
 def main():
-    """
     if ARGS.model == "MLP":
         d_dims = [100, 200, 400, 600, 800, 1000]
     else:
         d_dims = [50, 100, 200, 300, 400, 500]
-    """
-    d_dims = [10, 20, 40]
 
     train_losses = []
     train_accuracies = []
