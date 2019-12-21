@@ -1,4 +1,5 @@
-from classify_mnist import train_model_once, log_results
+from classify_mnist import train_model_once
+from logging_helper import log_results
 
 import argparse
 import torch
@@ -10,19 +11,22 @@ def main():
     else:
         d_dims = [50, 100, 200, 300, 400, 500]
 
+    d_dims=[20,30,40]
     train_losses = []
     train_accuracies = []
     val_losses = []
     val_accuracies = []
 
     for d_dim in d_dims:
-        train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS.seed, ARGS.batch_size, ARGS.model, True, d_dim, ARGS.lr, ARGS.n_epochs, ARGS.print_freq, ARGS.print_prec, device)
+        ARGS.d_dim = d_dim
+        train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS)
         train_losses.append(train_loss)
         train_accuracies.append(train_accuracy)
         val_losses.append(val_loss)
         val_accuracies.append(val_accuracy)
 
-    log_results(d_dims, train_losses, train_accuracies, val_losses, val_accuracies, True, "XXXXX", ARGS.model, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size)
+    ARGS.d_dim = "XXXXX"
+    log_results(d_dims, train_losses, train_accuracies, val_losses, val_accuracies, ARGS)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -37,10 +41,7 @@ if __name__ == "__main__":
                         help='batch size')
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
-    #parser.add_argument('--subspace_training', default=False, action='store_true',
-    #                    help='Whether to train in the subspace or not')
-    #parser.add_argument('--d_dim', default=1000, type=int,
-    #                    help='Dimension of random subspace to be trained in')
+    # We always do subspace_training here and d_dim is set dynamically, therefore these are not command-line args here.
     parser.add_argument('--print_freq', default=20, type=int,
                         help='How often the loss and accuracy should be printed')
     parser.add_argument('--print_prec', default=2, type=int,
@@ -49,5 +50,9 @@ if __name__ == "__main__":
     ARGS = parser.parse_args()
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    ARGS.device = device
+    ARGS.subspace_training = True
+    ARGS.ddim_vs_acc = True
 
     main()

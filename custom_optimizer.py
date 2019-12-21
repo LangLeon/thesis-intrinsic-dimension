@@ -45,5 +45,4 @@ class custom_SGD(Optimizer):
         for group in self.param_groups:
             for i in range(len(group['params'])):
                 p = group['params'][i]
-                #import pdb; pdb.set_trace()
                 p.data = torch.sparse.mm(self.E_split[i],self.params_d.view(-1,1)).reshape(p.data.shape)
