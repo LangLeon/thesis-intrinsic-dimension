@@ -11,7 +11,6 @@ def main():
     else:
         d_dims = [50, 100, 200, 300, 400, 500]
 
-    d_dims=[20,30,40]
     train_losses = []
     train_accuracies = []
     val_losses = []
