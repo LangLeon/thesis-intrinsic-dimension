@@ -4,7 +4,6 @@ from scipy.sparse import coo_matrix
 import torch
 
 
-
 def to_torch(E):
     # taken from https://stackoverflow.com/questions/50665141/converting-a-scipy-coo-matrix-to-pytorch-sparse-tensor
     values = E.data
@@ -62,8 +61,6 @@ def create_random_embedding(model, d_dim, device):
     assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
     for i in range(len(params)):
         assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
-
-    for i in range(len(E_split)):
         E_split[i] = to_sparse(E_split[i]).to(device)
 
     E_split_transpose = [E.transpose(0,1) for E in E_split]

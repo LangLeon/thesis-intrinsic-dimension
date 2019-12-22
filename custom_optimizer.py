@@ -24,6 +24,8 @@ class custom_SGD(Optimizer):
         self.d_dim = E_split[0].shape[1]
         self.device = device
         self.params_d = torch.zeros(self.d_dim).to(device)
+        self.start_params = [self.param_groups[0]['params'][i].data for i in range(len(self.param_groups[0]['params']))]
+
 
     def __setstate__(self, state):
         super(custom_SGD, self).__setstate__(state)
@@ -38,11 +40,11 @@ class custom_SGD(Optimizer):
                 assert p.grad is not None, "The optimizer currently can only deal with a full model gradient, due to the embedding E."
                 # Create subspace gradient
                 d_p = p.grad.data
-                grad_d += torch.sparse.mm(self.E_split_transpose[i], d_p.view(-1,1)).view(-1) # d_p.view(-1).data @ self.E_split[i].data
+                grad_d += torch.sparse.mm(self.E_split_transpose[i], d_p.view(-1,1)).view(-1)
             self.params_d.data.add_(-group['lr'],grad_d.view(-1))
 
 
         for group in self.param_groups:
             for i in range(len(group['params'])):
                 p = group['params'][i]
-                p.data = torch.sparse.mm(self.E_split[i],self.params_d.view(-1,1)).reshape(p.data.shape)
+                p.data = torch.sparse.mm(self.E_split[i],self.params_d.view(-1,1)).reshape(p.data.shape) + self.start_params[i]
