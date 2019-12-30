@@ -25,7 +25,7 @@ def train_model_once(ARGS):
 
     if ARGS.subspace_training:
         E_split, E_split_transpose = create_random_embedding(model, ARGS.d_dim, ARGS.device) # random embedding R^d_dim ---> R^D_dim
-        if not ARGS.wrapped:
+        if ARGS.non_wrapped:
             assert ARGS.optimizer == "SGD", "only SGD exists in a non-wrapped, custom version"
             optimizer = CustomSGD(model.parameters(), E_split, E_split_transpose, ARGS.device, ARGS.lr)
         else:
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                         help='the optimizer to be used')
     parser.add_argument('--subspace_training', default=False, action='store_true',
                         help='Whether to train in the subspace or not')
-    parser.add_argument('--wrapped', default=False, action='store_true',
+    parser.add_argument('--non_wrapped', action="store_true", default=False,
                         help='Whether or not to use the *wrapped* version of the subspace optimizer')
     parser.add_argument('--d_dim', default=1000, type=int,
                         help='Dimension of random subspace to be trained in')

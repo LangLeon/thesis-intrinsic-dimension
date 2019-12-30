@@ -40,8 +40,10 @@ if __name__ == "__main__":
                         help='batch size')
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
+    parser.add_argument('--optimizer', default="SGD", type=str,
+                        help='the optimizer to be used')
     # We always do subspace_training here and d_dim is set dynamically, therefore these are not command-line args here.
-    parser.add_argument('--wrapped', default=False, action='store_true',
+    parser.add_argument('--non_wrapped', action="store_true", default=False,
                         help='Whether or not to use the *wrapped* version of the subspace optimizer')
     parser.add_argument('--print_freq', default=20, type=int,
                         help='How often the loss and accuracy should be printed')
