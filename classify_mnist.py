@@ -2,12 +2,11 @@ import torch
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.optim import SGD
 
 from mnist import mnist
 from models import models
 from train_helpers import train_epoch
-from custom_optimizer import custom_SGD
+from optimizers import CustomSGD, WrappedOptimizer
 from embedding_helper import create_random_embedding
 from logging_helper import log_results
 
@@ -16,6 +15,9 @@ import argparse
 
 def train_model_once(ARGS):
     torch.manual_seed(ARGS.seed)
+    optimizers = {"SGD": torch.optim.SGD,
+                  "RMSprop": torch.optim.RMSprop,
+                  "Adam": torch.optim.Adam}
 
     train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
     model = models[ARGS.model]().to(ARGS.device)
@@ -23,7 +25,12 @@ def train_model_once(ARGS):
 
     if ARGS.subspace_training:
         E_split, E_split_transpose = create_random_embedding(model, ARGS.d_dim, ARGS.device) # random embedding R^d_dim ---> R^D_dim
-        optimizer = custom_SGD(model.parameters(), E_split, E_split_transpose, ARGS.device, ARGS.lr)
+        if not ARGS.wrapped:
+            assert ARGS.optimizer == "SGD", "only SGD exists in a non-wrapped, custom version"
+            optimizer = CustomSGD(model.parameters(), E_split, E_split_transpose, ARGS.device, ARGS.lr)
+        else:
+            optimizer = optimizers[ARGS.optimizer](model.parameters(), ARGS.lr)
+            optimizer = WrappedOptimizer(optimizer, E_split, E_split_transpose, device)
     else:
         optimizer = SGD(model.parameters(), ARGS.lr)
     epochs = []
@@ -60,8 +67,12 @@ if __name__ == "__main__":
                         help='batch size')
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
+    parser.add_argument('--optimizer', default="SGD", type=str,
+                        help='the optimizer to be used')
     parser.add_argument('--subspace_training', default=False, action='store_true',
                         help='Whether to train in the subspace or not')
+    parser.add_argument('--wrapped', default=False, action='store_true',
+                        help='Whether or not to use the *wrapped* version of the subspace optimizer')
     parser.add_argument('--d_dim', default=1000, type=int,
                         help='Dimension of random subspace to be trained in')
     parser.add_argument('--print_freq', default=20, type=int,
