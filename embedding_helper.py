@@ -31,7 +31,7 @@ def to_sparse(x):
 
 
 
-def create_random_embedding(model, d_dim, device):
+def create_random_embedding(model, d_dim, device, chunked):
     D_dim = sum(p.numel() for p in model.parameters())
 
     """
@@ -48,20 +48,25 @@ def create_random_embedding(model, d_dim, device):
     # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
     En = torch.norm(E, p=2, dim=0)
     E = E.div(En.expand_as(E))
+    E_T = E.transpose(0,1)
 
-    # Split E into one component for each parameter, i.e. tensor, in the model
-    params = list(model.parameters())
-    E_split = []
-    pointer = 0
-    for param in params:
-        size = len(param.view(-1))
-        E_split.append(E[pointer:pointer+size])
-        pointer=pointer+size
+    if not chunked:
+        return E, E_T
 
-    assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
-    for i in range(len(params)):
-        assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
-        E_split[i] = to_sparse(E_split[i]).to(device)
+    else:
+        # Split E into one component for each parameter, i.e. tensor, in the model
+        params = list(model.parameters())
+        E_split = []
+        pointer = 0
+        for param in params:
+            size = param.numel()
+            E_split.append(E[pointer:pointer+size])
+            pointer=pointer+size
 
-    E_split_transpose = [E.transpose(0,1) for E in E_split]
+        assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
+        for i in range(len(params)):
+            assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
+            E_split[i] = to_sparse(E_split[i]).to(device)
+
+        E_split_transpose = [E.transpose(0,1) for E in E_split]
     return E_split, E_split_transpose
