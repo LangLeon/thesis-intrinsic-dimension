@@ -43,14 +43,16 @@ if __name__ == "__main__":
     parser.add_argument('--optimizer', default="SGD", type=str,
                         help='the optimizer to be used')
     # We always do subspace_training here and d_dim is set dynamically, therefore these are not command-line args here.
-    parser.add_argument('--non_wrapped', action="store_true", default=False,
-                        help='Whether or not to use the *wrapped* version of the subspace optimizer')
-    parser.add_argument('--chunked', action="store_true", default=False,
-                        help='Whether to chunk the sparse matrix in several smaller matrices or not.')
     parser.add_argument('--print_freq', default=20, type=int,
                         help='How often the loss and accuracy should be printed')
     parser.add_argument('--print_prec', default=2, type=int,
                         help='The precision with which to print losses and accuracy.')
+
+    # Arguments that only change implementation details, not the actual performance.
+    parser.add_argument('--non_wrapped', action="store_true", default=False,
+                        help='Whether or not to use the *wrapped* version of the subspace optimizer')
+    parser.add_argument('--chunked', action="store_true", default=False,
+                        help='Whether to chunk the sparse matrix in several smaller matrices or not.')
 
     ARGS = parser.parse_args()
 
