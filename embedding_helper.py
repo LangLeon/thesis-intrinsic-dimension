@@ -47,8 +47,8 @@ def create_random_embedding(model, d_dim, device, chunked):
 
     # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
     En = torch.norm(E, p=2, dim=0)
-    E = E.div(En.expand_as(E))
-    E_T = E.transpose(0,1)
+    E = E.div(En.expand_as(E)).to(device)
+    E_T = E.transpose(0,1).to(device)
 
     if not chunked:
         return E, E_T
