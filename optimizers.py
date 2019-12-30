@@ -38,7 +38,7 @@ class WrappedOptimizer:
         else:
             for group in self.optimizer.param_groups:
                 params = group['params']
-                grad_D = torch.cat([p.grad.data.view(-1) for p in params]).view(-1,1)
+                grad_D = torch.cat([p.grad.data.view(-1) for p in params]).view(-1,1).to(self.device)
                 grad_d = torch.sparse.mm(self.E_T, grad_D)
                 grad_D = torch.sparse.mm(self.E, grad_d).view(-1)
                 pointer = 0
