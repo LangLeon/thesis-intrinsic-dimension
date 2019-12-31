@@ -1,28 +1,33 @@
 import torch
 
 
-def train_epoch(model, train_loader, val_loader, optimizer, loss_function, print_freq, print_prec, device):
+def train_epoch(model, train_loader, val_loader, optimizer, loss_function, ARGS):
     model.train()
-    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, print_freq, print_prec, device)
-    print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(round(train_loss, print_prec), round(train_acc, print_prec)))
+    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, ARGS)
+    print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(round(train_loss, ARGS.print_prec), round(train_acc, ARGS.print_prec)))
 
     with torch.no_grad():
         model.eval()
-        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function,print_freq, print_prec, device)
+        val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, ARGS)
         print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
+
+    if ARGS.subspace_training and not ARGS.non_wrapped:
+        optimizer.parameter_correction() # Makes sure that the parameters are projected back into the subspace if there was a "drift" along the way
+
+
     return train_loss, train_acc, val_loss, val_acc
 
 
-def epoch_iter(model, data, optimizer, loss_function, print_freq, print_prec, device):
+def epoch_iter(model, data, optimizer, loss_function, ARGS):
     t = 0
     total_loss = 0
     total_accuracy = 0
 
     for (x, label) in data:
 
-        loss, accuracy = train_batch(model, (x, label), optimizer, loss_function, device)
-        if t % print_freq == 0:
-            print("Batch: {}; loss: {}; acc: {}".format(t, round(loss,print_prec), round(accuracy,print_prec)))
+        loss, accuracy = train_batch(model, (x, label), optimizer, loss_function, ARGS)
+        if t % ARGS.print_freq == 0:
+            print("Batch: {}; loss: {}; acc: {}".format(t, round(loss,ARGS.print_prec), round(accuracy,ARGS.print_prec)))
         total_loss += loss
         total_accuracy += accuracy
         t+= 1
@@ -33,10 +38,10 @@ def epoch_iter(model, data, optimizer, loss_function, print_freq, print_prec, de
     return loss_avg, accuracy_avg
 
 
-def train_batch(model, batch, optimizer, loss_function, device):
+def train_batch(model, batch, optimizer, loss_function, ARGS):
     image, label = batch
-    image = image.to(device)
-    label = label.to(device)
+    image = image.to(ARGS.device)
+    label = label.to(ARGS.device)
     optimizer.zero_grad()
     prediction = model(image)
     loss = torch.sum(loss_function(prediction, label))

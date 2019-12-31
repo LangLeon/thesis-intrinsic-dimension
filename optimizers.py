@@ -18,10 +18,17 @@ class WrappedOptimizer:
         self.device = device
         self.chunked = chunked
 
-    def __project_gradient(self):
-        grad_d = torch.zeros(self.d_dim).to(self.device)
-
+        params = self.optimizer.param_groups[0]['params']
         if self.chunked:
+            self.start_params = [p.data for p in params]
+        else:
+            self.start_params = torch.cat([p.data.view(-1) for p in params])
+
+
+    def __project_gradient(self):
+        # Projects the gradient into the subspace.
+        if self.chunked:
+            grad_d = torch.zeros(self.d_dim).to(self.device)
             for group in self.optimizer.param_groups:
                 params = group['params']
                 for i in range(len(params)):
@@ -54,12 +61,41 @@ class WrappedOptimizer:
     def zero_grad(self):
         self.optimizer.zero_grad()
 
+    def parameter_correction(self):
+        # Does almost the same as __project_gradient, but acting on the parameter vector instead of the gradient.
+        if self.chunked:
+            diff_d = torch.zeros(self.d_dim).to(self.device)
+            for group in self.optimizer.param_groups:
+                params = group['params']
+                for i in range(len(params)):
+                    # Create subspace parameter vector
+                    diff_p = params[i].data - self.start_params[i]
+                    diff_d += torch.sparse.mm(self.E_T[i], diff_p.view(-1,1)).view(-1)
+
+            for group in self.optimizer.param_groups:
+                params = group['params']
+                for i in range(len(params)):
+                    p = params[i]
+                    p.data = torch.sparse.mm(self.E[i], diff_d.view(-1,1)).reshape(p.data.shape) + self.start_params[i]
+        else:
+            for group in self.optimizer.param_groups:
+                params = group['params']
+                diff_D = (torch.cat([p.data.view(-1) for p in params]) - self.start_params).view(-1,1).to(self.device)
+                diff_d = torch.sparse.mm(self.E_T, diff_D)
+                p_D = torch.sparse.mm(self.E, diff_d).view(-1) + self.start_params
+                pointer = 0
+                for p in params:
+                    size = p.numel()
+                    p.data = p_D[pointer:pointer+size].reshape(p.data.shape)
+                    pointer = pointer + size
+
+
 
 
 
 class CustomSGD(Optimizer):
     """
-    The whole class is basically just a copy of https://pytorch.org/docs/stable/_modules/torch/optim/sgd.html#SGD.
+    The class is adapted from https://pytorch.org/docs/stable/_modules/torch/optim/sgd.html#SGD.
     The goal is to have an optimizer that is able to optimize only in a subspace.
 
     Currently, delete everything that has to do with dampening, weight decay, etc.

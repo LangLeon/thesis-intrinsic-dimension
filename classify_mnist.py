@@ -41,7 +41,7 @@ def train_model_once(ARGS):
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS.print_freq, ARGS.print_prec, ARGS.device)
+        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS)
         epochs.append(epoch + 1)
         train_losses.append(train_loss)
         train_accuracies.append(train_acc)
