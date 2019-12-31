@@ -9,14 +9,18 @@ import datetime
 def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS):
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
-    timestamp = str(datetime.datetime.utcnow())
-    file_name = "subspace_{}_d_dim_{}_model_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}_{}.csv".format(ARGS.subspace_training, ARGS.d_dim, ARGS.model, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size, timestamp)
-    full_file_name = os.path.join("logs/", file_name)
+    file_name = "d_dim_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}.csv".format(ARGS.d_dim, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size)
+
+    subspace_training = "subspace_training" if ARGS.subspace_training else "no_subspace_training"
+    model = ARGS.model
+    timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
+
+    full_file_name = os.path.join("logs/" + subspace_training + "/" + model + "/" + timestamp, file_name)
     columns = ["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy"]
     if ARGS.ddim_vs_acc:
         columns[0] = "d_dim"
 
-
+    os.makedirs(os.path.dirname(full_file_name), exist_ok=True)
     with open(full_file_name, "w") as f:
         writer = csv.writer(f)
         writer.writerow(columns)
@@ -32,6 +36,7 @@ def plot_data(csv_path, ddim_vs_acc):
     filename = filename.replace("logs", "plots")
     print(filename)
     plot_path = filename + '.png'
+    os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 
     df = pd.read_csv(csv_path)
 

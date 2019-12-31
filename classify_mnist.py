@@ -32,7 +32,7 @@ def train_model_once(ARGS):
             optimizer = optimizers[ARGS.optimizer](model.parameters(), ARGS.lr)
             optimizer = WrappedOptimizer(optimizer, E, E_T, ARGS.device, ARGS.chunked)
     else:
-        optimizer = SGD(model.parameters(), ARGS.lr)
+        optimizer = optimizers[ARGS.optimizer](model.parameters(), ARGS.lr)
     epochs = []
     train_losses = []
     train_accuracies = []
