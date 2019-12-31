@@ -13,9 +13,8 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
 
     subspace_training = "subspace_training" if ARGS.subspace_training else "no_subspace_training"
     model = ARGS.model
-    timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
 
-    full_file_name = os.path.join("logs/" + subspace_training + "/" + model + "/" + timestamp, file_name)
+    full_file_name = os.path.join("logs/" + subspace_training + "/" + model + "/" + ARGS.timestamp, file_name)
     columns = ["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy"]
     if ARGS.ddim_vs_acc:
         columns[0] = "d_dim"

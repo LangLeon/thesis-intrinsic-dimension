@@ -61,5 +61,6 @@ if __name__ == "__main__":
     ARGS.device = device
     ARGS.subspace_training = True
     ARGS.ddim_vs_acc = True
+    ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
 
     main()
