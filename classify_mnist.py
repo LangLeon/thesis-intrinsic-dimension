@@ -11,6 +11,7 @@ from embedding_helper import create_random_embedding
 from logging_helper import log_results
 
 import argparse
+import datetime
 
 
 def train_model_once(ARGS):
@@ -90,5 +91,6 @@ if __name__ == "__main__":
 
     ARGS.device=device
     ARGS.ddim_vs_acc = False
+    ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
 
     train_model_once(ARGS)

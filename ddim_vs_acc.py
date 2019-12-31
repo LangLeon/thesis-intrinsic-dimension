@@ -4,6 +4,8 @@ from logging_helper import log_results
 import argparse
 import torch
 
+import datetime
+
 
 def main():
     if ARGS.model == "MLP":

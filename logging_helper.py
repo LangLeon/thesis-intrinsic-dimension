@@ -3,7 +3,6 @@ import csv
 import os
 import argparse
 import pandas as pd
-import datetime
 
 
 def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS):
