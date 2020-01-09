@@ -6,7 +6,7 @@ class WrappedOptimizer:
     """
     Wraps an arbitrary optimizer in order to train in a subspace
     """
-    def __init__(self, optimizer, E, E_T, device, chunked):
+    def __init__(self, optimizer, E, E_T, device, chunked, dense):
         self.optimizer = optimizer
         assert len(self.optimizer.param_groups) == 1, "The optimizer can currently only deal with one parameter group"
         self.E = E
@@ -17,6 +17,7 @@ class WrappedOptimizer:
             self.d_dim = E.shape[1]
         self.device = device
         self.chunked = chunked
+        self.dense = dense
 
         params = self.optimizer.param_groups[0]['params']
         if self.chunked:
@@ -34,20 +35,30 @@ class WrappedOptimizer:
                 for i in range(len(params)):
                     # Create subspace gradient
                     d_p = params[i].grad.data
-                    grad_d += torch.sparse.mm(self.E_T[i], d_p.view(-1,1)).view(-1)
+                    if not self.dense:
+                        grad_d += torch.sparse.mm(self.E_T[i], d_p.view(-1,1)).view(-1)
+                    else:
+                        grad_d += self.E_T[i] @ d_p.view(-1)
 
             for group in self.optimizer.param_groups:
                 params = group['params']
                 for i in range(len(params)):
                     p = params[i]
-                    p.grad.data = torch.sparse.mm(self.E[i], grad_d.view(-1,1)).reshape(p.grad.data.shape)
+                    if not self.dense:
+                        p.grad.data = torch.sparse.mm(self.E[i], grad_d.view(-1,1)).reshape(p.grad.data.shape)
+                    else:
+                        p.grad.data = (self.E[i] @ grad_d.view(-1)).reshape(p.grad.data.shape)
 
         else:
             for group in self.optimizer.param_groups:
                 params = group['params']
                 grad_D = torch.cat([p.grad.data.view(-1) for p in params]).view(-1,1).to(self.device)
-                grad_d = torch.sparse.mm(self.E_T, grad_D)
-                grad_D = torch.sparse.mm(self.E, grad_d).view(-1)
+                if not self.dense:
+                    grad_d = torch.sparse.mm(self.E_T, grad_D)
+                    grad_D = torch.sparse.mm(self.E, grad_d).view(-1)
+                else:
+                    grad_d = self.E_T @ grad_D
+                    grad_D = self.E @ grad_d
                 pointer = 0
                 for p in params:
                     size = p.numel()
@@ -70,26 +81,34 @@ class WrappedOptimizer:
                 for i in range(len(params)):
                     # Create subspace parameter vector
                     diff_p = params[i].data - self.start_params[i]
-                    diff_d += torch.sparse.mm(self.E_T[i], diff_p.view(-1,1)).view(-1)
+                    if not self.dense:
+                        diff_d += torch.sparse.mm(self.E_T[i], diff_p.view(-1,1)).view(-1)
+                    else:
+                        diff_d += self.E_T[i] @ diff_p.view(-1)
 
             for group in self.optimizer.param_groups:
                 params = group['params']
                 for i in range(len(params)):
                     p = params[i]
-                    p.data = torch.sparse.mm(self.E[i], diff_d.view(-1,1)).reshape(p.data.shape) + self.start_params[i]
+                    if not self.dense:
+                        p.data = torch.sparse.mm(self.E[i], diff_d.view(-1,1)).reshape(p.data.shape) + self.start_params[i]
+                    else:
+                        p.data = (self.E[i] @ diff_d.view(-1)).reshape(p.data.shape) + self.start_params[i]
         else:
             for group in self.optimizer.param_groups:
                 params = group['params']
                 diff_D = (torch.cat([p.data.view(-1) for p in params]) - self.start_params).view(-1,1).to(self.device)
-                diff_d = torch.sparse.mm(self.E_T, diff_D)
-                p_D = torch.sparse.mm(self.E, diff_d).view(-1) + self.start_params
+                if not self.dense:
+                    diff_d = torch.sparse.mm(self.E_T, diff_D)
+                    p_D = torch.sparse.mm(self.E, diff_d).view(-1) + self.start_params
+                else:
+                    diff_d = self.E_T @ diff_D
+                    p_D = self.E @ diff_d + self.start_params
                 pointer = 0
                 for p in params:
                     size = p.numel()
                     p.data = p_D[pointer:pointer+size].reshape(p.data.shape)
                     pointer = pointer + size
-
-
 
 
 

@@ -31,22 +31,25 @@ def to_sparse(x):
 
 
 
-def create_random_embedding(model, d_dim, device, chunked):
+def create_random_embedding(model, d_dim, device, chunked, dense):
     D_dim = sum(p.numel() for p in model.parameters())
 
-    """
-    dist = torch.distributions.normal.Normal(0, 1)
-    E = dist.sample((D_dim, d_dim))
+    if not dense:
+        # Create sparse matrix. See 6.6.3 here: https://scikit-learn.org/stable/modules/random_projection.html#sparse-random-matrix
+        transformer = random_projection.SparseRandomProjection()
+        E = transformer._make_random_matrix(D_dim, d_dim)
+        E = coo_matrix(E)
+        E = to_torch(E)
+        # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
+        En = torch.norm(E, p=2, dim=0)
 
-    """
-    # Create sparse matrix. See 6.6.3 here: https://scikit-learn.org/stable/modules/random_projection.html#sparse-random-matrix
-    transformer = random_projection.SparseRandomProjection()
-    E = transformer._make_random_matrix(D_dim, d_dim)
-    E = coo_matrix(E)
-    E = to_torch(E)
+    else:
+        # create dense matrix
+        dist = torch.distributions.normal.Normal(0, 1)
+        E = dist.sample((D_dim, d_dim))
+        # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
+        En = torch.norm(E, p=2, dim=0)
 
-    # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
-    En = torch.norm(E, p=2, dim=0)
     E = E.div(En.expand_as(E)).to(device)
     E_T = E.transpose(0,1).to(device)
 

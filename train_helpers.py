@@ -6,14 +6,13 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function, ARGS)
     train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, ARGS)
     print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(round(train_loss, ARGS.print_prec), round(train_acc, ARGS.print_prec)))
 
+    if ARGS.parameter_correction:
+        optimizer.parameter_correction() # Makes sure that the parameters are projected back into the subspace if there was a "drift" along the way
+
     with torch.no_grad():
         model.eval()
         val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, ARGS)
         print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
-
-    if ARGS.subspace_training and not ARGS.non_wrapped:
-        optimizer.parameter_correction() # Makes sure that the parameters are projected back into the subspace if there was a "drift" along the way
-
 
     return train_loss, train_acc, val_loss, val_acc
 

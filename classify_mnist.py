@@ -25,13 +25,13 @@ def train_model_once(ARGS):
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
-        E, E_T = create_random_embedding(model, ARGS.d_dim, ARGS.device, ARGS.chunked) # create random embedding R^d_dim ---> R^D_dim
+        E, E_T = create_random_embedding(model, ARGS.d_dim, ARGS.device, ARGS.chunked, ARGS.dense) # create random embedding R^d_dim ---> R^D_dim
         if ARGS.non_wrapped:
             assert ARGS.optimizer == "SGD", "only SGD exists in a non-wrapped, custom version"
             optimizer = CustomSGD(model.parameters(), E, E_T, ARGS.device, ARGS.lr)
         else:
             optimizer = optimizers[ARGS.optimizer](model.parameters(), ARGS.lr)
-            optimizer = WrappedOptimizer(optimizer, E, E_T, ARGS.device, ARGS.chunked)
+            optimizer = WrappedOptimizer(optimizer, E, E_T, ARGS.device, ARGS.chunked, ARGS.dense)
     else:
         optimizer = optimizers[ARGS.optimizer](model.parameters(), ARGS.lr)
     epochs = []
@@ -79,11 +79,17 @@ if __name__ == "__main__":
     parser.add_argument('--print_prec', default=2, type=int,
                         help='The precision with which to print losses and accuracy.')
 
+
     # Arguments that only change implementation details, not the actual performance.
     parser.add_argument('--non_wrapped', action="store_true", default=False,
                         help='Whether or not to use the *wrapped* version of the subspace optimizer')
     parser.add_argument('--chunked', action="store_true", default=False,
                         help='Whether to chunk the sparse matrix in several smaller matrices or not.')
+    parser.add_argument('--dense', action="store_true", default=False,
+                        help='Whether to use a dense embedding matrix instead.')
+    parser.add_argument('--parameter_correction', action="store_true", default=False,
+                        help='Whether to do a parameter correction.')
+
 
     ARGS = parser.parse_args()
 
