@@ -3,6 +3,7 @@ import csv
 import os
 import argparse
 import pandas as pd
+import numpy as np
 
 
 def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS):
@@ -69,6 +70,8 @@ def plot_data(csv_path, ddim_vs_acc, x_axis):
     # all plots belonging to the second axis
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
     ax2.set_ylabel("Accuracy", color=colors[3])
+    ax2.set_ylim(0,1)
+    ax2.set_yticks(np.arange(0,1.1,0.1))
 
     ax2.plot(df[identifier], df['train_accuracy'], label="train_acc", color=colors[2])
     ax2.plot(df[identifier], df['val_accuracy'], label="val_acc", color=colors[3])
