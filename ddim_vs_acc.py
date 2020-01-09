@@ -32,26 +32,29 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--lr', default=0.1, type=float,
-                        help='learning rate')
-    parser.add_argument('--seed', default=1, type=int,
-                        help='seed')
-    parser.add_argument('--n_epochs', default=10, type=int,
-                        help='max number of epochs')
-    parser.add_argument('--batch_size', default=64, type=int,
-                        help='batch size')
+    # Most important settings
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
     parser.add_argument('--optimizer', default="SGD", type=str,
                         help='the optimizer to be used')
-    # We always do subspace_training here and d_dim is set dynamically, therefore these are not command-line args here.
-    parser.add_argument('--print_freq', default=20, type=int,
-                        help='How often the loss and accuracy should be printed')
-    parser.add_argument('--print_prec', default=2, type=int,
-                        help='The precision with which to print losses and accuracy.')
+    # subspace_training missing, since this is the point here.
 
 
-    # Arguments that only change implementation details, not the actual performance.
+    # Hyperparameters
+    parser.add_argument('--lr', default=0.1, type=float,
+                        help='learning rate')
+    parser.add_argument('--schedule', action="store_true", default=False,
+                        help='Whether to use a schedule on the lr')
+    parser.add_argument('--seed', default=1, type=int,
+                        help='seed')
+    parser.add_argument('--n_epochs', default=30, type=int,
+                        help='max number of epochs')
+    parser.add_argument('--batch_size', default=64, type=int,
+                        help='batch size')
+    # d_dim missing, since set dynamically
+
+
+    # Arguments for implementation details of subspace training
     parser.add_argument('--non_wrapped', action="store_true", default=False,
                         help='Whether or not to use the *wrapped* version of the subspace optimizer')
     parser.add_argument('--chunked', action="store_true", default=False,
@@ -60,6 +63,14 @@ if __name__ == "__main__":
                         help='Whether to use a dense embedding matrix instead.')
     parser.add_argument('--parameter_correction', action="store_true", default=False,
                         help='Whether to do a parameter correction.')
+
+
+    # Only changes visible results
+    parser.add_argument('--print_freq', default=20, type=int,
+                        help='How often the loss and accuracy should be printed')
+    parser.add_argument('--print_prec', default=2, type=int,
+                        help='The precision with which to print losses and accuracy.')
+
 
     ARGS = parser.parse_args()
 
