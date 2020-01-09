@@ -16,7 +16,8 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
     full_file_name = os.path.join("logs/" + subspace_training + "/" + model + "/" + ARGS.timestamp, file_name)
     columns = ["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy"]
     if ARGS.ddim_vs_acc:
-        columns[0] = "d_dim"
+        if ARGS.x_axis == "d_dim":
+            columns[0] = "d_dim"
 
     os.makedirs(os.path.dirname(full_file_name), exist_ok=True)
     with open(full_file_name, "w") as f:
@@ -26,10 +27,10 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
             writer.writerow(row)
     f.close()
 
-    plot_data(full_file_name, ARGS.ddim_vs_acc)
+    plot_data(full_file_name, ARGS.ddim_vs_acc, ARGS.x_axis)
 
 
-def plot_data(csv_path, ddim_vs_acc):
+def plot_data(csv_path, ddim_vs_acc, x_axis):
     filename, _ = os.path.splitext(csv_path)
     filename = filename.replace("logs", "plots")
     print(filename)
@@ -49,8 +50,12 @@ def plot_data(csv_path, ddim_vs_acc):
         ax1.set_xlabel("Epoch")
         identifier = "epoch"
     else:
-        ax1.set_xlabel("d_dim")
-        identifier = "d_dim"
+        if x_axis == "d_dim":
+            ax1.set_xlabel("d_dim")
+            identifier = "d_dim"
+        else:
+            ax1.set_xlabel("Epoch")
+            identifier = "epoch"
     ax1.set_ylabel("Loss", color=colors[1])
 
 

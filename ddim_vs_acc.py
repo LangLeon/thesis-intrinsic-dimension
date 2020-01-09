@@ -12,7 +12,6 @@ def main():
         d_dims = [100, 200, 400, 600, 800, 1000]
     else:
         d_dims = [50, 100, 200, 300, 400, 500]
-
     train_losses = []
     train_accuracies = []
     val_losses = []
@@ -20,6 +19,7 @@ def main():
 
     for d_dim in d_dims:
         ARGS.d_dim = d_dim
+        ARGS.x_axis = "epochs"
         train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS)
         train_losses.append(train_loss)
         train_accuracies.append(train_accuracy)
@@ -27,6 +27,7 @@ def main():
         val_accuracies.append(val_accuracy)
 
     ARGS.d_dim = "XXXXX"
+    ARGS.x_axis = "d_dim"
     log_results(d_dims, train_losses, train_accuracies, val_losses, val_accuracies, ARGS)
 
 if __name__ == "__main__":

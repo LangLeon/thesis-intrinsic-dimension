@@ -119,5 +119,6 @@ if __name__ == "__main__":
     ARGS.device=device
     ARGS.ddim_vs_acc = False
     ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
+    ARGS.x_axis = "epochs"
 
     train_model_once(ARGS)
