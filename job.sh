@@ -1,11 +1,10 @@
 #!/bin/bash
-#SBATCH -t 3:00:00
+#SBATCH -t 0:45:00
 #SBATCH -N 1
 #SBATCH -p gpu
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=leon.lang@student.uva.nl
-conda activate thesis
+source activate thesis
 
-srun python ddim_vs_acc.py --model=MLP
-srun python ddim_vs_acc.py --model=lenet
+python ddim_vs_acc.py --model=MLP --schedule
 
