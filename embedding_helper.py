@@ -2,6 +2,7 @@ import numpy as np
 from sklearn import random_projection
 from scipy.sparse import coo_matrix
 import torch
+import math
 
 
 def to_torch(E):
@@ -30,13 +31,22 @@ def to_sparse(x):
     return sparse_tensortype(indices, values, x.size())
 
 
+def print_density(E):
+    num_nonzero = (E!=0).sum().item()
+    num_el = E.numel()
+    fraction = num_nonzero / num_el
+    print("nonzero elements in E: {}".format(num_nonzero))
+    print("elements in E: {}".format(num_el))
+    print("fraction nonzero: {}".format(fraction))
+
+
 
 def create_random_embedding(model, d_dim, device, chunked, dense):
     D_dim = sum(p.numel() for p in model.parameters())
 
     if not dense:
         # Create sparse matrix. See 6.6.3 here: https://scikit-learn.org/stable/modules/random_projection.html#sparse-random-matrix
-        transformer = random_projection.SparseRandomProjection()
+        transformer = random_projection.SparseRandomProjection(density=1/math.sqrt(D_dim))
         E = transformer._make_random_matrix(D_dim, d_dim)
         E = coo_matrix(E)
         E = to_torch(E)
@@ -50,11 +60,17 @@ def create_random_embedding(model, d_dim, device, chunked, dense):
         # normalization of columns ---> obtain approximately orthonormal vectors, since high-dimensional!
         En = torch.norm(E, p=2, dim=0)
 
-    E = E.div(En.expand_as(E)).to(device)
-    E_T = E.transpose(0,1).to(device)
+    E = E.div(En.expand_as(E))
+
+    print_density(E)
+
+    E_T = E.transpose(0,1)
 
     if not chunked:
-        return E, E_T
+        if not dense:
+            return to_sparse(E).to(device), to_sparse(E_T).to(device)
+        else:
+            return E.to(device), E_T.to(device)
 
     else:
         # Split E into one component for each parameter, i.e. tensor, in the model
@@ -63,13 +79,19 @@ def create_random_embedding(model, d_dim, device, chunked, dense):
         pointer = 0
         for param in params:
             size = param.numel()
-            E_split.append(E[pointer:pointer+size])
+            E_split.append(E[pointer:pointer+size].to(device))
             pointer=pointer+size
 
-        assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
-        for i in range(len(params)):
-            assert params[i].numel() == E_split[i].shape[0], "E_split[i] has the wrong shape!"
-            E_split[i] = to_sparse(E_split[i]).to(device)
+        E_split_transpose = [E.transpose(0,1).to(device) for E in E_split]
 
-        E_split_transpose = [E.transpose(0,1) for E in E_split]
-    return E_split, E_split_transpose
+        assert len(E_split) == len(params), "E_split does not have the same number of components as params!"
+
+        if not dense:
+            for i in range(len(params)):
+                E_split[i] = to_sparse(E_split[i]).to(device)
+                E_split_transpose[i] = to_sparse(E_split_transpose[i]).to(device)
+
+            return E_split, E_split_transpose
+
+        else:
+            return E_split, E_split_transpose

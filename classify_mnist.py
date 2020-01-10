@@ -63,7 +63,7 @@ def train_model_once(ARGS):
 
     log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS)
 
-    return min(train_losses), max(train_accuracies), min(val_losses), max(val_accuracies)
+    return train_losses[-1], train_accuracies[-1], val_losses[-1], val_accuracies[-1]
 
 
 
