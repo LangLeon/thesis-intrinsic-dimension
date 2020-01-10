@@ -1,6 +1,6 @@
 # ignore mnist data, logs, plots for now
 /data
-
+/slurm-*
 
 
 # ignore pycache
