@@ -6,5 +6,5 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
-python ddim_vs_acc.py --model=MLP --schedule
+python ddim_vs_acc.py --model=MLP --schedule --parameter_correction
 
