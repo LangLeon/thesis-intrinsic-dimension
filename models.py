@@ -32,16 +32,16 @@ class LeNet5(nn.Module):
     """
     Input - 1x28x28
     C1 - 6@24x24 (5x5 kernel)
-    relu
-    S2 - 6@12x12 (2x2 kernel, stride 2) Subsampling
-    C3 - 16@8x8 (5x5 kernel)
-    relu
-    S4 - 16@4x4 (2x2 kernel, stride 2) Subsampling
-    C5 - 120@1x1 (4x4 kernel)
-    relu
-    F6 - 84
-    relu
-    F7 - 10 (Output)
+    relu1
+    S1 - 6@12x12 (2x2 kernel, stride 2) Subsampling
+    C2 - 16@8x8 (5x5 kernel)
+    relu2
+    S2 - 16@4x4 (2x2 kernel, stride 2) Subsampling
+    C3 - 120@1x1 (4x4 kernel)
+    relu3
+    F4 - 84
+    relu4
+    F5 - 10 (Output)
     """
     def __init__(self):
         super(LeNet5, self).__init__()
@@ -49,18 +49,18 @@ class LeNet5(nn.Module):
         self.convnet = nn.Sequential(OrderedDict([
             ('c1', nn.Conv2d(1, 6, kernel_size=(5, 5))),
             ('relu1', nn.ReLU()),
+            ('s1', nn.MaxPool2d(kernel_size=(2, 2), stride=2)),
+            ('c2', nn.Conv2d(6, 16, kernel_size=(5, 5))),
+            ('relu2', nn.ReLU()),
             ('s2', nn.MaxPool2d(kernel_size=(2, 2), stride=2)),
-            ('c3', nn.Conv2d(6, 16, kernel_size=(5, 5))),
-            ('relu3', nn.ReLU()),
-            ('s4', nn.MaxPool2d(kernel_size=(2, 2), stride=2)),
-            ('c5', nn.Conv2d(16, 120, kernel_size=(4, 4))),
-            ('relu5', nn.ReLU())
+            ('c3', nn.Conv2d(16, 120, kernel_size=(4, 4))),
+            ('relu3', nn.ReLU())
         ]))
 
         self.fc = nn.Sequential(OrderedDict([
-            ('f6', nn.Linear(120, 84)),
-            ('relu6', nn.ReLU()),
-            ('f7', nn.Linear(84, 10)),
+            ('f4', nn.Linear(120, 84)),
+            ('relu4', nn.ReLU()),
+            ('f5', nn.Linear(84, 10)),
         ]))
 
     def forward(self, img):

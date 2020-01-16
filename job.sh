@@ -2,6 +2,7 @@
 #SBATCH -t 00:45:00
 #SBATCH -N 1
 #SBATCH -p gpu
+#SBATCH --mem=16000M
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
