@@ -8,18 +8,11 @@ import torchvision.transforms as transforms
 import torchvision
 
 
-class toFloat:
-    def __init__(self):
-        pass
-
-    def __call__(self, img):
-        return img.float()
-
-
 def mnist(root='./data/', batch_size=64, download=True):
 
     transformation = transforms.Compose([
         transforms.ToTensor(),
+        transforms.Normalize((0.1307,), (0.3081,))
     ])
 
     dataset = torchvision.datasets.MNIST(
@@ -29,8 +22,8 @@ def mnist(root='./data/', batch_size=64, download=True):
         root, train=False, transform=transformation, target_transform=None,
         download=True)
 
-    train_dataset = data.dataset.Subset(dataset, np.arange(40000))
-    val_dataset = data.dataset.Subset(dataset, np.arange(40000, 50000))
+    train_dataset = data.dataset.Subset(dataset, np.arange(50000))
+    val_dataset = data.dataset.Subset(dataset, np.arange(50000, 60000))
 
     trainloader = data.DataLoader(
         train_dataset, batch_size=batch_size, shuffle=True, num_workers=8)
