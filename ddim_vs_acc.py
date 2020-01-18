@@ -46,6 +46,10 @@ if __name__ == "__main__":
                         help='learning rate')
     parser.add_argument('--schedule', action="store_true", default=False,
                         help='Whether to use a schedule on the lr')
+    parser.add_argument('--schedule_gamma', default=0.1, type=float,
+                        help='multiplier of learning rate')
+    parser.add_argument('--schedule_freq', default=10, type=int,
+                        help='how often learning rate is reduced by schedule_gamma')
     parser.add_argument('--seed', default=1, type=int,
                         help='seed')
     parser.add_argument('--n_epochs', default=30, type=int,

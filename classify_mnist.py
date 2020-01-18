@@ -42,9 +42,9 @@ def train_model_once(ARGS):
 
     if ARGS.schedule:
         if ARGS.subspace_training:
-            scheduler = torch.optim.lr_scheduler.StepLR(optimizer.optimizer, step_size=10, gamma=0.1)
+            scheduler = torch.optim.lr_scheduler.StepLR(optimizer.optimizer, step_size=ARGS.schedule_freq, gamma=ARGS.schedule_gamma)
         else:
-            scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+            scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=ARGS.schedule_freq, gamma=ARGS.schedule_gamma)
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
@@ -84,6 +84,10 @@ if __name__ == "__main__":
                         help='learning rate')
     parser.add_argument('--schedule', action="store_true", default=False,
                         help='Whether to use a schedule on the lr')
+    parser.add_argument('--schedule_gamma', default=0.1, type=float,
+                        help='multiplier of learning rate')
+    parser.add_argument('--schedule_freq', default=10, type=int,
+                        help='how often learning rate is reduced by schedule_gamma')
     parser.add_argument('--seed', default=1, type=int,
                         help='seed')
     parser.add_argument('--n_epochs', default=30, type=int,
