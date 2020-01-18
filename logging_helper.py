@@ -9,7 +9,7 @@ import numpy as np
 def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS):
     rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
 
-    file_name = "d_dim_{}_lr_{}_seed_{}_epochs_{}_batchsize_{}.csv".format(ARGS.d_dim, ARGS.lr, ARGS.seed, ARGS.n_epochs, ARGS.batch_size)
+    file_name = "d_dim_{}_lr_{}_gamma_{}_sched_freq_{}_seed_{}_epochs_{}_batchsize_{}.csv".format(ARGS.d_dim, ARGS.lr, ARGS.schedule_gamma, ARGS.schedule_freq, ARGS.seed, ARGS.n_epochs, ARGS.batch_size)
 
     subspace_training = "subspace_training" if ARGS.subspace_training else "no_subspace_training"
     model = ARGS.model
