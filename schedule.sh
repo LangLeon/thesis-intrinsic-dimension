@@ -13,7 +13,7 @@ for schedule_gamma in 0.8 0.4 0.2 0.13 0.1
 do
 for schedule_freq in 15 10 5
 do
-python classify_mnist.py --model=lenet --lr=${lr} --schedule --schedule_gamma=${schedule_gamma} --schedule_freq=${schedule_freq} --n_epochs=50
+python classify_mnist.py --model=reg_lenet --lr=${lr} --schedule --schedule_gamma=${schedule_gamma} --schedule_freq=${schedule_freq} --n_epochs=50
 done
 done
 done

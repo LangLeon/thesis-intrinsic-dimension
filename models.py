@@ -78,7 +78,7 @@ class RegularLeNet5(torch.nn.Module):
     - C8 replaces Id, i.e. the trivial rotation group is replaced by rotations by 45% angles.
     - Consequently, the regular representation has 8 internal channels. We work with the same number of regular feature
       spaces in each layer, and thus have, say, 6*8 = 48 effective channels in the second layer (this preserves the number of parameters)
-    - MaxPool2d is replaced by PointwiseMaxPool
+    - MaxPool2d is replaced by PointwiseMaxPoolAntialiased
     - relu is replaced by the equivariant relu (also operates pointwise)
     - We do a group max pooling before the fully connected layer.
 
@@ -103,24 +103,24 @@ class RegularLeNet5(torch.nn.Module):
         self.r2_act = gspaces.Rot2dOnR2(N=8)
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
         self.input_type = in_type
-        out_type = nn2.FieldType(self.r2_act, 6*[self.r2_act.regular_repr])
+        out_type = nn2.FieldType(self.r2_act, 4*[self.r2_act.regular_repr])
 
         # block 1
         self.C1 = nn2.R2Conv(in_type, out_type, kernel_size=5)
         self.relu1 = nn2.ReLU(out_type)
-        self.S1 = nn2.PointwiseMaxPool(out_type, kernel_size=2, stride=2)
+        self.S1 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
 
 
         in_type=self.S1.out_type
-        out_type = nn2.FieldType(self.r2_act, 16*[self.r2_act.regular_repr])
+        out_type = nn2.FieldType(self.r2_act, 15*[self.r2_act.regular_repr])
 
         # block 2
         self.C2 = nn2.R2Conv(in_type, out_type, kernel_size=5)
         self.relu2 = nn2.ReLU(out_type)
-        self.S2 = nn2.PointwiseMaxPool(out_type, kernel_size=2, stride=2)
+        self.S2 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
 
         in_type = self.S2.out_type
-        out_type =  nn2.FieldType(self.r2_act, 120*[self.r2_act.regular_repr])
+        out_type =  nn2.FieldType(self.r2_act, 55*[self.r2_act.regular_repr])
 
         # block 3
         self.C3 = nn2.R2Conv(in_type, out_type, kernel_size=4)
@@ -129,7 +129,7 @@ class RegularLeNet5(torch.nn.Module):
 
 
         # block 4: Fully connected
-        self.F4 = nn.Linear(120, 84)
+        self.F4 = nn.Linear(55, 84)
         self.F5 = nn.Linear(84, 10)
 
 
@@ -156,8 +156,7 @@ class RegularLeNet5(torch.nn.Module):
 
         x = nn2.GeometricTensor(input, self.input_type)
         x = self.conv(x)
-        x = x.tensor.reshape(-1, 120)
-
+        x = x.tensor.squeeze()
         x = self.fully(x)
 
         return x
