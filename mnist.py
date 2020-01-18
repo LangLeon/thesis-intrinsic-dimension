@@ -7,20 +7,6 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision
 
-# utils file taken from the UVA deep learning course
-class toTensor:
-    def __init__(self):
-        pass
-
-    def __call__(self, img):
-        img = np.array(img)
-        if len(img.shape) == 2:
-            # Add channel dimension
-            img = img[:, :, None]
-
-        img = np.array(img).transpose(2, 0, 1)
-        return torch.from_numpy(img)
-
 
 class toFloat:
     def __init__(self):
@@ -30,12 +16,10 @@ class toFloat:
         return img.float()
 
 
-def mnist(root='./data/', batch_size=128, download=True):
+def mnist(root='./data/', batch_size=64, download=True):
 
     transformation = transforms.Compose([
-        toTensor(),
-        toFloat(),
-        torchvision.transforms.Normalize((0.1307,), (0.3081,))
+        transforms.ToTensor(),
     ])
 
     dataset = torchvision.datasets.MNIST(
@@ -49,10 +33,10 @@ def mnist(root='./data/', batch_size=128, download=True):
     val_dataset = data.dataset.Subset(dataset, np.arange(40000, 50000))
 
     trainloader = data.DataLoader(
-        train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+        train_dataset, batch_size=batch_size, shuffle=True, num_workers=8)
     valloader = data.DataLoader(
-        val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
+        val_dataset, batch_size=batch_size, shuffle=False, num_workers=8)
     testloader = data.DataLoader(
-        test_set, batch_size=batch_size, shuffle=False, num_workers=4)
+        test_set, batch_size=batch_size, shuffle=False, num_workers=8)
 
     return trainloader, valloader, testloader
