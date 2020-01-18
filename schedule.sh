@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 02:00:00
+#SBATCH -t 06:00:00
 #SBATCH -N 1
 #SBATCH -p gpu
 #SBATCH --mem=16000M
