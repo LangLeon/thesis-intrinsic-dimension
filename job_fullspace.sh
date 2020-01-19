@@ -10,19 +10,19 @@ source activate thesis
 python classify_mnist.py \
 	--model=lenet \
 	--optimizer=SGD \
-#	--subspace-training \
+        #--subspace-training \
 	--lr=0.1 \
 	--schedule \
 	--schedule_gamma=0.4 \
 	--schedule_freq=10 \
 	--seed=1 \
-	--n_epochs=50 \
+	--n_epochs=1 \
 	--batch_size=64 \
 	--d_dim=1000 \
-#	--non_wrapped \
-#	--chunked \
-#	--dense \
-#	--parameter_correction \
+        #--non_wrapped \
+        #--chunked \
+        #--dense \
+        #--parameter_correction \
 	--print_freq=20 \
 	--print_prec=2
 	
