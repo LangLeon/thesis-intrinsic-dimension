@@ -16,7 +16,7 @@ python classify_mnist.py \
 	--schedule_gamma=0.4 \
 	--schedule_freq=10 \
 	--seed=1 \
-	--n_epochs=30 \
+	--n_epochs=50 \
 	--batch_size=64 \
 	--d_dim=1000 \
 #	--non_wrapped \

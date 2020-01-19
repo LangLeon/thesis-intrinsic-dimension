@@ -10,12 +10,12 @@ source activate thesis
 python ddim_vs_acc.py \
 	--model=lenet \
 	--optimizer=SGD \
-	--lr=0.1 \
+	--lr=1 \
 	--schedule \
 	--schedule_gamma=0.4 \
 	--schedule_freq=10 \
 	--seed=1 \
-	--n_epochs=30 \
+	--n_epochs=50 \
 	--batch_size=64 \
 #	--non_wrapped \
 #	--chunked \
