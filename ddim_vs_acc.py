@@ -10,6 +10,8 @@ import datetime
 def main():
     if ARGS.model == "MLP":
         d_dims = [100, 200, 400, 600, 800, 1000]
+    elif ARGS.model == "reg_lenet_3":
+        d_dims = [10, 25, 50, 75, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 250, 300, 350, 400, 450, 500]
     else:
         d_dims = [50, 100, 200, 300, 400, 500]
     train_losses = []
