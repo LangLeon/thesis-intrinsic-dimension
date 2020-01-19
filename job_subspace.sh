@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 02:30:00
+#SBATCH -t 05:00:00
 #SBATCH -N 1
 #SBATCH -p gpu
 #SBATCH --mem=16000M
@@ -8,7 +8,7 @@
 source activate thesis
 
 python ddim_vs_acc.py \
-	--model=reg_lenet_3 \
+	--model=lenet \
 	--optimizer=SGD \
 	--lr=1 \
 	--schedule \
