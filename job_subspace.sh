@@ -7,7 +7,7 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
-python ddim_vs_acc.py 
+python ddim_vs_acc.py \
 	--model=lenet \
 	--optimizer=SGD \
 	--lr=0.1 \

@@ -7,7 +7,7 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
-python classify_mnist.py 
+python classify_mnist.py \
 	--model=lenet \
 	--optimizer=SGD \
 #	--subspace-training \
