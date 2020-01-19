@@ -312,7 +312,7 @@ class RegularLeNet5LessDownsamplingConvEnd(torch.nn.Module):
 
 
         in_type=self.S1.out_type
-        out_type = nn2.FieldType(self.r2_act, 10*[self.r2_act.regular_repr])
+        out_type = nn2.FieldType(self.r2_act, 5*[self.r2_act.regular_repr])
 
         # block 2
         self.C21 = nn2.R2Conv(in_type, out_type, kernel_size=3)
@@ -324,13 +324,13 @@ class RegularLeNet5LessDownsamplingConvEnd(torch.nn.Module):
 
 
         # block 3
-        self.C3 = nn.Conv2d(80, 120, kernel_size=(4, 4))
+        self.C3 = nn.Conv2d(40, 60, kernel_size=(4, 4))
         self.relu3 = nn.ReLU()
 
 
         # block 4: Fully connected
-        self.F4 = nn.Linear(120, 84)
-        self.F5 = nn.Linear(84, 10)
+        self.F4 = nn.Linear(60, 50)
+        self.F5 = nn.Linear(50, 10)
 
 
         # Complete model
