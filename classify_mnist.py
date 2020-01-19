@@ -125,6 +125,9 @@ if __name__ == "__main__":
     ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
     ARGS.x_axis = "epochs"
 
-    print(ARGS)
+    dct = vars(ARGS)
+    for key in dct.keys():
+        print("{} : {}".format(key, dct[key]))
+        
 
     train_model_once(ARGS)

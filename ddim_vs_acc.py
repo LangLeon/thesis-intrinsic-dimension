@@ -86,6 +86,8 @@ if __name__ == "__main__":
     ARGS.ddim_vs_acc = True
     ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
 
-    print(ARGS)
+    dct = vars(ARGS)
+    for key in dct.keys():
+        print("{} : {}".format(key, dct[key]))
 
     main()
