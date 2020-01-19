@@ -80,11 +80,11 @@ if __name__ == "__main__":
 
 
     # ~ Hyperparameters
-    parser.add_argument('--lr', default=0.001, type=float,
+    parser.add_argument('--lr', default=0.1, type=float,
                         help='learning rate')
     parser.add_argument('--schedule', action="store_true", default=False,
                         help='Whether to use a schedule on the lr')
-    parser.add_argument('--schedule_gamma', default=0.1, type=float,
+    parser.add_argument('--schedule_gamma', default=0.4, type=float,
                         help='multiplier of learning rate')
     parser.add_argument('--schedule_freq', default=10, type=int,
                         help='how often learning rate is reduced by schedule_gamma')
@@ -124,5 +124,7 @@ if __name__ == "__main__":
     ARGS.ddim_vs_acc = False
     ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
     ARGS.x_axis = "epochs"
+
+    print(ARGS)
 
     train_model_once(ARGS)
