@@ -17,6 +17,7 @@ python ddim_vs_acc.py \
 	--seed=1 \
 	--n_epochs=50 \
 	--batch_size=64 \
+	--dense \
 #	--non_wrapped \
 #	--chunked \
 #	--dense \
