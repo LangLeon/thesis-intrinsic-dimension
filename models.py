@@ -8,10 +8,6 @@ from e2cnn import nn as nn2
 
 from torchvision.transforms import Pad
 
-
-pad = Pad((0, 0, 1, 1), fill=0)
-
-
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()

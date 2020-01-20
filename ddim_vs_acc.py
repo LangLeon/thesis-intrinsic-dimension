@@ -32,7 +32,8 @@ def main():
 
     ARGS.d_dim = "XXXXX"
     ARGS.x_axis = "d_dim"
-    log_results(d_dims, train_losses, train_accuracies, val_losses, val_accuracies, ARGS)
+    subspace_distances = []
+    log_results(d_dims, train_losses, train_accuracies, val_losses, val_accuracies, subspace_distances, ARGS)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

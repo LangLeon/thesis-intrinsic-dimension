@@ -39,6 +39,7 @@ def train_model_once(ARGS):
     train_accuracies = []
     val_losses = []
     val_accuracies = []
+    subspace_distances = []
 
     if ARGS.schedule:
         if ARGS.subspace_training:
@@ -51,7 +52,7 @@ def train_model_once(ARGS):
         current_lr = optimizer.optimizer.param_groups[0]["lr"] if ARGS.subspace_training else optimizer.param_groups[0]["lr"]
         print("The current lr is: {}".format(current_lr))
 
-        train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS)
+        train_loss, train_acc, val_loss, val_acc, subspace_distance = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS)
         if ARGS.schedule:
             scheduler.step()
 
@@ -60,8 +61,9 @@ def train_model_once(ARGS):
         train_accuracies.append(train_acc)
         val_losses.append(val_loss)
         val_accuracies.append(val_acc)
+        subspace_distances.append(subspace_distance)
 
-    log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS)
+    log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, subspace_distances, ARGS)
 
     return train_losses[-1], train_accuracies[-1], val_losses[-1], val_accuracies[-1]
 
@@ -128,6 +130,6 @@ if __name__ == "__main__":
     dct = vars(ARGS)
     for key in dct.keys():
         print("{} : {}".format(key, dct[key]))
-        
+
 
     train_model_once(ARGS)

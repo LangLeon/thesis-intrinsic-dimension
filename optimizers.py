@@ -110,6 +110,25 @@ class WrappedOptimizer:
                     p.data = p_D[pointer:pointer+size].reshape(p.data.shape)
                     pointer = pointer + size
 
+    def compute_subspace_distance(self):
+        """
+        Computes the euclidean distance from the parameter vector with the subspace. The formula computed is
+        ||(Id - EE^T)@(theta - theta_start)||_2
+        """
+        assert self.chunked == False, "This function is only implemented for the non-chunked case"
+
+        for group in self.optimizer.param_groups:
+            params = group['params']
+            diff_D = (torch.cat([p.data.view(-1) for p in params]) - self.start_params).view(-1,1).to(self.device)
+            if not self.dense:
+                diff_d = torch.sparse.mm(self.E_T, diff_D)
+                p_D = torch.sparse.mm(self.E, diff_d).view(-1)
+            else:
+                diff_d = self.E_T @ diff_D
+                p_D = self.E @ diff_d
+            diff_D = diff_D.reshape(-1)
+            difference_vector = p_D - diff_D
+            return torch.norm(difference_vector).item()
 
 
 class CustomSGD(Optimizer):

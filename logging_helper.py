@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 
 
-def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, ARGS):
-    rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies)
+def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuracies, subspace_distances, ARGS):
+    rows = zip(epochs, train_losses,train_accuracies,val_losses,val_accuracies, subspace_distances)
 
     file_name = "d_dim_{}_lr_{}_gamma_{}_sched_freq_{}_seed_{}_epochs_{}_batchsize_{}.csv".format(ARGS.d_dim, ARGS.lr, ARGS.schedule_gamma, ARGS.schedule_freq, ARGS.seed, ARGS.n_epochs, ARGS.batch_size)
 
@@ -15,7 +15,7 @@ def log_results(epochs, train_losses, train_accuracies, val_losses, val_accuraci
     model = ARGS.model
 
     full_file_name = os.path.join("logs/" + subspace_training + "/" + model + "/" + ARGS.timestamp, file_name)
-    columns = ["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy"]
+    columns = ["epoch", "train_loss", "train_accuracy", "val_loss", "val_accuracy", "subspace_distance"]
     if ARGS.ddim_vs_acc:
         if ARGS.x_axis == "d_dim":
             columns[0] = "d_dim"
@@ -58,6 +58,8 @@ def plot_data(csv_path, ddim_vs_acc, x_axis):
             ax1.set_xlabel("Epoch")
             identifier = "epoch"
     ax1.set_ylabel("Loss", color=colors[1])
+    ax1.set_ylim(0,2.5)
+    ax1.set_yticks(np.arange(0,2.6,0.25))
 
 
     ax1.plot(df[identifier], df['train_loss'], label="train_loss", color=colors[0])
@@ -65,7 +67,7 @@ def plot_data(csv_path, ddim_vs_acc, x_axis):
 
     handles, labels = ax1.get_legend_handles_labels()
     ax1.tick_params(axis="y", labelcolor=colors[1])
-    ax1.legend(handles, labels, loc='upper left')
+    ax1.legend(handles, labels, loc="lower left")
 
     # all plots belonging to the second axis
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
@@ -78,7 +80,7 @@ def plot_data(csv_path, ddim_vs_acc, x_axis):
 
     handles2, labels2 = ax2.get_legend_handles_labels()
     ax2.tick_params(axis="y", labelcolor=colors[3])
-    ax2.legend(handles2, labels2, loc='lower left')
+    ax2.legend(handles2, labels2, loc="upper left")
 
     # saving of figure
     fig.tight_layout()  # otherwise the right y-label is slightly clipped

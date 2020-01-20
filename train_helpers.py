@@ -14,7 +14,11 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function, ARGS)
         val_loss, val_acc = epoch_iter(model, val_loader, optimizer, loss_function, ARGS)
         print("Val Epoch over. val_loss: {}; val_accuracy: {} \n".format(val_loss, val_acc))
 
-    return train_loss, train_acc, val_loss, val_acc
+    subspace_distance = None
+    if ARGS.subspace_training:
+        subspace_distance = optimizer.compute_subspace_distance()
+
+    return train_loss, train_acc, val_loss, val_acc, subspace_distance
 
 
 def epoch_iter(model, data, optimizer, loss_function, ARGS):
