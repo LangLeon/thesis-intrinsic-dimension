@@ -127,8 +127,7 @@ class WrappedOptimizer:
                 diff_d = self.E_T @ diff_D
                 p_D = self.E @ diff_d
             diff_D = diff_D.reshape(-1)
-            difference_vector = p_D - diff_D
-            return torch.norm(difference_vector).item()
+            return torch.dist(p_D, diff_D).item()
 
 
 class CustomSGD(Optimizer):
