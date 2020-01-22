@@ -1,8 +1,10 @@
 #!/bin/bash
-#SBATCH -t 02:00:00
+#SBATCH --time=02:00:00
 #SBATCH -N 1
-#SBATCH -p gpu
+#SBATCH --partition=gpu_shared
+#SBATCH --gres=gpu:1
 #SBATCH --mem=16000M
+#SBATCH --output=slurm_out/test_non_wrapped.out
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
@@ -10,7 +12,6 @@ source activate thesis
 python classify_mnist.py \
 	--model=lenet \
 	--optimizer=SGD \
-        #--subspace-training \
 	--lr=0.1 \
 	--schedule \
 	--schedule_gamma=0.4 \
@@ -19,11 +20,12 @@ python classify_mnist.py \
 	--n_epochs=50 \
 	--batch_size=64 \
 	--d_dim=1000 \
+	--print_freq=20 \
+	--print_prec=2 \
+        #--subspace-training \
         #--non_wrapped \
         #--chunked \
         #--dense \
-        #--parameter_correction \
-	--print_freq=20 \
-	--print_prec=2
+        #--parameter_correction
 	
 
