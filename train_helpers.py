@@ -7,7 +7,9 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function, ARGS)
     print("Train Epoch over. train_loss: {}; train_accuracy: {} \n".format(round(train_loss, ARGS.print_prec), round(train_acc, ARGS.print_prec)))
 
     if ARGS.parameter_correction:
+        print(optimizer.compute_subspace_distance())
         optimizer.parameter_correction() # Makes sure that the parameters are projected back into the subspace if there was a "drift" along the way
+        print(optimizer.compute_subspace_distance())
 
     with torch.no_grad():
         model.eval()
@@ -18,6 +20,7 @@ def train_epoch(model, train_loader, val_loader, optimizer, loss_function, ARGS)
     if ARGS.subspace_training:
         subspace_distance = optimizer.compute_subspace_distance()
 
+    print("The current subspace-distance is: {} \n".format(subspace_distance))
     return train_loss, train_acc, val_loss, val_acc, subspace_distance
 
 
