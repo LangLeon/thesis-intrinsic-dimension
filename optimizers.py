@@ -27,8 +27,11 @@ class WrappedOptimizer:
             self.start_params = torch.cat([p.data.view(-1) for p in params])
 
 
-    def __project_gradient(self):
-        # Projects the gradient into the subspace.
+    def __pull_gradient_in_subspace(self):
+        """
+        Backpropagates the gradient through the embedding matrix E. Note that this is not strictly speaking an orthogonal projection
+        since E is not an orthogonal matrix!
+        """
         if self.chunked:
             grad_d = torch.zeros(self.d_dim).to(self.device)
             for group in self.optimizer.param_groups:
@@ -67,49 +70,25 @@ class WrappedOptimizer:
                     pointer = pointer + size
 
     def step(self):
-        self.__project_gradient()
+        self.__pull_gradient_in_subspace()
         self.optimizer.step()
 
     def zero_grad(self):
         self.optimizer.zero_grad()
 
     def parameter_correction(self):
-        # Does almost the same as __project_gradient, but acting on the parameter vector instead of the gradient.
+        # Finds the closest Vector in the subspace im(E) and replaces the parameters by it.
         if self.chunked:
-            diff_d = torch.zeros(self.d_dim).to(self.device)
-            for group in self.optimizer.param_groups:
-                params = group['params']
-                for i in range(len(params)):
-                    # Create subspace parameter vector
-                    diff_p = params[i].data - self.start_params[i]
-                    if not self.dense:
-                        diff_d += torch.sparse.mm(self.E_T[i], diff_p.view(-1,1)).view(-1)
-                    else:
-                        diff_d += self.E_T[i] @ diff_p.view(-1)
-
-            for group in self.optimizer.param_groups:
-                params = group['params']
-                for i in range(len(params)):
-                    p = params[i]
-                    if not self.dense:
-                        p.data = torch.sparse.mm(self.E[i], diff_d.view(-1,1)).reshape(p.data.shape) + self.start_params[i]
-                    else:
-                        p.data = (self.E[i] @ diff_d.view(-1)).reshape(p.data.shape) + self.start_params[i]
+            raise ValueError("Currently not implemented for the chunked version!")
         else:
-            for group in self.optimizer.param_groups:
-                params = group['params']
-                diff_D = (torch.cat([p.data.view(-1) for p in params]) - self.start_params).view(-1,1).to(self.device)
-                if not self.dense:
-                    diff_d = torch.sparse.mm(self.E_T, diff_D)
-                    p_D = torch.sparse.mm(self.E, diff_d).view(-1) + self.start_params
-                else:
-                    diff_d = self.E_T @ diff_D
-                    p_D = self.E @ diff_d + self.start_params
-                pointer = 0
-                for p in params:
-                    size = p.numel()
-                    p.data = p_D[pointer:pointer+size].reshape(p.data.shape)
-                    pointer = pointer + size
+            theta_D = self.compute_closest_subspace_vector()
+            new_params = theta_D + self.start_params
+            params = self.optimizer.param_groups[0]['params']
+            pointer = 0
+            for p in params:
+                size = p.numel()
+                p.data = new_params[pointer:pointer+size].reshape(p.data.shape)
+                pointer = pointer + size
 
 
 
@@ -117,26 +96,31 @@ class WrappedOptimizer:
         """
         Also computes the subspace distance, but without making any assumptions about the orthogonality of the matrix E
         """
-
+        theta_D = self.compute_closest_subspace_vector()
         params = self.optimizer.param_groups[0]['params']
         target = torch.cat([p.data.view(-1) for p in params]) - self.start_params
+        return torch.dist(theta_D, target).item()
 
+    def compute_closest_subspace_vector(self):
         """
-        if not self.dense:
-            import pdb; pdb.set_trace()
-            theta_d = torch.inverse(torch.sparse.mm(self.E_T, self.E)) @ torch.sparse.mm(self.E_T,target.view(-1,1))
-        else:
+        Computes the closest vector to the parameter vector, in the LINEAR (not affine linear) subspace
         """
-        if not self.dense:
-            E = self.E.to_dense()
-            E_T = self.E_T.to_dense()
+        if self.chunked:
+            raise ValueError("Currently not implemented for the chunked version!")
         else:
-            E = self.E
-            E_T = self.E_T
-        theta_d = torch.inverse(E_T @ E) @ (E_T @ target)
-        theta_D = E @ theta_d
+            for group in self.optimizer.param_groups:
+                params = group['params']
+                target = torch.cat([p.data.view(-1) for p in params]) - self.start_params
 
-        return torch.dist(theta_D, target)
+                if not self.dense:
+                    E = self.E.to_dense()
+                    E_T = self.E_T.to_dense()
+                else:
+                    E = self.E
+                    E_T = self.E_T
+                theta_d = torch.inverse(E_T @ E) @ (E_T @ target)
+                theta_D = E @ theta_d
+                return theta_D
 
 
 class CustomSGD(Optimizer):
