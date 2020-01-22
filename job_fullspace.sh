@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH -N 1
 #SBATCH --partition=gpu_shared
 #SBATCH --gres=gpu:1
@@ -17,7 +17,7 @@ python classify_mnist.py \
 	--schedule_gamma=0.4 \
 	--schedule_freq=10 \
 	--seed=1 \
-	--n_epochs=50 \
+	--n_epochs=1 \
 	--batch_size=64 \
 	--d_dim=1000 \
 	--print_freq=20 \

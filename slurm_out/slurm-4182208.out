@@ -1,0 +1,21 @@
+Epoch 1 start
+Traceback (most recent call last):
+  File "ddim_vs_acc.py", line 65, in <module>
+    main()
+  File "ddim_vs_acc.py", line 21, in main
+    train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS)
+  File "/home/llang/thesis-intrinsic-dimension/classify_mnist.py", line 44, in train_model_once
+    train_loss, train_acc, val_loss, val_acc = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS.print_freq, ARGS.print_prec, ARGS.device)
+  File "/home/llang/thesis-intrinsic-dimension/train_helpers.py", line 6, in train_epoch
+    train_loss, train_acc = epoch_iter(model, train_loader, optimizer, loss_function, print_freq, print_prec, device)
+  File "/home/llang/thesis-intrinsic-dimension/train_helpers.py", line 23, in epoch_iter
+    loss, accuracy = train_batch(model, (x, label), optimizer, loss_function, device)
+  File "/home/llang/thesis-intrinsic-dimension/train_helpers.py", line 45, in train_batch
+    optimizer.step()
+  File "/home/llang/thesis-intrinsic-dimension/optimizers.py", line 51, in step
+    self.__project_gradient()
+  File "/home/llang/thesis-intrinsic-dimension/optimizers.py", line 42, in __project_gradient
+    grad_d = torch.sparse.mm(self.E_T, grad_D)
+  File "/home/llang/.conda/envs/thesis/lib/python3.7/site-packages/torch/sparse/__init__.py", line 68, in mm
+    return torch._sparse_mm(mat1, mat2)
+RuntimeError: Expected object of device type cuda but got device type cpu for argument #2 'mat1' in call to _th_addmm

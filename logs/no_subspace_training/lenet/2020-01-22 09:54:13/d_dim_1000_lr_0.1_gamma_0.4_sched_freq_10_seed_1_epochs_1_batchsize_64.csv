@@ -1,0 +1,2 @@
+epoch,train_loss,train_accuracy,val_loss,val_accuracy,subspace_distance
+1,0.3306689396872164,0.8885270140664961,0.1049009858375522,0.9693471337579618,

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "ddim_vs_acc.py", line 65, in <module>
+    main()
+  File "ddim_vs_acc.py", line 21, in main
+    train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS)
+  File "/home/llang/thesis-intrinsic-dimension/classify_mnist.py", line 33, in train_model_once
+    optimizer = WrappedOptimizer(optimizer, E, E_T, device, ARGS.chunked)
+NameError: name 'device' is not defined

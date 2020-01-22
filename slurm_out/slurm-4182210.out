@@ -1,0 +1,2707 @@
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 5.2; acc: 0.14
+Batch: 40; loss: 5.35; acc: 0.17
+Batch: 60; loss: 5.63; acc: 0.11
+Batch: 80; loss: 3.95; acc: 0.38
+Batch: 100; loss: 4.45; acc: 0.3
+Batch: 120; loss: 4.03; acc: 0.34
+Batch: 140; loss: 4.1; acc: 0.33
+Batch: 160; loss: 4.86; acc: 0.36
+Batch: 180; loss: 4.18; acc: 0.27
+Batch: 200; loss: 3.29; acc: 0.33
+Batch: 220; loss: 5.96; acc: 0.25
+Batch: 240; loss: 3.77; acc: 0.47
+Batch: 260; loss: 5.07; acc: 0.27
+Batch: 280; loss: 4.84; acc: 0.27
+Batch: 300; loss: 4.64; acc: 0.28
+Batch: 320; loss: 4.7; acc: 0.33
+Batch: 340; loss: 3.44; acc: 0.34
+Batch: 360; loss: 4.28; acc: 0.36
+Batch: 380; loss: 3.73; acc: 0.41
+Batch: 400; loss: 3.42; acc: 0.44
+Batch: 420; loss: 3.36; acc: 0.44
+Batch: 440; loss: 4.45; acc: 0.36
+Batch: 460; loss: 3.73; acc: 0.36
+Batch: 480; loss: 4.46; acc: 0.36
+Batch: 500; loss: 4.81; acc: 0.33
+Batch: 520; loss: 6.2; acc: 0.23
+Batch: 540; loss: 4.99; acc: 0.25
+Batch: 560; loss: 4.31; acc: 0.28
+Batch: 580; loss: 3.23; acc: 0.44
+Batch: 600; loss: 3.33; acc: 0.38
+Batch: 620; loss: 4.94; acc: 0.36
+Train Epoch over. train_loss: 4.54; train_accuracy: 0.33 
+
+Batch: 0; loss: 3.24; acc: 0.33
+Batch: 20; loss: 3.9; acc: 0.36
+Batch: 40; loss: 3.65; acc: 0.31
+Batch: 60; loss: 3.36; acc: 0.34
+Batch: 80; loss: 4.55; acc: 0.3
+Batch: 100; loss: 4.76; acc: 0.23
+Batch: 120; loss: 5.14; acc: 0.33
+Batch: 140; loss: 5.89; acc: 0.17
+Val Epoch over. val_loss: 4.273801313084402; val_accuracy: 0.339171974522293 
+
+Epoch 2 start
+Batch: 0; loss: 3.7; acc: 0.42
+Batch: 20; loss: 3.96; acc: 0.33
+Batch: 40; loss: 4.21; acc: 0.3
+Batch: 60; loss: 4.13; acc: 0.3
+Batch: 80; loss: 4.73; acc: 0.27
+Batch: 100; loss: 5.12; acc: 0.3
+Batch: 120; loss: 5.28; acc: 0.33
+Batch: 140; loss: 3.72; acc: 0.44
+Batch: 160; loss: 4.3; acc: 0.34
+Batch: 180; loss: 5.3; acc: 0.22
+Batch: 200; loss: 4.63; acc: 0.45
+Batch: 220; loss: 4.25; acc: 0.36
+Batch: 240; loss: 4.2; acc: 0.36
+Batch: 260; loss: 4.29; acc: 0.36
+Batch: 280; loss: 5.02; acc: 0.34
+Batch: 300; loss: 3.66; acc: 0.44
+Batch: 320; loss: 4.81; acc: 0.39
+Batch: 340; loss: 5.46; acc: 0.28
+Batch: 360; loss: 4.36; acc: 0.38
+Batch: 380; loss: 4.89; acc: 0.39
+Batch: 400; loss: 3.71; acc: 0.38
+Batch: 420; loss: 3.87; acc: 0.41
+Batch: 440; loss: 4.95; acc: 0.28
+Batch: 460; loss: 4.66; acc: 0.39
+Batch: 480; loss: 3.31; acc: 0.45
+Batch: 500; loss: 5.28; acc: 0.3
+Batch: 520; loss: 5.45; acc: 0.27
+Batch: 540; loss: 3.42; acc: 0.31
+Batch: 560; loss: 5.22; acc: 0.27
+Batch: 580; loss: 3.87; acc: 0.31
+Batch: 600; loss: 4.85; acc: 0.42
+Batch: 620; loss: 4.24; acc: 0.34
+Train Epoch over. train_loss: 4.34; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.56; acc: 0.42
+Batch: 20; loss: 4.93; acc: 0.33
+Batch: 40; loss: 4.42; acc: 0.34
+Batch: 60; loss: 3.55; acc: 0.34
+Batch: 80; loss: 4.93; acc: 0.28
+Batch: 100; loss: 4.57; acc: 0.3
+Batch: 120; loss: 4.97; acc: 0.31
+Batch: 140; loss: 5.57; acc: 0.27
+Val Epoch over. val_loss: 4.265896238339175; val_accuracy: 0.3626592356687898 
+
+Epoch 3 start
+Batch: 0; loss: 3.75; acc: 0.42
+Batch: 20; loss: 3.92; acc: 0.44
+Batch: 40; loss: 4.03; acc: 0.36
+Batch: 60; loss: 3.92; acc: 0.33
+Batch: 80; loss: 4.99; acc: 0.2
+Batch: 100; loss: 3.76; acc: 0.42
+Batch: 120; loss: 4.36; acc: 0.34
+Batch: 140; loss: 5.86; acc: 0.3
+Batch: 160; loss: 3.61; acc: 0.33
+Batch: 180; loss: 3.73; acc: 0.38
+Batch: 200; loss: 4.34; acc: 0.28
+Batch: 220; loss: 5.42; acc: 0.3
+Batch: 240; loss: 4.42; acc: 0.45
+Batch: 260; loss: 4.52; acc: 0.38
+Batch: 280; loss: 4.31; acc: 0.34
+Batch: 300; loss: 4.27; acc: 0.41
+Batch: 320; loss: 4.55; acc: 0.31
+Batch: 340; loss: 4.44; acc: 0.23
+Batch: 360; loss: 3.83; acc: 0.39
+Batch: 380; loss: 3.98; acc: 0.42
+Batch: 400; loss: 4.42; acc: 0.33
+Batch: 420; loss: 4.77; acc: 0.2
+Batch: 440; loss: 4.27; acc: 0.41
+Batch: 460; loss: 3.91; acc: 0.38
+Batch: 480; loss: 4.6; acc: 0.3
+Batch: 500; loss: 4.65; acc: 0.34
+Batch: 520; loss: 4.03; acc: 0.36
+Batch: 540; loss: 3.11; acc: 0.39
+Batch: 560; loss: 4.4; acc: 0.36
+Batch: 580; loss: 3.95; acc: 0.38
+Batch: 600; loss: 4.04; acc: 0.38
+Batch: 620; loss: 4.65; acc: 0.44
+Train Epoch over. train_loss: 4.34; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.86; acc: 0.41
+Batch: 20; loss: 5.89; acc: 0.27
+Batch: 40; loss: 4.99; acc: 0.34
+Batch: 60; loss: 3.93; acc: 0.33
+Batch: 80; loss: 5.15; acc: 0.28
+Batch: 100; loss: 5.02; acc: 0.34
+Batch: 120; loss: 5.38; acc: 0.3
+Batch: 140; loss: 5.75; acc: 0.28
+Val Epoch over. val_loss: 4.595506836654274; val_accuracy: 0.3656449044585987 
+
+Epoch 4 start
+Batch: 0; loss: 5.12; acc: 0.3
+Batch: 20; loss: 4.28; acc: 0.31
+Batch: 40; loss: 4.23; acc: 0.34
+Batch: 60; loss: 4.34; acc: 0.41
+Batch: 80; loss: 4.1; acc: 0.31
+Batch: 100; loss: 3.86; acc: 0.34
+Batch: 120; loss: 3.32; acc: 0.41
+Batch: 140; loss: 5.9; acc: 0.17
+Batch: 160; loss: 4.4; acc: 0.34
+Batch: 180; loss: 4.8; acc: 0.31
+Batch: 200; loss: 4.08; acc: 0.41
+Batch: 220; loss: 4.01; acc: 0.28
+Batch: 240; loss: 4.34; acc: 0.41
+Batch: 260; loss: 4.16; acc: 0.39
+Batch: 280; loss: 5.03; acc: 0.33
+Batch: 300; loss: 6.08; acc: 0.3
+Batch: 320; loss: 4.28; acc: 0.36
+Batch: 340; loss: 4.26; acc: 0.39
+Batch: 360; loss: 4.08; acc: 0.44
+Batch: 380; loss: 4.05; acc: 0.41
+Batch: 400; loss: 3.57; acc: 0.39
+Batch: 420; loss: 4.82; acc: 0.23
+Batch: 440; loss: 5.63; acc: 0.27
+Batch: 460; loss: 4.28; acc: 0.41
+Batch: 480; loss: 4.11; acc: 0.34
+Batch: 500; loss: 4.87; acc: 0.23
+Batch: 520; loss: 6.22; acc: 0.27
+Batch: 540; loss: 4.65; acc: 0.38
+Batch: 560; loss: 3.99; acc: 0.31
+Batch: 580; loss: 3.76; acc: 0.42
+Batch: 600; loss: 4.34; acc: 0.27
+Batch: 620; loss: 3.76; acc: 0.41
+Train Epoch over. train_loss: 4.34; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.57; acc: 0.39
+Batch: 20; loss: 4.72; acc: 0.33
+Batch: 40; loss: 4.44; acc: 0.28
+Batch: 60; loss: 3.59; acc: 0.39
+Batch: 80; loss: 4.75; acc: 0.2
+Batch: 100; loss: 4.29; acc: 0.31
+Batch: 120; loss: 5.03; acc: 0.31
+Batch: 140; loss: 5.17; acc: 0.3
+Val Epoch over. val_loss: 4.135558157210138; val_accuracy: 0.3656449044585987 
+
+Epoch 5 start
+Batch: 0; loss: 3.66; acc: 0.41
+Batch: 20; loss: 4.46; acc: 0.38
+Batch: 40; loss: 4.65; acc: 0.33
+Batch: 60; loss: 5.9; acc: 0.38
+Batch: 80; loss: 4.2; acc: 0.39
+Batch: 100; loss: 3.27; acc: 0.39
+Batch: 120; loss: 4.86; acc: 0.3
+Batch: 140; loss: 5.05; acc: 0.39
+Batch: 160; loss: 5.63; acc: 0.33
+Batch: 180; loss: 3.86; acc: 0.38
+Batch: 200; loss: 4.4; acc: 0.33
+Batch: 220; loss: 5.61; acc: 0.33
+Batch: 240; loss: 4.19; acc: 0.28
+Batch: 260; loss: 4.01; acc: 0.34
+Batch: 280; loss: 4.98; acc: 0.3
+Batch: 300; loss: 4.31; acc: 0.42
+Batch: 320; loss: 4.34; acc: 0.25
+Batch: 340; loss: 4.79; acc: 0.34
+Batch: 360; loss: 4.16; acc: 0.38
+Batch: 380; loss: 3.13; acc: 0.53
+Batch: 400; loss: 5.08; acc: 0.27
+Batch: 420; loss: 5.3; acc: 0.23
+Batch: 440; loss: 5.41; acc: 0.34
+Batch: 460; loss: 3.59; acc: 0.31
+Batch: 480; loss: 3.57; acc: 0.44
+Batch: 500; loss: 6.9; acc: 0.27
+Batch: 520; loss: 2.95; acc: 0.44
+Batch: 540; loss: 4.01; acc: 0.34
+Batch: 560; loss: 3.65; acc: 0.31
+Batch: 580; loss: 3.58; acc: 0.38
+Batch: 600; loss: 3.48; acc: 0.33
+Batch: 620; loss: 3.79; acc: 0.42
+Train Epoch over. train_loss: 4.33; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.46; acc: 0.41
+Batch: 20; loss: 3.91; acc: 0.39
+Batch: 40; loss: 3.79; acc: 0.28
+Batch: 60; loss: 3.54; acc: 0.39
+Batch: 80; loss: 4.63; acc: 0.3
+Batch: 100; loss: 4.27; acc: 0.28
+Batch: 120; loss: 4.83; acc: 0.36
+Batch: 140; loss: 5.48; acc: 0.23
+Val Epoch over. val_loss: 4.137979475555906; val_accuracy: 0.36733678343949044 
+
+Epoch 6 start
+Batch: 0; loss: 3.95; acc: 0.38
+Batch: 20; loss: 4.98; acc: 0.23
+Batch: 40; loss: 3.48; acc: 0.36
+Batch: 60; loss: 4.83; acc: 0.38
+Batch: 80; loss: 3.67; acc: 0.39
+Batch: 100; loss: 3.88; acc: 0.41
+Batch: 120; loss: 3.84; acc: 0.34
+Batch: 140; loss: 4.62; acc: 0.34
+Batch: 160; loss: 5.69; acc: 0.28
+Batch: 180; loss: 3.17; acc: 0.39
+Batch: 200; loss: 5.36; acc: 0.22
+Batch: 220; loss: 5.24; acc: 0.33
+Batch: 240; loss: 4.95; acc: 0.34
+Batch: 260; loss: 6.06; acc: 0.23
+Batch: 280; loss: 4.99; acc: 0.38
+Batch: 300; loss: 3.5; acc: 0.36
+Batch: 320; loss: 4.66; acc: 0.39
+Batch: 340; loss: 4.2; acc: 0.38
+Batch: 360; loss: 4.31; acc: 0.44
+Batch: 380; loss: 5.07; acc: 0.31
+Batch: 400; loss: 4.15; acc: 0.44
+Batch: 420; loss: 5.08; acc: 0.33
+Batch: 440; loss: 4.19; acc: 0.39
+Batch: 460; loss: 2.77; acc: 0.5
+Batch: 480; loss: 3.29; acc: 0.36
+Batch: 500; loss: 4.64; acc: 0.36
+Batch: 520; loss: 5.5; acc: 0.25
+Batch: 540; loss: 4.47; acc: 0.38
+Batch: 560; loss: 4.4; acc: 0.39
+Batch: 580; loss: 4.7; acc: 0.34
+Batch: 600; loss: 3.41; acc: 0.44
+Batch: 620; loss: 4.12; acc: 0.41
+Train Epoch over. train_loss: 4.34; train_accuracy: 0.36 
+
+Batch: 0; loss: 3.61; acc: 0.44
+Batch: 20; loss: 5.49; acc: 0.3
+Batch: 40; loss: 5.06; acc: 0.31
+Batch: 60; loss: 4.0; acc: 0.34
+Batch: 80; loss: 5.07; acc: 0.23
+Batch: 100; loss: 4.79; acc: 0.28
+Batch: 120; loss: 5.28; acc: 0.36
+Batch: 140; loss: 5.69; acc: 0.3
+Val Epoch over. val_loss: 4.476679931021041; val_accuracy: 0.36494824840764334 
+
+Epoch 7 start
+Batch: 0; loss: 3.42; acc: 0.48
+Batch: 20; loss: 4.48; acc: 0.44
+Batch: 40; loss: 4.51; acc: 0.42
+Batch: 60; loss: 3.6; acc: 0.48
+Batch: 80; loss: 4.39; acc: 0.27
+Batch: 100; loss: 3.75; acc: 0.38
+Batch: 120; loss: 5.53; acc: 0.3
+Batch: 140; loss: 3.65; acc: 0.41
+Batch: 160; loss: 4.94; acc: 0.31
+Batch: 180; loss: 4.42; acc: 0.34
+Batch: 200; loss: 5.32; acc: 0.28
+Batch: 220; loss: 4.08; acc: 0.33
+Batch: 240; loss: 4.28; acc: 0.44
+Batch: 260; loss: 3.62; acc: 0.39
+Batch: 280; loss: 3.6; acc: 0.39
+Batch: 300; loss: 4.59; acc: 0.28
+Batch: 320; loss: 3.96; acc: 0.28
+Batch: 340; loss: 5.87; acc: 0.25
+Batch: 360; loss: 3.48; acc: 0.42
+Batch: 380; loss: 2.49; acc: 0.44
+Batch: 400; loss: 3.77; acc: 0.38
+Batch: 420; loss: 5.24; acc: 0.3
+Batch: 440; loss: 4.48; acc: 0.34
+Batch: 460; loss: 4.4; acc: 0.25
+Batch: 480; loss: 4.56; acc: 0.33
+Batch: 500; loss: 4.53; acc: 0.41
+Batch: 520; loss: 4.86; acc: 0.28
+Batch: 540; loss: 4.12; acc: 0.33
+Batch: 560; loss: 3.42; acc: 0.31
+Batch: 580; loss: 4.6; acc: 0.36
+Batch: 600; loss: 4.86; acc: 0.33
+Batch: 620; loss: 5.06; acc: 0.31
+Train Epoch over. train_loss: 4.34; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.56; acc: 0.39
+Batch: 20; loss: 4.42; acc: 0.34
+Batch: 40; loss: 4.01; acc: 0.36
+Batch: 60; loss: 3.42; acc: 0.36
+Batch: 80; loss: 4.76; acc: 0.23
+Batch: 100; loss: 4.21; acc: 0.3
+Batch: 120; loss: 4.66; acc: 0.3
+Batch: 140; loss: 5.33; acc: 0.2
+Val Epoch over. val_loss: 4.15703385498873; val_accuracy: 0.3573845541401274 
+
+Epoch 8 start
+Batch: 0; loss: 5.03; acc: 0.3
+Batch: 20; loss: 3.84; acc: 0.39
+Batch: 40; loss: 4.14; acc: 0.33
+Batch: 60; loss: 4.31; acc: 0.34
+Batch: 80; loss: 5.38; acc: 0.36
+Batch: 100; loss: 4.6; acc: 0.33
+Batch: 120; loss: 4.69; acc: 0.41
+Batch: 140; loss: 3.67; acc: 0.34
+Batch: 160; loss: 3.16; acc: 0.48
+Batch: 180; loss: 4.61; acc: 0.36
+Batch: 200; loss: 4.68; acc: 0.33
+Batch: 220; loss: 4.67; acc: 0.33
+Batch: 240; loss: 4.44; acc: 0.34
+Batch: 260; loss: 4.56; acc: 0.36
+Batch: 280; loss: 3.96; acc: 0.34
+Batch: 300; loss: 2.85; acc: 0.48
+Batch: 320; loss: 5.14; acc: 0.3
+Batch: 340; loss: 4.16; acc: 0.41
+Batch: 360; loss: 5.81; acc: 0.33
+Batch: 380; loss: 3.82; acc: 0.33
+Batch: 400; loss: 4.07; acc: 0.38
+Batch: 420; loss: 3.99; acc: 0.39
+Batch: 440; loss: 4.34; acc: 0.34
+Batch: 460; loss: 5.39; acc: 0.27
+Batch: 480; loss: 4.27; acc: 0.38
+Batch: 500; loss: 4.6; acc: 0.36
+Batch: 520; loss: 3.66; acc: 0.45
+Batch: 540; loss: 4.97; acc: 0.38
+Batch: 560; loss: 3.83; acc: 0.34
+Batch: 580; loss: 4.84; acc: 0.25
+Batch: 600; loss: 4.91; acc: 0.38
+Batch: 620; loss: 4.22; acc: 0.39
+Train Epoch over. train_loss: 4.36; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.49; acc: 0.36
+Batch: 20; loss: 4.53; acc: 0.34
+Batch: 40; loss: 4.25; acc: 0.28
+Batch: 60; loss: 3.8; acc: 0.34
+Batch: 80; loss: 5.08; acc: 0.27
+Batch: 100; loss: 4.54; acc: 0.25
+Batch: 120; loss: 4.79; acc: 0.28
+Batch: 140; loss: 5.86; acc: 0.23
+Val Epoch over. val_loss: 4.442822117714366; val_accuracy: 0.3130971337579618 
+
+Epoch 9 start
+Batch: 0; loss: 3.52; acc: 0.39
+Batch: 20; loss: 3.59; acc: 0.42
+Batch: 40; loss: 4.61; acc: 0.36
+Batch: 60; loss: 4.16; acc: 0.39
+Batch: 80; loss: 4.09; acc: 0.31
+Batch: 100; loss: 4.65; acc: 0.34
+Batch: 120; loss: 4.89; acc: 0.44
+Batch: 140; loss: 3.62; acc: 0.38
+Batch: 160; loss: 3.9; acc: 0.41
+Batch: 180; loss: 3.71; acc: 0.39
+Batch: 200; loss: 4.89; acc: 0.31
+Batch: 220; loss: 4.86; acc: 0.31
+Batch: 240; loss: 5.49; acc: 0.22
+Batch: 260; loss: 5.39; acc: 0.36
+Batch: 280; loss: 4.28; acc: 0.42
+Batch: 300; loss: 4.07; acc: 0.34
+Batch: 320; loss: 4.86; acc: 0.44
+Batch: 340; loss: 3.4; acc: 0.47
+Batch: 360; loss: 5.99; acc: 0.28
+Batch: 380; loss: 4.23; acc: 0.33
+Batch: 400; loss: 3.28; acc: 0.33
+Batch: 420; loss: 3.89; acc: 0.38
+Batch: 440; loss: 4.94; acc: 0.31
+Batch: 460; loss: 4.21; acc: 0.38
+Batch: 480; loss: 4.21; acc: 0.34
+Batch: 500; loss: 3.6; acc: 0.34
+Batch: 520; loss: 4.62; acc: 0.31
+Batch: 540; loss: 4.85; acc: 0.39
+Batch: 560; loss: 4.34; acc: 0.31
+Batch: 580; loss: 4.63; acc: 0.23
+Batch: 600; loss: 5.01; acc: 0.33
+Batch: 620; loss: 4.56; acc: 0.28
+Train Epoch over. train_loss: 4.36; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.34; acc: 0.41
+Batch: 20; loss: 3.92; acc: 0.39
+Batch: 40; loss: 3.83; acc: 0.28
+Batch: 60; loss: 3.31; acc: 0.38
+Batch: 80; loss: 4.68; acc: 0.25
+Batch: 100; loss: 4.01; acc: 0.3
+Batch: 120; loss: 4.62; acc: 0.3
+Batch: 140; loss: 5.45; acc: 0.23
+Val Epoch over. val_loss: 4.07623773623424; val_accuracy: 0.361265923566879 
+
+Epoch 10 start
+Batch: 0; loss: 3.79; acc: 0.41
+Batch: 20; loss: 6.57; acc: 0.25
+Batch: 40; loss: 2.89; acc: 0.45
+Batch: 60; loss: 4.47; acc: 0.36
+Batch: 80; loss: 3.41; acc: 0.44
+Batch: 100; loss: 4.37; acc: 0.3
+Batch: 120; loss: 3.88; acc: 0.39
+Batch: 140; loss: 4.08; acc: 0.36
+Batch: 160; loss: 4.72; acc: 0.42
+Batch: 180; loss: 3.98; acc: 0.33
+Batch: 200; loss: 4.88; acc: 0.33
+Batch: 220; loss: 5.83; acc: 0.3
+Batch: 240; loss: 5.19; acc: 0.33
+Batch: 260; loss: 3.77; acc: 0.41
+Batch: 280; loss: 5.49; acc: 0.3
+Batch: 300; loss: 4.22; acc: 0.38
+Batch: 320; loss: 4.5; acc: 0.33
+Batch: 340; loss: 3.73; acc: 0.33
+Batch: 360; loss: 4.06; acc: 0.34
+Batch: 380; loss: 4.25; acc: 0.31
+Batch: 400; loss: 4.01; acc: 0.27
+Batch: 420; loss: 4.61; acc: 0.28
+Batch: 440; loss: 3.9; acc: 0.38
+Batch: 460; loss: 5.32; acc: 0.31
+Batch: 480; loss: 4.26; acc: 0.33
+Batch: 500; loss: 3.4; acc: 0.45
+Batch: 520; loss: 4.36; acc: 0.36
+Batch: 540; loss: 3.56; acc: 0.39
+Batch: 560; loss: 4.86; acc: 0.33
+Batch: 580; loss: 4.59; acc: 0.34
+Batch: 600; loss: 4.78; acc: 0.33
+Batch: 620; loss: 4.4; acc: 0.39
+Train Epoch over. train_loss: 4.35; train_accuracy: 0.35 
+
+Batch: 0; loss: 3.29; acc: 0.45
+Batch: 20; loss: 5.07; acc: 0.31
+Batch: 40; loss: 4.36; acc: 0.38
+Batch: 60; loss: 3.66; acc: 0.34
+Batch: 80; loss: 4.67; acc: 0.28
+Batch: 100; loss: 4.56; acc: 0.27
+Batch: 120; loss: 4.6; acc: 0.36
+Batch: 140; loss: 5.32; acc: 0.23
+Val Epoch over. val_loss: 4.18677928948858; val_accuracy: 0.3573845541401274 
+
+plots/subspace_True_d_dim_50_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:08:57.255293
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 2.69; acc: 0.39
+Batch: 40; loss: 3.15; acc: 0.23
+Batch: 60; loss: 3.64; acc: 0.23
+Batch: 80; loss: 2.75; acc: 0.41
+Batch: 100; loss: 1.69; acc: 0.53
+Batch: 120; loss: 2.14; acc: 0.36
+Batch: 140; loss: 3.12; acc: 0.36
+Batch: 160; loss: 3.1; acc: 0.38
+Batch: 180; loss: 2.31; acc: 0.34
+Batch: 200; loss: 2.49; acc: 0.39
+Batch: 220; loss: 2.63; acc: 0.38
+Batch: 240; loss: 2.49; acc: 0.52
+Batch: 260; loss: 2.74; acc: 0.39
+Batch: 280; loss: 1.71; acc: 0.52
+Batch: 300; loss: 2.78; acc: 0.45
+Batch: 320; loss: 2.01; acc: 0.47
+Batch: 340; loss: 2.07; acc: 0.59
+Batch: 360; loss: 1.91; acc: 0.55
+Batch: 380; loss: 3.07; acc: 0.41
+Batch: 400; loss: 2.65; acc: 0.53
+Batch: 420; loss: 2.16; acc: 0.52
+Batch: 440; loss: 2.2; acc: 0.5
+Batch: 460; loss: 2.35; acc: 0.45
+Batch: 480; loss: 2.11; acc: 0.53
+Batch: 500; loss: 2.07; acc: 0.52
+Batch: 520; loss: 2.13; acc: 0.52
+Batch: 540; loss: 2.31; acc: 0.52
+Batch: 560; loss: 1.27; acc: 0.67
+Batch: 580; loss: 1.85; acc: 0.55
+Batch: 600; loss: 2.04; acc: 0.53
+Batch: 620; loss: 2.98; acc: 0.41
+Train Epoch over. train_loss: 2.52; train_accuracy: 0.44 
+
+Batch: 0; loss: 1.73; acc: 0.53
+Batch: 20; loss: 2.4; acc: 0.44
+Batch: 40; loss: 1.55; acc: 0.56
+Batch: 60; loss: 1.58; acc: 0.64
+Batch: 80; loss: 1.91; acc: 0.52
+Batch: 100; loss: 2.71; acc: 0.44
+Batch: 120; loss: 2.07; acc: 0.59
+Batch: 140; loss: 3.18; acc: 0.38
+Val Epoch over. val_loss: 2.1547639582567153; val_accuracy: 0.5372213375796179 
+
+Epoch 2 start
+Batch: 0; loss: 2.23; acc: 0.53
+Batch: 20; loss: 1.8; acc: 0.52
+Batch: 40; loss: 2.49; acc: 0.47
+Batch: 60; loss: 2.16; acc: 0.56
+Batch: 80; loss: 2.81; acc: 0.45
+Batch: 100; loss: 1.99; acc: 0.59
+Batch: 120; loss: 2.31; acc: 0.52
+Batch: 140; loss: 2.32; acc: 0.45
+Batch: 160; loss: 2.15; acc: 0.5
+Batch: 180; loss: 2.08; acc: 0.52
+Batch: 200; loss: 3.24; acc: 0.44
+Batch: 220; loss: 1.57; acc: 0.64
+Batch: 240; loss: 1.91; acc: 0.53
+Batch: 260; loss: 1.74; acc: 0.62
+Batch: 280; loss: 2.11; acc: 0.56
+Batch: 300; loss: 1.7; acc: 0.61
+Batch: 320; loss: 1.8; acc: 0.48
+Batch: 340; loss: 2.18; acc: 0.45
+Batch: 360; loss: 2.76; acc: 0.47
+Batch: 380; loss: 2.29; acc: 0.58
+Batch: 400; loss: 2.69; acc: 0.44
+Batch: 420; loss: 1.95; acc: 0.47
+Batch: 440; loss: 1.31; acc: 0.64
+Batch: 460; loss: 1.58; acc: 0.61
+Batch: 480; loss: 2.0; acc: 0.56
+Batch: 500; loss: 2.54; acc: 0.64
+Batch: 520; loss: 2.26; acc: 0.53
+Batch: 540; loss: 2.08; acc: 0.52
+Batch: 560; loss: 3.45; acc: 0.47
+Batch: 580; loss: 1.92; acc: 0.53
+Batch: 600; loss: 2.46; acc: 0.48
+Batch: 620; loss: 1.95; acc: 0.56
+Train Epoch over. train_loss: 2.15; train_accuracy: 0.54 
+
+Batch: 0; loss: 1.59; acc: 0.69
+Batch: 20; loss: 2.06; acc: 0.52
+Batch: 40; loss: 1.24; acc: 0.61
+Batch: 60; loss: 1.16; acc: 0.69
+Batch: 80; loss: 1.88; acc: 0.59
+Batch: 100; loss: 2.64; acc: 0.48
+Batch: 120; loss: 1.57; acc: 0.64
+Batch: 140; loss: 3.06; acc: 0.36
+Val Epoch over. val_loss: 2.081595998660774; val_accuracy: 0.5582205414012739 
+
+Epoch 3 start
+Batch: 0; loss: 1.93; acc: 0.5
+Batch: 20; loss: 2.19; acc: 0.55
+Batch: 40; loss: 1.76; acc: 0.62
+Batch: 60; loss: 2.64; acc: 0.52
+Batch: 80; loss: 1.94; acc: 0.48
+Batch: 100; loss: 1.99; acc: 0.55
+Batch: 120; loss: 2.63; acc: 0.45
+Batch: 140; loss: 1.95; acc: 0.62
+Batch: 160; loss: 1.89; acc: 0.55
+Batch: 180; loss: 2.4; acc: 0.58
+Batch: 200; loss: 1.4; acc: 0.66
+Batch: 220; loss: 2.07; acc: 0.62
+Batch: 240; loss: 2.91; acc: 0.58
+Batch: 260; loss: 2.01; acc: 0.59
+Batch: 280; loss: 2.61; acc: 0.47
+Batch: 300; loss: 1.87; acc: 0.56
+Batch: 320; loss: 1.96; acc: 0.55
+Batch: 340; loss: 1.53; acc: 0.58
+Batch: 360; loss: 1.41; acc: 0.61
+Batch: 380; loss: 1.65; acc: 0.64
+Batch: 400; loss: 2.58; acc: 0.52
+Batch: 420; loss: 2.64; acc: 0.52
+Batch: 440; loss: 1.57; acc: 0.67
+Batch: 460; loss: 2.6; acc: 0.55
+Batch: 480; loss: 2.51; acc: 0.5
+Batch: 500; loss: 1.95; acc: 0.58
+Batch: 520; loss: 2.0; acc: 0.59
+Batch: 540; loss: 1.74; acc: 0.61
+Batch: 560; loss: 2.64; acc: 0.56
+Batch: 580; loss: 2.16; acc: 0.59
+Batch: 600; loss: 1.81; acc: 0.5
+Batch: 620; loss: 1.86; acc: 0.58
+Train Epoch over. train_loss: 2.1; train_accuracy: 0.56 
+
+Batch: 0; loss: 1.76; acc: 0.62
+Batch: 20; loss: 4.2; acc: 0.44
+Batch: 40; loss: 1.38; acc: 0.61
+Batch: 60; loss: 1.57; acc: 0.62
+Batch: 80; loss: 2.74; acc: 0.58
+Batch: 100; loss: 3.06; acc: 0.5
+Batch: 120; loss: 1.61; acc: 0.72
+Batch: 140; loss: 3.78; acc: 0.42
+Val Epoch over. val_loss: 2.3568040250213285; val_accuracy: 0.5529458598726115 
+
+Epoch 4 start
+Batch: 0; loss: 2.47; acc: 0.52
+Batch: 20; loss: 3.41; acc: 0.47
+Batch: 40; loss: 1.74; acc: 0.53
+Batch: 60; loss: 1.61; acc: 0.62
+Batch: 80; loss: 2.24; acc: 0.59
+Batch: 100; loss: 1.56; acc: 0.67
+Batch: 120; loss: 1.55; acc: 0.69
+Batch: 140; loss: 2.1; acc: 0.55
+Batch: 160; loss: 2.09; acc: 0.52
+Batch: 180; loss: 1.77; acc: 0.67
+Batch: 200; loss: 1.42; acc: 0.66
+Batch: 220; loss: 2.35; acc: 0.5
+Batch: 240; loss: 1.96; acc: 0.62
+Batch: 260; loss: 1.6; acc: 0.56
+Batch: 280; loss: 2.07; acc: 0.58
+Batch: 300; loss: 2.6; acc: 0.53
+Batch: 320; loss: 2.29; acc: 0.52
+Batch: 340; loss: 1.46; acc: 0.66
+Batch: 360; loss: 2.09; acc: 0.59
+Batch: 380; loss: 3.09; acc: 0.47
+Batch: 400; loss: 1.83; acc: 0.59
+Batch: 420; loss: 2.49; acc: 0.56
+Batch: 440; loss: 1.72; acc: 0.67
+Batch: 460; loss: 2.5; acc: 0.58
+Batch: 480; loss: 1.73; acc: 0.58
+Batch: 500; loss: 2.3; acc: 0.48
+Batch: 520; loss: 2.14; acc: 0.55
+Batch: 540; loss: 1.97; acc: 0.52
+Batch: 560; loss: 2.29; acc: 0.56
+Batch: 580; loss: 1.54; acc: 0.59
+Batch: 600; loss: 1.97; acc: 0.55
+Batch: 620; loss: 1.9; acc: 0.61
+Train Epoch over. train_loss: 2.1; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.61; acc: 0.62
+Batch: 20; loss: 3.49; acc: 0.41
+Batch: 40; loss: 1.17; acc: 0.72
+Batch: 60; loss: 1.37; acc: 0.69
+Batch: 80; loss: 2.52; acc: 0.58
+Batch: 100; loss: 2.88; acc: 0.48
+Batch: 120; loss: 1.55; acc: 0.64
+Batch: 140; loss: 3.3; acc: 0.42
+Val Epoch over. val_loss: 2.194032193369167; val_accuracy: 0.5556329617834395 
+
+Epoch 5 start
+Batch: 0; loss: 2.2; acc: 0.58
+Batch: 20; loss: 2.47; acc: 0.5
+Batch: 40; loss: 2.14; acc: 0.56
+Batch: 60; loss: 1.92; acc: 0.64
+Batch: 80; loss: 1.98; acc: 0.56
+Batch: 100; loss: 2.56; acc: 0.41
+Batch: 120; loss: 1.29; acc: 0.61
+Batch: 140; loss: 2.02; acc: 0.56
+Batch: 160; loss: 1.49; acc: 0.67
+Batch: 180; loss: 1.77; acc: 0.64
+Batch: 200; loss: 1.92; acc: 0.59
+Batch: 220; loss: 2.27; acc: 0.59
+Batch: 240; loss: 1.89; acc: 0.61
+Batch: 260; loss: 1.96; acc: 0.56
+Batch: 280; loss: 2.31; acc: 0.53
+Batch: 300; loss: 3.1; acc: 0.52
+Batch: 320; loss: 2.53; acc: 0.5
+Batch: 340; loss: 2.5; acc: 0.56
+Batch: 360; loss: 1.86; acc: 0.53
+Batch: 380; loss: 1.99; acc: 0.53
+Batch: 400; loss: 2.15; acc: 0.55
+Batch: 420; loss: 1.86; acc: 0.55
+Batch: 440; loss: 2.1; acc: 0.56
+Batch: 460; loss: 3.42; acc: 0.42
+Batch: 480; loss: 2.09; acc: 0.55
+Batch: 500; loss: 2.89; acc: 0.45
+Batch: 520; loss: 1.16; acc: 0.61
+Batch: 540; loss: 1.83; acc: 0.55
+Batch: 560; loss: 1.92; acc: 0.59
+Batch: 580; loss: 1.41; acc: 0.72
+Batch: 600; loss: 1.81; acc: 0.56
+Batch: 620; loss: 2.4; acc: 0.53
+Train Epoch over. train_loss: 2.09; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.72; acc: 0.59
+Batch: 20; loss: 2.88; acc: 0.55
+Batch: 40; loss: 1.03; acc: 0.73
+Batch: 60; loss: 1.46; acc: 0.61
+Batch: 80; loss: 2.06; acc: 0.53
+Batch: 100; loss: 3.1; acc: 0.47
+Batch: 120; loss: 1.31; acc: 0.7
+Batch: 140; loss: 3.32; acc: 0.41
+Val Epoch over. val_loss: 2.045013242086787; val_accuracy: 0.571656050955414 
+
+Epoch 6 start
+Batch: 0; loss: 2.07; acc: 0.52
+Batch: 20; loss: 1.69; acc: 0.58
+Batch: 40; loss: 1.62; acc: 0.61
+Batch: 60; loss: 2.61; acc: 0.53
+Batch: 80; loss: 2.75; acc: 0.52
+Batch: 100; loss: 2.48; acc: 0.48
+Batch: 120; loss: 1.77; acc: 0.59
+Batch: 140; loss: 1.84; acc: 0.61
+Batch: 160; loss: 2.37; acc: 0.5
+Batch: 180; loss: 1.98; acc: 0.56
+Batch: 200; loss: 1.9; acc: 0.48
+Batch: 220; loss: 1.84; acc: 0.62
+Batch: 240; loss: 1.66; acc: 0.59
+Batch: 260; loss: 2.17; acc: 0.52
+Batch: 280; loss: 2.22; acc: 0.61
+Batch: 300; loss: 1.86; acc: 0.59
+Batch: 320; loss: 2.31; acc: 0.55
+Batch: 340; loss: 2.36; acc: 0.48
+Batch: 360; loss: 2.24; acc: 0.45
+Batch: 380; loss: 1.94; acc: 0.59
+Batch: 400; loss: 1.35; acc: 0.66
+Batch: 420; loss: 1.6; acc: 0.59
+Batch: 440; loss: 1.9; acc: 0.59
+Batch: 460; loss: 1.76; acc: 0.62
+Batch: 480; loss: 2.0; acc: 0.58
+Batch: 500; loss: 1.9; acc: 0.64
+Batch: 520; loss: 3.06; acc: 0.41
+Batch: 540; loss: 1.86; acc: 0.62
+Batch: 560; loss: 2.62; acc: 0.53
+Batch: 580; loss: 2.86; acc: 0.52
+Batch: 600; loss: 1.59; acc: 0.59
+Batch: 620; loss: 2.42; acc: 0.52
+Train Epoch over. train_loss: 2.1; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.71; acc: 0.56
+Batch: 20; loss: 3.09; acc: 0.5
+Batch: 40; loss: 0.96; acc: 0.75
+Batch: 60; loss: 1.35; acc: 0.66
+Batch: 80; loss: 2.48; acc: 0.53
+Batch: 100; loss: 2.87; acc: 0.45
+Batch: 120; loss: 1.24; acc: 0.7
+Batch: 140; loss: 2.96; acc: 0.45
+Val Epoch over. val_loss: 2.0870390242072427; val_accuracy: 0.5711584394904459 
+
+Epoch 7 start
+Batch: 0; loss: 1.85; acc: 0.62
+Batch: 20; loss: 2.02; acc: 0.58
+Batch: 40; loss: 2.52; acc: 0.53
+Batch: 60; loss: 1.82; acc: 0.62
+Batch: 80; loss: 1.7; acc: 0.7
+Batch: 100; loss: 1.87; acc: 0.52
+Batch: 120; loss: 2.96; acc: 0.5
+Batch: 140; loss: 2.31; acc: 0.66
+Batch: 160; loss: 2.33; acc: 0.55
+Batch: 180; loss: 2.41; acc: 0.52
+Batch: 200; loss: 2.25; acc: 0.52
+Batch: 220; loss: 2.58; acc: 0.52
+Batch: 240; loss: 3.64; acc: 0.27
+Batch: 260; loss: 2.61; acc: 0.61
+Batch: 280; loss: 1.35; acc: 0.64
+Batch: 300; loss: 1.8; acc: 0.64
+Batch: 320; loss: 1.8; acc: 0.62
+Batch: 340; loss: 2.52; acc: 0.53
+Batch: 360; loss: 2.15; acc: 0.58
+Batch: 380; loss: 1.83; acc: 0.67
+Batch: 400; loss: 1.6; acc: 0.62
+Batch: 420; loss: 1.67; acc: 0.62
+Batch: 440; loss: 2.08; acc: 0.58
+Batch: 460; loss: 2.36; acc: 0.61
+Batch: 480; loss: 2.96; acc: 0.48
+Batch: 500; loss: 2.13; acc: 0.56
+Batch: 520; loss: 1.89; acc: 0.64
+Batch: 540; loss: 2.18; acc: 0.52
+Batch: 560; loss: 1.46; acc: 0.62
+Batch: 580; loss: 2.41; acc: 0.61
+Batch: 600; loss: 1.62; acc: 0.61
+Batch: 620; loss: 2.99; acc: 0.53
+Train Epoch over. train_loss: 2.11; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.59; acc: 0.62
+Batch: 20; loss: 3.18; acc: 0.5
+Batch: 40; loss: 1.09; acc: 0.67
+Batch: 60; loss: 1.53; acc: 0.66
+Batch: 80; loss: 2.47; acc: 0.55
+Batch: 100; loss: 2.94; acc: 0.45
+Batch: 120; loss: 1.27; acc: 0.69
+Batch: 140; loss: 3.38; acc: 0.33
+Val Epoch over. val_loss: 2.109754733219268; val_accuracy: 0.5665804140127388 
+
+Epoch 8 start
+Batch: 0; loss: 2.48; acc: 0.52
+Batch: 20; loss: 1.53; acc: 0.66
+Batch: 40; loss: 1.74; acc: 0.58
+Batch: 60; loss: 1.42; acc: 0.62
+Batch: 80; loss: 2.88; acc: 0.53
+Batch: 100; loss: 2.51; acc: 0.56
+Batch: 120; loss: 2.31; acc: 0.52
+Batch: 140; loss: 1.53; acc: 0.64
+Batch: 160; loss: 1.73; acc: 0.62
+Batch: 180; loss: 2.37; acc: 0.59
+Batch: 200; loss: 2.05; acc: 0.56
+Batch: 220; loss: 2.19; acc: 0.53
+Batch: 240; loss: 1.93; acc: 0.56
+Batch: 260; loss: 2.15; acc: 0.53
+Batch: 280; loss: 2.18; acc: 0.62
+Batch: 300; loss: 1.04; acc: 0.67
+Batch: 320; loss: 1.82; acc: 0.56
+Batch: 340; loss: 2.71; acc: 0.45
+Batch: 360; loss: 1.66; acc: 0.59
+Batch: 380; loss: 1.82; acc: 0.61
+Batch: 400; loss: 2.11; acc: 0.58
+Batch: 420; loss: 1.82; acc: 0.59
+Batch: 440; loss: 2.41; acc: 0.56
+Batch: 460; loss: 1.97; acc: 0.55
+Batch: 480; loss: 1.51; acc: 0.67
+Batch: 500; loss: 2.01; acc: 0.62
+Batch: 520; loss: 1.85; acc: 0.56
+Batch: 540; loss: 2.79; acc: 0.52
+Batch: 560; loss: 2.12; acc: 0.58
+Batch: 580; loss: 1.4; acc: 0.66
+Batch: 600; loss: 2.14; acc: 0.61
+Batch: 620; loss: 2.0; acc: 0.53
+Train Epoch over. train_loss: 2.09; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.74; acc: 0.58
+Batch: 20; loss: 2.8; acc: 0.5
+Batch: 40; loss: 1.25; acc: 0.69
+Batch: 60; loss: 1.29; acc: 0.73
+Batch: 80; loss: 2.39; acc: 0.59
+Batch: 100; loss: 2.51; acc: 0.48
+Batch: 120; loss: 1.21; acc: 0.75
+Batch: 140; loss: 3.18; acc: 0.41
+Val Epoch over. val_loss: 2.1136661988155097; val_accuracy: 0.5557324840764332 
+
+Epoch 9 start
+Batch: 0; loss: 1.6; acc: 0.59
+Batch: 20; loss: 1.58; acc: 0.72
+Batch: 40; loss: 2.5; acc: 0.56
+Batch: 60; loss: 1.4; acc: 0.64
+Batch: 80; loss: 2.13; acc: 0.66
+Batch: 100; loss: 2.11; acc: 0.55
+Batch: 120; loss: 1.68; acc: 0.7
+Batch: 140; loss: 2.47; acc: 0.55
+Batch: 160; loss: 2.0; acc: 0.55
+Batch: 180; loss: 2.53; acc: 0.55
+Batch: 200; loss: 1.66; acc: 0.64
+Batch: 220; loss: 2.15; acc: 0.58
+Batch: 240; loss: 2.75; acc: 0.56
+Batch: 260; loss: 3.26; acc: 0.48
+Batch: 280; loss: 2.71; acc: 0.58
+Batch: 300; loss: 1.9; acc: 0.62
+Batch: 320; loss: 1.6; acc: 0.61
+Batch: 340; loss: 1.51; acc: 0.64
+Batch: 360; loss: 1.89; acc: 0.58
+Batch: 380; loss: 2.6; acc: 0.61
+Batch: 400; loss: 1.88; acc: 0.61
+Batch: 420; loss: 2.64; acc: 0.56
+Batch: 440; loss: 2.02; acc: 0.58
+Batch: 460; loss: 1.83; acc: 0.58
+Batch: 480; loss: 1.25; acc: 0.62
+Batch: 500; loss: 1.81; acc: 0.59
+Batch: 520; loss: 3.0; acc: 0.48
+Batch: 540; loss: 1.88; acc: 0.58
+Batch: 560; loss: 1.97; acc: 0.61
+Batch: 580; loss: 2.34; acc: 0.55
+Batch: 600; loss: 2.44; acc: 0.62
+Batch: 620; loss: 2.28; acc: 0.5
+Train Epoch over. train_loss: 2.09; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.68; acc: 0.61
+Batch: 20; loss: 2.5; acc: 0.44
+Batch: 40; loss: 1.25; acc: 0.62
+Batch: 60; loss: 1.67; acc: 0.56
+Batch: 80; loss: 2.23; acc: 0.58
+Batch: 100; loss: 3.0; acc: 0.42
+Batch: 120; loss: 1.93; acc: 0.58
+Batch: 140; loss: 3.08; acc: 0.41
+Val Epoch over. val_loss: 2.275267970030475; val_accuracy: 0.5452826433121019 
+
+Epoch 10 start
+Batch: 0; loss: 2.43; acc: 0.52
+Batch: 20; loss: 1.92; acc: 0.5
+Batch: 40; loss: 1.86; acc: 0.66
+Batch: 60; loss: 2.17; acc: 0.52
+Batch: 80; loss: 1.48; acc: 0.59
+Batch: 100; loss: 2.03; acc: 0.52
+Batch: 120; loss: 1.9; acc: 0.59
+Batch: 140; loss: 3.02; acc: 0.53
+Batch: 160; loss: 1.11; acc: 0.69
+Batch: 180; loss: 2.35; acc: 0.52
+Batch: 200; loss: 1.89; acc: 0.53
+Batch: 220; loss: 1.81; acc: 0.56
+Batch: 240; loss: 2.85; acc: 0.5
+Batch: 260; loss: 1.77; acc: 0.59
+Batch: 280; loss: 2.78; acc: 0.44
+Batch: 300; loss: 2.38; acc: 0.58
+Batch: 320; loss: 1.69; acc: 0.59
+Batch: 340; loss: 1.15; acc: 0.72
+Batch: 360; loss: 1.85; acc: 0.66
+Batch: 380; loss: 1.94; acc: 0.59
+Batch: 400; loss: 1.89; acc: 0.55
+Batch: 420; loss: 2.66; acc: 0.52
+Batch: 440; loss: 1.77; acc: 0.53
+Batch: 460; loss: 2.97; acc: 0.52
+Batch: 480; loss: 3.14; acc: 0.48
+Batch: 500; loss: 1.83; acc: 0.64
+Batch: 520; loss: 1.73; acc: 0.61
+Batch: 540; loss: 1.9; acc: 0.55
+Batch: 560; loss: 2.85; acc: 0.48
+Batch: 580; loss: 2.19; acc: 0.53
+Batch: 600; loss: 2.16; acc: 0.58
+Batch: 620; loss: 2.67; acc: 0.44
+Train Epoch over. train_loss: 2.09; train_accuracy: 0.57 
+
+Batch: 0; loss: 1.7; acc: 0.67
+Batch: 20; loss: 3.0; acc: 0.42
+Batch: 40; loss: 1.28; acc: 0.7
+Batch: 60; loss: 1.58; acc: 0.67
+Batch: 80; loss: 1.95; acc: 0.64
+Batch: 100; loss: 2.89; acc: 0.45
+Batch: 120; loss: 1.37; acc: 0.7
+Batch: 140; loss: 2.96; acc: 0.47
+Val Epoch over. val_loss: 2.1250631053736257; val_accuracy: 0.5639928343949044 
+
+plots/subspace_True_d_dim_100_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:09:50.746810
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 2.07; acc: 0.44
+Batch: 40; loss: 1.6; acc: 0.58
+Batch: 60; loss: 1.61; acc: 0.53
+Batch: 80; loss: 1.88; acc: 0.53
+Batch: 100; loss: 0.98; acc: 0.7
+Batch: 120; loss: 1.58; acc: 0.62
+Batch: 140; loss: 1.49; acc: 0.67
+Batch: 160; loss: 1.89; acc: 0.67
+Batch: 180; loss: 1.36; acc: 0.64
+Batch: 200; loss: 1.38; acc: 0.67
+Batch: 220; loss: 1.35; acc: 0.73
+Batch: 240; loss: 1.13; acc: 0.75
+Batch: 260; loss: 1.45; acc: 0.62
+Batch: 280; loss: 1.29; acc: 0.72
+Batch: 300; loss: 1.27; acc: 0.7
+Batch: 320; loss: 0.89; acc: 0.81
+Batch: 340; loss: 1.21; acc: 0.7
+Batch: 360; loss: 0.66; acc: 0.8
+Batch: 380; loss: 1.24; acc: 0.7
+Batch: 400; loss: 1.58; acc: 0.66
+Batch: 420; loss: 0.83; acc: 0.75
+Batch: 440; loss: 1.14; acc: 0.75
+Batch: 460; loss: 0.91; acc: 0.77
+Batch: 480; loss: 0.9; acc: 0.78
+Batch: 500; loss: 1.23; acc: 0.75
+Batch: 520; loss: 0.82; acc: 0.72
+Batch: 540; loss: 0.96; acc: 0.73
+Batch: 560; loss: 0.63; acc: 0.84
+Batch: 580; loss: 1.21; acc: 0.78
+Batch: 600; loss: 1.15; acc: 0.67
+Batch: 620; loss: 0.77; acc: 0.77
+Train Epoch over. train_loss: 1.43; train_accuracy: 0.66 
+
+Batch: 0; loss: 0.56; acc: 0.81
+Batch: 20; loss: 1.53; acc: 0.69
+Batch: 40; loss: 0.94; acc: 0.8
+Batch: 60; loss: 0.86; acc: 0.77
+Batch: 80; loss: 1.19; acc: 0.69
+Batch: 100; loss: 1.19; acc: 0.73
+Batch: 120; loss: 0.58; acc: 0.88
+Batch: 140; loss: 1.5; acc: 0.7
+Val Epoch over. val_loss: 1.1138693908597255; val_accuracy: 0.727109872611465 
+
+Epoch 2 start
+Batch: 0; loss: 1.05; acc: 0.72
+Batch: 20; loss: 1.12; acc: 0.72
+Batch: 40; loss: 1.17; acc: 0.69
+Batch: 60; loss: 1.21; acc: 0.72
+Batch: 80; loss: 0.94; acc: 0.81
+Batch: 100; loss: 0.74; acc: 0.78
+Batch: 120; loss: 1.27; acc: 0.7
+Batch: 140; loss: 0.97; acc: 0.78
+Batch: 160; loss: 1.11; acc: 0.73
+Batch: 180; loss: 1.18; acc: 0.67
+Batch: 200; loss: 0.97; acc: 0.8
+Batch: 220; loss: 0.63; acc: 0.81
+Batch: 240; loss: 1.16; acc: 0.75
+Batch: 260; loss: 0.83; acc: 0.75
+Batch: 280; loss: 1.35; acc: 0.67
+Batch: 300; loss: 1.3; acc: 0.72
+Batch: 320; loss: 0.95; acc: 0.75
+Batch: 340; loss: 1.5; acc: 0.7
+Batch: 360; loss: 1.62; acc: 0.61
+Batch: 380; loss: 0.95; acc: 0.75
+Batch: 400; loss: 1.34; acc: 0.66
+Batch: 420; loss: 1.08; acc: 0.77
+Batch: 440; loss: 1.02; acc: 0.72
+Batch: 460; loss: 0.93; acc: 0.73
+Batch: 480; loss: 1.13; acc: 0.78
+Batch: 500; loss: 1.16; acc: 0.81
+Batch: 520; loss: 1.47; acc: 0.73
+Batch: 540; loss: 0.73; acc: 0.81
+Batch: 560; loss: 1.58; acc: 0.69
+Batch: 580; loss: 0.64; acc: 0.8
+Batch: 600; loss: 1.25; acc: 0.75
+Batch: 620; loss: 1.28; acc: 0.69
+Train Epoch over. train_loss: 1.07; train_accuracy: 0.74 
+
+Batch: 0; loss: 0.56; acc: 0.84
+Batch: 20; loss: 1.39; acc: 0.72
+Batch: 40; loss: 0.72; acc: 0.83
+Batch: 60; loss: 0.76; acc: 0.78
+Batch: 80; loss: 0.9; acc: 0.77
+Batch: 100; loss: 1.27; acc: 0.72
+Batch: 120; loss: 0.73; acc: 0.84
+Batch: 140; loss: 1.45; acc: 0.69
+Val Epoch over. val_loss: 1.0388192843859363; val_accuracy: 0.7514928343949044 
+
+Epoch 3 start
+Batch: 0; loss: 0.98; acc: 0.7
+Batch: 20; loss: 1.39; acc: 0.66
+Batch: 40; loss: 0.86; acc: 0.75
+Batch: 60; loss: 1.08; acc: 0.72
+Batch: 80; loss: 1.39; acc: 0.69
+Batch: 100; loss: 0.61; acc: 0.84
+Batch: 120; loss: 0.87; acc: 0.7
+Batch: 140; loss: 1.3; acc: 0.72
+Batch: 160; loss: 0.93; acc: 0.77
+Batch: 180; loss: 1.06; acc: 0.77
+Batch: 200; loss: 0.91; acc: 0.78
+Batch: 220; loss: 1.12; acc: 0.78
+Batch: 240; loss: 0.99; acc: 0.7
+Batch: 260; loss: 0.72; acc: 0.8
+Batch: 280; loss: 0.83; acc: 0.78
+Batch: 300; loss: 0.86; acc: 0.73
+Batch: 320; loss: 1.06; acc: 0.75
+Batch: 340; loss: 1.51; acc: 0.69
+Batch: 360; loss: 1.4; acc: 0.75
+Batch: 380; loss: 0.83; acc: 0.78
+Batch: 400; loss: 1.18; acc: 0.75
+Batch: 420; loss: 1.36; acc: 0.64
+Batch: 440; loss: 0.67; acc: 0.78
+Batch: 460; loss: 1.83; acc: 0.62
+Batch: 480; loss: 1.34; acc: 0.73
+Batch: 500; loss: 0.82; acc: 0.84
+Batch: 520; loss: 0.77; acc: 0.81
+Batch: 540; loss: 0.53; acc: 0.88
+Batch: 560; loss: 0.56; acc: 0.86
+Batch: 580; loss: 1.46; acc: 0.7
+Batch: 600; loss: 0.56; acc: 0.78
+Batch: 620; loss: 0.38; acc: 0.86
+Train Epoch over. train_loss: 1.04; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.66; acc: 0.83
+Batch: 20; loss: 1.66; acc: 0.66
+Batch: 40; loss: 0.96; acc: 0.75
+Batch: 60; loss: 1.04; acc: 0.75
+Batch: 80; loss: 1.13; acc: 0.78
+Batch: 100; loss: 1.39; acc: 0.75
+Batch: 120; loss: 0.65; acc: 0.86
+Batch: 140; loss: 1.42; acc: 0.7
+Val Epoch over. val_loss: 1.1991643981569131; val_accuracy: 0.7285031847133758 
+
+Epoch 4 start
+Batch: 0; loss: 0.97; acc: 0.7
+Batch: 20; loss: 2.42; acc: 0.62
+Batch: 40; loss: 0.54; acc: 0.84
+Batch: 60; loss: 1.43; acc: 0.72
+Batch: 80; loss: 0.47; acc: 0.86
+Batch: 100; loss: 0.6; acc: 0.86
+Batch: 120; loss: 0.64; acc: 0.77
+Batch: 140; loss: 0.98; acc: 0.81
+Batch: 160; loss: 1.08; acc: 0.78
+Batch: 180; loss: 1.07; acc: 0.75
+Batch: 200; loss: 0.93; acc: 0.78
+Batch: 220; loss: 1.39; acc: 0.73
+Batch: 240; loss: 1.03; acc: 0.77
+Batch: 260; loss: 0.7; acc: 0.78
+Batch: 280; loss: 0.94; acc: 0.75
+Batch: 300; loss: 0.78; acc: 0.75
+Batch: 320; loss: 0.96; acc: 0.75
+Batch: 340; loss: 1.16; acc: 0.7
+Batch: 360; loss: 1.07; acc: 0.75
+Batch: 380; loss: 1.17; acc: 0.75
+Batch: 400; loss: 0.74; acc: 0.8
+Batch: 420; loss: 1.23; acc: 0.7
+Batch: 440; loss: 1.2; acc: 0.75
+Batch: 460; loss: 1.52; acc: 0.7
+Batch: 480; loss: 0.66; acc: 0.73
+Batch: 500; loss: 0.88; acc: 0.81
+Batch: 520; loss: 1.26; acc: 0.69
+Batch: 540; loss: 0.74; acc: 0.72
+Batch: 560; loss: 0.74; acc: 0.72
+Batch: 580; loss: 1.05; acc: 0.78
+Batch: 600; loss: 0.83; acc: 0.81
+Batch: 620; loss: 0.98; acc: 0.73
+Train Epoch over. train_loss: 1.03; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.7; acc: 0.81
+Batch: 20; loss: 1.57; acc: 0.59
+Batch: 40; loss: 0.9; acc: 0.81
+Batch: 60; loss: 0.76; acc: 0.78
+Batch: 80; loss: 1.19; acc: 0.72
+Batch: 100; loss: 1.37; acc: 0.72
+Batch: 120; loss: 0.75; acc: 0.81
+Batch: 140; loss: 1.46; acc: 0.7
+Val Epoch over. val_loss: 1.1279086168784245; val_accuracy: 0.7348726114649682 
+
+Epoch 5 start
+Batch: 0; loss: 0.54; acc: 0.88
+Batch: 20; loss: 1.37; acc: 0.69
+Batch: 40; loss: 1.2; acc: 0.69
+Batch: 60; loss: 0.86; acc: 0.8
+Batch: 80; loss: 1.06; acc: 0.75
+Batch: 100; loss: 1.25; acc: 0.75
+Batch: 120; loss: 0.92; acc: 0.8
+Batch: 140; loss: 1.68; acc: 0.69
+Batch: 160; loss: 1.08; acc: 0.77
+Batch: 180; loss: 1.12; acc: 0.78
+Batch: 200; loss: 0.95; acc: 0.73
+Batch: 220; loss: 0.84; acc: 0.7
+Batch: 240; loss: 1.38; acc: 0.7
+Batch: 260; loss: 0.94; acc: 0.75
+Batch: 280; loss: 0.81; acc: 0.72
+Batch: 300; loss: 0.97; acc: 0.77
+Batch: 320; loss: 0.59; acc: 0.78
+Batch: 340; loss: 1.73; acc: 0.61
+Batch: 360; loss: 1.01; acc: 0.72
+Batch: 380; loss: 0.69; acc: 0.78
+Batch: 400; loss: 0.58; acc: 0.78
+Batch: 420; loss: 0.71; acc: 0.86
+Batch: 440; loss: 1.16; acc: 0.73
+Batch: 460; loss: 0.96; acc: 0.72
+Batch: 480; loss: 1.01; acc: 0.77
+Batch: 500; loss: 1.73; acc: 0.61
+Batch: 520; loss: 0.61; acc: 0.8
+Batch: 540; loss: 0.96; acc: 0.75
+Batch: 560; loss: 1.65; acc: 0.72
+Batch: 580; loss: 0.63; acc: 0.8
+Batch: 600; loss: 1.1; acc: 0.75
+Batch: 620; loss: 1.38; acc: 0.77
+Train Epoch over. train_loss: 1.01; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.71; acc: 0.84
+Batch: 20; loss: 1.0; acc: 0.75
+Batch: 40; loss: 0.75; acc: 0.8
+Batch: 60; loss: 0.63; acc: 0.81
+Batch: 80; loss: 1.0; acc: 0.75
+Batch: 100; loss: 1.18; acc: 0.75
+Batch: 120; loss: 0.64; acc: 0.83
+Batch: 140; loss: 1.28; acc: 0.7
+Val Epoch over. val_loss: 0.9703286834962809; val_accuracy: 0.7580613057324841 
+
+Epoch 6 start
+Batch: 0; loss: 0.7; acc: 0.75
+Batch: 20; loss: 0.97; acc: 0.72
+Batch: 40; loss: 1.04; acc: 0.72
+Batch: 60; loss: 0.91; acc: 0.73
+Batch: 80; loss: 1.04; acc: 0.81
+Batch: 100; loss: 0.97; acc: 0.75
+Batch: 120; loss: 1.52; acc: 0.64
+Batch: 140; loss: 1.31; acc: 0.73
+Batch: 160; loss: 1.11; acc: 0.75
+Batch: 180; loss: 0.66; acc: 0.88
+Batch: 200; loss: 1.0; acc: 0.75
+Batch: 220; loss: 0.63; acc: 0.81
+Batch: 240; loss: 1.55; acc: 0.73
+Batch: 260; loss: 1.32; acc: 0.7
+Batch: 280; loss: 1.52; acc: 0.66
+Batch: 300; loss: 0.99; acc: 0.72
+Batch: 320; loss: 1.44; acc: 0.77
+Batch: 340; loss: 1.3; acc: 0.66
+Batch: 360; loss: 1.15; acc: 0.73
+Batch: 380; loss: 1.24; acc: 0.77
+Batch: 400; loss: 0.57; acc: 0.81
+Batch: 420; loss: 0.8; acc: 0.78
+Batch: 440; loss: 0.95; acc: 0.78
+Batch: 460; loss: 1.03; acc: 0.83
+Batch: 480; loss: 0.72; acc: 0.78
+Batch: 500; loss: 0.74; acc: 0.8
+Batch: 520; loss: 1.22; acc: 0.67
+Batch: 540; loss: 1.27; acc: 0.75
+Batch: 560; loss: 1.26; acc: 0.69
+Batch: 580; loss: 2.14; acc: 0.58
+Batch: 600; loss: 1.33; acc: 0.66
+Batch: 620; loss: 1.37; acc: 0.73
+Train Epoch over. train_loss: 1.0; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.78; acc: 0.78
+Batch: 20; loss: 0.91; acc: 0.77
+Batch: 40; loss: 0.82; acc: 0.84
+Batch: 60; loss: 0.72; acc: 0.8
+Batch: 80; loss: 0.86; acc: 0.78
+Batch: 100; loss: 1.44; acc: 0.7
+Batch: 120; loss: 0.75; acc: 0.8
+Batch: 140; loss: 1.36; acc: 0.73
+Val Epoch over. val_loss: 1.0314714585899547; val_accuracy: 0.7502985668789809 
+
+Epoch 7 start
+Batch: 0; loss: 0.66; acc: 0.75
+Batch: 20; loss: 1.08; acc: 0.75
+Batch: 40; loss: 0.95; acc: 0.81
+Batch: 60; loss: 1.22; acc: 0.72
+Batch: 80; loss: 0.9; acc: 0.75
+Batch: 100; loss: 0.68; acc: 0.8
+Batch: 120; loss: 1.25; acc: 0.66
+Batch: 140; loss: 1.05; acc: 0.78
+Batch: 160; loss: 1.45; acc: 0.72
+Batch: 180; loss: 0.82; acc: 0.72
+Batch: 200; loss: 1.03; acc: 0.73
+Batch: 220; loss: 0.85; acc: 0.72
+Batch: 240; loss: 1.32; acc: 0.73
+Batch: 260; loss: 0.62; acc: 0.83
+Batch: 280; loss: 0.99; acc: 0.75
+Batch: 300; loss: 0.82; acc: 0.77
+Batch: 320; loss: 0.96; acc: 0.69
+Batch: 340; loss: 1.34; acc: 0.67
+Batch: 360; loss: 1.13; acc: 0.73
+Batch: 380; loss: 0.52; acc: 0.84
+Batch: 400; loss: 1.04; acc: 0.81
+Batch: 420; loss: 0.66; acc: 0.83
+Batch: 440; loss: 1.04; acc: 0.77
+Batch: 460; loss: 1.26; acc: 0.75
+Batch: 480; loss: 1.01; acc: 0.73
+Batch: 500; loss: 1.07; acc: 0.72
+Batch: 520; loss: 1.56; acc: 0.64
+Batch: 540; loss: 1.05; acc: 0.72
+Batch: 560; loss: 1.07; acc: 0.75
+Batch: 580; loss: 0.47; acc: 0.88
+Batch: 600; loss: 0.75; acc: 0.75
+Batch: 620; loss: 1.34; acc: 0.73
+Train Epoch over. train_loss: 0.99; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.72; acc: 0.8
+Batch: 20; loss: 1.13; acc: 0.69
+Batch: 40; loss: 0.59; acc: 0.84
+Batch: 60; loss: 0.78; acc: 0.77
+Batch: 80; loss: 1.02; acc: 0.69
+Batch: 100; loss: 1.45; acc: 0.7
+Batch: 120; loss: 0.82; acc: 0.77
+Batch: 140; loss: 1.67; acc: 0.7
+Val Epoch over. val_loss: 1.0371463746781562; val_accuracy: 0.7438296178343949 
+
+Epoch 8 start
+Batch: 0; loss: 1.05; acc: 0.69
+Batch: 20; loss: 0.93; acc: 0.77
+Batch: 40; loss: 0.84; acc: 0.75
+Batch: 60; loss: 0.81; acc: 0.8
+Batch: 80; loss: 1.04; acc: 0.77
+Batch: 100; loss: 1.04; acc: 0.77
+Batch: 120; loss: 1.37; acc: 0.7
+Batch: 140; loss: 0.88; acc: 0.77
+Batch: 160; loss: 0.47; acc: 0.88
+Batch: 180; loss: 1.21; acc: 0.75
+Batch: 200; loss: 1.17; acc: 0.72
+Batch: 220; loss: 1.28; acc: 0.69
+Batch: 240; loss: 1.21; acc: 0.7
+Batch: 260; loss: 0.73; acc: 0.75
+Batch: 280; loss: 0.72; acc: 0.86
+Batch: 300; loss: 0.41; acc: 0.83
+Batch: 320; loss: 0.73; acc: 0.78
+Batch: 340; loss: 1.0; acc: 0.73
+Batch: 360; loss: 0.62; acc: 0.78
+Batch: 380; loss: 1.02; acc: 0.81
+Batch: 400; loss: 0.89; acc: 0.8
+Batch: 420; loss: 1.05; acc: 0.77
+Batch: 440; loss: 0.6; acc: 0.86
+Batch: 460; loss: 1.02; acc: 0.73
+Batch: 480; loss: 1.15; acc: 0.73
+Batch: 500; loss: 0.96; acc: 0.8
+Batch: 520; loss: 0.75; acc: 0.8
+Batch: 540; loss: 1.37; acc: 0.67
+Batch: 560; loss: 0.72; acc: 0.84
+Batch: 580; loss: 0.64; acc: 0.83
+Batch: 600; loss: 1.31; acc: 0.75
+Batch: 620; loss: 0.87; acc: 0.72
+Train Epoch over. train_loss: 0.99; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.81; acc: 0.83
+Batch: 20; loss: 1.15; acc: 0.73
+Batch: 40; loss: 0.64; acc: 0.86
+Batch: 60; loss: 0.58; acc: 0.83
+Batch: 80; loss: 1.15; acc: 0.75
+Batch: 100; loss: 1.31; acc: 0.75
+Batch: 120; loss: 1.1; acc: 0.75
+Batch: 140; loss: 1.41; acc: 0.69
+Val Epoch over. val_loss: 1.1613678264010483; val_accuracy: 0.7299960191082803 
+
+Epoch 9 start
+Batch: 0; loss: 0.82; acc: 0.78
+Batch: 20; loss: 0.94; acc: 0.77
+Batch: 40; loss: 1.17; acc: 0.7
+Batch: 60; loss: 0.51; acc: 0.86
+Batch: 80; loss: 0.88; acc: 0.86
+Batch: 100; loss: 0.91; acc: 0.8
+Batch: 120; loss: 1.07; acc: 0.75
+Batch: 140; loss: 1.53; acc: 0.72
+Batch: 160; loss: 1.36; acc: 0.7
+Batch: 180; loss: 1.8; acc: 0.61
+Batch: 200; loss: 1.23; acc: 0.75
+Batch: 220; loss: 0.93; acc: 0.7
+Batch: 240; loss: 1.11; acc: 0.72
+Batch: 260; loss: 1.05; acc: 0.7
+Batch: 280; loss: 1.29; acc: 0.78
+Batch: 300; loss: 1.08; acc: 0.75
+Batch: 320; loss: 1.42; acc: 0.72
+Batch: 340; loss: 0.89; acc: 0.77
+Batch: 360; loss: 1.86; acc: 0.62
+Batch: 380; loss: 1.5; acc: 0.67
+Batch: 400; loss: 1.06; acc: 0.73
+Batch: 420; loss: 1.25; acc: 0.78
+Batch: 440; loss: 1.27; acc: 0.69
+Batch: 460; loss: 0.85; acc: 0.75
+Batch: 480; loss: 0.44; acc: 0.91
+Batch: 500; loss: 0.98; acc: 0.67
+Batch: 520; loss: 1.05; acc: 0.8
+Batch: 540; loss: 1.02; acc: 0.7
+Batch: 560; loss: 1.59; acc: 0.7
+Batch: 580; loss: 1.43; acc: 0.66
+Batch: 600; loss: 0.94; acc: 0.75
+Batch: 620; loss: 1.21; acc: 0.72
+Train Epoch over. train_loss: 1.0; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.74; acc: 0.81
+Batch: 20; loss: 1.01; acc: 0.7
+Batch: 40; loss: 0.65; acc: 0.89
+Batch: 60; loss: 0.62; acc: 0.83
+Batch: 80; loss: 0.95; acc: 0.75
+Batch: 100; loss: 1.46; acc: 0.72
+Batch: 120; loss: 0.86; acc: 0.84
+Batch: 140; loss: 1.76; acc: 0.7
+Val Epoch over. val_loss: 1.033062720754344; val_accuracy: 0.7551751592356688 
+
+Epoch 10 start
+Batch: 0; loss: 1.25; acc: 0.69
+Batch: 20; loss: 0.79; acc: 0.77
+Batch: 40; loss: 0.83; acc: 0.81
+Batch: 60; loss: 1.72; acc: 0.64
+Batch: 80; loss: 0.73; acc: 0.73
+Batch: 100; loss: 1.21; acc: 0.69
+Batch: 120; loss: 0.85; acc: 0.77
+Batch: 140; loss: 1.02; acc: 0.77
+Batch: 160; loss: 1.38; acc: 0.66
+Batch: 180; loss: 0.97; acc: 0.75
+Batch: 200; loss: 1.1; acc: 0.77
+Batch: 220; loss: 1.21; acc: 0.75
+Batch: 240; loss: 1.8; acc: 0.64
+Batch: 260; loss: 0.88; acc: 0.8
+Batch: 280; loss: 0.89; acc: 0.77
+Batch: 300; loss: 0.95; acc: 0.69
+Batch: 320; loss: 0.92; acc: 0.8
+Batch: 340; loss: 0.71; acc: 0.8
+Batch: 360; loss: 0.76; acc: 0.72
+Batch: 380; loss: 0.68; acc: 0.83
+Batch: 400; loss: 0.97; acc: 0.77
+Batch: 420; loss: 1.1; acc: 0.77
+Batch: 440; loss: 0.86; acc: 0.8
+Batch: 460; loss: 1.24; acc: 0.69
+Batch: 480; loss: 0.99; acc: 0.77
+Batch: 500; loss: 0.63; acc: 0.78
+Batch: 520; loss: 0.71; acc: 0.83
+Batch: 540; loss: 0.96; acc: 0.69
+Batch: 560; loss: 1.36; acc: 0.69
+Batch: 580; loss: 1.14; acc: 0.7
+Batch: 600; loss: 1.09; acc: 0.67
+Batch: 620; loss: 0.87; acc: 0.69
+Train Epoch over. train_loss: 0.99; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.88; acc: 0.78
+Batch: 20; loss: 1.04; acc: 0.61
+Batch: 40; loss: 0.57; acc: 0.88
+Batch: 60; loss: 0.55; acc: 0.81
+Batch: 80; loss: 1.11; acc: 0.7
+Batch: 100; loss: 1.38; acc: 0.67
+Batch: 120; loss: 0.89; acc: 0.8
+Batch: 140; loss: 1.45; acc: 0.61
+Val Epoch over. val_loss: 1.0635407865047455; val_accuracy: 0.7366640127388535 
+
+plots/subspace_True_d_dim_200_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:10:44.952749
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 2.07; acc: 0.44
+Batch: 40; loss: 1.24; acc: 0.62
+Batch: 60; loss: 1.23; acc: 0.59
+Batch: 80; loss: 1.02; acc: 0.67
+Batch: 100; loss: 0.8; acc: 0.77
+Batch: 120; loss: 0.85; acc: 0.72
+Batch: 140; loss: 1.12; acc: 0.69
+Batch: 160; loss: 1.07; acc: 0.78
+Batch: 180; loss: 0.86; acc: 0.75
+Batch: 200; loss: 0.66; acc: 0.77
+Batch: 220; loss: 1.03; acc: 0.69
+Batch: 240; loss: 0.66; acc: 0.8
+Batch: 260; loss: 1.01; acc: 0.67
+Batch: 280; loss: 0.88; acc: 0.78
+Batch: 300; loss: 0.79; acc: 0.8
+Batch: 320; loss: 0.89; acc: 0.8
+Batch: 340; loss: 0.77; acc: 0.78
+Batch: 360; loss: 0.46; acc: 0.86
+Batch: 380; loss: 0.86; acc: 0.77
+Batch: 400; loss: 0.97; acc: 0.84
+Batch: 420; loss: 0.89; acc: 0.77
+Batch: 440; loss: 0.69; acc: 0.84
+Batch: 460; loss: 0.83; acc: 0.77
+Batch: 480; loss: 0.65; acc: 0.84
+Batch: 500; loss: 0.66; acc: 0.81
+Batch: 520; loss: 0.86; acc: 0.72
+Batch: 540; loss: 0.55; acc: 0.84
+Batch: 560; loss: 0.39; acc: 0.83
+Batch: 580; loss: 0.51; acc: 0.84
+Batch: 600; loss: 0.64; acc: 0.83
+Batch: 620; loss: 0.86; acc: 0.84
+Train Epoch over. train_loss: 1.02; train_accuracy: 0.73 
+
+Batch: 0; loss: 0.57; acc: 0.88
+Batch: 20; loss: 0.84; acc: 0.75
+Batch: 40; loss: 0.37; acc: 0.89
+Batch: 60; loss: 0.31; acc: 0.88
+Batch: 80; loss: 0.66; acc: 0.75
+Batch: 100; loss: 0.74; acc: 0.83
+Batch: 120; loss: 0.62; acc: 0.81
+Batch: 140; loss: 1.29; acc: 0.66
+Val Epoch over. val_loss: 0.7248282609092203; val_accuracy: 0.8040406050955414 
+
+Epoch 2 start
+Batch: 0; loss: 0.41; acc: 0.88
+Batch: 20; loss: 0.58; acc: 0.8
+Batch: 40; loss: 0.74; acc: 0.75
+Batch: 60; loss: 0.45; acc: 0.84
+Batch: 80; loss: 0.49; acc: 0.84
+Batch: 100; loss: 0.69; acc: 0.8
+Batch: 120; loss: 0.88; acc: 0.78
+Batch: 140; loss: 0.56; acc: 0.81
+Batch: 160; loss: 0.67; acc: 0.83
+Batch: 180; loss: 0.6; acc: 0.78
+Batch: 200; loss: 1.04; acc: 0.75
+Batch: 220; loss: 0.2; acc: 0.91
+Batch: 240; loss: 0.47; acc: 0.91
+Batch: 260; loss: 0.35; acc: 0.88
+Batch: 280; loss: 0.85; acc: 0.73
+Batch: 300; loss: 0.73; acc: 0.78
+Batch: 320; loss: 0.73; acc: 0.81
+Batch: 340; loss: 0.9; acc: 0.8
+Batch: 360; loss: 0.91; acc: 0.73
+Batch: 380; loss: 0.57; acc: 0.86
+Batch: 400; loss: 0.72; acc: 0.83
+Batch: 420; loss: 0.81; acc: 0.78
+Batch: 440; loss: 0.47; acc: 0.89
+Batch: 460; loss: 1.27; acc: 0.77
+Batch: 480; loss: 0.43; acc: 0.84
+Batch: 500; loss: 0.92; acc: 0.8
+Batch: 520; loss: 0.45; acc: 0.86
+Batch: 540; loss: 0.43; acc: 0.86
+Batch: 560; loss: 0.72; acc: 0.83
+Batch: 580; loss: 0.55; acc: 0.86
+Batch: 600; loss: 0.94; acc: 0.77
+Batch: 620; loss: 0.95; acc: 0.78
+Train Epoch over. train_loss: 0.68; train_accuracy: 0.82 
+
+Batch: 0; loss: 0.57; acc: 0.88
+Batch: 20; loss: 0.97; acc: 0.78
+Batch: 40; loss: 0.63; acc: 0.81
+Batch: 60; loss: 0.32; acc: 0.91
+Batch: 80; loss: 0.58; acc: 0.84
+Batch: 100; loss: 0.89; acc: 0.8
+Batch: 120; loss: 0.63; acc: 0.86
+Batch: 140; loss: 1.25; acc: 0.69
+Val Epoch over. val_loss: 0.683074955063261; val_accuracy: 0.823546974522293 
+
+Epoch 3 start
+Batch: 0; loss: 0.63; acc: 0.84
+Batch: 20; loss: 0.71; acc: 0.78
+Batch: 40; loss: 0.62; acc: 0.8
+Batch: 60; loss: 0.8; acc: 0.81
+Batch: 80; loss: 0.46; acc: 0.91
+Batch: 100; loss: 0.49; acc: 0.8
+Batch: 120; loss: 0.65; acc: 0.83
+Batch: 140; loss: 0.98; acc: 0.83
+Batch: 160; loss: 0.57; acc: 0.8
+Batch: 180; loss: 1.02; acc: 0.77
+Batch: 200; loss: 0.48; acc: 0.83
+Batch: 220; loss: 0.97; acc: 0.77
+Batch: 240; loss: 0.78; acc: 0.78
+Batch: 260; loss: 0.86; acc: 0.81
+Batch: 280; loss: 0.57; acc: 0.83
+Batch: 300; loss: 0.38; acc: 0.92
+Batch: 320; loss: 0.67; acc: 0.83
+Batch: 340; loss: 0.46; acc: 0.86
+Batch: 360; loss: 0.62; acc: 0.8
+Batch: 380; loss: 0.24; acc: 0.91
+Batch: 400; loss: 1.36; acc: 0.75
+Batch: 420; loss: 1.11; acc: 0.73
+Batch: 440; loss: 0.59; acc: 0.84
+Batch: 460; loss: 0.74; acc: 0.75
+Batch: 480; loss: 0.85; acc: 0.78
+Batch: 500; loss: 0.71; acc: 0.83
+Batch: 520; loss: 0.37; acc: 0.83
+Batch: 540; loss: 0.27; acc: 0.91
+Batch: 560; loss: 0.57; acc: 0.81
+Batch: 580; loss: 1.01; acc: 0.81
+Batch: 600; loss: 0.46; acc: 0.84
+Batch: 620; loss: 0.37; acc: 0.88
+Train Epoch over. train_loss: 0.65; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.56; acc: 0.83
+Batch: 20; loss: 1.08; acc: 0.77
+Batch: 40; loss: 0.64; acc: 0.86
+Batch: 60; loss: 0.39; acc: 0.88
+Batch: 80; loss: 0.73; acc: 0.78
+Batch: 100; loss: 0.93; acc: 0.72
+Batch: 120; loss: 0.46; acc: 0.86
+Batch: 140; loss: 1.11; acc: 0.7
+Val Epoch over. val_loss: 0.6606854439541033; val_accuracy: 0.8145899681528662 
+
+Epoch 4 start
+Batch: 0; loss: 0.57; acc: 0.83
+Batch: 20; loss: 1.13; acc: 0.7
+Batch: 40; loss: 0.4; acc: 0.88
+Batch: 60; loss: 1.0; acc: 0.8
+Batch: 80; loss: 0.87; acc: 0.77
+Batch: 100; loss: 0.54; acc: 0.84
+Batch: 120; loss: 0.31; acc: 0.89
+Batch: 140; loss: 0.42; acc: 0.89
+Batch: 160; loss: 0.6; acc: 0.84
+Batch: 180; loss: 0.57; acc: 0.84
+Batch: 200; loss: 0.59; acc: 0.86
+Batch: 220; loss: 0.44; acc: 0.81
+Batch: 240; loss: 0.85; acc: 0.81
+Batch: 260; loss: 0.44; acc: 0.81
+Batch: 280; loss: 0.72; acc: 0.84
+Batch: 300; loss: 0.81; acc: 0.77
+Batch: 320; loss: 0.79; acc: 0.75
+Batch: 340; loss: 0.33; acc: 0.89
+Batch: 360; loss: 0.4; acc: 0.91
+Batch: 380; loss: 0.67; acc: 0.81
+Batch: 400; loss: 0.5; acc: 0.86
+Batch: 420; loss: 0.66; acc: 0.8
+Batch: 440; loss: 0.96; acc: 0.77
+Batch: 460; loss: 0.68; acc: 0.81
+Batch: 480; loss: 0.53; acc: 0.91
+Batch: 500; loss: 0.9; acc: 0.77
+Batch: 520; loss: 0.81; acc: 0.81
+Batch: 540; loss: 0.53; acc: 0.81
+Batch: 560; loss: 0.97; acc: 0.75
+Batch: 580; loss: 0.58; acc: 0.84
+Batch: 600; loss: 0.38; acc: 0.86
+Batch: 620; loss: 0.44; acc: 0.89
+Train Epoch over. train_loss: 0.64; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.85; acc: 0.8
+Batch: 20; loss: 1.7; acc: 0.66
+Batch: 40; loss: 0.69; acc: 0.86
+Batch: 60; loss: 0.6; acc: 0.81
+Batch: 80; loss: 0.98; acc: 0.69
+Batch: 100; loss: 1.38; acc: 0.73
+Batch: 120; loss: 0.55; acc: 0.88
+Batch: 140; loss: 1.36; acc: 0.67
+Val Epoch over. val_loss: 0.871414863095162; val_accuracy: 0.7899084394904459 
+
+Epoch 5 start
+Batch: 0; loss: 0.38; acc: 0.86
+Batch: 20; loss: 0.63; acc: 0.78
+Batch: 40; loss: 1.12; acc: 0.77
+Batch: 60; loss: 0.8; acc: 0.75
+Batch: 80; loss: 0.32; acc: 0.91
+Batch: 100; loss: 0.75; acc: 0.81
+Batch: 120; loss: 0.33; acc: 0.89
+Batch: 140; loss: 0.64; acc: 0.8
+Batch: 160; loss: 0.8; acc: 0.8
+Batch: 180; loss: 0.63; acc: 0.88
+Batch: 200; loss: 0.88; acc: 0.75
+Batch: 220; loss: 0.79; acc: 0.78
+Batch: 240; loss: 0.54; acc: 0.86
+Batch: 260; loss: 0.22; acc: 0.94
+Batch: 280; loss: 0.82; acc: 0.8
+Batch: 300; loss: 0.5; acc: 0.83
+Batch: 320; loss: 0.57; acc: 0.83
+Batch: 340; loss: 0.77; acc: 0.77
+Batch: 360; loss: 0.79; acc: 0.86
+Batch: 380; loss: 0.52; acc: 0.86
+Batch: 400; loss: 0.66; acc: 0.84
+Batch: 420; loss: 0.59; acc: 0.84
+Batch: 440; loss: 0.64; acc: 0.81
+Batch: 460; loss: 0.44; acc: 0.94
+Batch: 480; loss: 0.36; acc: 0.83
+Batch: 500; loss: 1.2; acc: 0.7
+Batch: 520; loss: 0.64; acc: 0.8
+Batch: 540; loss: 0.93; acc: 0.78
+Batch: 560; loss: 0.75; acc: 0.81
+Batch: 580; loss: 0.68; acc: 0.84
+Batch: 600; loss: 0.53; acc: 0.81
+Batch: 620; loss: 0.53; acc: 0.91
+Train Epoch over. train_loss: 0.64; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.65; acc: 0.83
+Batch: 20; loss: 0.83; acc: 0.75
+Batch: 40; loss: 0.68; acc: 0.89
+Batch: 60; loss: 0.24; acc: 0.91
+Batch: 80; loss: 0.77; acc: 0.77
+Batch: 100; loss: 0.81; acc: 0.8
+Batch: 120; loss: 0.55; acc: 0.77
+Batch: 140; loss: 1.2; acc: 0.7
+Val Epoch over. val_loss: 0.6190077002830566; val_accuracy: 0.8230493630573248 
+
+Epoch 6 start
+Batch: 0; loss: 0.44; acc: 0.86
+Batch: 20; loss: 0.7; acc: 0.81
+Batch: 40; loss: 0.42; acc: 0.89
+Batch: 60; loss: 0.81; acc: 0.78
+Batch: 80; loss: 0.78; acc: 0.84
+Batch: 100; loss: 0.27; acc: 0.89
+Batch: 120; loss: 0.83; acc: 0.8
+Batch: 140; loss: 0.75; acc: 0.78
+Batch: 160; loss: 0.71; acc: 0.83
+Batch: 180; loss: 0.49; acc: 0.86
+Batch: 200; loss: 0.55; acc: 0.88
+Batch: 220; loss: 0.41; acc: 0.88
+Batch: 240; loss: 0.83; acc: 0.8
+Batch: 260; loss: 0.77; acc: 0.73
+Batch: 280; loss: 0.64; acc: 0.81
+Batch: 300; loss: 0.79; acc: 0.78
+Batch: 320; loss: 0.68; acc: 0.81
+Batch: 340; loss: 0.63; acc: 0.77
+Batch: 360; loss: 0.71; acc: 0.77
+Batch: 380; loss: 0.45; acc: 0.78
+Batch: 400; loss: 0.44; acc: 0.84
+Batch: 420; loss: 0.47; acc: 0.84
+Batch: 440; loss: 0.47; acc: 0.88
+Batch: 460; loss: 0.7; acc: 0.81
+Batch: 480; loss: 0.49; acc: 0.88
+Batch: 500; loss: 0.41; acc: 0.89
+Batch: 520; loss: 0.76; acc: 0.8
+Batch: 540; loss: 0.63; acc: 0.8
+Batch: 560; loss: 0.63; acc: 0.84
+Batch: 580; loss: 1.12; acc: 0.78
+Batch: 600; loss: 0.42; acc: 0.88
+Batch: 620; loss: 0.59; acc: 0.88
+Train Epoch over. train_loss: 0.63; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.75; acc: 0.86
+Batch: 20; loss: 1.34; acc: 0.69
+Batch: 40; loss: 0.61; acc: 0.83
+Batch: 60; loss: 0.36; acc: 0.86
+Batch: 80; loss: 0.76; acc: 0.77
+Batch: 100; loss: 0.85; acc: 0.78
+Batch: 120; loss: 0.55; acc: 0.81
+Batch: 140; loss: 1.08; acc: 0.73
+Val Epoch over. val_loss: 0.6711102920542856; val_accuracy: 0.818968949044586 
+
+Epoch 7 start
+Batch: 0; loss: 0.46; acc: 0.92
+Batch: 20; loss: 0.61; acc: 0.77
+Batch: 40; loss: 1.04; acc: 0.78
+Batch: 60; loss: 0.27; acc: 0.91
+Batch: 80; loss: 0.35; acc: 0.89
+Batch: 100; loss: 0.26; acc: 0.94
+Batch: 120; loss: 0.84; acc: 0.8
+Batch: 140; loss: 0.9; acc: 0.78
+Batch: 160; loss: 0.73; acc: 0.84
+Batch: 180; loss: 0.45; acc: 0.91
+Batch: 200; loss: 0.61; acc: 0.84
+Batch: 220; loss: 0.8; acc: 0.83
+Batch: 240; loss: 0.82; acc: 0.83
+Batch: 260; loss: 0.47; acc: 0.89
+Batch: 280; loss: 0.42; acc: 0.78
+Batch: 300; loss: 0.91; acc: 0.81
+Batch: 320; loss: 0.63; acc: 0.84
+Batch: 340; loss: 0.77; acc: 0.81
+Batch: 360; loss: 0.37; acc: 0.88
+Batch: 380; loss: 0.38; acc: 0.86
+Batch: 400; loss: 0.58; acc: 0.81
+Batch: 420; loss: 0.44; acc: 0.86
+Batch: 440; loss: 0.26; acc: 0.89
+Batch: 460; loss: 0.94; acc: 0.75
+Batch: 480; loss: 0.95; acc: 0.83
+Batch: 500; loss: 0.44; acc: 0.86
+Batch: 520; loss: 0.85; acc: 0.75
+Batch: 540; loss: 0.46; acc: 0.91
+Batch: 560; loss: 0.39; acc: 0.88
+Batch: 580; loss: 0.68; acc: 0.91
+Batch: 600; loss: 0.45; acc: 0.84
+Batch: 620; loss: 0.61; acc: 0.84
+Train Epoch over. train_loss: 0.62; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.67; acc: 0.84
+Batch: 20; loss: 1.07; acc: 0.72
+Batch: 40; loss: 0.57; acc: 0.86
+Batch: 60; loss: 0.32; acc: 0.92
+Batch: 80; loss: 0.78; acc: 0.8
+Batch: 100; loss: 0.87; acc: 0.81
+Batch: 120; loss: 0.46; acc: 0.84
+Batch: 140; loss: 0.94; acc: 0.78
+Val Epoch over. val_loss: 0.6333288500073609; val_accuracy: 0.8370820063694268 
+
+Epoch 8 start
+Batch: 0; loss: 0.6; acc: 0.83
+Batch: 20; loss: 0.36; acc: 0.88
+Batch: 40; loss: 0.83; acc: 0.81
+Batch: 60; loss: 0.45; acc: 0.88
+Batch: 80; loss: 0.72; acc: 0.8
+Batch: 100; loss: 0.83; acc: 0.86
+Batch: 120; loss: 0.55; acc: 0.8
+Batch: 140; loss: 0.34; acc: 0.88
+Batch: 160; loss: 0.52; acc: 0.88
+Batch: 180; loss: 0.72; acc: 0.86
+Batch: 200; loss: 0.78; acc: 0.83
+Batch: 220; loss: 0.52; acc: 0.84
+Batch: 240; loss: 0.96; acc: 0.88
+Batch: 260; loss: 0.25; acc: 0.94
+Batch: 280; loss: 0.35; acc: 0.92
+Batch: 300; loss: 0.34; acc: 0.89
+Batch: 320; loss: 0.51; acc: 0.88
+Batch: 340; loss: 0.51; acc: 0.89
+Batch: 360; loss: 0.45; acc: 0.88
+Batch: 380; loss: 0.43; acc: 0.83
+Batch: 400; loss: 0.75; acc: 0.8
+Batch: 420; loss: 0.42; acc: 0.86
+Batch: 440; loss: 0.65; acc: 0.84
+Batch: 460; loss: 0.56; acc: 0.83
+Batch: 480; loss: 0.58; acc: 0.81
+Batch: 500; loss: 0.56; acc: 0.84
+Batch: 520; loss: 0.3; acc: 0.89
+Batch: 540; loss: 1.08; acc: 0.77
+Batch: 560; loss: 0.15; acc: 0.98
+Batch: 580; loss: 0.34; acc: 0.88
+Batch: 600; loss: 0.4; acc: 0.91
+Batch: 620; loss: 0.75; acc: 0.81
+Train Epoch over. train_loss: 0.62; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.67; acc: 0.84
+Batch: 20; loss: 1.14; acc: 0.77
+Batch: 40; loss: 0.47; acc: 0.88
+Batch: 60; loss: 0.29; acc: 0.94
+Batch: 80; loss: 0.6; acc: 0.81
+Batch: 100; loss: 0.84; acc: 0.78
+Batch: 120; loss: 0.55; acc: 0.84
+Batch: 140; loss: 1.3; acc: 0.73
+Val Epoch over. val_loss: 0.6170747478486626; val_accuracy: 0.8366839171974523 
+
+Epoch 9 start
+Batch: 0; loss: 0.52; acc: 0.91
+Batch: 20; loss: 0.69; acc: 0.86
+Batch: 40; loss: 0.83; acc: 0.81
+Batch: 60; loss: 0.36; acc: 0.84
+Batch: 80; loss: 0.37; acc: 0.88
+Batch: 100; loss: 0.89; acc: 0.77
+Batch: 120; loss: 0.36; acc: 0.89
+Batch: 140; loss: 0.77; acc: 0.77
+Batch: 160; loss: 0.62; acc: 0.88
+Batch: 180; loss: 0.58; acc: 0.83
+Batch: 200; loss: 0.65; acc: 0.84
+Batch: 220; loss: 0.53; acc: 0.81
+Batch: 240; loss: 0.87; acc: 0.78
+Batch: 260; loss: 0.56; acc: 0.91
+Batch: 280; loss: 0.61; acc: 0.81
+Batch: 300; loss: 1.03; acc: 0.77
+Batch: 320; loss: 0.53; acc: 0.81
+Batch: 340; loss: 0.55; acc: 0.84
+Batch: 360; loss: 0.83; acc: 0.73
+Batch: 380; loss: 0.65; acc: 0.86
+Batch: 400; loss: 0.68; acc: 0.81
+Batch: 420; loss: 0.73; acc: 0.78
+Batch: 440; loss: 0.68; acc: 0.84
+Batch: 460; loss: 0.35; acc: 0.88
+Batch: 480; loss: 0.43; acc: 0.86
+Batch: 500; loss: 0.78; acc: 0.77
+Batch: 520; loss: 0.52; acc: 0.89
+Batch: 540; loss: 0.45; acc: 0.81
+Batch: 560; loss: 0.52; acc: 0.84
+Batch: 580; loss: 0.5; acc: 0.8
+Batch: 600; loss: 0.98; acc: 0.83
+Batch: 620; loss: 0.86; acc: 0.8
+Train Epoch over. train_loss: 0.62; train_accuracy: 0.84 
+
+Batch: 0; loss: 0.56; acc: 0.86
+Batch: 20; loss: 0.91; acc: 0.75
+Batch: 40; loss: 0.51; acc: 0.89
+Batch: 60; loss: 0.35; acc: 0.92
+Batch: 80; loss: 0.56; acc: 0.84
+Batch: 100; loss: 0.86; acc: 0.8
+Batch: 120; loss: 0.64; acc: 0.78
+Batch: 140; loss: 1.32; acc: 0.69
+Val Epoch over. val_loss: 0.6289064981945002; val_accuracy: 0.8358877388535032 
+
+Epoch 10 start
+Batch: 0; loss: 0.46; acc: 0.84
+Batch: 20; loss: 0.24; acc: 0.92
+Batch: 40; loss: 0.51; acc: 0.78
+Batch: 60; loss: 0.7; acc: 0.86
+Batch: 80; loss: 0.46; acc: 0.84
+Batch: 100; loss: 0.58; acc: 0.84
+Batch: 120; loss: 0.35; acc: 0.91
+Batch: 140; loss: 0.8; acc: 0.75
+Batch: 160; loss: 0.7; acc: 0.83
+Batch: 180; loss: 0.68; acc: 0.86
+Batch: 200; loss: 0.38; acc: 0.91
+Batch: 220; loss: 0.68; acc: 0.77
+Batch: 240; loss: 0.76; acc: 0.81
+Batch: 260; loss: 0.59; acc: 0.84
+Batch: 280; loss: 0.84; acc: 0.8
+Batch: 300; loss: 0.38; acc: 0.84
+Batch: 320; loss: 0.54; acc: 0.84
+Batch: 340; loss: 0.41; acc: 0.88
+Batch: 360; loss: 0.58; acc: 0.86
+Batch: 380; loss: 0.95; acc: 0.8
+Batch: 400; loss: 0.23; acc: 0.89
+Batch: 420; loss: 0.59; acc: 0.84
+Batch: 440; loss: 0.47; acc: 0.83
+Batch: 460; loss: 1.25; acc: 0.77
+Batch: 480; loss: 0.64; acc: 0.81
+Batch: 500; loss: 0.36; acc: 0.89
+Batch: 520; loss: 1.03; acc: 0.8
+Batch: 540; loss: 0.72; acc: 0.81
+Batch: 560; loss: 0.53; acc: 0.88
+Batch: 580; loss: 0.49; acc: 0.88
+Batch: 600; loss: 0.69; acc: 0.84
+Batch: 620; loss: 0.61; acc: 0.81
+Train Epoch over. train_loss: 0.62; train_accuracy: 0.83 
+
+Batch: 0; loss: 0.63; acc: 0.83
+Batch: 20; loss: 1.24; acc: 0.7
+Batch: 40; loss: 0.71; acc: 0.88
+Batch: 60; loss: 0.33; acc: 0.91
+Batch: 80; loss: 0.86; acc: 0.75
+Batch: 100; loss: 0.9; acc: 0.78
+Batch: 120; loss: 0.58; acc: 0.83
+Batch: 140; loss: 1.16; acc: 0.69
+Val Epoch over. val_loss: 0.6600300055590405; val_accuracy: 0.8255374203821656 
+
+plots/subspace_True_d_dim_300_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:11:39.411052
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 1.74; acc: 0.39
+Batch: 40; loss: 1.4; acc: 0.62
+Batch: 60; loss: 1.38; acc: 0.58
+Batch: 80; loss: 1.02; acc: 0.62
+Batch: 100; loss: 1.07; acc: 0.72
+Batch: 120; loss: 0.97; acc: 0.64
+Batch: 140; loss: 1.07; acc: 0.67
+Batch: 160; loss: 1.17; acc: 0.69
+Batch: 180; loss: 1.03; acc: 0.66
+Batch: 200; loss: 0.61; acc: 0.84
+Batch: 220; loss: 0.72; acc: 0.81
+Batch: 240; loss: 0.86; acc: 0.77
+Batch: 260; loss: 1.32; acc: 0.64
+Batch: 280; loss: 0.76; acc: 0.77
+Batch: 300; loss: 0.91; acc: 0.73
+Batch: 320; loss: 0.51; acc: 0.83
+Batch: 340; loss: 0.73; acc: 0.77
+Batch: 360; loss: 0.4; acc: 0.88
+Batch: 380; loss: 0.88; acc: 0.73
+Batch: 400; loss: 0.75; acc: 0.75
+Batch: 420; loss: 0.71; acc: 0.77
+Batch: 440; loss: 0.75; acc: 0.81
+Batch: 460; loss: 0.61; acc: 0.84
+Batch: 480; loss: 0.51; acc: 0.86
+Batch: 500; loss: 1.04; acc: 0.73
+Batch: 520; loss: 0.83; acc: 0.78
+Batch: 540; loss: 0.33; acc: 0.89
+Batch: 560; loss: 0.54; acc: 0.83
+Batch: 580; loss: 0.37; acc: 0.83
+Batch: 600; loss: 0.47; acc: 0.84
+Batch: 620; loss: 0.84; acc: 0.81
+Train Epoch over. train_loss: 0.96; train_accuracy: 0.73 
+
+Batch: 0; loss: 0.88; acc: 0.8
+Batch: 20; loss: 1.71; acc: 0.67
+Batch: 40; loss: 0.65; acc: 0.77
+Batch: 60; loss: 0.72; acc: 0.75
+Batch: 80; loss: 1.05; acc: 0.83
+Batch: 100; loss: 0.93; acc: 0.77
+Batch: 120; loss: 0.8; acc: 0.78
+Batch: 140; loss: 1.49; acc: 0.69
+Val Epoch over. val_loss: 0.7977648527379249; val_accuracy: 0.7851313694267515 
+
+Epoch 2 start
+Batch: 0; loss: 0.98; acc: 0.78
+Batch: 20; loss: 0.74; acc: 0.8
+Batch: 40; loss: 0.71; acc: 0.77
+Batch: 60; loss: 0.59; acc: 0.81
+Batch: 80; loss: 0.33; acc: 0.88
+Batch: 100; loss: 0.89; acc: 0.8
+Batch: 120; loss: 0.56; acc: 0.83
+Batch: 140; loss: 0.49; acc: 0.83
+Batch: 160; loss: 0.54; acc: 0.83
+Batch: 180; loss: 0.56; acc: 0.86
+Batch: 200; loss: 0.65; acc: 0.83
+Batch: 220; loss: 0.28; acc: 0.92
+Batch: 240; loss: 0.52; acc: 0.83
+Batch: 260; loss: 0.9; acc: 0.8
+Batch: 280; loss: 0.37; acc: 0.91
+Batch: 300; loss: 0.89; acc: 0.81
+Batch: 320; loss: 0.46; acc: 0.86
+Batch: 340; loss: 0.67; acc: 0.81
+Batch: 360; loss: 0.89; acc: 0.84
+Batch: 380; loss: 0.76; acc: 0.81
+Batch: 400; loss: 0.86; acc: 0.77
+Batch: 420; loss: 0.73; acc: 0.83
+Batch: 440; loss: 0.45; acc: 0.88
+Batch: 460; loss: 0.98; acc: 0.84
+Batch: 480; loss: 0.46; acc: 0.91
+Batch: 500; loss: 0.66; acc: 0.84
+Batch: 520; loss: 0.5; acc: 0.84
+Batch: 540; loss: 0.41; acc: 0.88
+Batch: 560; loss: 0.59; acc: 0.88
+Batch: 580; loss: 0.54; acc: 0.83
+Batch: 600; loss: 0.57; acc: 0.89
+Batch: 620; loss: 0.8; acc: 0.84
+Train Epoch over. train_loss: 0.56; train_accuracy: 0.84 
+
+Batch: 0; loss: 0.5; acc: 0.86
+Batch: 20; loss: 0.63; acc: 0.81
+Batch: 40; loss: 0.39; acc: 0.89
+Batch: 60; loss: 0.34; acc: 0.91
+Batch: 80; loss: 0.69; acc: 0.84
+Batch: 100; loss: 0.64; acc: 0.81
+Batch: 120; loss: 0.47; acc: 0.91
+Batch: 140; loss: 1.03; acc: 0.77
+Val Epoch over. val_loss: 0.5060982446002352; val_accuracy: 0.8597730891719745 
+
+Epoch 3 start
+Batch: 0; loss: 0.37; acc: 0.89
+Batch: 20; loss: 0.72; acc: 0.73
+Batch: 40; loss: 0.33; acc: 0.89
+Batch: 60; loss: 0.55; acc: 0.86
+Batch: 80; loss: 0.78; acc: 0.88
+Batch: 100; loss: 0.73; acc: 0.83
+Batch: 120; loss: 0.58; acc: 0.81
+Batch: 140; loss: 0.61; acc: 0.81
+Batch: 160; loss: 0.48; acc: 0.88
+Batch: 180; loss: 0.52; acc: 0.83
+Batch: 200; loss: 0.64; acc: 0.89
+Batch: 220; loss: 1.11; acc: 0.81
+Batch: 240; loss: 0.71; acc: 0.83
+Batch: 260; loss: 0.62; acc: 0.75
+Batch: 280; loss: 0.48; acc: 0.77
+Batch: 300; loss: 0.16; acc: 0.95
+Batch: 320; loss: 0.82; acc: 0.81
+Batch: 340; loss: 0.38; acc: 0.88
+Batch: 360; loss: 0.52; acc: 0.86
+Batch: 380; loss: 0.37; acc: 0.91
+Batch: 400; loss: 1.17; acc: 0.75
+Batch: 420; loss: 0.89; acc: 0.78
+Batch: 440; loss: 0.26; acc: 0.91
+Batch: 460; loss: 0.57; acc: 0.86
+Batch: 480; loss: 0.97; acc: 0.78
+Batch: 500; loss: 0.39; acc: 0.88
+Batch: 520; loss: 0.25; acc: 0.91
+Batch: 540; loss: 0.15; acc: 0.92
+Batch: 560; loss: 0.55; acc: 0.88
+Batch: 580; loss: 0.45; acc: 0.89
+Batch: 600; loss: 0.18; acc: 0.97
+Batch: 620; loss: 0.29; acc: 0.89
+Train Epoch over. train_loss: 0.52; train_accuracy: 0.86 
+
+Batch: 0; loss: 0.43; acc: 0.86
+Batch: 20; loss: 0.5; acc: 0.83
+Batch: 40; loss: 0.34; acc: 0.94
+Batch: 60; loss: 0.41; acc: 0.86
+Batch: 80; loss: 0.32; acc: 0.91
+Batch: 100; loss: 0.55; acc: 0.86
+Batch: 120; loss: 0.55; acc: 0.89
+Batch: 140; loss: 1.01; acc: 0.78
+Val Epoch over. val_loss: 0.5169427186535422; val_accuracy: 0.8534036624203821 
+
+Epoch 4 start
+Batch: 0; loss: 0.24; acc: 0.94
+Batch: 20; loss: 1.12; acc: 0.8
+Batch: 40; loss: 0.26; acc: 0.91
+Batch: 60; loss: 0.73; acc: 0.81
+Batch: 80; loss: 0.26; acc: 0.92
+Batch: 100; loss: 0.5; acc: 0.86
+Batch: 120; loss: 0.33; acc: 0.97
+Batch: 140; loss: 0.27; acc: 0.91
+Batch: 160; loss: 0.32; acc: 0.91
+Batch: 180; loss: 0.25; acc: 0.89
+Batch: 200; loss: 0.54; acc: 0.8
+Batch: 220; loss: 0.38; acc: 0.88
+Batch: 240; loss: 0.78; acc: 0.81
+Batch: 260; loss: 0.53; acc: 0.83
+Batch: 280; loss: 0.42; acc: 0.86
+Batch: 300; loss: 0.45; acc: 0.86
+Batch: 320; loss: 0.4; acc: 0.89
+Batch: 340; loss: 0.31; acc: 0.84
+Batch: 360; loss: 0.47; acc: 0.91
+Batch: 380; loss: 0.55; acc: 0.83
+Batch: 400; loss: 0.43; acc: 0.89
+Batch: 420; loss: 0.56; acc: 0.8
+Batch: 440; loss: 0.36; acc: 0.89
+Batch: 460; loss: 0.67; acc: 0.8
+Batch: 480; loss: 0.55; acc: 0.84
+Batch: 500; loss: 0.48; acc: 0.84
+Batch: 520; loss: 0.73; acc: 0.81
+Batch: 540; loss: 0.21; acc: 0.91
+Batch: 560; loss: 0.46; acc: 0.84
+Batch: 580; loss: 0.43; acc: 0.83
+Batch: 600; loss: 0.24; acc: 0.92
+Batch: 620; loss: 0.34; acc: 0.88
+Train Epoch over. train_loss: 0.5; train_accuracy: 0.86 
+
+Batch: 0; loss: 0.26; acc: 0.88
+Batch: 20; loss: 0.62; acc: 0.81
+Batch: 40; loss: 0.31; acc: 0.94
+Batch: 60; loss: 0.53; acc: 0.8
+Batch: 80; loss: 0.39; acc: 0.89
+Batch: 100; loss: 0.61; acc: 0.86
+Batch: 120; loss: 0.45; acc: 0.91
+Batch: 140; loss: 0.87; acc: 0.83
+Val Epoch over. val_loss: 0.60031144330456; val_accuracy: 0.8355891719745223 
+
+Epoch 5 start
+Batch: 0; loss: 0.51; acc: 0.88
+Batch: 20; loss: 0.61; acc: 0.81
+Batch: 40; loss: 0.61; acc: 0.84
+Batch: 60; loss: 0.58; acc: 0.86
+Batch: 80; loss: 0.47; acc: 0.84
+Batch: 100; loss: 0.32; acc: 0.89
+Batch: 120; loss: 0.22; acc: 0.89
+Batch: 140; loss: 0.43; acc: 0.92
+Batch: 160; loss: 0.7; acc: 0.81
+Batch: 180; loss: 0.45; acc: 0.86
+Batch: 200; loss: 0.59; acc: 0.84
+Batch: 220; loss: 0.53; acc: 0.86
+Batch: 240; loss: 0.76; acc: 0.83
+Batch: 260; loss: 0.66; acc: 0.86
+Batch: 280; loss: 0.42; acc: 0.92
+Batch: 300; loss: 0.54; acc: 0.91
+Batch: 320; loss: 0.86; acc: 0.84
+Batch: 340; loss: 0.91; acc: 0.8
+Batch: 360; loss: 0.29; acc: 0.89
+Batch: 380; loss: 0.69; acc: 0.84
+Batch: 400; loss: 0.48; acc: 0.86
+Batch: 420; loss: 0.36; acc: 0.91
+Batch: 440; loss: 0.21; acc: 0.92
+Batch: 460; loss: 0.72; acc: 0.8
+Batch: 480; loss: 0.43; acc: 0.86
+Batch: 500; loss: 1.01; acc: 0.83
+Batch: 520; loss: 0.22; acc: 0.91
+Batch: 540; loss: 0.38; acc: 0.84
+Batch: 560; loss: 0.54; acc: 0.89
+Batch: 580; loss: 0.42; acc: 0.86
+Batch: 600; loss: 0.36; acc: 0.86
+Batch: 620; loss: 0.69; acc: 0.84
+Train Epoch over. train_loss: 0.49; train_accuracy: 0.86 
+
+Batch: 0; loss: 0.15; acc: 0.92
+Batch: 20; loss: 0.68; acc: 0.78
+Batch: 40; loss: 0.32; acc: 0.91
+Batch: 60; loss: 0.29; acc: 0.91
+Batch: 80; loss: 0.51; acc: 0.89
+Batch: 100; loss: 0.43; acc: 0.92
+Batch: 120; loss: 0.42; acc: 0.91
+Batch: 140; loss: 0.96; acc: 0.81
+Val Epoch over. val_loss: 0.4541818977446313; val_accuracy: 0.8692277070063694 
+
+Epoch 6 start
+Batch: 0; loss: 0.31; acc: 0.89
+Batch: 20; loss: 0.49; acc: 0.88
+Batch: 40; loss: 0.34; acc: 0.91
+Batch: 60; loss: 0.79; acc: 0.8
+Batch: 80; loss: 1.07; acc: 0.78
+Batch: 100; loss: 0.44; acc: 0.83
+Batch: 120; loss: 0.67; acc: 0.83
+Batch: 140; loss: 0.82; acc: 0.81
+Batch: 160; loss: 0.46; acc: 0.86
+Batch: 180; loss: 0.21; acc: 0.95
+Batch: 200; loss: 0.39; acc: 0.88
+Batch: 220; loss: 0.4; acc: 0.89
+Batch: 240; loss: 0.63; acc: 0.81
+Batch: 260; loss: 0.61; acc: 0.84
+Batch: 280; loss: 0.38; acc: 0.88
+Batch: 300; loss: 0.18; acc: 0.94
+Batch: 320; loss: 0.42; acc: 0.86
+Batch: 340; loss: 0.74; acc: 0.8
+Batch: 360; loss: 0.12; acc: 0.97
+Batch: 380; loss: 0.49; acc: 0.83
+Batch: 400; loss: 0.39; acc: 0.91
+Batch: 420; loss: 0.33; acc: 0.91
+Batch: 440; loss: 0.45; acc: 0.83
+Batch: 460; loss: 0.85; acc: 0.8
+Batch: 480; loss: 0.33; acc: 0.92
+Batch: 500; loss: 0.39; acc: 0.86
+Batch: 520; loss: 0.59; acc: 0.83
+Batch: 540; loss: 0.49; acc: 0.84
+Batch: 560; loss: 0.38; acc: 0.91
+Batch: 580; loss: 0.65; acc: 0.84
+Batch: 600; loss: 0.53; acc: 0.78
+Batch: 620; loss: 0.53; acc: 0.86
+Train Epoch over. train_loss: 0.47; train_accuracy: 0.87 
+
+Batch: 0; loss: 0.24; acc: 0.92
+Batch: 20; loss: 0.74; acc: 0.78
+Batch: 40; loss: 0.36; acc: 0.88
+Batch: 60; loss: 0.32; acc: 0.89
+Batch: 80; loss: 0.56; acc: 0.86
+Batch: 100; loss: 0.65; acc: 0.84
+Batch: 120; loss: 0.35; acc: 0.89
+Batch: 140; loss: 1.01; acc: 0.81
+Val Epoch over. val_loss: 0.45453501962552406; val_accuracy: 0.8673367834394905 
+
+Epoch 7 start
+Batch: 0; loss: 0.4; acc: 0.89
+Batch: 20; loss: 0.38; acc: 0.88
+Batch: 40; loss: 0.48; acc: 0.81
+Batch: 60; loss: 0.5; acc: 0.86
+Batch: 80; loss: 0.26; acc: 0.92
+Batch: 100; loss: 0.24; acc: 0.92
+Batch: 120; loss: 0.47; acc: 0.86
+Batch: 140; loss: 0.52; acc: 0.84
+Batch: 160; loss: 0.87; acc: 0.84
+Batch: 180; loss: 0.49; acc: 0.89
+Batch: 200; loss: 0.36; acc: 0.92
+Batch: 220; loss: 0.5; acc: 0.86
+Batch: 240; loss: 0.55; acc: 0.88
+Batch: 260; loss: 0.33; acc: 0.89
+Batch: 280; loss: 0.42; acc: 0.88
+Batch: 300; loss: 0.58; acc: 0.83
+Batch: 320; loss: 0.42; acc: 0.88
+Batch: 340; loss: 0.49; acc: 0.89
+Batch: 360; loss: 0.66; acc: 0.84
+Batch: 380; loss: 0.28; acc: 0.88
+Batch: 400; loss: 0.3; acc: 0.94
+Batch: 420; loss: 0.15; acc: 0.95
+Batch: 440; loss: 0.38; acc: 0.86
+Batch: 460; loss: 0.78; acc: 0.8
+Batch: 480; loss: 0.7; acc: 0.86
+Batch: 500; loss: 0.45; acc: 0.86
+Batch: 520; loss: 0.5; acc: 0.88
+Batch: 540; loss: 0.67; acc: 0.86
+Batch: 560; loss: 0.36; acc: 0.88
+Batch: 580; loss: 0.31; acc: 0.88
+Batch: 600; loss: 0.39; acc: 0.86
+Batch: 620; loss: 0.54; acc: 0.86
+Train Epoch over. train_loss: 0.46; train_accuracy: 0.87 
+
+Batch: 0; loss: 0.28; acc: 0.94
+Batch: 20; loss: 0.78; acc: 0.83
+Batch: 40; loss: 0.17; acc: 0.95
+Batch: 60; loss: 0.41; acc: 0.88
+Batch: 80; loss: 0.71; acc: 0.86
+Batch: 100; loss: 0.55; acc: 0.91
+Batch: 120; loss: 0.55; acc: 0.84
+Batch: 140; loss: 1.27; acc: 0.72
+Val Epoch over. val_loss: 0.5347501586197289; val_accuracy: 0.8500199044585988 
+
+Epoch 8 start
+Batch: 0; loss: 0.64; acc: 0.81
+Batch: 20; loss: 0.64; acc: 0.86
+Batch: 40; loss: 0.35; acc: 0.89
+Batch: 60; loss: 0.27; acc: 0.92
+Batch: 80; loss: 0.84; acc: 0.81
+Batch: 100; loss: 0.62; acc: 0.84
+Batch: 120; loss: 0.75; acc: 0.81
+Batch: 140; loss: 0.22; acc: 0.89
+Batch: 160; loss: 0.25; acc: 0.91
+Batch: 180; loss: 0.72; acc: 0.8
+Batch: 200; loss: 0.35; acc: 0.88
+Batch: 220; loss: 0.46; acc: 0.86
+Batch: 240; loss: 0.69; acc: 0.86
+Batch: 260; loss: 0.31; acc: 0.91
+Batch: 280; loss: 0.56; acc: 0.84
+Batch: 300; loss: 0.35; acc: 0.92
+Batch: 320; loss: 0.27; acc: 0.88
+Batch: 340; loss: 0.5; acc: 0.88
+Batch: 360; loss: 0.46; acc: 0.89
+Batch: 380; loss: 0.5; acc: 0.86
+Batch: 400; loss: 0.39; acc: 0.89
+Batch: 420; loss: 0.61; acc: 0.84
+Batch: 440; loss: 0.66; acc: 0.88
+Batch: 460; loss: 0.18; acc: 0.91
+Batch: 480; loss: 0.6; acc: 0.84
+Batch: 500; loss: 0.25; acc: 0.92
+Batch: 520; loss: 0.2; acc: 0.94
+Batch: 540; loss: 0.6; acc: 0.81
+Batch: 560; loss: 0.41; acc: 0.91
+Batch: 580; loss: 0.33; acc: 0.91
+Batch: 600; loss: 0.4; acc: 0.89
+Batch: 620; loss: 0.45; acc: 0.84
+Train Epoch over. train_loss: 0.46; train_accuracy: 0.87 
+
+Batch: 0; loss: 0.25; acc: 0.94
+Batch: 20; loss: 0.65; acc: 0.81
+Batch: 40; loss: 0.25; acc: 0.92
+Batch: 60; loss: 0.32; acc: 0.89
+Batch: 80; loss: 0.5; acc: 0.8
+Batch: 100; loss: 0.74; acc: 0.86
+Batch: 120; loss: 0.48; acc: 0.89
+Batch: 140; loss: 1.15; acc: 0.75
+Val Epoch over. val_loss: 0.48372051143532346; val_accuracy: 0.8675358280254777 
+
+Epoch 9 start
+Batch: 0; loss: 0.36; acc: 0.88
+Batch: 20; loss: 0.56; acc: 0.86
+Batch: 40; loss: 0.55; acc: 0.86
+Batch: 60; loss: 0.39; acc: 0.89
+Batch: 80; loss: 0.26; acc: 0.92
+Batch: 100; loss: 0.34; acc: 0.88
+Batch: 120; loss: 0.45; acc: 0.89
+Batch: 140; loss: 0.35; acc: 0.91
+Batch: 160; loss: 0.56; acc: 0.8
+Batch: 180; loss: 0.52; acc: 0.84
+Batch: 200; loss: 0.49; acc: 0.86
+Batch: 220; loss: 0.58; acc: 0.88
+Batch: 240; loss: 0.63; acc: 0.88
+Batch: 260; loss: 0.6; acc: 0.84
+Batch: 280; loss: 0.56; acc: 0.84
+Batch: 300; loss: 0.59; acc: 0.83
+Batch: 320; loss: 0.37; acc: 0.88
+Batch: 340; loss: 0.71; acc: 0.84
+Batch: 360; loss: 0.65; acc: 0.88
+Batch: 380; loss: 0.5; acc: 0.84
+Batch: 400; loss: 0.37; acc: 0.88
+Batch: 420; loss: 0.61; acc: 0.86
+Batch: 440; loss: 0.21; acc: 0.92
+Batch: 460; loss: 0.43; acc: 0.92
+Batch: 480; loss: 0.29; acc: 0.92
+Batch: 500; loss: 0.42; acc: 0.88
+Batch: 520; loss: 0.47; acc: 0.86
+Batch: 540; loss: 0.28; acc: 0.89
+Batch: 560; loss: 0.67; acc: 0.75
+Batch: 580; loss: 0.49; acc: 0.89
+Batch: 600; loss: 0.31; acc: 0.94
+Batch: 620; loss: 0.57; acc: 0.88
+Train Epoch over. train_loss: 0.44; train_accuracy: 0.88 
+
+Batch: 0; loss: 0.26; acc: 0.94
+Batch: 20; loss: 0.57; acc: 0.86
+Batch: 40; loss: 0.23; acc: 0.92
+Batch: 60; loss: 0.37; acc: 0.88
+Batch: 80; loss: 0.47; acc: 0.92
+Batch: 100; loss: 0.69; acc: 0.86
+Batch: 120; loss: 0.59; acc: 0.89
+Batch: 140; loss: 1.0; acc: 0.77
+Val Epoch over. val_loss: 0.4568411682251912; val_accuracy: 0.8764928343949044 
+
+Epoch 10 start
+Batch: 0; loss: 0.41; acc: 0.91
+Batch: 20; loss: 0.43; acc: 0.88
+Batch: 40; loss: 0.31; acc: 0.86
+Batch: 60; loss: 0.64; acc: 0.91
+Batch: 80; loss: 0.29; acc: 0.91
+Batch: 100; loss: 0.33; acc: 0.89
+Batch: 120; loss: 0.46; acc: 0.88
+Batch: 140; loss: 0.89; acc: 0.78
+Batch: 160; loss: 0.46; acc: 0.91
+Batch: 180; loss: 0.67; acc: 0.88
+Batch: 200; loss: 0.66; acc: 0.84
+Batch: 220; loss: 0.19; acc: 0.95
+Batch: 240; loss: 0.5; acc: 0.89
+Batch: 260; loss: 0.43; acc: 0.94
+Batch: 280; loss: 0.64; acc: 0.88
+Batch: 300; loss: 0.4; acc: 0.84
+Batch: 320; loss: 0.36; acc: 0.91
+Batch: 340; loss: 0.15; acc: 0.95
+Batch: 360; loss: 0.7; acc: 0.81
+Batch: 380; loss: 0.39; acc: 0.92
+Batch: 400; loss: 0.07; acc: 0.97
+Batch: 420; loss: 0.85; acc: 0.81
+Batch: 440; loss: 0.43; acc: 0.88
+Batch: 460; loss: 0.37; acc: 0.92
+Batch: 480; loss: 0.45; acc: 0.91
+Batch: 500; loss: 0.21; acc: 0.94
+Batch: 520; loss: 0.49; acc: 0.89
+Batch: 540; loss: 0.23; acc: 0.89
+Batch: 560; loss: 0.68; acc: 0.86
+Batch: 580; loss: 0.21; acc: 0.94
+Batch: 600; loss: 0.36; acc: 0.92
+Batch: 620; loss: 0.41; acc: 0.89
+Train Epoch over. train_loss: 0.44; train_accuracy: 0.88 
+
+Batch: 0; loss: 0.19; acc: 0.94
+Batch: 20; loss: 0.65; acc: 0.84
+Batch: 40; loss: 0.24; acc: 0.92
+Batch: 60; loss: 0.52; acc: 0.83
+Batch: 80; loss: 0.74; acc: 0.8
+Batch: 100; loss: 0.66; acc: 0.89
+Batch: 120; loss: 0.8; acc: 0.86
+Batch: 140; loss: 1.12; acc: 0.72
+Val Epoch over. val_loss: 0.5423484791995613; val_accuracy: 0.845640923566879 
+
+plots/subspace_True_d_dim_400_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:12:35.606008
+Epoch 1 start
+Batch: 0; loss: 18.69; acc: 0.05
+Batch: 20; loss: 1.86; acc: 0.3
+Batch: 40; loss: 1.39; acc: 0.58
+Batch: 60; loss: 1.39; acc: 0.52
+Batch: 80; loss: 1.03; acc: 0.66
+Batch: 100; loss: 0.88; acc: 0.66
+Batch: 120; loss: 1.0; acc: 0.64
+Batch: 140; loss: 0.86; acc: 0.67
+Batch: 160; loss: 0.98; acc: 0.77
+Batch: 180; loss: 0.66; acc: 0.81
+Batch: 200; loss: 0.88; acc: 0.75
+Batch: 220; loss: 0.69; acc: 0.75
+Batch: 240; loss: 0.87; acc: 0.73
+Batch: 260; loss: 1.05; acc: 0.72
+Batch: 280; loss: 0.63; acc: 0.8
+Batch: 300; loss: 0.48; acc: 0.83
+Batch: 320; loss: 0.49; acc: 0.84
+Batch: 340; loss: 0.37; acc: 0.89
+Batch: 360; loss: 0.46; acc: 0.83
+Batch: 380; loss: 0.66; acc: 0.77
+Batch: 400; loss: 0.58; acc: 0.84
+Batch: 420; loss: 0.67; acc: 0.75
+Batch: 440; loss: 0.52; acc: 0.91
+Batch: 460; loss: 0.59; acc: 0.86
+Batch: 480; loss: 0.55; acc: 0.81
+Batch: 500; loss: 0.61; acc: 0.77
+Batch: 520; loss: 0.42; acc: 0.84
+Batch: 540; loss: 0.45; acc: 0.91
+Batch: 560; loss: 0.37; acc: 0.86
+Batch: 580; loss: 0.33; acc: 0.89
+Batch: 600; loss: 0.47; acc: 0.89
+Batch: 620; loss: 0.35; acc: 0.84
+Train Epoch over. train_loss: 0.87; train_accuracy: 0.75 
+
+Batch: 0; loss: 0.32; acc: 0.89
+Batch: 20; loss: 1.06; acc: 0.73
+Batch: 40; loss: 0.23; acc: 0.91
+Batch: 60; loss: 0.62; acc: 0.81
+Batch: 80; loss: 0.69; acc: 0.78
+Batch: 100; loss: 0.66; acc: 0.81
+Batch: 120; loss: 0.77; acc: 0.81
+Batch: 140; loss: 1.11; acc: 0.72
+Val Epoch over. val_loss: 0.5869693879488926; val_accuracy: 0.8226512738853503 
+
+Epoch 2 start
+Batch: 0; loss: 0.71; acc: 0.78
+Batch: 20; loss: 0.49; acc: 0.86
+Batch: 40; loss: 0.67; acc: 0.78
+Batch: 60; loss: 0.37; acc: 0.88
+Batch: 80; loss: 0.64; acc: 0.8
+Batch: 100; loss: 0.56; acc: 0.86
+Batch: 120; loss: 0.46; acc: 0.88
+Batch: 140; loss: 0.54; acc: 0.84
+Batch: 160; loss: 0.55; acc: 0.84
+Batch: 180; loss: 0.45; acc: 0.83
+Batch: 200; loss: 0.84; acc: 0.8
+Batch: 220; loss: 0.24; acc: 0.94
+Batch: 240; loss: 0.5; acc: 0.84
+Batch: 260; loss: 0.4; acc: 0.86
+Batch: 280; loss: 0.52; acc: 0.86
+Batch: 300; loss: 0.7; acc: 0.86
+Batch: 320; loss: 0.37; acc: 0.91
+Batch: 340; loss: 0.44; acc: 0.86
+Batch: 360; loss: 0.72; acc: 0.84
+Batch: 380; loss: 0.26; acc: 0.92
+Batch: 400; loss: 0.57; acc: 0.84
+Batch: 420; loss: 0.48; acc: 0.89
+Batch: 440; loss: 0.45; acc: 0.89
+Batch: 460; loss: 0.42; acc: 0.91
+Batch: 480; loss: 0.33; acc: 0.88
+Batch: 500; loss: 0.51; acc: 0.86
+Batch: 520; loss: 0.3; acc: 0.88
+Batch: 540; loss: 0.3; acc: 0.92
+Batch: 560; loss: 0.83; acc: 0.84
+Batch: 580; loss: 0.29; acc: 0.91
+Batch: 600; loss: 0.52; acc: 0.86
+Batch: 620; loss: 0.67; acc: 0.8
+Train Epoch over. train_loss: 0.48; train_accuracy: 0.86 
+
+Batch: 0; loss: 0.16; acc: 0.94
+Batch: 20; loss: 0.9; acc: 0.77
+Batch: 40; loss: 0.22; acc: 0.95
+Batch: 60; loss: 0.45; acc: 0.94
+Batch: 80; loss: 0.57; acc: 0.88
+Batch: 100; loss: 0.42; acc: 0.81
+Batch: 120; loss: 0.66; acc: 0.81
+Batch: 140; loss: 0.87; acc: 0.81
+Val Epoch over. val_loss: 0.4362816993075951; val_accuracy: 0.8761942675159236 
+
+Epoch 3 start
+Batch: 0; loss: 0.39; acc: 0.91
+Batch: 20; loss: 0.44; acc: 0.83
+Batch: 40; loss: 0.35; acc: 0.92
+Batch: 60; loss: 0.46; acc: 0.91
+Batch: 80; loss: 0.52; acc: 0.81
+Batch: 100; loss: 0.4; acc: 0.88
+Batch: 120; loss: 0.5; acc: 0.81
+Batch: 140; loss: 0.34; acc: 0.86
+Batch: 160; loss: 0.27; acc: 0.91
+Batch: 180; loss: 0.4; acc: 0.83
+Batch: 200; loss: 0.64; acc: 0.86
+Batch: 220; loss: 0.52; acc: 0.84
+Batch: 240; loss: 0.72; acc: 0.78
+Batch: 260; loss: 0.35; acc: 0.83
+Batch: 280; loss: 0.16; acc: 0.97
+Batch: 300; loss: 0.34; acc: 0.89
+Batch: 320; loss: 0.63; acc: 0.81
+Batch: 340; loss: 0.26; acc: 0.92
+Batch: 360; loss: 0.33; acc: 0.89
+Batch: 380; loss: 0.27; acc: 0.92
+Batch: 400; loss: 0.5; acc: 0.86
+Batch: 420; loss: 0.78; acc: 0.73
+Batch: 440; loss: 0.46; acc: 0.91
+Batch: 460; loss: 0.47; acc: 0.84
+Batch: 480; loss: 0.79; acc: 0.77
+Batch: 500; loss: 0.36; acc: 0.89
+Batch: 520; loss: 0.23; acc: 0.94
+Batch: 540; loss: 0.37; acc: 0.89
+Batch: 560; loss: 0.49; acc: 0.88
+Batch: 580; loss: 0.4; acc: 0.83
+Batch: 600; loss: 0.28; acc: 0.92
+Batch: 620; loss: 0.32; acc: 0.91
+Train Epoch over. train_loss: 0.43; train_accuracy: 0.87 
+
+Batch: 0; loss: 0.28; acc: 0.92
+Batch: 20; loss: 0.9; acc: 0.77
+Batch: 40; loss: 0.22; acc: 0.95
+Batch: 60; loss: 0.6; acc: 0.84
+Batch: 80; loss: 0.63; acc: 0.81
+Batch: 100; loss: 0.37; acc: 0.86
+Batch: 120; loss: 0.6; acc: 0.83
+Batch: 140; loss: 0.86; acc: 0.78
+Val Epoch over. val_loss: 0.47874254180462494; val_accuracy: 0.86046974522293 
+
+Epoch 4 start
+Batch: 0; loss: 0.4; acc: 0.83
+Batch: 20; loss: 0.69; acc: 0.88
+Batch: 40; loss: 0.26; acc: 0.92
+Batch: 60; loss: 0.69; acc: 0.86
+Batch: 80; loss: 0.27; acc: 0.94
+Batch: 100; loss: 0.16; acc: 0.95
+Batch: 120; loss: 0.55; acc: 0.84
+Batch: 140; loss: 0.52; acc: 0.86
+Batch: 160; loss: 0.24; acc: 0.92
+Batch: 180; loss: 0.34; acc: 0.86
+Batch: 200; loss: 0.35; acc: 0.88
+Batch: 220; loss: 0.37; acc: 0.89
+Batch: 240; loss: 0.37; acc: 0.88
+Batch: 260; loss: 0.48; acc: 0.83
+Batch: 280; loss: 0.58; acc: 0.86
+Batch: 300; loss: 0.41; acc: 0.91
+Batch: 320; loss: 0.17; acc: 0.94
+Batch: 340; loss: 0.32; acc: 0.94
+Batch: 360; loss: 0.43; acc: 0.86
+Batch: 380; loss: 0.47; acc: 0.88
+Batch: 400; loss: 0.25; acc: 0.94
+Batch: 420; loss: 0.46; acc: 0.88
+Batch: 440; loss: 0.42; acc: 0.89
+Batch: 460; loss: 0.41; acc: 0.88
+Batch: 480; loss: 0.26; acc: 0.94
+Batch: 500; loss: 0.55; acc: 0.84
+Batch: 520; loss: 0.14; acc: 0.94
+Batch: 540; loss: 0.3; acc: 0.88
+Batch: 560; loss: 0.45; acc: 0.83
+Batch: 580; loss: 0.16; acc: 0.95
+Batch: 600; loss: 0.39; acc: 0.89
+Batch: 620; loss: 0.24; acc: 0.91
+Train Epoch over. train_loss: 0.4; train_accuracy: 0.88 
+
+Batch: 0; loss: 0.24; acc: 0.91
+Batch: 20; loss: 0.79; acc: 0.78
+Batch: 40; loss: 0.17; acc: 0.97
+Batch: 60; loss: 0.6; acc: 0.88
+Batch: 80; loss: 0.36; acc: 0.94
+Batch: 100; loss: 0.43; acc: 0.86
+Batch: 120; loss: 0.46; acc: 0.89
+Batch: 140; loss: 0.9; acc: 0.78
+Val Epoch over. val_loss: 0.39954833021968794; val_accuracy: 0.8802746815286624 
+
+Epoch 5 start
+Batch: 0; loss: 0.5; acc: 0.88
+Batch: 20; loss: 0.42; acc: 0.89
+Batch: 40; loss: 0.43; acc: 0.86
+Batch: 60; loss: 0.37; acc: 0.89
+Batch: 80; loss: 0.23; acc: 0.92
+Batch: 100; loss: 0.25; acc: 0.89
+Batch: 120; loss: 0.28; acc: 0.88
+Batch: 140; loss: 0.73; acc: 0.88
+Batch: 160; loss: 0.42; acc: 0.86
+Batch: 180; loss: 0.32; acc: 0.91
+Batch: 200; loss: 0.24; acc: 0.92
+Batch: 220; loss: 0.74; acc: 0.84
+Batch: 240; loss: 0.65; acc: 0.77
+Batch: 260; loss: 0.15; acc: 0.95
+Batch: 280; loss: 0.3; acc: 0.91
+Batch: 300; loss: 0.56; acc: 0.86
+Batch: 320; loss: 0.37; acc: 0.84
+Batch: 340; loss: 0.67; acc: 0.83
+Batch: 360; loss: 0.53; acc: 0.92
+Batch: 380; loss: 0.28; acc: 0.88
+Batch: 400; loss: 0.14; acc: 0.94
+Batch: 420; loss: 0.59; acc: 0.83
+Batch: 440; loss: 0.29; acc: 0.91
+Batch: 460; loss: 0.48; acc: 0.84
+Batch: 480; loss: 0.34; acc: 0.91
+Batch: 500; loss: 0.56; acc: 0.84
+Batch: 520; loss: 0.15; acc: 0.94
+Batch: 540; loss: 0.46; acc: 0.88
+Batch: 560; loss: 0.54; acc: 0.86
+Batch: 580; loss: 0.2; acc: 0.92
+Batch: 600; loss: 0.34; acc: 0.89
+Batch: 620; loss: 0.46; acc: 0.91
+Train Epoch over. train_loss: 0.38; train_accuracy: 0.89 
+
+Batch: 0; loss: 0.26; acc: 0.94
+Batch: 20; loss: 0.67; acc: 0.83
+Batch: 40; loss: 0.15; acc: 0.97
+Batch: 60; loss: 0.53; acc: 0.86
+Batch: 80; loss: 0.41; acc: 0.91
+Batch: 100; loss: 0.52; acc: 0.86
+Batch: 120; loss: 0.46; acc: 0.89
+Batch: 140; loss: 0.84; acc: 0.81
+Val Epoch over. val_loss: 0.4286401865968279; val_accuracy: 0.878781847133758 
+
+Epoch 6 start
+Batch: 0; loss: 0.31; acc: 0.89
+Batch: 20; loss: 0.39; acc: 0.84
+Batch: 40; loss: 0.3; acc: 0.88
+Batch: 60; loss: 0.42; acc: 0.88
+Batch: 80; loss: 0.28; acc: 0.91
+Batch: 100; loss: 0.51; acc: 0.89
+Batch: 120; loss: 0.23; acc: 0.94
+Batch: 140; loss: 0.99; acc: 0.75
+Batch: 160; loss: 0.31; acc: 0.92
+Batch: 180; loss: 0.15; acc: 0.92
+Batch: 200; loss: 0.67; acc: 0.81
+Batch: 220; loss: 0.29; acc: 0.92
+Batch: 240; loss: 0.67; acc: 0.84
+Batch: 260; loss: 0.4; acc: 0.91
+Batch: 280; loss: 0.29; acc: 0.89
+Batch: 300; loss: 0.17; acc: 0.92
+Batch: 320; loss: 0.28; acc: 0.86
+Batch: 340; loss: 0.62; acc: 0.81
+Batch: 360; loss: 0.38; acc: 0.89
+Batch: 380; loss: 0.21; acc: 0.88
+Batch: 400; loss: 0.25; acc: 0.89
+Batch: 420; loss: 0.26; acc: 0.94
+Batch: 440; loss: 0.29; acc: 0.89
+Batch: 460; loss: 0.52; acc: 0.86
+Batch: 480; loss: 0.21; acc: 0.94
+Batch: 500; loss: 0.31; acc: 0.89
+Batch: 520; loss: 0.49; acc: 0.88
+Batch: 540; loss: 0.38; acc: 0.91
+Batch: 560; loss: 0.37; acc: 0.91
+Batch: 580; loss: 0.61; acc: 0.83
+Batch: 600; loss: 0.4; acc: 0.89
+Batch: 620; loss: 0.49; acc: 0.84
+Train Epoch over. train_loss: 0.37; train_accuracy: 0.89 
+
+Batch: 0; loss: 0.28; acc: 0.91
+Batch: 20; loss: 0.72; acc: 0.78
+Batch: 40; loss: 0.18; acc: 0.92
+Batch: 60; loss: 0.43; acc: 0.89
+Batch: 80; loss: 0.38; acc: 0.91
+Batch: 100; loss: 0.56; acc: 0.84
+Batch: 120; loss: 0.49; acc: 0.91
+Batch: 140; loss: 1.09; acc: 0.8
+Val Epoch over. val_loss: 0.4158861849006194; val_accuracy: 0.8791799363057324 
+
+Epoch 7 start
+Batch: 0; loss: 0.21; acc: 0.94
+Batch: 20; loss: 0.14; acc: 0.94
+Batch: 40; loss: 0.48; acc: 0.91
+Batch: 60; loss: 0.24; acc: 0.95
+Batch: 80; loss: 0.18; acc: 0.92
+Batch: 100; loss: 0.45; acc: 0.91
+Batch: 120; loss: 0.43; acc: 0.91
+Batch: 140; loss: 0.26; acc: 0.91
+Batch: 160; loss: 0.7; acc: 0.91
+Batch: 180; loss: 0.32; acc: 0.94
+Batch: 200; loss: 0.19; acc: 0.92
+Batch: 220; loss: 0.36; acc: 0.91
+Batch: 240; loss: 0.38; acc: 0.89
+Batch: 260; loss: 0.12; acc: 0.97
+Batch: 280; loss: 0.3; acc: 0.95
+Batch: 300; loss: 0.31; acc: 0.88
+Batch: 320; loss: 0.32; acc: 0.92
+Batch: 340; loss: 0.26; acc: 0.92
+Batch: 360; loss: 0.45; acc: 0.89
+Batch: 380; loss: 0.37; acc: 0.89
+Batch: 400; loss: 0.36; acc: 0.92
+Batch: 420; loss: 0.22; acc: 0.95
+Batch: 440; loss: 0.21; acc: 0.92
+Batch: 460; loss: 0.32; acc: 0.88
+Batch: 480; loss: 0.34; acc: 0.89
+Batch: 500; loss: 0.24; acc: 0.92
+Batch: 520; loss: 0.61; acc: 0.84
+Batch: 540; loss: 0.42; acc: 0.88
+Batch: 560; loss: 0.29; acc: 0.92
+Batch: 580; loss: 0.24; acc: 0.92
+Batch: 600; loss: 0.17; acc: 0.92
+Batch: 620; loss: 0.26; acc: 0.94
+Train Epoch over. train_loss: 0.36; train_accuracy: 0.9 
+
+Batch: 0; loss: 0.16; acc: 0.94
+Batch: 20; loss: 0.6; acc: 0.75
+Batch: 40; loss: 0.13; acc: 0.94
+Batch: 60; loss: 0.34; acc: 0.92
+Batch: 80; loss: 0.34; acc: 0.92
+Batch: 100; loss: 0.54; acc: 0.84
+Batch: 120; loss: 0.55; acc: 0.86
+Batch: 140; loss: 0.96; acc: 0.75
+Val Epoch over. val_loss: 0.36694732650070433; val_accuracy: 0.8958001592356688 
+
+Epoch 8 start
+Batch: 0; loss: 0.51; acc: 0.86
+Batch: 20; loss: 0.48; acc: 0.88
+Batch: 40; loss: 0.47; acc: 0.88
+Batch: 60; loss: 0.24; acc: 0.95
+Batch: 80; loss: 0.86; acc: 0.83
+Batch: 100; loss: 0.64; acc: 0.88
+Batch: 120; loss: 0.47; acc: 0.86
+Batch: 140; loss: 0.25; acc: 0.94
+Batch: 160; loss: 0.19; acc: 0.94
+Batch: 180; loss: 0.41; acc: 0.88
+Batch: 200; loss: 0.22; acc: 0.95
+Batch: 220; loss: 0.46; acc: 0.89
+Batch: 240; loss: 0.66; acc: 0.86
+Batch: 260; loss: 0.09; acc: 0.97
+Batch: 280; loss: 0.33; acc: 0.91
+Batch: 300; loss: 0.16; acc: 0.95
+Batch: 320; loss: 0.18; acc: 0.95
+Batch: 340; loss: 0.35; acc: 0.95
+Batch: 360; loss: 0.29; acc: 0.95
+Batch: 380; loss: 0.62; acc: 0.86
+Batch: 400; loss: 0.47; acc: 0.86
+Batch: 420; loss: 0.48; acc: 0.89
+Batch: 440; loss: 0.23; acc: 0.89
+Batch: 460; loss: 0.24; acc: 0.91
+Batch: 480; loss: 0.54; acc: 0.86
+Batch: 500; loss: 0.16; acc: 0.94
+Batch: 520; loss: 0.31; acc: 0.88
+Batch: 540; loss: 0.41; acc: 0.84
+Batch: 560; loss: 0.21; acc: 0.95
+Batch: 580; loss: 0.15; acc: 0.95
+Batch: 600; loss: 0.26; acc: 0.89
+Batch: 620; loss: 0.36; acc: 0.88
+Train Epoch over. train_loss: 0.35; train_accuracy: 0.9 
+
+Batch: 0; loss: 0.22; acc: 0.95
+Batch: 20; loss: 0.69; acc: 0.78
+Batch: 40; loss: 0.15; acc: 0.95
+Batch: 60; loss: 0.36; acc: 0.94
+Batch: 80; loss: 0.41; acc: 0.88
+Batch: 100; loss: 0.74; acc: 0.8
+Batch: 120; loss: 0.42; acc: 0.84
+Batch: 140; loss: 0.85; acc: 0.81
+Val Epoch over. val_loss: 0.38056507867992306; val_accuracy: 0.8813694267515924 
+
+Epoch 9 start
+Batch: 0; loss: 0.21; acc: 0.94
+Batch: 20; loss: 0.6; acc: 0.91
+Batch: 40; loss: 0.38; acc: 0.92
+Batch: 60; loss: 0.24; acc: 0.94
+Batch: 80; loss: 0.2; acc: 0.94
+Batch: 100; loss: 0.23; acc: 0.94
+Batch: 120; loss: 0.3; acc: 0.94
+Batch: 140; loss: 0.42; acc: 0.88
+Batch: 160; loss: 0.31; acc: 0.89
+Batch: 180; loss: 0.12; acc: 0.95
+Batch: 200; loss: 0.26; acc: 0.89
+Batch: 220; loss: 0.84; acc: 0.81
+Batch: 240; loss: 0.62; acc: 0.89
+Batch: 260; loss: 0.25; acc: 0.92
+Batch: 280; loss: 0.4; acc: 0.89
+Batch: 300; loss: 0.43; acc: 0.86
+Batch: 320; loss: 0.37; acc: 0.92
+Batch: 340; loss: 0.33; acc: 0.92
+Batch: 360; loss: 0.47; acc: 0.88
+Batch: 380; loss: 0.49; acc: 0.89
+Batch: 400; loss: 0.37; acc: 0.91
+Batch: 420; loss: 0.37; acc: 0.92
+Batch: 440; loss: 0.55; acc: 0.81
+Batch: 460; loss: 0.37; acc: 0.88
+Batch: 480; loss: 0.35; acc: 0.94
+Batch: 500; loss: 0.11; acc: 0.97
+Batch: 520; loss: 0.54; acc: 0.86
+Batch: 540; loss: 0.27; acc: 0.94
+Batch: 560; loss: 0.46; acc: 0.86
+Batch: 580; loss: 0.32; acc: 0.88
+Batch: 600; loss: 0.39; acc: 0.92
+Batch: 620; loss: 0.28; acc: 0.89
+Train Epoch over. train_loss: 0.35; train_accuracy: 0.9 
+
+Batch: 0; loss: 0.25; acc: 0.94
+Batch: 20; loss: 0.5; acc: 0.81
+Batch: 40; loss: 0.2; acc: 0.92
+Batch: 60; loss: 0.34; acc: 0.92
+Batch: 80; loss: 0.27; acc: 0.95
+Batch: 100; loss: 0.43; acc: 0.88
+Batch: 120; loss: 0.45; acc: 0.88
+Batch: 140; loss: 0.9; acc: 0.8
+Val Epoch over. val_loss: 0.3449575012656534; val_accuracy: 0.9010748407643312 
+
+Epoch 10 start
+Batch: 0; loss: 0.33; acc: 0.92
+Batch: 20; loss: 0.19; acc: 0.92
+Batch: 40; loss: 0.37; acc: 0.94
+Batch: 60; loss: 0.51; acc: 0.84
+Batch: 80; loss: 0.2; acc: 0.94
+Batch: 100; loss: 0.25; acc: 0.94
+Batch: 120; loss: 0.13; acc: 0.97
+Batch: 140; loss: 0.76; acc: 0.88
+Batch: 160; loss: 0.25; acc: 0.92
+Batch: 180; loss: 0.28; acc: 0.92
+Batch: 200; loss: 0.45; acc: 0.88
+Batch: 220; loss: 0.08; acc: 0.98
+Batch: 240; loss: 0.54; acc: 0.88
+Batch: 260; loss: 0.24; acc: 0.97
+Batch: 280; loss: 0.63; acc: 0.91
+Batch: 300; loss: 0.19; acc: 0.94
+Batch: 320; loss: 0.22; acc: 0.97
+Batch: 340; loss: 0.32; acc: 0.92
+Batch: 360; loss: 0.18; acc: 0.95
+Batch: 380; loss: 0.3; acc: 0.88
+Batch: 400; loss: 0.19; acc: 0.95
+Batch: 420; loss: 0.42; acc: 0.92
+Batch: 440; loss: 0.48; acc: 0.86
+Batch: 460; loss: 0.48; acc: 0.92
+Batch: 480; loss: 0.16; acc: 0.94
+Batch: 500; loss: 0.35; acc: 0.89
+Batch: 520; loss: 0.22; acc: 0.91
+Batch: 540; loss: 0.32; acc: 0.88
+Batch: 560; loss: 0.52; acc: 0.83
+Batch: 580; loss: 0.23; acc: 0.91
+Batch: 600; loss: 0.46; acc: 0.91
+Batch: 620; loss: 0.34; acc: 0.89
+Train Epoch over. train_loss: 0.34; train_accuracy: 0.91 
+
+Batch: 0; loss: 0.29; acc: 0.92
+Batch: 20; loss: 0.6; acc: 0.83
+Batch: 40; loss: 0.2; acc: 0.94
+Batch: 60; loss: 0.28; acc: 0.94
+Batch: 80; loss: 0.35; acc: 0.91
+Batch: 100; loss: 0.52; acc: 0.84
+Batch: 120; loss: 0.4; acc: 0.91
+Batch: 140; loss: 0.93; acc: 0.8
+Val Epoch over. val_loss: 0.3345516764908839; val_accuracy: 0.9018710191082803 
+
+plots/subspace_True_d_dim_500_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:13:35.101841
+plots/subspace_True_d_dim_XXXXX_model_lenet_lr_0.1_seed_1_epochs_10_batchsize_64_2019-12-30 18:13:35.435246

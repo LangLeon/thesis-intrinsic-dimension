@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "ddim_vs_acc.py", line 64, in <module>
+    ARGS.timestamp = str(datetime.datetime.utcnow().replace(microsecond=0))
+NameError: name 'datetime' is not defined
