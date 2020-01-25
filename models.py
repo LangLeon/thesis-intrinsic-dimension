@@ -366,9 +366,119 @@ class RegularLeNet5LessDownsamplingConvEnd(torch.nn.Module):
         return x
 
 
+class Table13Model(torch.nn.Module):
+
+    def __init__(self, n_classes=10):
+
+        super(Table13Model, self).__init__()
+
+        self.r2_act = gspaces.Rot2dOnR2(N=16)
+        in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
+        self.input_type = in_type
+
+
+        # block 11
+        out_type = nn2.FieldType(self.r2_act, 16*[self.r2_act.regular_repr])
+        self.block11 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=7, padding=1, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+
+        # block 12
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, 24*[self.r2_act.regular_repr])
+        self.block12 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=2, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        self.S1 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+
+        # block 21
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, 32*[self.r2_act.regular_repr])
+        self.block21 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=2, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        # block 22
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, 32*[self.r2_act.regular_repr])
+        self.block22 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=2, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        self.S2 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+
+        # block 31
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, 48*[self.r2_act.regular_repr])
+        self.block31 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=2, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        # block 32
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, 64*[self.r2_act.regular_repr])
+        self.block32 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=0, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        self.S32 = nn2.GroupPooling(out_type)
+        self.S31 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+
+
+        # block 4: Fully connected
+        self.F4 = nn.Linear(64, 64)
+        self.F5 = nn.Linear(64, 10)
+
+
+        # full conv part
+        self.conv = nn2.SequentialModule(
+            self.block11,
+            self.block12,
+            self.S1,
+            self.block21,
+            self.block22,
+            self.S2,
+            self.block31,
+            self.block32,
+            self.S31,
+            self.S32
+        )
+
+        # fully part
+        self.fully = nn.Sequential(
+            self.F4,
+            nn.BatchNorm1d(64),
+            nn.ELU(inplace=True),
+            self.F5
+        )
+
+    def forward(self, input: torch.Tensor):
+        x = nn2.GeometricTensor(input, self.input_type)
+        x = self.conv(x)
+        x = x.tensor.squeeze()
+        x = self.fully(x)
+
+        return x
+
+
 models = {
     "MLP": MLP,
     "lenet": LeNet5,
     "reg_lenet": RegularLeNet5,
     "reg_lenet_2": RegularLeNet5LessDownsampling,
-    "reg_lenet_3": RegularLeNet5LessDownsamplingConvEnd}
+    "reg_lenet_3": RegularLeNet5LessDownsamplingConvEnd,
+    "table13": Table13Model}
