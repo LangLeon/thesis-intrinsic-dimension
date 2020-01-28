@@ -21,7 +21,11 @@ def train_model_once(ARGS):
                   "Adam": torch.optim.Adam}
 
     train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
-    model = models[ARGS.model]().to(ARGS.device)
+    if not ARGS.model == "table13slim":
+        model = models[ARGS.model]().to(ARGS.device)
+    else:
+        model = models[ARGS.model](ARGS.N, ARGS.flips).to(device)
+    print_parameter_number(model)
     criterion = nn.CrossEntropyLoss()
 
     if ARGS.subspace_training:
@@ -68,6 +72,13 @@ def train_model_once(ARGS):
     return train_losses[-1], train_accuracies[-1], val_losses[-1], val_accuracies[-1]
 
 
+def print_parameter_number(model):
+    print("\nThe number of parameters is: {} \n ".format(sum(p.numel() for p in model.parameters())))
+    print("\nThe number of individual parameters is:")
+    print("\n")
+    for p in model.parameters():
+        print(p.numel())
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -75,6 +86,10 @@ if __name__ == "__main__":
     # Most important settings
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
+    parser.add_argument('--N', default="16", type=int,
+                        help='specifies N in C_N or D_N')
+    parser.add_argument('--flips', action="store_true", default=False,
+                        help='whether to also have reflections, i.e. to use D_N instead of C_N')
     parser.add_argument('--optimizer', default="SGD", type=str,
                         help='the optimizer to be used')
     parser.add_argument('--subspace_training', default=False, action='store_true',

@@ -1,3 +1,5 @@
+import math
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -18,7 +20,7 @@ class MLP(nn.Module):
     def forward(self, x):
         x = x.view(x.size(0), -1)
         x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
+        x   = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
 
@@ -66,7 +68,7 @@ class LeNet5(nn.Module):
         return output
 
 
-class RegularLeNet5(torch.nn.Module):
+class RegLenet(torch.nn.Module):
     """
     Equivariant version of LeNet5.
 
@@ -95,7 +97,7 @@ class RegularLeNet5(torch.nn.Module):
     """
     def __init__(self, n_classes=10):
 
-        super(RegularLeNet5, self).__init__()
+        super(RegLenet, self).__init__()
 
         self.r2_act = gspaces.Rot2dOnR2(N=8)
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
@@ -159,36 +161,15 @@ class RegularLeNet5(torch.nn.Module):
         return x
 
 
-class RegularLeNet5LessDownsampling(torch.nn.Module):
+class RegLenet2(torch.nn.Module):
     """
     Equivariant version of LeNet5.
 
-    Adapted from Lenet:
-    - C8 replaces Id, i.e. the trivial rotation group is replaced by rotations by 45% angles.
-    - Consequently, the regular representation has 8 internal channels. We work with the same number of regular feature
-      spaces in each layer, and thus have, say, 6*8 = 48 effective channels in the second layer (this preserves the number of parameters)
-    - MaxPool2d is replaced by PointwiseMaxPoolAntialiased
-    - relu is replaced by the equivariant relu (also operates pointwise)
-    - We do a group max pooling before the fully connected layer.
-
-    !!!Doc might be wrong!!
-    Input - 1x28x28 triv
-    C1 - 6@24x24 reg (5x5 kernel)
-    relu1
-    S1 - 6@12x12 reg (2x2 kernel, stride 2) Subsampling
-    C2 - 16@8x8 reg (5x5 kernel)
-    relu2
-    S2 - 16@4x4 reg (2x2 kernel, stride 2) Subsampling
-    C3 - 120@1x1 reg (4x4 kernel)
-    relu3
-    S3 - 120@1x1 triv (group pooling)
-    F4 - 84
-    relu4
-    F5 - 10 (Output)
+    Less downsampling!
     """
     def __init__(self, n_classes=10):
 
-        super(RegularLeNet5LessDownsampling, self).__init__()
+        super(RegLenet2, self).__init__()
 
         self.r2_act = gspaces.Rot2dOnR2(N=8)
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
@@ -263,36 +244,13 @@ class RegularLeNet5LessDownsampling(torch.nn.Module):
         return x
 
 
-class RegularLeNet5LessDownsamplingConvEnd(torch.nn.Module):
+class RegLenet3(torch.nn.Module):
     """
-    Equivariant version of LeNet5.
-
-    Adapted from Lenet:
-    - C8 replaces Id, i.e. the trivial rotation group is replaced by rotations by 45% angles.
-    - Consequently, the regular representation has 8 internal channels. We work with the same number of regular feature
-      spaces in each layer, and thus have, say, 6*8 = 48 effective channels in the second layer (this preserves the number of parameters)
-    - MaxPool2d is replaced by PointwiseMaxPoolAntialiased
-    - relu is replaced by the equivariant relu (also operates pointwise)
-    - We do a group max pooling before the fully connected layer.
-
-    !!!Doc might be wrong!!
-    Input - 1x28x28 triv
-    C1 - 6@24x24 reg (5x5 kernel)
-    relu1
-    S1 - 6@12x12 reg (2x2 kernel, stride 2) Subsampling
-    C2 - 16@8x8 reg (5x5 kernel)
-    relu2
-    S2 - 16@4x4 reg (2x2 kernel, stride 2) Subsampling
-    C3 - 120@1x1 reg (4x4 kernel)
-    relu3
-    S3 - 120@1x1 triv (group pooling)
-    F4 - 84
-    relu4
-    F5 - 10 (Output)
+    invariant in the end!
     """
     def __init__(self, n_classes=10):
 
-        super(RegularLeNet5LessDownsamplingConvEnd, self).__init__()
+        super(RegLenet3, self).__init__()
 
         self.r2_act = gspaces.Rot2dOnR2(N=8)
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
@@ -372,7 +330,7 @@ class Table13Model(torch.nn.Module):
 
         super(Table13Model, self).__init__()
 
-        self.r2_act = gspaces.Rot2dOnR2(N=16)
+        self.r2_act = gspaces.Rot2dOnR2(N=8)
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
         self.input_type = in_type
 
@@ -435,8 +393,9 @@ class Table13Model(torch.nn.Module):
             nn2.ReLU(out_type, inplace=True)
         )
 
-        self.S32 = nn2.GroupPooling(out_type)
-        self.S31 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+        self.S31 = nn2.GroupPooling(out_type)
+        out_type = nn2.FieldType(self.r2_act, 64*[self.r2_act.trivial_repr])
+        self.S32 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
 
 
         # block 4: Fully connected
@@ -475,10 +434,113 @@ class Table13Model(torch.nn.Module):
         return x
 
 
+class Table13ModelSlim(torch.nn.Module):
+
+    def __init__(self, N, flips, n_classes=10):
+
+        super(Table13ModelSlim, self).__init__()
+
+        self.N = N
+        self.flips = flips
+
+        if self.flips:
+            self.r2_act = gspaces.FlipRot2dOnR2(N=self.N)
+        else:
+            self.r2_act = gspaces.Rot2dOnR2(N=self.N)
+
+        # The channel scaling factor is 1 for D_16. It scales the number of channels such that
+        # the model overall has roughly as many parameters as the D_16 default choice model.
+        scaling_factor = 4/math.sqrt(self.N)
+        if not self.flips:
+            scaling_factor *= math.sqrt(2)
+        print("\n Channel scaling factor: {}".format(scaling_factor))
+
+
+        in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
+        self.input_type = in_type
+
+
+        # block 11
+        out_type = nn2.FieldType(self.r2_act, math.ceil(8*scaling_factor)*[self.r2_act.regular_repr])
+        self.block11 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=7, padding=0, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+
+        # block 12
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, math.ceil(12*scaling_factor)*[self.r2_act.regular_repr])
+        self.block12 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=0, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        self.S1 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+
+        # block 31
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, math.ceil(24*scaling_factor)*[self.r2_act.regular_repr])
+        self.block21 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=1, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        # block 32
+        in_type = out_type
+        out_type = nn2.FieldType(self.r2_act, math.ceil(32*scaling_factor)*[self.r2_act.regular_repr])
+        self.block22 = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=0, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
+
+        self.S21 = nn2.GroupPooling(out_type)
+        out_type = nn2.FieldType(self.r2_act, math.ceil(32*scaling_factor)*[self.r2_act.trivial_repr])
+        self.S22 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+
+
+        # block 4: Fully connected
+        self.F3 = nn.Linear(math.ceil(32*scaling_factor), 32)
+        self.F4 = nn.Linear(32, 10)
+
+
+        # full conv part
+        self.conv = nn2.SequentialModule(
+            self.block11,
+            self.block12,
+            self.S1,
+            self.block21,
+            self.block22,
+            self.S21,
+            self.S22
+        )
+
+        # fully part
+        self.fully = nn.Sequential(
+            self.F3,
+            nn.BatchNorm1d(32),
+            nn.ELU(inplace=True),
+            self.F4
+        )
+
+    def forward(self, input: torch.Tensor):
+        x = nn2.GeometricTensor(input, self.input_type)
+        x = self.conv(x)
+        x = x.tensor.squeeze()
+        x = self.fully(x)
+
+        return x
+
+
 models = {
     "MLP": MLP,
     "lenet": LeNet5,
-    "reg_lenet": RegularLeNet5,
-    "reg_lenet_2": RegularLeNet5LessDownsampling,
-    "reg_lenet_3": RegularLeNet5LessDownsamplingConvEnd,
-    "table13": Table13Model}
+    "reg_lenet": RegLenet,
+    "reg_lenet_2": RegLenet2,
+    "reg_lenet_3": RegLenet3,
+    "table13": Table13Model,
+    "table13slim": Table13ModelSlim}

@@ -41,6 +41,10 @@ if __name__ == "__main__":
     # Most important settings
     parser.add_argument('--model', default="MLP", type=str,
                         help='the model to be tested')
+    parser.add_argument('--N', default="16", type=int,
+                        help='specifies N in C_N or D_N')
+    parser.add_argument('--flips', action="store_true", default=False,
+                        help='whether to also have reflections, i.e. to use D_N instead of C_N')
     parser.add_argument('--optimizer', default="SGD", type=str,
                         help='the optimizer to be used')
     # subspace_training missing, since this is the point here.
