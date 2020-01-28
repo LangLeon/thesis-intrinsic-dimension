@@ -11,6 +11,8 @@ source activate thesis
 
 python classify_mnist.py \
 	--model=lenet \
+	--N=16 \
+	--flips \
 	--optimizer=SGD \
 	--lr=0.1 \
 	--schedule \

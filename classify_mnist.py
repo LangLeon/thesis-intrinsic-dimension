@@ -73,11 +73,11 @@ def train_model_once(ARGS):
 
 
 def print_parameter_number(model):
-    print("\nThe number of parameters is: {} \n ".format(sum(p.numel() for p in model.parameters())))
-    print("\nThe number of individual parameters is:")
-    print("\n")
+    print("\nThe number of parameters is: {}".format(sum(p.numel() for p in model.parameters())))
+    print("\nThe number of individual parameters is:\n")
     for p in model.parameters():
         print(p.numel())
+    print("")
 
 
 if __name__ == "__main__":

@@ -480,32 +480,37 @@ class Table13ModelSlim(torch.nn.Module):
 
         self.S1 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
 
-        # block 31
+        # block 2 - only has one convolution, not two.
         in_type = out_type
         out_type = nn2.FieldType(self.r2_act, math.ceil(24*scaling_factor)*[self.r2_act.regular_repr])
-        self.block21 = nn2.SequentialModule(
-            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=1, maximum_offset=0),
-            nn2.InnerBatchNorm(out_type),
-            nn2.ReLU(out_type, inplace=True)
-        )
-
-        # block 32
-        in_type = out_type
-        out_type = nn2.FieldType(self.r2_act, math.ceil(32*scaling_factor)*[self.r2_act.regular_repr])
-        self.block22 = nn2.SequentialModule(
+        self.block2 = nn2.SequentialModule(
             nn2.R2Conv(in_type, out_type, kernel_size=5, padding=0, maximum_offset=0),
             nn2.InnerBatchNorm(out_type),
             nn2.ReLU(out_type, inplace=True)
         )
 
-        self.S21 = nn2.GroupPooling(out_type)
-        out_type = nn2.FieldType(self.r2_act, math.ceil(32*scaling_factor)*[self.r2_act.trivial_repr])
-        self.S22 = nn2.PointwiseMaxPoolAntialiased(out_type, kernel_size=2, stride=2)
+        # restriction to trivial group = usual convolution
+        if self.flips:
+            self.restrict = nn2.RestrictionModule(in_type=out_type, id=(None,1))
+        else:
+            self.restrict = nn2.RestrictionModule(in_type=out_type, id=1)
 
+
+        # New group, due to restriction!
+        self.r2_act_2 = gspaces.TrivialOnR2()
+
+        # normal conv block
+        in_type = self.restrict.out_type
+        out_type = nn2.FieldType(self.r2_act_2, 64*[self.r2_act_2.regular_repr])
+        self.normal_conv = nn2.SequentialModule(
+            nn2.R2Conv(in_type, out_type, kernel_size=5, padding=0, maximum_offset=0),
+            nn2.InnerBatchNorm(out_type),
+            nn2.ReLU(out_type, inplace=True)
+        )
 
         # block 4: Fully connected
-        self.F3 = nn.Linear(math.ceil(32*scaling_factor), 32)
-        self.F4 = nn.Linear(32, 10)
+        self.F3 = nn.Linear(64, 64)
+        self.F4 = nn.Linear(64, 10)
 
 
         # full conv part
@@ -513,16 +518,13 @@ class Table13ModelSlim(torch.nn.Module):
             self.block11,
             self.block12,
             self.S1,
-            self.block21,
-            self.block22,
-            self.S21,
-            self.S22
+            self.block2
         )
 
         # fully part
         self.fully = nn.Sequential(
             self.F3,
-            nn.BatchNorm1d(32),
+            nn.BatchNorm1d(64),
             nn.ELU(inplace=True),
             self.F4
         )
@@ -530,6 +532,8 @@ class Table13ModelSlim(torch.nn.Module):
     def forward(self, input: torch.Tensor):
         x = nn2.GeometricTensor(input, self.input_type)
         x = self.conv(x)
+        x = self.restrict(x)
+        x = self.normal_conv(x)
         x = x.tensor.squeeze()
         x = self.fully(x)
 

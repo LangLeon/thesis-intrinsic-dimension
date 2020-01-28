@@ -11,6 +11,8 @@ source activate thesis
 
 python ddim_vs_acc.py \
 	--model=reg_lenet_3 \
+	--N=16 \
+	--flips \
 	--optimizer=SGD \
 	--lr=1 \
 	--schedule \
