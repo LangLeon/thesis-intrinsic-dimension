@@ -450,9 +450,9 @@ class Table13ModelSlim(torch.nn.Module):
 
         # The channel scaling factor is 1 for D_16. It scales the number of channels such that
         # the model overall has roughly as many parameters as the D_16 default choice model.
-        scaling_factor = 4/math.sqrt(self.N)
+        scaling_factor = 4/(math.sqrt(self.N))
         if not self.flips:
-            scaling_factor *= math.sqrt(2)
+            scaling_factor *= math.sqrt(2*1.15)
         print("\n Channel scaling factor: {}".format(scaling_factor))
 
 
