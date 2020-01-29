@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu_shared
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=ArrayTest
+#SBATCH --cpus-per-task=2
+#SBATCH --time=08:00:00
+#SBATCH --mem=16000M
+#SBATCH --array=1-16%8
+#SBATCH --output=slurm_out/slurm_array_testing_%A_%a.out
+
+module purge
+
+# Load necessary modules
+module load pre2019
+module load Python/3.6.3-foss-2017b
+module load CUDA/10.0.130
+module load cuDNN/7.4.2-CUDA-10.0.130
+module load NCCL/2.3.5-CUDA-10.0.130 
+
+JOB_FILE=$HOME/jobs/array_job.job
+HPARAMS_FILE=$HOME/jobs/array_job_hyperparameters.txt
+CHECKPOINTDIR=$HOME/checkpoints/array_job_${SLURM_ARRAY_JOB_ID}
+source ${HOME}/.bashrc
+
+mkdir $CHECKPOINTDIR
+rsync $HPARAMS_FILE $CHECKPOINTDIR/
+rsync $JOB_FILE $CHECKPOINTDIR/
+
+cd $HOME/SemiDiscreteNFs/experiments/language_modeling
+srun python3 -u train.py \
+			--cluster \
+			--checkpoint_path $CHECKPOINTDIR/experiment_${SLURM_ARRAY_TASK_ID} \
+			 $(head -$SLURM_ARRAY_TASK_ID $HPARAMS_FILE | tail -1)
