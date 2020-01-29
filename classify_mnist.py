@@ -24,7 +24,7 @@ def train_model_once(ARGS):
     if not ARGS.model == "table13slim":
         model = models[ARGS.model]().to(ARGS.device)
     else:
-        model = models[ARGS.model](ARGS.N, ARGS.flips).to(device)
+        model = models[ARGS.model](ARGS.N, ARGS.flips).to(ARGS.device)
     print_parameter_number(model)
     criterion = nn.CrossEntropyLoss()
 

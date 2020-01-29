@@ -13,6 +13,7 @@ source activate thesis
 HPARAMS_FILE=$HOME/thesis-intrinsic-dimension/jobs/array_job_hyperparameters.txt
 
 cd $HOME/thesis-intrinsic-dimension
+
 python ddim_vs_acc.py \
 	--model=table13slim \
 	--optimizer=SGD \

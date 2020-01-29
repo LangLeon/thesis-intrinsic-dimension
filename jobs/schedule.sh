@@ -7,6 +7,8 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
+cd $HOME/thesis-intrinsic-dimension
+
 for lr in 0.1 0.01 0.001
 do
 for schedule_gamma in 0.8 0.4 0.2 0.13 0.1
