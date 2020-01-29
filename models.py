@@ -324,6 +324,26 @@ class RegLenet3(torch.nn.Module):
         return x
 
 
+# For scaling the number of channels for equal parameter count!
+scaling_factors = {
+    16 : 1,
+    15 : 1.03,
+    14 : 1.07,
+    13 : 1.11,
+    12 : 1.17,
+    11 : 1.21,
+    10 : 1.35,
+    9 : 1.45,
+    8 : 1.60,
+    7 : 1.75,
+    6 : 2.05,
+    5 : 2.25,
+    4 : 2.75,
+    3 : 3.25,
+    2 : 4.75,
+    1 : 13.50
+}
+
 class Table13Model(torch.nn.Module):
 
     def __init__(self, n_classes=10):
@@ -453,10 +473,10 @@ class Table13ModelSlim(torch.nn.Module):
 
         # The channel scaling factor is 1 for D_16. It scales the number of channels such that
         # the model overall has roughly as many parameters as the D_16 default choice model.
-        scaling_factor = 4/(math.sqrt(self.N))
+        scaling_factor = scaling_factors[self.N]
         if not self.flips and N>1:
             scaling_factor *= math.sqrt(2*1.15)
-        print("\n Channel scaling factor: {}".format(scaling_factor))
+        print("\nChannel scaling factor: {}".format(scaling_factor))
 
 
         in_type = nn2.FieldType(self.r2_act, [self.r2_act.trivial_repr])
