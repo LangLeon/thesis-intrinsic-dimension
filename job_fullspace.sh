@@ -9,11 +9,12 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
-for N in 2, 4, 6, 8, 10, 12, 14, 16
+for N in 2 4 6 8 10 12 14 16
 do 
 python classify_mnist.py \
 	--model=table13slim \
 	--N=${N} \
+	--flips \
 	--optimizer=SGD \
 	--lr=0.01 \
 	--schedule \
@@ -31,5 +32,5 @@ python classify_mnist.py \
         #--chunked \
         #--dense \
         #--parameter_correction
-	
+done	
 
