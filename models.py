@@ -443,15 +443,18 @@ class Table13ModelSlim(torch.nn.Module):
         self.N = N
         self.flips = flips
 
-        if self.flips:
-            self.r2_act = gspaces.FlipRot2dOnR2(N=self.N)
+        if self.N == 1:
+            self.r2_act = gspaces.TrivialOnR2()
         else:
-            self.r2_act = gspaces.Rot2dOnR2(N=self.N)
+            if self.flips:
+                self.r2_act = gspaces.FlipRot2dOnR2(N=self.N)
+            else:
+                self.r2_act = gspaces.Rot2dOnR2(N=self.N)
 
         # The channel scaling factor is 1 for D_16. It scales the number of channels such that
         # the model overall has roughly as many parameters as the D_16 default choice model.
         scaling_factor = 4/(math.sqrt(self.N))
-        if not self.flips:
+        if not self.flips and N>1:
             scaling_factor *= math.sqrt(2*1.15)
         print("\n Channel scaling factor: {}".format(scaling_factor))
 
@@ -489,8 +492,8 @@ class Table13ModelSlim(torch.nn.Module):
             nn2.ReLU(out_type, inplace=True)
         )
 
-        # restriction to trivial group = usual convolution
-        if self.flips:
+        # restriction to trivial group = usual convolution. Not needed if N=1, which already corresponds to normal convs.
+        if N>1 and self.flips:
             self.restrict = nn2.RestrictionModule(in_type=out_type, id=(None,1))
         else:
             self.restrict = nn2.RestrictionModule(in_type=out_type, id=1)
