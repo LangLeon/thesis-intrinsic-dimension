@@ -48,6 +48,8 @@ if __name__ == "__main__":
     parser.add_argument('--optimizer', default="SGD", type=str,
                         help='the optimizer to be used')
     # subspace_training missing, since this is the point here.
+    parser.add_argument('--deterministic_split', default=False, action='store_true',
+                        help='Whether train and validation set of MNIST should be split deterministically')
 
 
     # Hyperparameters

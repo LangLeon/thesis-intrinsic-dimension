@@ -8,7 +8,9 @@ import torchvision.transforms as transforms
 import torchvision
 
 
-def mnist(root='./data/', batch_size=64, download=True):
+def mnist(root='./data/', batch_size=64, deterministic_split=False, seed=1, download=True):
+
+    np.random.seed(seed) # set the seed the same as that for pytorch
 
     transformation = transforms.Compose([
         transforms.ToTensor(),
@@ -22,8 +24,15 @@ def mnist(root='./data/', batch_size=64, download=True):
         root, train=False, transform=transformation, target_transform=None,
         download=True)
 
-    train_dataset = data.dataset.Subset(dataset, np.arange(50000))
-    val_dataset = data.dataset.Subset(dataset, np.arange(50000, 60000))
+    if not deterministic_split:
+        train_indices = np.sort(np.random.choice(60000, 50000, replace=False))
+        val_indices = np.setdiff1d(np.arange(60000), train_indices)
+    else:
+        train_indices = np.arange(50000)
+        val_indices = np.arange(50000, 60000)
+
+    train_dataset = data.dataset.Subset(dataset, train_indices)
+    val_dataset = data.dataset.Subset(dataset, val_indices)
 
     trainloader = data.DataLoader(
         train_dataset, batch_size=batch_size, shuffle=True, num_workers=8)

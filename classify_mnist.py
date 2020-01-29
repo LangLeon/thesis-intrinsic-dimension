@@ -19,8 +19,8 @@ def train_model_once(ARGS):
     optimizers = {"SGD": torch.optim.SGD,
                   "RMSprop": torch.optim.RMSprop,
                   "Adam": torch.optim.Adam}
-
-    train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size)
+                  
+    train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size, deterministic_split = ARGS.deterministic_split, seed=ARGS.seed)
     if not ARGS.model == "table13slim":
         model = models[ARGS.model]().to(ARGS.device)
     else:
@@ -94,6 +94,8 @@ if __name__ == "__main__":
                         help='the optimizer to be used')
     parser.add_argument('--subspace_training', default=False, action='store_true',
                         help='Whether to train in the subspace or not')
+    parser.add_argument('--deterministic_split', default=False, action='store_true',
+                        help='Whether train and validation set of MNIST should be split deterministically')
 
 
     # ~ Hyperparameters
