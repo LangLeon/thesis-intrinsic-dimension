@@ -324,26 +324,6 @@ class RegLenet3(torch.nn.Module):
         return x
 
 
-# For scaling the number of channels for equal parameter count!
-scaling_factors = {
-    16 : 1,
-    15 : 1.03,
-    14 : 1.07,
-    13 : 1.11,
-    12 : 1.17,
-    11 : 1.21,
-    10 : 1.35,
-    9 : 1.45,
-    8 : 1.60,
-    7 : 1.75,
-    6 : 2.05,
-    5 : 2.25,
-    4 : 2.75,
-    3 : 3.25,
-    2 : 4.75,
-    1 : 13.50
-}
-
 class Table13Model(torch.nn.Module):
 
     def __init__(self, n_classes=10):
@@ -452,6 +432,27 @@ class Table13Model(torch.nn.Module):
         x = self.fully(x)
 
         return x
+
+
+# For scaling the number of channels for equal parameter count!
+scaling_factors = {
+    16 : 1,
+    15 : 1.03,
+    14 : 1.07,
+    13 : 1.11,
+    12 : 1.17,
+    11 : 1.21,
+    10 : 1.35,
+    9 : 1.45,
+    8 : 1.60,
+    7 : 1.75,
+    6 : 2.05,
+    5 : 2.25,
+    4 : 2.75,
+    3 : 3.25,
+    2 : 4.75,
+    1 : 13.50
+}
 
 
 class Table13ModelSlim(torch.nn.Module):
