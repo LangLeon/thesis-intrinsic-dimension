@@ -25,11 +25,10 @@ python classify_mnist.py \
 	--d_dim=1000 \
 	--print_freq=20 \
 	--print_prec=2 \
-	#--flips \
+	--flips \
         #--subspace-training \
         #--non_wrapped \
         #--chunked \
         #--dense \
         #--parameter_correction
 done
-
