@@ -9,6 +9,8 @@
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
+cd $HOME/thesis-intrinsic-dimension
+
 python ddim_vs_acc.py \
 	--model=reg_lenet_3 \
 	--N=16 \

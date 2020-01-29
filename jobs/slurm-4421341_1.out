@@ -1,0 +1,34 @@
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+model : table13slim
+N : 1
+flips : False
+optimizer : SGD
+lr : 1.0
+schedule : True
+schedule_gamma : 0.3
+schedule_freq : 10
+seed : 1
+n_epochs : 30
+batch_size : 64
+non_wrapped : False
+chunked : False
+dense : True
+parameter_correction : True
+print_freq : 20
+print_prec : 2
+device : cuda
+subspace_training : True
+ddim_vs_acc : True
+timestamp : 2020-01-29 15:53:59
+
+Channel scaling factor: 13.5
+Traceback (most recent call last):
+  File "ddim_vs_acc.py", line 102, in <module>
+    main()
+  File "ddim_vs_acc.py", line 27, in main
+    train_loss, train_accuracy, val_loss, val_accuracy = train_model_once(ARGS)
+  File "/home/llang/thesis-intrinsic-dimension/classify_mnist.py", line 27, in train_model_once
+    model = models[ARGS.model](ARGS.N, ARGS.flips).to(device)
+NameError: name 'device' is not defined

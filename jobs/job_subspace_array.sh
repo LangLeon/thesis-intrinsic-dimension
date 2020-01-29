@@ -2,20 +2,19 @@
 
 #SBATCH --partition=gpu_shared
 #SBATCH --gres=gpu:1
-#SBATCH --job-name=Subspace_Array
 #SBATCH --time=08:00:00
 #SBATCH -N 1
 #SBATCH --mem=16000M
-#SBATCH --array=1-16
-#SBATCH --output=slurm_out/table13slim_%A_%a.out
+#SBATCH --array=1-32
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=leon.lang@student.uva.nl
 source activate thesis
 
 HPARAMS_FILE=$HOME/thesis-intrinsic-dimension/jobs/array_job_hyperparameters.txt
 
+cd $HOME/thesis-intrinsic-dimension
 python ddim_vs_acc.py \
-	--model=reg_lenet_3 \
+	--model=table13slim \
 	--optimizer=SGD \
 	--lr=1 \
 	--schedule \
