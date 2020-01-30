@@ -19,7 +19,7 @@ def train_model_once(ARGS):
     optimizers = {"SGD": torch.optim.SGD,
                   "RMSprop": torch.optim.RMSprop,
                   "Adam": torch.optim.Adam}
-                  
+
     train_loader, val_loader, _ = mnist(batch_size = ARGS.batch_size, deterministic_split = ARGS.deterministic_split, seed=ARGS.seed)
     if not ARGS.model == "table13slim":
         model = models[ARGS.model]().to(ARGS.device)
@@ -53,8 +53,10 @@ def train_model_once(ARGS):
 
     for epoch in range(ARGS.n_epochs):
         print("Epoch {} start".format(epoch+1))
-        current_lr = optimizer.optimizer.param_groups[0]["lr"] if ARGS.subspace_training else optimizer.param_groups[0]["lr"]
-        print("The current lr is: {}".format(current_lr))
+
+        if not ARGS.non_wrapped:
+            current_lr = optimizer.optimizer.param_groups[0]["lr"] if ARGS.subspace_training else optimizer.param_groups[0]["lr"]
+            print("The current lr is: {}".format(current_lr))
 
         train_loss, train_acc, val_loss, val_acc, subspace_distance = train_epoch(model,train_loader,val_loader,optimizer,criterion,ARGS)
         if ARGS.schedule:
