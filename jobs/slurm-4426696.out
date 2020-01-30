@@ -1,0 +1,1738 @@
+model : table13slim
+N : 1
+flips : False
+optimizer : SGD
+subspace_training : False
+deterministic_split : False
+lr : 0.01
+schedule : True
+schedule_gamma : 0.3
+schedule_freq : 10
+seed : 1
+n_epochs : 30
+batch_size : 64
+d_dim : 1000
+non_wrapped : False
+chunked : False
+dense : False
+parameter_correction : False
+print_freq : 20
+print_prec : 2
+device : cuda
+ddim_vs_acc : False
+timestamp : 2020-01-30 13:15:15
+x_axis : epochs
+
+Channel scaling factor: 13.5
+
+The number of parameters is: 279504
+
+The number of individual parameters is:
+
+108
+432
+108
+108
+162
+52488
+162
+162
+324
+157464
+324
+324
+64
+62208
+64
+64
+4096
+64
+640
+10
+64
+64
+
+Epoch 1 start
+The current lr is: 0.01
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+/tmp/pip-req-build-4baxydiv/aten/src/ATen/native/IndexingUtils.h:20: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead.
+Batch: 0; loss: 2.35; acc: 0.14
+Batch: 20; loss: 1.69; acc: 0.45
+Batch: 40; loss: 1.44; acc: 0.67
+Batch: 60; loss: 1.5; acc: 0.53
+Batch: 80; loss: 1.36; acc: 0.56
+Batch: 100; loss: 1.05; acc: 0.7
+Batch: 120; loss: 1.07; acc: 0.69
+Batch: 140; loss: 1.24; acc: 0.61
+Batch: 160; loss: 1.06; acc: 0.62
+Batch: 180; loss: 1.04; acc: 0.7
+Batch: 200; loss: 0.9; acc: 0.77
+Batch: 220; loss: 1.26; acc: 0.61
+Batch: 240; loss: 0.91; acc: 0.75
+Batch: 260; loss: 0.88; acc: 0.72
+Batch: 280; loss: 0.83; acc: 0.75
+Batch: 300; loss: 0.88; acc: 0.75
+Batch: 320; loss: 0.79; acc: 0.77
+Batch: 340; loss: 0.85; acc: 0.73
+Batch: 360; loss: 0.6; acc: 0.86
+Batch: 380; loss: 0.62; acc: 0.84
+Batch: 400; loss: 0.99; acc: 0.75
+Batch: 420; loss: 1.01; acc: 0.73
+Batch: 440; loss: 0.58; acc: 0.86
+Batch: 460; loss: 0.62; acc: 0.84
+Batch: 480; loss: 0.95; acc: 0.72
+Batch: 500; loss: 0.81; acc: 0.77
+Batch: 520; loss: 0.76; acc: 0.72
+Batch: 540; loss: 0.58; acc: 0.81
+Batch: 560; loss: 0.74; acc: 0.7
+Batch: 580; loss: 0.58; acc: 0.84
+Batch: 600; loss: 0.88; acc: 0.67
+Batch: 620; loss: 0.8; acc: 0.73
+Batch: 640; loss: 0.65; acc: 0.81
+Batch: 660; loss: 0.59; acc: 0.83
+Batch: 680; loss: 0.65; acc: 0.81
+Batch: 700; loss: 0.64; acc: 0.81
+Batch: 720; loss: 0.56; acc: 0.88
+Batch: 740; loss: 0.49; acc: 0.86
+Batch: 760; loss: 0.5; acc: 0.83
+Batch: 780; loss: 0.53; acc: 0.81
+Train Epoch over. train_loss: 0.88; train_accuracy: 0.74 
+
+Batch: 0; loss: 1.32; acc: 0.53
+Batch: 20; loss: 1.84; acc: 0.42
+Batch: 40; loss: 1.23; acc: 0.64
+Batch: 60; loss: 0.93; acc: 0.69
+Batch: 80; loss: 1.38; acc: 0.58
+Batch: 100; loss: 1.28; acc: 0.62
+Batch: 120; loss: 1.27; acc: 0.62
+Batch: 140; loss: 1.73; acc: 0.44
+Val Epoch over. val_loss: 1.393335048180477; val_accuracy: 0.5675756369426752 
+
+The current subspace-distance is: None 
+
+Epoch 2 start
+The current lr is: 0.01
+Batch: 0; loss: 0.52; acc: 0.78
+Batch: 20; loss: 0.5; acc: 0.84
+Batch: 40; loss: 0.6; acc: 0.81
+Batch: 60; loss: 0.5; acc: 0.83
+Batch: 80; loss: 0.42; acc: 0.88
+Batch: 100; loss: 0.49; acc: 0.88
+Batch: 120; loss: 0.5; acc: 0.86
+Batch: 140; loss: 0.52; acc: 0.91
+Batch: 160; loss: 0.61; acc: 0.78
+Batch: 180; loss: 0.54; acc: 0.81
+Batch: 200; loss: 0.53; acc: 0.83
+Batch: 220; loss: 0.53; acc: 0.84
+Batch: 240; loss: 0.47; acc: 0.89
+Batch: 260; loss: 0.5; acc: 0.84
+Batch: 280; loss: 0.64; acc: 0.73
+Batch: 300; loss: 0.35; acc: 0.92
+Batch: 320; loss: 0.74; acc: 0.78
+Batch: 340; loss: 0.51; acc: 0.83
+Batch: 360; loss: 0.35; acc: 0.86
+Batch: 380; loss: 0.61; acc: 0.84
+Batch: 400; loss: 0.38; acc: 0.86
+Batch: 420; loss: 0.59; acc: 0.84
+Batch: 440; loss: 0.36; acc: 0.88
+Batch: 460; loss: 0.35; acc: 0.89
+Batch: 480; loss: 0.5; acc: 0.88
+Batch: 500; loss: 0.38; acc: 0.84
+Batch: 520; loss: 0.45; acc: 0.86
+Batch: 540; loss: 0.64; acc: 0.77
+Batch: 560; loss: 0.22; acc: 0.95
+Batch: 580; loss: 0.34; acc: 0.88
+Batch: 600; loss: 0.69; acc: 0.77
+Batch: 620; loss: 0.5; acc: 0.84
+Batch: 640; loss: 0.36; acc: 0.91
+Batch: 660; loss: 0.41; acc: 0.91
+Batch: 680; loss: 0.36; acc: 0.91
+Batch: 700; loss: 0.52; acc: 0.83
+Batch: 720; loss: 0.45; acc: 0.86
+Batch: 740; loss: 0.39; acc: 0.89
+Batch: 760; loss: 0.29; acc: 0.91
+Batch: 780; loss: 0.48; acc: 0.88
+Train Epoch over. train_loss: 0.5; train_accuracy: 0.85 
+
+Batch: 0; loss: 0.94; acc: 0.7
+Batch: 20; loss: 1.68; acc: 0.61
+Batch: 40; loss: 1.52; acc: 0.72
+Batch: 60; loss: 1.09; acc: 0.77
+Batch: 80; loss: 1.49; acc: 0.67
+Batch: 100; loss: 1.96; acc: 0.58
+Batch: 120; loss: 1.32; acc: 0.64
+Batch: 140; loss: 1.08; acc: 0.72
+Val Epoch over. val_loss: 1.6929674505428145; val_accuracy: 0.6136544585987261 
+
+The current subspace-distance is: None 
+
+Epoch 3 start
+The current lr is: 0.01
+Batch: 0; loss: 0.46; acc: 0.91
+Batch: 20; loss: 0.27; acc: 0.95
+Batch: 40; loss: 0.3; acc: 0.89
+Batch: 60; loss: 0.31; acc: 0.91
+Batch: 80; loss: 0.57; acc: 0.8
+Batch: 100; loss: 0.43; acc: 0.89
+Batch: 120; loss: 0.32; acc: 0.91
+Batch: 140; loss: 0.52; acc: 0.78
+Batch: 160; loss: 0.31; acc: 0.92
+Batch: 180; loss: 0.29; acc: 0.92
+Batch: 200; loss: 0.59; acc: 0.88
+Batch: 220; loss: 0.76; acc: 0.75
+Batch: 240; loss: 0.42; acc: 0.89
+Batch: 260; loss: 0.3; acc: 0.89
+Batch: 280; loss: 0.49; acc: 0.83
+Batch: 300; loss: 0.31; acc: 0.91
+Batch: 320; loss: 0.54; acc: 0.8
+Batch: 340; loss: 0.51; acc: 0.84
+Batch: 360; loss: 0.38; acc: 0.84
+Batch: 380; loss: 0.3; acc: 0.92
+Batch: 400; loss: 0.31; acc: 0.91
+Batch: 420; loss: 0.42; acc: 0.88
+Batch: 440; loss: 0.69; acc: 0.8
+Batch: 460; loss: 0.45; acc: 0.86
+Batch: 480; loss: 0.39; acc: 0.89
+Batch: 500; loss: 0.51; acc: 0.83
+Batch: 520; loss: 0.37; acc: 0.86
+Batch: 540; loss: 0.34; acc: 0.88
+Batch: 560; loss: 0.41; acc: 0.88
+Batch: 580; loss: 0.46; acc: 0.84
+Batch: 600; loss: 0.26; acc: 0.91
+Batch: 620; loss: 0.42; acc: 0.86
+Batch: 640; loss: 0.41; acc: 0.89
+Batch: 660; loss: 0.5; acc: 0.83
+Batch: 680; loss: 0.44; acc: 0.88
+Batch: 700; loss: 0.31; acc: 0.91
+Batch: 720; loss: 0.42; acc: 0.83
+Batch: 740; loss: 0.4; acc: 0.88
+Batch: 760; loss: 0.25; acc: 0.92
+Batch: 780; loss: 0.26; acc: 0.94
+Train Epoch over. train_loss: 0.39; train_accuracy: 0.88 
+
+Batch: 0; loss: 0.61; acc: 0.81
+Batch: 20; loss: 1.19; acc: 0.64
+Batch: 40; loss: 1.07; acc: 0.7
+Batch: 60; loss: 0.86; acc: 0.7
+Batch: 80; loss: 0.79; acc: 0.75
+Batch: 100; loss: 1.31; acc: 0.64
+Batch: 120; loss: 0.91; acc: 0.75
+Batch: 140; loss: 1.0; acc: 0.72
+Val Epoch over. val_loss: 1.0761388825003508; val_accuracy: 0.6897890127388535 
+
+The current subspace-distance is: None 
+
+Epoch 4 start
+The current lr is: 0.01
+Batch: 0; loss: 0.54; acc: 0.83
+Batch: 20; loss: 0.41; acc: 0.91
+Batch: 40; loss: 0.3; acc: 0.91
+Batch: 60; loss: 0.41; acc: 0.83
+Batch: 80; loss: 0.53; acc: 0.8
+Batch: 100; loss: 0.17; acc: 0.98
+Batch: 120; loss: 0.45; acc: 0.86
+Batch: 140; loss: 0.5; acc: 0.84
+Batch: 160; loss: 0.39; acc: 0.88
+Batch: 180; loss: 0.5; acc: 0.89
+Batch: 200; loss: 0.32; acc: 0.92
+Batch: 220; loss: 0.22; acc: 0.94
+Batch: 240; loss: 0.2; acc: 0.94
+Batch: 260; loss: 0.37; acc: 0.84
+Batch: 280; loss: 0.42; acc: 0.86
+Batch: 300; loss: 0.52; acc: 0.86
+Batch: 320; loss: 0.31; acc: 0.92
+Batch: 340; loss: 0.26; acc: 0.89
+Batch: 360; loss: 0.21; acc: 0.94
+Batch: 380; loss: 0.42; acc: 0.86
+Batch: 400; loss: 0.15; acc: 0.97
+Batch: 420; loss: 0.29; acc: 0.92
+Batch: 440; loss: 0.27; acc: 0.91
+Batch: 460; loss: 0.38; acc: 0.92
+Batch: 480; loss: 0.26; acc: 0.95
+Batch: 500; loss: 0.34; acc: 0.89
+Batch: 520; loss: 0.24; acc: 0.92
+Batch: 540; loss: 0.35; acc: 0.88
+Batch: 560; loss: 0.21; acc: 0.92
+Batch: 580; loss: 0.25; acc: 0.91
+Batch: 600; loss: 0.35; acc: 0.88
+Batch: 620; loss: 0.23; acc: 0.94
+Batch: 640; loss: 0.34; acc: 0.86
+Batch: 660; loss: 0.22; acc: 0.91
+Batch: 680; loss: 0.29; acc: 0.92
+Batch: 700; loss: 0.22; acc: 0.95
+Batch: 720; loss: 0.36; acc: 0.91
+Batch: 740; loss: 0.44; acc: 0.86
+Batch: 760; loss: 0.37; acc: 0.88
+Batch: 780; loss: 0.32; acc: 0.91
+Train Epoch over. train_loss: 0.34; train_accuracy: 0.89 
+
+Batch: 0; loss: 2.29; acc: 0.61
+Batch: 20; loss: 3.85; acc: 0.44
+Batch: 40; loss: 3.5; acc: 0.53
+Batch: 60; loss: 2.98; acc: 0.58
+Batch: 80; loss: 2.69; acc: 0.53
+Batch: 100; loss: 3.68; acc: 0.42
+Batch: 120; loss: 3.51; acc: 0.55
+Batch: 140; loss: 2.53; acc: 0.56
+Val Epoch over. val_loss: 3.86344388487992; val_accuracy: 0.4525278662420382 
+
+The current subspace-distance is: None 
+
+Epoch 5 start
+The current lr is: 0.01
+Batch: 0; loss: 0.71; acc: 0.86
+Batch: 20; loss: 0.19; acc: 0.98
+Batch: 40; loss: 0.62; acc: 0.81
+Batch: 60; loss: 0.37; acc: 0.84
+Batch: 80; loss: 0.31; acc: 0.91
+Batch: 100; loss: 0.33; acc: 0.88
+Batch: 120; loss: 0.18; acc: 0.94
+Batch: 140; loss: 0.16; acc: 0.95
+Batch: 160; loss: 0.38; acc: 0.89
+Batch: 180; loss: 0.19; acc: 0.94
+Batch: 200; loss: 0.24; acc: 0.94
+Batch: 220; loss: 0.29; acc: 0.89
+Batch: 240; loss: 0.34; acc: 0.89
+Batch: 260; loss: 0.28; acc: 0.91
+Batch: 280; loss: 0.22; acc: 0.95
+Batch: 300; loss: 0.31; acc: 0.91
+Batch: 320; loss: 0.45; acc: 0.88
+Batch: 340; loss: 0.45; acc: 0.84
+Batch: 360; loss: 0.27; acc: 0.91
+Batch: 380; loss: 0.15; acc: 0.97
+Batch: 400; loss: 0.17; acc: 0.97
+Batch: 420; loss: 0.38; acc: 0.89
+Batch: 440; loss: 0.34; acc: 0.86
+Batch: 460; loss: 0.28; acc: 0.94
+Batch: 480; loss: 0.28; acc: 0.92
+Batch: 500; loss: 0.18; acc: 0.95
+Batch: 520; loss: 0.59; acc: 0.81
+Batch: 540; loss: 0.21; acc: 0.92
+Batch: 560; loss: 0.23; acc: 0.94
+Batch: 580; loss: 0.27; acc: 0.91
+Batch: 600; loss: 0.21; acc: 0.94
+Batch: 620; loss: 0.33; acc: 0.81
+Batch: 640; loss: 0.55; acc: 0.8
+Batch: 660; loss: 0.18; acc: 0.94
+Batch: 680; loss: 0.3; acc: 0.91
+Batch: 700; loss: 0.27; acc: 0.94
+Batch: 720; loss: 0.17; acc: 0.97
+Batch: 740; loss: 0.28; acc: 0.89
+Batch: 760; loss: 0.36; acc: 0.91
+Batch: 780; loss: 0.47; acc: 0.89
+Train Epoch over. train_loss: 0.3; train_accuracy: 0.9 
+
+Batch: 0; loss: 1.99; acc: 0.53
+Batch: 20; loss: 2.78; acc: 0.42
+Batch: 40; loss: 2.16; acc: 0.58
+Batch: 60; loss: 1.34; acc: 0.64
+Batch: 80; loss: 1.91; acc: 0.47
+Batch: 100; loss: 2.22; acc: 0.55
+Batch: 120; loss: 2.38; acc: 0.56
+Batch: 140; loss: 1.78; acc: 0.61
+Val Epoch over. val_loss: 2.1261184868539216; val_accuracy: 0.5148288216560509 
+
+The current subspace-distance is: None 
+
+Epoch 6 start
+The current lr is: 0.01
+Batch: 0; loss: 0.26; acc: 0.92
+Batch: 20; loss: 0.47; acc: 0.84
+Batch: 40; loss: 0.19; acc: 0.94
+Batch: 60; loss: 0.34; acc: 0.92
+Batch: 80; loss: 0.3; acc: 0.92
+Batch: 100; loss: 0.31; acc: 0.91
+Batch: 120; loss: 0.47; acc: 0.83
+Batch: 140; loss: 0.34; acc: 0.88
+Batch: 160; loss: 0.28; acc: 0.88
+Batch: 180; loss: 0.34; acc: 0.89
+Batch: 200; loss: 0.3; acc: 0.91
+Batch: 220; loss: 0.31; acc: 0.94
+Batch: 240; loss: 0.26; acc: 0.89
+Batch: 260; loss: 0.35; acc: 0.89
+Batch: 280; loss: 0.31; acc: 0.89
+Batch: 300; loss: 0.33; acc: 0.86
+Batch: 320; loss: 0.19; acc: 0.95
+Batch: 340; loss: 0.27; acc: 0.92
+Batch: 360; loss: 0.18; acc: 0.94
+Batch: 380; loss: 0.17; acc: 0.97
+Batch: 400; loss: 0.24; acc: 0.92
+Batch: 420; loss: 0.33; acc: 0.88
+Batch: 440; loss: 0.36; acc: 0.89
+Batch: 460; loss: 0.21; acc: 0.94
+Batch: 480; loss: 0.22; acc: 0.94
+Batch: 500; loss: 0.44; acc: 0.84
+Batch: 520; loss: 0.18; acc: 0.95
+Batch: 540; loss: 0.34; acc: 0.89
+Batch: 560; loss: 0.47; acc: 0.86
+Batch: 580; loss: 0.21; acc: 0.91
+Batch: 600; loss: 0.21; acc: 0.94
+Batch: 620; loss: 0.24; acc: 0.95
+Batch: 640; loss: 0.25; acc: 0.89
+Batch: 660; loss: 0.25; acc: 0.94
+Batch: 680; loss: 0.14; acc: 0.95
+Batch: 700; loss: 0.19; acc: 0.95
+Batch: 720; loss: 0.14; acc: 0.98
+Batch: 740; loss: 0.2; acc: 0.94
+Batch: 760; loss: 0.16; acc: 0.95
+Batch: 780; loss: 0.14; acc: 0.98
+Train Epoch over. train_loss: 0.28; train_accuracy: 0.91 
+
+Batch: 0; loss: 0.26; acc: 0.89
+Batch: 20; loss: 0.58; acc: 0.84
+Batch: 40; loss: 0.42; acc: 0.83
+Batch: 60; loss: 0.14; acc: 0.95
+Batch: 80; loss: 0.43; acc: 0.86
+Batch: 100; loss: 0.4; acc: 0.88
+Batch: 120; loss: 0.28; acc: 0.91
+Batch: 140; loss: 0.35; acc: 0.88
+Val Epoch over. val_loss: 0.3660274722204087; val_accuracy: 0.8791799363057324 
+
+The current subspace-distance is: None 
+
+Epoch 7 start
+The current lr is: 0.01
+Batch: 0; loss: 0.37; acc: 0.91
+Batch: 20; loss: 0.25; acc: 0.92
+Batch: 40; loss: 0.23; acc: 0.92
+Batch: 60; loss: 0.17; acc: 0.95
+Batch: 80; loss: 0.26; acc: 0.94
+Batch: 100; loss: 0.29; acc: 0.91
+Batch: 120; loss: 0.37; acc: 0.92
+Batch: 140; loss: 0.19; acc: 0.95
+Batch: 160; loss: 0.28; acc: 0.89
+Batch: 180; loss: 0.35; acc: 0.86
+Batch: 200; loss: 0.3; acc: 0.91
+Batch: 220; loss: 0.27; acc: 0.91
+Batch: 240; loss: 0.34; acc: 0.92
+Batch: 260; loss: 0.43; acc: 0.86
+Batch: 280; loss: 0.1; acc: 0.97
+Batch: 300; loss: 0.19; acc: 0.94
+Batch: 320; loss: 0.26; acc: 0.94
+Batch: 340; loss: 0.23; acc: 0.88
+Batch: 360; loss: 0.32; acc: 0.91
+Batch: 380; loss: 0.21; acc: 0.92
+Batch: 400; loss: 0.24; acc: 0.91
+Batch: 420; loss: 0.39; acc: 0.84
+Batch: 440; loss: 0.22; acc: 0.95
+Batch: 460; loss: 0.3; acc: 0.89
+Batch: 480; loss: 0.3; acc: 0.89
+Batch: 500; loss: 0.23; acc: 0.95
+Batch: 520; loss: 0.3; acc: 0.91
+Batch: 540; loss: 0.37; acc: 0.89
+Batch: 560; loss: 0.27; acc: 0.91
+Batch: 580; loss: 0.25; acc: 0.89
+Batch: 600; loss: 0.24; acc: 0.88
+Batch: 620; loss: 0.14; acc: 0.97
+Batch: 640; loss: 0.23; acc: 0.92
+Batch: 660; loss: 0.22; acc: 0.94
+Batch: 680; loss: 0.21; acc: 0.91
+Batch: 700; loss: 0.3; acc: 0.89
+Batch: 720; loss: 0.21; acc: 0.94
+Batch: 740; loss: 0.26; acc: 0.95
+Batch: 760; loss: 0.35; acc: 0.86
+Batch: 780; loss: 0.21; acc: 0.94
+Train Epoch over. train_loss: 0.26; train_accuracy: 0.92 
+
+Batch: 0; loss: 0.88; acc: 0.72
+Batch: 20; loss: 1.55; acc: 0.61
+Batch: 40; loss: 0.6; acc: 0.78
+Batch: 60; loss: 0.63; acc: 0.77
+Batch: 80; loss: 0.87; acc: 0.77
+Batch: 100; loss: 1.0; acc: 0.72
+Batch: 120; loss: 0.82; acc: 0.8
+Batch: 140; loss: 1.2; acc: 0.73
+Val Epoch over. val_loss: 0.9344420472907412; val_accuracy: 0.7461186305732485 
+
+The current subspace-distance is: None 
+
+Epoch 8 start
+The current lr is: 0.01
+Batch: 0; loss: 0.29; acc: 0.88
+Batch: 20; loss: 0.14; acc: 0.95
+Batch: 40; loss: 0.15; acc: 0.97
+Batch: 60; loss: 0.23; acc: 0.91
+Batch: 80; loss: 0.24; acc: 0.89
+Batch: 100; loss: 0.28; acc: 0.92
+Batch: 120; loss: 0.37; acc: 0.88
+Batch: 140; loss: 0.37; acc: 0.86
+Batch: 160; loss: 0.18; acc: 0.95
+Batch: 180; loss: 0.39; acc: 0.88
+Batch: 200; loss: 0.22; acc: 0.94
+Batch: 220; loss: 0.29; acc: 0.94
+Batch: 240; loss: 0.23; acc: 0.92
+Batch: 260; loss: 0.43; acc: 0.91
+Batch: 280; loss: 0.18; acc: 0.94
+Batch: 300; loss: 0.28; acc: 0.91
+Batch: 320; loss: 0.46; acc: 0.86
+Batch: 340; loss: 0.22; acc: 0.95
+Batch: 360; loss: 0.15; acc: 0.95
+Batch: 380; loss: 0.18; acc: 0.95
+Batch: 400; loss: 0.24; acc: 0.91
+Batch: 420; loss: 0.21; acc: 0.92
+Batch: 440; loss: 0.27; acc: 0.94
+Batch: 460; loss: 0.19; acc: 0.94
+Batch: 480; loss: 0.17; acc: 0.94
+Batch: 500; loss: 0.22; acc: 0.92
+Batch: 520; loss: 0.31; acc: 0.95
+Batch: 540; loss: 0.23; acc: 0.94
+Batch: 560; loss: 0.33; acc: 0.86
+Batch: 580; loss: 0.27; acc: 0.89
+Batch: 600; loss: 0.14; acc: 0.97
+Batch: 620; loss: 0.37; acc: 0.88
+Batch: 640; loss: 0.19; acc: 0.91
+Batch: 660; loss: 0.3; acc: 0.94
+Batch: 680; loss: 0.3; acc: 0.91
+Batch: 700; loss: 0.17; acc: 0.92
+Batch: 720; loss: 0.24; acc: 0.94
+Batch: 740; loss: 0.21; acc: 0.94
+Batch: 760; loss: 0.25; acc: 0.91
+Batch: 780; loss: 0.18; acc: 0.95
+Train Epoch over. train_loss: 0.24; train_accuracy: 0.92 
+
+Batch: 0; loss: 0.97; acc: 0.73
+Batch: 20; loss: 1.38; acc: 0.66
+Batch: 40; loss: 0.93; acc: 0.77
+Batch: 60; loss: 1.51; acc: 0.7
+Batch: 80; loss: 0.89; acc: 0.77
+Batch: 100; loss: 1.09; acc: 0.77
+Batch: 120; loss: 0.87; acc: 0.84
+Batch: 140; loss: 0.86; acc: 0.73
+Val Epoch over. val_loss: 1.218380015746803; val_accuracy: 0.7325835987261147 
+
+The current subspace-distance is: None 
+
+Epoch 9 start
+The current lr is: 0.01
+Batch: 0; loss: 0.44; acc: 0.86
+Batch: 20; loss: 0.32; acc: 0.89
+Batch: 40; loss: 0.1; acc: 0.97
+Batch: 60; loss: 0.27; acc: 0.94
+Batch: 80; loss: 0.21; acc: 0.95
+Batch: 100; loss: 0.27; acc: 0.91
+Batch: 120; loss: 0.21; acc: 0.92
+Batch: 140; loss: 0.25; acc: 0.92
+Batch: 160; loss: 0.21; acc: 0.94
+Batch: 180; loss: 0.19; acc: 0.95
+Batch: 200; loss: 0.18; acc: 0.94
+Batch: 220; loss: 0.18; acc: 0.97
+Batch: 240; loss: 0.29; acc: 0.92
+Batch: 260; loss: 0.21; acc: 0.95
+Batch: 280; loss: 0.24; acc: 0.92
+Batch: 300; loss: 0.26; acc: 0.89
+Batch: 320; loss: 0.12; acc: 0.95
+Batch: 340; loss: 0.16; acc: 0.95
+Batch: 360; loss: 0.1; acc: 0.97
+Batch: 380; loss: 0.22; acc: 0.91
+Batch: 400; loss: 0.22; acc: 0.94
+Batch: 420; loss: 0.22; acc: 0.91
+Batch: 440; loss: 0.17; acc: 0.92
+Batch: 460; loss: 0.26; acc: 0.92
+Batch: 480; loss: 0.26; acc: 0.94
+Batch: 500; loss: 0.18; acc: 0.95
+Batch: 520; loss: 0.32; acc: 0.89
+Batch: 540; loss: 0.23; acc: 0.92
+Batch: 560; loss: 0.17; acc: 0.95
+Batch: 580; loss: 0.25; acc: 0.92
+Batch: 600; loss: 0.27; acc: 0.94
+Batch: 620; loss: 0.12; acc: 0.97
+Batch: 640; loss: 0.23; acc: 0.92
+Batch: 660; loss: 0.2; acc: 0.92
+Batch: 680; loss: 0.1; acc: 0.97
+Batch: 700; loss: 0.18; acc: 0.92
+Batch: 720; loss: 0.21; acc: 0.94
+Batch: 740; loss: 0.13; acc: 0.97
+Batch: 760; loss: 0.4; acc: 0.89
+Batch: 780; loss: 0.32; acc: 0.94
+Train Epoch over. train_loss: 0.23; train_accuracy: 0.93 
+
+Batch: 0; loss: 1.45; acc: 0.55
+Batch: 20; loss: 2.35; acc: 0.53
+Batch: 40; loss: 1.4; acc: 0.66
+Batch: 60; loss: 1.5; acc: 0.62
+Batch: 80; loss: 1.31; acc: 0.62
+Batch: 100; loss: 1.77; acc: 0.59
+Batch: 120; loss: 1.64; acc: 0.66
+Batch: 140; loss: 1.36; acc: 0.7
+Val Epoch over. val_loss: 1.8261889063628616; val_accuracy: 0.6011146496815286 
+
+The current subspace-distance is: None 
+
+Epoch 10 start
+The current lr is: 0.01
+Batch: 0; loss: 0.32; acc: 0.86
+Batch: 20; loss: 0.28; acc: 0.94
+Batch: 40; loss: 0.22; acc: 0.92
+Batch: 60; loss: 0.27; acc: 0.91
+Batch: 80; loss: 0.16; acc: 0.95
+Batch: 100; loss: 0.25; acc: 0.92
+Batch: 120; loss: 0.14; acc: 0.95
+Batch: 140; loss: 0.13; acc: 0.97
+Batch: 160; loss: 0.13; acc: 0.94
+Batch: 180; loss: 0.19; acc: 0.94
+Batch: 200; loss: 0.25; acc: 0.91
+Batch: 220; loss: 0.2; acc: 0.95
+Batch: 240; loss: 0.21; acc: 0.94
+Batch: 260; loss: 0.41; acc: 0.88
+Batch: 280; loss: 0.21; acc: 0.95
+Batch: 300; loss: 0.25; acc: 0.89
+Batch: 320; loss: 0.31; acc: 0.92
+Batch: 340; loss: 0.2; acc: 0.91
+Batch: 360; loss: 0.2; acc: 0.94
+Batch: 380; loss: 0.07; acc: 1.0
+Batch: 400; loss: 0.21; acc: 0.92
+Batch: 420; loss: 0.2; acc: 0.92
+Batch: 440; loss: 0.26; acc: 0.91
+Batch: 460; loss: 0.11; acc: 0.97
+Batch: 480; loss: 0.19; acc: 0.95
+Batch: 500; loss: 0.08; acc: 0.97
+Batch: 520; loss: 0.25; acc: 0.94
+Batch: 540; loss: 0.35; acc: 0.92
+Batch: 560; loss: 0.28; acc: 0.92
+Batch: 580; loss: 0.17; acc: 0.95
+Batch: 600; loss: 0.34; acc: 0.91
+Batch: 620; loss: 0.18; acc: 0.92
+Batch: 640; loss: 0.31; acc: 0.86
+Batch: 660; loss: 0.22; acc: 0.95
+Batch: 680; loss: 0.18; acc: 0.95
+Batch: 700; loss: 0.28; acc: 0.91
+Batch: 720; loss: 0.15; acc: 0.95
+Batch: 740; loss: 0.22; acc: 0.94
+Batch: 760; loss: 0.13; acc: 0.94
+Batch: 780; loss: 0.11; acc: 0.97
+Train Epoch over. train_loss: 0.21; train_accuracy: 0.93 
+
+Batch: 0; loss: 0.22; acc: 0.92
+Batch: 20; loss: 0.51; acc: 0.81
+Batch: 40; loss: 0.47; acc: 0.86
+Batch: 60; loss: 0.1; acc: 0.97
+Batch: 80; loss: 0.36; acc: 0.86
+Batch: 100; loss: 0.35; acc: 0.89
+Batch: 120; loss: 0.19; acc: 0.94
+Batch: 140; loss: 0.43; acc: 0.89
+Val Epoch over. val_loss: 0.33499058506860857; val_accuracy: 0.888734076433121 
+
+The current subspace-distance is: None 
+
+Epoch 11 start
+The current lr is: 0.003
+Batch: 0; loss: 0.2; acc: 0.94
+Batch: 20; loss: 0.16; acc: 0.94
+Batch: 40; loss: 0.21; acc: 0.91
+Batch: 60; loss: 0.08; acc: 0.98
+Batch: 80; loss: 0.25; acc: 0.92
+Batch: 100; loss: 0.13; acc: 0.95
+Batch: 120; loss: 0.23; acc: 0.94
+Batch: 140; loss: 0.23; acc: 0.92
+Batch: 160; loss: 0.17; acc: 0.92
+Batch: 180; loss: 0.12; acc: 0.97
+Batch: 200; loss: 0.15; acc: 0.97
+Batch: 220; loss: 0.18; acc: 0.92
+Batch: 240; loss: 0.13; acc: 0.95
+Batch: 260; loss: 0.21; acc: 0.92
+Batch: 280; loss: 0.17; acc: 0.94
+Batch: 300; loss: 0.1; acc: 0.97
+Batch: 320; loss: 0.19; acc: 0.95
+Batch: 340; loss: 0.12; acc: 0.97
+Batch: 360; loss: 0.23; acc: 0.92
+Batch: 380; loss: 0.2; acc: 0.95
+Batch: 400; loss: 0.13; acc: 0.94
+Batch: 420; loss: 0.16; acc: 0.95
+Batch: 440; loss: 0.16; acc: 0.97
+Batch: 460; loss: 0.24; acc: 0.89
+Batch: 480; loss: 0.19; acc: 0.95
+Batch: 500; loss: 0.28; acc: 0.89
+Batch: 520; loss: 0.24; acc: 0.94
+Batch: 540; loss: 0.12; acc: 0.95
+Batch: 560; loss: 0.15; acc: 0.94
+Batch: 580; loss: 0.19; acc: 0.97
+Batch: 600; loss: 0.36; acc: 0.91
+Batch: 620; loss: 0.17; acc: 0.95
+Batch: 640; loss: 0.13; acc: 0.95
+Batch: 660; loss: 0.21; acc: 0.95
+Batch: 680; loss: 0.17; acc: 0.94
+Batch: 700; loss: 0.11; acc: 0.97
+Batch: 720; loss: 0.15; acc: 0.95
+Batch: 740; loss: 0.26; acc: 0.89
+Batch: 760; loss: 0.08; acc: 0.97
+Batch: 780; loss: 0.09; acc: 0.98
+Train Epoch over. train_loss: 0.17; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.17; acc: 0.94
+Batch: 20; loss: 0.27; acc: 0.91
+Batch: 40; loss: 0.22; acc: 0.92
+Batch: 60; loss: 0.06; acc: 0.97
+Batch: 80; loss: 0.23; acc: 0.92
+Batch: 100; loss: 0.26; acc: 0.94
+Batch: 120; loss: 0.15; acc: 0.97
+Batch: 140; loss: 0.42; acc: 0.89
+Val Epoch over. val_loss: 0.1799902676776716; val_accuracy: 0.942078025477707 
+
+The current subspace-distance is: None 
+
+Epoch 12 start
+The current lr is: 0.003
+Batch: 0; loss: 0.16; acc: 0.97
+Batch: 20; loss: 0.08; acc: 0.98
+Batch: 40; loss: 0.2; acc: 0.94
+Batch: 60; loss: 0.1; acc: 0.97
+Batch: 80; loss: 0.07; acc: 0.98
+Batch: 100; loss: 0.15; acc: 0.94
+Batch: 120; loss: 0.19; acc: 0.94
+Batch: 140; loss: 0.05; acc: 1.0
+Batch: 160; loss: 0.24; acc: 0.94
+Batch: 180; loss: 0.1; acc: 0.97
+Batch: 200; loss: 0.12; acc: 0.98
+Batch: 220; loss: 0.17; acc: 0.94
+Batch: 240; loss: 0.21; acc: 0.92
+Batch: 260; loss: 0.28; acc: 0.91
+Batch: 280; loss: 0.07; acc: 0.98
+Batch: 300; loss: 0.16; acc: 0.94
+Batch: 320; loss: 0.26; acc: 0.92
+Batch: 340; loss: 0.14; acc: 0.94
+Batch: 360; loss: 0.07; acc: 1.0
+Batch: 380; loss: 0.14; acc: 0.95
+Batch: 400; loss: 0.15; acc: 0.97
+Batch: 420; loss: 0.23; acc: 0.91
+Batch: 440; loss: 0.24; acc: 0.94
+Batch: 460; loss: 0.14; acc: 0.95
+Batch: 480; loss: 0.16; acc: 0.92
+Batch: 500; loss: 0.08; acc: 0.98
+Batch: 520; loss: 0.07; acc: 1.0
+Batch: 540; loss: 0.23; acc: 0.91
+Batch: 560; loss: 0.18; acc: 0.95
+Batch: 580; loss: 0.11; acc: 0.97
+Batch: 600; loss: 0.33; acc: 0.89
+Batch: 620; loss: 0.07; acc: 0.97
+Batch: 640; loss: 0.1; acc: 0.97
+Batch: 660; loss: 0.25; acc: 0.92
+Batch: 680; loss: 0.1; acc: 0.98
+Batch: 700; loss: 0.24; acc: 0.91
+Batch: 720; loss: 0.17; acc: 0.94
+Batch: 740; loss: 0.18; acc: 0.95
+Batch: 760; loss: 0.26; acc: 0.94
+Batch: 780; loss: 0.03; acc: 1.0
+Train Epoch over. train_loss: 0.16; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.18; acc: 0.92
+Batch: 20; loss: 0.26; acc: 0.89
+Batch: 40; loss: 0.26; acc: 0.92
+Batch: 60; loss: 0.09; acc: 0.97
+Batch: 80; loss: 0.23; acc: 0.92
+Batch: 100; loss: 0.23; acc: 0.94
+Batch: 120; loss: 0.14; acc: 0.95
+Batch: 140; loss: 0.24; acc: 0.94
+Val Epoch over. val_loss: 0.21758229181075553; val_accuracy: 0.9295382165605095 
+
+The current subspace-distance is: None 
+
+Epoch 13 start
+The current lr is: 0.003
+Batch: 0; loss: 0.08; acc: 0.98
+Batch: 20; loss: 0.25; acc: 0.89
+Batch: 40; loss: 0.09; acc: 0.97
+Batch: 60; loss: 0.11; acc: 0.97
+Batch: 80; loss: 0.17; acc: 0.95
+Batch: 100; loss: 0.22; acc: 0.95
+Batch: 120; loss: 0.03; acc: 1.0
+Batch: 140; loss: 0.16; acc: 0.97
+Batch: 160; loss: 0.12; acc: 0.95
+Batch: 180; loss: 0.1; acc: 0.94
+Batch: 200; loss: 0.15; acc: 0.95
+Batch: 220; loss: 0.11; acc: 0.97
+Batch: 240; loss: 0.06; acc: 1.0
+Batch: 260; loss: 0.15; acc: 0.97
+Batch: 280; loss: 0.15; acc: 0.95
+Batch: 300; loss: 0.07; acc: 0.98
+Batch: 320; loss: 0.16; acc: 0.95
+Batch: 340; loss: 0.15; acc: 0.95
+Batch: 360; loss: 0.15; acc: 0.94
+Batch: 380; loss: 0.31; acc: 0.88
+Batch: 400; loss: 0.16; acc: 0.95
+Batch: 420; loss: 0.17; acc: 0.92
+Batch: 440; loss: 0.04; acc: 1.0
+Batch: 460; loss: 0.07; acc: 0.98
+Batch: 480; loss: 0.33; acc: 0.88
+Batch: 500; loss: 0.17; acc: 0.94
+Batch: 520; loss: 0.15; acc: 0.92
+Batch: 540; loss: 0.06; acc: 0.97
+Batch: 560; loss: 0.21; acc: 0.94
+Batch: 580; loss: 0.12; acc: 0.95
+Batch: 600; loss: 0.22; acc: 0.89
+Batch: 620; loss: 0.21; acc: 0.89
+Batch: 640; loss: 0.06; acc: 0.98
+Batch: 660; loss: 0.04; acc: 1.0
+Batch: 680; loss: 0.17; acc: 0.92
+Batch: 700; loss: 0.11; acc: 0.97
+Batch: 720; loss: 0.16; acc: 0.94
+Batch: 740; loss: 0.13; acc: 0.97
+Batch: 760; loss: 0.17; acc: 0.91
+Batch: 780; loss: 0.1; acc: 0.95
+Train Epoch over. train_loss: 0.16; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.2; acc: 0.92
+Batch: 20; loss: 0.28; acc: 0.89
+Batch: 40; loss: 0.21; acc: 0.92
+Batch: 60; loss: 0.05; acc: 0.97
+Batch: 80; loss: 0.26; acc: 0.92
+Batch: 100; loss: 0.2; acc: 0.95
+Batch: 120; loss: 0.12; acc: 0.95
+Batch: 140; loss: 0.3; acc: 0.92
+Val Epoch over. val_loss: 0.19356612429307524; val_accuracy: 0.9368033439490446 
+
+The current subspace-distance is: None 
+
+Epoch 14 start
+The current lr is: 0.003
+Batch: 0; loss: 0.07; acc: 0.98
+Batch: 20; loss: 0.1; acc: 0.97
+Batch: 40; loss: 0.23; acc: 0.94
+Batch: 60; loss: 0.11; acc: 0.95
+Batch: 80; loss: 0.07; acc: 0.98
+Batch: 100; loss: 0.13; acc: 0.95
+Batch: 120; loss: 0.19; acc: 0.92
+Batch: 140; loss: 0.11; acc: 0.98
+Batch: 160; loss: 0.04; acc: 1.0
+Batch: 180; loss: 0.08; acc: 0.94
+Batch: 200; loss: 0.15; acc: 0.94
+Batch: 220; loss: 0.03; acc: 1.0
+Batch: 240; loss: 0.09; acc: 0.98
+Batch: 260; loss: 0.15; acc: 0.97
+Batch: 280; loss: 0.09; acc: 0.98
+Batch: 300; loss: 0.31; acc: 0.92
+Batch: 320; loss: 0.21; acc: 0.94
+Batch: 340; loss: 0.16; acc: 0.92
+Batch: 360; loss: 0.33; acc: 0.92
+Batch: 380; loss: 0.07; acc: 0.98
+Batch: 400; loss: 0.11; acc: 1.0
+Batch: 420; loss: 0.24; acc: 0.91
+Batch: 440; loss: 0.16; acc: 0.95
+Batch: 460; loss: 0.17; acc: 0.95
+Batch: 480; loss: 0.15; acc: 0.98
+Batch: 500; loss: 0.08; acc: 0.97
+Batch: 520; loss: 0.12; acc: 0.97
+Batch: 540; loss: 0.07; acc: 0.97
+Batch: 560; loss: 0.26; acc: 0.91
+Batch: 580; loss: 0.09; acc: 0.97
+Batch: 600; loss: 0.18; acc: 0.97
+Batch: 620; loss: 0.08; acc: 0.97
+Batch: 640; loss: 0.12; acc: 0.95
+Batch: 660; loss: 0.14; acc: 0.95
+Batch: 680; loss: 0.15; acc: 0.94
+Batch: 700; loss: 0.07; acc: 0.98
+Batch: 720; loss: 0.1; acc: 0.98
+Batch: 740; loss: 0.17; acc: 0.92
+Batch: 760; loss: 0.1; acc: 0.98
+Batch: 780; loss: 0.11; acc: 0.98
+Train Epoch over. train_loss: 0.15; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.16; acc: 0.95
+Batch: 20; loss: 0.44; acc: 0.86
+Batch: 40; loss: 0.22; acc: 0.92
+Batch: 60; loss: 0.07; acc: 0.98
+Batch: 80; loss: 0.25; acc: 0.92
+Batch: 100; loss: 0.21; acc: 0.95
+Batch: 120; loss: 0.15; acc: 0.94
+Batch: 140; loss: 0.23; acc: 0.92
+Val Epoch over. val_loss: 0.20080170870586567; val_accuracy: 0.9371019108280255 
+
+The current subspace-distance is: None 
+
+Epoch 15 start
+The current lr is: 0.003
+Batch: 0; loss: 0.03; acc: 1.0
+Batch: 20; loss: 0.07; acc: 1.0
+Batch: 40; loss: 0.18; acc: 0.94
+Batch: 60; loss: 0.16; acc: 0.95
+Batch: 80; loss: 0.25; acc: 0.94
+Batch: 100; loss: 0.27; acc: 0.92
+Batch: 120; loss: 0.09; acc: 0.98
+Batch: 140; loss: 0.21; acc: 0.92
+Batch: 160; loss: 0.05; acc: 0.98
+Batch: 180; loss: 0.12; acc: 0.97
+Batch: 200; loss: 0.17; acc: 0.94
+Batch: 220; loss: 0.2; acc: 0.92
+Batch: 240; loss: 0.13; acc: 0.95
+Batch: 260; loss: 0.15; acc: 0.95
+Batch: 280; loss: 0.19; acc: 0.92
+Batch: 300; loss: 0.24; acc: 0.92
+Batch: 320; loss: 0.19; acc: 0.92
+Batch: 340; loss: 0.3; acc: 0.91
+Batch: 360; loss: 0.06; acc: 0.98
+Batch: 380; loss: 0.1; acc: 0.98
+Batch: 400; loss: 0.18; acc: 0.94
+Batch: 420; loss: 0.23; acc: 0.94
+Batch: 440; loss: 0.31; acc: 0.89
+Batch: 460; loss: 0.22; acc: 0.92
+Batch: 480; loss: 0.09; acc: 0.97
+Batch: 500; loss: 0.16; acc: 0.94
+Batch: 520; loss: 0.06; acc: 0.97
+Batch: 540; loss: 0.16; acc: 0.94
+Batch: 560; loss: 0.23; acc: 0.92
+Batch: 580; loss: 0.18; acc: 0.94
+Batch: 600; loss: 0.18; acc: 0.95
+Batch: 620; loss: 0.1; acc: 0.95
+Batch: 640; loss: 0.15; acc: 0.94
+Batch: 660; loss: 0.15; acc: 0.98
+Batch: 680; loss: 0.13; acc: 0.94
+Batch: 700; loss: 0.18; acc: 0.94
+Batch: 720; loss: 0.18; acc: 0.94
+Batch: 740; loss: 0.25; acc: 0.92
+Batch: 760; loss: 0.26; acc: 0.92
+Batch: 780; loss: 0.11; acc: 0.95
+Train Epoch over. train_loss: 0.15; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.14; acc: 0.94
+Batch: 20; loss: 0.31; acc: 0.89
+Batch: 40; loss: 0.19; acc: 0.94
+Batch: 60; loss: 0.04; acc: 0.98
+Batch: 80; loss: 0.22; acc: 0.92
+Batch: 100; loss: 0.2; acc: 0.95
+Batch: 120; loss: 0.14; acc: 0.97
+Batch: 140; loss: 0.32; acc: 0.92
+Val Epoch over. val_loss: 0.1644366930719394; val_accuracy: 0.9478503184713376 
+
+The current subspace-distance is: None 
+
+Epoch 16 start
+The current lr is: 0.003
+Batch: 0; loss: 0.13; acc: 0.94
+Batch: 20; loss: 0.09; acc: 0.98
+Batch: 40; loss: 0.26; acc: 0.88
+Batch: 60; loss: 0.16; acc: 0.95
+Batch: 80; loss: 0.16; acc: 0.94
+Batch: 100; loss: 0.1; acc: 0.98
+Batch: 120; loss: 0.09; acc: 0.98
+Batch: 140; loss: 0.2; acc: 0.95
+Batch: 160; loss: 0.05; acc: 0.98
+Batch: 180; loss: 0.17; acc: 0.94
+Batch: 200; loss: 0.11; acc: 0.95
+Batch: 220; loss: 0.07; acc: 1.0
+Batch: 240; loss: 0.32; acc: 0.91
+Batch: 260; loss: 0.09; acc: 0.94
+Batch: 280; loss: 0.19; acc: 0.94
+Batch: 300; loss: 0.16; acc: 0.94
+Batch: 320; loss: 0.28; acc: 0.92
+Batch: 340; loss: 0.07; acc: 0.98
+Batch: 360; loss: 0.09; acc: 0.98
+Batch: 380; loss: 0.08; acc: 0.98
+Batch: 400; loss: 0.04; acc: 1.0
+Batch: 420; loss: 0.2; acc: 0.97
+Batch: 440; loss: 0.14; acc: 0.95
+Batch: 460; loss: 0.1; acc: 0.95
+Batch: 480; loss: 0.24; acc: 0.94
+Batch: 500; loss: 0.04; acc: 0.98
+Batch: 520; loss: 0.05; acc: 1.0
+Batch: 540; loss: 0.08; acc: 0.97
+Batch: 560; loss: 0.15; acc: 0.95
+Batch: 580; loss: 0.09; acc: 0.97
+Batch: 600; loss: 0.13; acc: 0.95
+Batch: 620; loss: 0.17; acc: 0.95
+Batch: 640; loss: 0.09; acc: 0.97
+Batch: 660; loss: 0.14; acc: 0.92
+Batch: 680; loss: 0.16; acc: 0.94
+Batch: 700; loss: 0.05; acc: 0.98
+Batch: 720; loss: 0.23; acc: 0.91
+Batch: 740; loss: 0.13; acc: 0.95
+Batch: 760; loss: 0.26; acc: 0.91
+Batch: 780; loss: 0.26; acc: 0.94
+Train Epoch over. train_loss: 0.15; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.2; acc: 0.95
+Batch: 20; loss: 0.46; acc: 0.88
+Batch: 40; loss: 0.36; acc: 0.88
+Batch: 60; loss: 0.09; acc: 0.98
+Batch: 80; loss: 0.26; acc: 0.94
+Batch: 100; loss: 0.28; acc: 0.91
+Batch: 120; loss: 0.13; acc: 0.98
+Batch: 140; loss: 0.45; acc: 0.88
+Val Epoch over. val_loss: 0.3267600753694583; val_accuracy: 0.8971934713375797 
+
+The current subspace-distance is: None 
+
+Epoch 17 start
+The current lr is: 0.003
+Batch: 0; loss: 0.09; acc: 0.98
+Batch: 20; loss: 0.2; acc: 0.92
+Batch: 40; loss: 0.26; acc: 0.88
+Batch: 60; loss: 0.07; acc: 0.97
+Batch: 80; loss: 0.14; acc: 0.95
+Batch: 100; loss: 0.07; acc: 0.98
+Batch: 120; loss: 0.13; acc: 0.94
+Batch: 140; loss: 0.24; acc: 0.94
+Batch: 160; loss: 0.05; acc: 0.98
+Batch: 180; loss: 0.08; acc: 0.98
+Batch: 200; loss: 0.14; acc: 0.94
+Batch: 220; loss: 0.18; acc: 0.95
+Batch: 240; loss: 0.15; acc: 0.95
+Batch: 260; loss: 0.15; acc: 0.95
+Batch: 280; loss: 0.32; acc: 0.91
+Batch: 300; loss: 0.07; acc: 1.0
+Batch: 320; loss: 0.17; acc: 0.95
+Batch: 340; loss: 0.31; acc: 0.92
+Batch: 360; loss: 0.08; acc: 0.98
+Batch: 380; loss: 0.16; acc: 0.95
+Batch: 400; loss: 0.24; acc: 0.94
+Batch: 420; loss: 0.08; acc: 0.97
+Batch: 440; loss: 0.06; acc: 1.0
+Batch: 460; loss: 0.16; acc: 0.92
+Batch: 480; loss: 0.09; acc: 0.97
+Batch: 500; loss: 0.08; acc: 0.95
+Batch: 520; loss: 0.05; acc: 0.98
+Batch: 540; loss: 0.2; acc: 0.92
+Batch: 560; loss: 0.14; acc: 0.95
+Batch: 580; loss: 0.32; acc: 0.89
+Batch: 600; loss: 0.15; acc: 0.95
+Batch: 620; loss: 0.16; acc: 0.92
+Batch: 640; loss: 0.11; acc: 0.98
+Batch: 660; loss: 0.07; acc: 0.97
+Batch: 680; loss: 0.22; acc: 0.94
+Batch: 700; loss: 0.14; acc: 0.94
+Batch: 720; loss: 0.08; acc: 0.97
+Batch: 740; loss: 0.06; acc: 1.0
+Batch: 760; loss: 0.18; acc: 0.94
+Batch: 780; loss: 0.15; acc: 0.95
+Train Epoch over. train_loss: 0.14; train_accuracy: 0.95 
+
+Batch: 0; loss: 0.17; acc: 0.94
+Batch: 20; loss: 0.37; acc: 0.89
+Batch: 40; loss: 0.23; acc: 0.91
+Batch: 60; loss: 0.06; acc: 0.98
+Batch: 80; loss: 0.21; acc: 0.92
+Batch: 100; loss: 0.17; acc: 0.97
+Batch: 120; loss: 0.11; acc: 0.97
+Batch: 140; loss: 0.26; acc: 0.92
+Val Epoch over. val_loss: 0.18507485988603276; val_accuracy: 0.9428742038216561 
+
+The current subspace-distance is: None 
+
+Epoch 18 start
+The current lr is: 0.003
+Batch: 0; loss: 0.11; acc: 0.97
+Batch: 20; loss: 0.18; acc: 0.94
+Batch: 40; loss: 0.23; acc: 0.92
+Batch: 60; loss: 0.16; acc: 0.95
+Batch: 80; loss: 0.05; acc: 0.98
+Batch: 100; loss: 0.08; acc: 0.98
+Batch: 120; loss: 0.29; acc: 0.89
+Batch: 140; loss: 0.24; acc: 0.91
+Batch: 160; loss: 0.14; acc: 0.94
+Batch: 180; loss: 0.26; acc: 0.92
+Batch: 200; loss: 0.17; acc: 0.95
+Batch: 220; loss: 0.17; acc: 0.94
+Batch: 240; loss: 0.19; acc: 0.92
+Batch: 260; loss: 0.24; acc: 0.92
+Batch: 280; loss: 0.13; acc: 0.98
+Batch: 300; loss: 0.18; acc: 0.94
+Batch: 320; loss: 0.12; acc: 0.95
+Batch: 340; loss: 0.08; acc: 0.98
+Batch: 360; loss: 0.09; acc: 0.97
+Batch: 380; loss: 0.13; acc: 0.95
+Batch: 400; loss: 0.12; acc: 0.98
+Batch: 420; loss: 0.21; acc: 0.94
+Batch: 440; loss: 0.1; acc: 0.97
+Batch: 460; loss: 0.1; acc: 0.95
+Batch: 480; loss: 0.16; acc: 0.94
+Batch: 500; loss: 0.12; acc: 0.97
+Batch: 520; loss: 0.13; acc: 0.95
+Batch: 540; loss: 0.2; acc: 0.94
+Batch: 560; loss: 0.1; acc: 0.95
+Batch: 580; loss: 0.09; acc: 0.97
+Batch: 600; loss: 0.17; acc: 0.94
+Batch: 620; loss: 0.12; acc: 0.97
+Batch: 640; loss: 0.1; acc: 0.98
+Batch: 660; loss: 0.06; acc: 1.0
+Batch: 680; loss: 0.12; acc: 0.98
+Batch: 700; loss: 0.13; acc: 0.94
+Batch: 720; loss: 0.12; acc: 0.97
+Batch: 740; loss: 0.11; acc: 0.97
+Batch: 760; loss: 0.14; acc: 0.97
+Batch: 780; loss: 0.29; acc: 0.89
+Train Epoch over. train_loss: 0.14; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.34; acc: 0.89
+Batch: 20; loss: 0.62; acc: 0.81
+Batch: 40; loss: 0.53; acc: 0.81
+Batch: 60; loss: 0.15; acc: 0.97
+Batch: 80; loss: 0.52; acc: 0.83
+Batch: 100; loss: 0.59; acc: 0.78
+Batch: 120; loss: 0.28; acc: 0.88
+Batch: 140; loss: 0.31; acc: 0.88
+Val Epoch over. val_loss: 0.5028966722215057; val_accuracy: 0.8321058917197452 
+
+The current subspace-distance is: None 
+
+Epoch 19 start
+The current lr is: 0.003
+Batch: 0; loss: 0.2; acc: 0.98
+Batch: 20; loss: 0.06; acc: 0.98
+Batch: 40; loss: 0.1; acc: 0.97
+Batch: 60; loss: 0.15; acc: 0.94
+Batch: 80; loss: 0.21; acc: 0.95
+Batch: 100; loss: 0.08; acc: 0.97
+Batch: 120; loss: 0.19; acc: 0.92
+Batch: 140; loss: 0.13; acc: 0.97
+Batch: 160; loss: 0.12; acc: 0.95
+Batch: 180; loss: 0.1; acc: 0.97
+Batch: 200; loss: 0.12; acc: 0.97
+Batch: 220; loss: 0.17; acc: 0.94
+Batch: 240; loss: 0.14; acc: 0.98
+Batch: 260; loss: 0.11; acc: 0.97
+Batch: 280; loss: 0.12; acc: 0.97
+Batch: 300; loss: 0.21; acc: 0.91
+Batch: 320; loss: 0.07; acc: 1.0
+Batch: 340; loss: 0.15; acc: 0.95
+Batch: 360; loss: 0.1; acc: 0.97
+Batch: 380; loss: 0.15; acc: 0.95
+Batch: 400; loss: 0.1; acc: 0.97
+Batch: 420; loss: 0.19; acc: 0.94
+Batch: 440; loss: 0.16; acc: 0.94
+Batch: 460; loss: 0.21; acc: 0.94
+Batch: 480; loss: 0.21; acc: 0.94
+Batch: 500; loss: 0.13; acc: 0.97
+Batch: 520; loss: 0.07; acc: 0.97
+Batch: 540; loss: 0.18; acc: 0.98
+Batch: 560; loss: 0.19; acc: 0.91
+Batch: 580; loss: 0.1; acc: 0.97
+Batch: 600; loss: 0.15; acc: 0.97
+Batch: 620; loss: 0.08; acc: 0.97
+Batch: 640; loss: 0.08; acc: 0.97
+Batch: 660; loss: 0.12; acc: 0.97
+Batch: 680; loss: 0.11; acc: 0.97
+Batch: 700; loss: 0.07; acc: 0.95
+Batch: 720; loss: 0.07; acc: 0.98
+Batch: 740; loss: 0.17; acc: 0.95
+Batch: 760; loss: 0.1; acc: 0.95
+Batch: 780; loss: 0.14; acc: 0.95
+Train Epoch over. train_loss: 0.14; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.35; acc: 0.88
+Batch: 20; loss: 0.65; acc: 0.78
+Batch: 40; loss: 0.48; acc: 0.86
+Batch: 60; loss: 0.19; acc: 0.97
+Batch: 80; loss: 0.39; acc: 0.88
+Batch: 100; loss: 0.5; acc: 0.86
+Batch: 120; loss: 0.34; acc: 0.94
+Batch: 140; loss: 0.48; acc: 0.86
+Val Epoch over. val_loss: 0.4179152404521681; val_accuracy: 0.8614649681528662 
+
+The current subspace-distance is: None 
+
+Epoch 20 start
+The current lr is: 0.003
+Batch: 0; loss: 0.25; acc: 0.94
+Batch: 20; loss: 0.22; acc: 0.92
+Batch: 40; loss: 0.17; acc: 0.92
+Batch: 60; loss: 0.03; acc: 1.0
+Batch: 80; loss: 0.08; acc: 0.95
+Batch: 100; loss: 0.11; acc: 0.94
+Batch: 120; loss: 0.06; acc: 0.98
+Batch: 140; loss: 0.18; acc: 0.95
+Batch: 160; loss: 0.3; acc: 0.91
+Batch: 180; loss: 0.17; acc: 0.94
+Batch: 200; loss: 0.12; acc: 0.94
+Batch: 220; loss: 0.16; acc: 0.94
+Batch: 240; loss: 0.12; acc: 0.98
+Batch: 260; loss: 0.1; acc: 0.98
+Batch: 280; loss: 0.08; acc: 0.98
+Batch: 300; loss: 0.12; acc: 0.97
+Batch: 320; loss: 0.07; acc: 0.98
+Batch: 340; loss: 0.24; acc: 0.91
+Batch: 360; loss: 0.11; acc: 0.95
+Batch: 380; loss: 0.05; acc: 1.0
+Batch: 400; loss: 0.18; acc: 0.97
+Batch: 420; loss: 0.23; acc: 0.94
+Batch: 440; loss: 0.1; acc: 0.98
+Batch: 460; loss: 0.18; acc: 0.95
+Batch: 480; loss: 0.12; acc: 0.97
+Batch: 500; loss: 0.12; acc: 0.94
+Batch: 520; loss: 0.06; acc: 0.98
+Batch: 540; loss: 0.13; acc: 0.97
+Batch: 560; loss: 0.17; acc: 0.97
+Batch: 580; loss: 0.1; acc: 0.97
+Batch: 600; loss: 0.09; acc: 0.97
+Batch: 620; loss: 0.13; acc: 0.94
+Batch: 640; loss: 0.15; acc: 0.95
+Batch: 660; loss: 0.05; acc: 1.0
+Batch: 680; loss: 0.05; acc: 0.98
+Batch: 700; loss: 0.11; acc: 0.95
+Batch: 720; loss: 0.1; acc: 0.97
+Batch: 740; loss: 0.14; acc: 0.95
+Batch: 760; loss: 0.07; acc: 0.98
+Batch: 780; loss: 0.07; acc: 0.97
+Train Epoch over. train_loss: 0.13; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.31; acc: 0.89
+Batch: 20; loss: 0.41; acc: 0.83
+Batch: 40; loss: 0.56; acc: 0.84
+Batch: 60; loss: 0.37; acc: 0.89
+Batch: 80; loss: 0.34; acc: 0.88
+Batch: 100; loss: 0.49; acc: 0.88
+Batch: 120; loss: 0.29; acc: 0.91
+Batch: 140; loss: 0.47; acc: 0.91
+Val Epoch over. val_loss: 0.442753910069253; val_accuracy: 0.8694267515923567 
+
+The current subspace-distance is: None 
+
+Epoch 21 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.09; acc: 0.97
+Batch: 20; loss: 0.18; acc: 0.92
+Batch: 40; loss: 0.14; acc: 0.97
+Batch: 60; loss: 0.15; acc: 0.94
+Batch: 80; loss: 0.08; acc: 0.98
+Batch: 100; loss: 0.13; acc: 0.95
+Batch: 120; loss: 0.08; acc: 0.98
+Batch: 140; loss: 0.1; acc: 0.97
+Batch: 160; loss: 0.08; acc: 0.98
+Batch: 180; loss: 0.07; acc: 0.98
+Batch: 200; loss: 0.19; acc: 0.94
+Batch: 220; loss: 0.14; acc: 0.95
+Batch: 240; loss: 0.09; acc: 0.97
+Batch: 260; loss: 0.03; acc: 1.0
+Batch: 280; loss: 0.23; acc: 0.94
+Batch: 300; loss: 0.12; acc: 0.97
+Batch: 320; loss: 0.17; acc: 0.95
+Batch: 340; loss: 0.26; acc: 0.95
+Batch: 360; loss: 0.05; acc: 1.0
+Batch: 380; loss: 0.19; acc: 0.97
+Batch: 400; loss: 0.23; acc: 0.92
+Batch: 420; loss: 0.23; acc: 0.94
+Batch: 440; loss: 0.15; acc: 0.95
+Batch: 460; loss: 0.1; acc: 0.97
+Batch: 480; loss: 0.14; acc: 0.95
+Batch: 500; loss: 0.08; acc: 0.95
+Batch: 520; loss: 0.02; acc: 1.0
+Batch: 540; loss: 0.18; acc: 0.94
+Batch: 560; loss: 0.14; acc: 0.95
+Batch: 580; loss: 0.07; acc: 0.98
+Batch: 600; loss: 0.09; acc: 0.97
+Batch: 620; loss: 0.09; acc: 0.95
+Batch: 640; loss: 0.06; acc: 0.98
+Batch: 660; loss: 0.04; acc: 1.0
+Batch: 680; loss: 0.16; acc: 0.95
+Batch: 700; loss: 0.08; acc: 0.97
+Batch: 720; loss: 0.16; acc: 0.95
+Batch: 740; loss: 0.14; acc: 0.95
+Batch: 760; loss: 0.15; acc: 0.95
+Batch: 780; loss: 0.11; acc: 0.95
+Train Epoch over. train_loss: 0.12; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.13; acc: 0.95
+Batch: 20; loss: 0.24; acc: 0.91
+Batch: 40; loss: 0.11; acc: 0.97
+Batch: 60; loss: 0.05; acc: 0.97
+Batch: 80; loss: 0.19; acc: 0.94
+Batch: 100; loss: 0.18; acc: 0.95
+Batch: 120; loss: 0.11; acc: 0.97
+Batch: 140; loss: 0.27; acc: 0.92
+Val Epoch over. val_loss: 0.14178143173551103; val_accuracy: 0.9567078025477707 
+
+The current subspace-distance is: None 
+
+Epoch 22 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.11; acc: 0.95
+Batch: 20; loss: 0.05; acc: 1.0
+Batch: 40; loss: 0.13; acc: 0.94
+Batch: 60; loss: 0.16; acc: 0.94
+Batch: 80; loss: 0.15; acc: 0.94
+Batch: 100; loss: 0.15; acc: 0.95
+Batch: 120; loss: 0.22; acc: 0.92
+Batch: 140; loss: 0.04; acc: 0.98
+Batch: 160; loss: 0.15; acc: 0.94
+Batch: 180; loss: 0.18; acc: 0.94
+Batch: 200; loss: 0.06; acc: 0.98
+Batch: 220; loss: 0.08; acc: 0.97
+Batch: 240; loss: 0.06; acc: 0.98
+Batch: 260; loss: 0.16; acc: 0.94
+Batch: 280; loss: 0.13; acc: 0.94
+Batch: 300; loss: 0.09; acc: 0.95
+Batch: 320; loss: 0.03; acc: 1.0
+Batch: 340; loss: 0.12; acc: 0.95
+Batch: 360; loss: 0.12; acc: 0.97
+Batch: 380; loss: 0.09; acc: 0.95
+Batch: 400; loss: 0.05; acc: 0.98
+Batch: 420; loss: 0.16; acc: 0.94
+Batch: 440; loss: 0.13; acc: 0.95
+Batch: 460; loss: 0.18; acc: 0.94
+Batch: 480; loss: 0.22; acc: 0.91
+Batch: 500; loss: 0.09; acc: 0.95
+Batch: 520; loss: 0.15; acc: 0.92
+Batch: 540; loss: 0.08; acc: 0.98
+Batch: 560; loss: 0.23; acc: 0.91
+Batch: 580; loss: 0.11; acc: 0.94
+Batch: 600; loss: 0.1; acc: 0.97
+Batch: 620; loss: 0.08; acc: 0.98
+Batch: 640; loss: 0.11; acc: 0.97
+Batch: 660; loss: 0.07; acc: 0.97
+Batch: 680; loss: 0.03; acc: 1.0
+Batch: 700; loss: 0.03; acc: 1.0
+Batch: 720; loss: 0.26; acc: 0.92
+Batch: 740; loss: 0.21; acc: 0.92
+Batch: 760; loss: 0.11; acc: 0.98
+Batch: 780; loss: 0.09; acc: 0.97
+Train Epoch over. train_loss: 0.12; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.13; acc: 0.92
+Batch: 20; loss: 0.23; acc: 0.91
+Batch: 40; loss: 0.11; acc: 0.95
+Batch: 60; loss: 0.07; acc: 0.98
+Batch: 80; loss: 0.21; acc: 0.91
+Batch: 100; loss: 0.18; acc: 0.95
+Batch: 120; loss: 0.11; acc: 0.98
+Batch: 140; loss: 0.38; acc: 0.92
+Val Epoch over. val_loss: 0.14775482337376114; val_accuracy: 0.9534235668789809 
+
+The current subspace-distance is: None 
+
+Epoch 23 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.02; acc: 1.0
+Batch: 20; loss: 0.16; acc: 0.94
+Batch: 40; loss: 0.07; acc: 0.98
+Batch: 60; loss: 0.04; acc: 0.98
+Batch: 80; loss: 0.04; acc: 1.0
+Batch: 100; loss: 0.07; acc: 1.0
+Batch: 120; loss: 0.11; acc: 0.94
+Batch: 140; loss: 0.12; acc: 0.97
+Batch: 160; loss: 0.07; acc: 0.98
+Batch: 180; loss: 0.05; acc: 0.98
+Batch: 200; loss: 0.04; acc: 1.0
+Batch: 220; loss: 0.07; acc: 0.98
+Batch: 240; loss: 0.12; acc: 0.95
+Batch: 260; loss: 0.09; acc: 0.98
+Batch: 280; loss: 0.04; acc: 1.0
+Batch: 300; loss: 0.06; acc: 0.98
+Batch: 320; loss: 0.03; acc: 1.0
+Batch: 340; loss: 0.16; acc: 0.97
+Batch: 360; loss: 0.11; acc: 0.97
+Batch: 380; loss: 0.07; acc: 0.98
+Batch: 400; loss: 0.11; acc: 0.95
+Batch: 420; loss: 0.06; acc: 0.98
+Batch: 440; loss: 0.13; acc: 0.95
+Batch: 460; loss: 0.02; acc: 1.0
+Batch: 480; loss: 0.16; acc: 0.95
+Batch: 500; loss: 0.15; acc: 0.95
+Batch: 520; loss: 0.11; acc: 0.95
+Batch: 540; loss: 0.05; acc: 0.98
+Batch: 560; loss: 0.11; acc: 0.97
+Batch: 580; loss: 0.19; acc: 0.94
+Batch: 600; loss: 0.06; acc: 0.98
+Batch: 620; loss: 0.05; acc: 0.98
+Batch: 640; loss: 0.17; acc: 0.95
+Batch: 660; loss: 0.13; acc: 0.94
+Batch: 680; loss: 0.11; acc: 0.95
+Batch: 700; loss: 0.12; acc: 0.95
+Batch: 720; loss: 0.05; acc: 0.98
+Batch: 740; loss: 0.11; acc: 0.94
+Batch: 760; loss: 0.02; acc: 1.0
+Batch: 780; loss: 0.08; acc: 0.98
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.16; acc: 0.95
+Batch: 20; loss: 0.26; acc: 0.89
+Batch: 40; loss: 0.12; acc: 0.95
+Batch: 60; loss: 0.07; acc: 0.97
+Batch: 80; loss: 0.19; acc: 0.94
+Batch: 100; loss: 0.17; acc: 0.95
+Batch: 120; loss: 0.07; acc: 0.97
+Batch: 140; loss: 0.27; acc: 0.94
+Val Epoch over. val_loss: 0.14298459574295458; val_accuracy: 0.95421974522293 
+
+The current subspace-distance is: None 
+
+Epoch 24 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.1; acc: 0.97
+Batch: 20; loss: 0.16; acc: 0.97
+Batch: 40; loss: 0.12; acc: 0.97
+Batch: 60; loss: 0.13; acc: 0.95
+Batch: 80; loss: 0.1; acc: 0.98
+Batch: 100; loss: 0.07; acc: 0.97
+Batch: 120; loss: 0.05; acc: 0.97
+Batch: 140; loss: 0.21; acc: 0.94
+Batch: 160; loss: 0.08; acc: 0.97
+Batch: 180; loss: 0.07; acc: 0.97
+Batch: 200; loss: 0.07; acc: 0.98
+Batch: 220; loss: 0.1; acc: 0.95
+Batch: 240; loss: 0.07; acc: 0.98
+Batch: 260; loss: 0.11; acc: 0.98
+Batch: 280; loss: 0.11; acc: 0.97
+Batch: 300; loss: 0.08; acc: 0.97
+Batch: 320; loss: 0.02; acc: 1.0
+Batch: 340; loss: 0.08; acc: 0.98
+Batch: 360; loss: 0.11; acc: 0.97
+Batch: 380; loss: 0.1; acc: 0.97
+Batch: 400; loss: 0.14; acc: 0.97
+Batch: 420; loss: 0.15; acc: 0.98
+Batch: 440; loss: 0.08; acc: 0.97
+Batch: 460; loss: 0.07; acc: 0.98
+Batch: 480; loss: 0.06; acc: 0.97
+Batch: 500; loss: 0.08; acc: 0.94
+Batch: 520; loss: 0.14; acc: 0.95
+Batch: 540; loss: 0.11; acc: 0.97
+Batch: 560; loss: 0.14; acc: 0.95
+Batch: 580; loss: 0.24; acc: 0.89
+Batch: 600; loss: 0.06; acc: 0.97
+Batch: 620; loss: 0.14; acc: 0.94
+Batch: 640; loss: 0.1; acc: 0.97
+Batch: 660; loss: 0.19; acc: 0.95
+Batch: 680; loss: 0.09; acc: 0.95
+Batch: 700; loss: 0.13; acc: 0.95
+Batch: 720; loss: 0.09; acc: 0.97
+Batch: 740; loss: 0.12; acc: 0.95
+Batch: 760; loss: 0.04; acc: 0.98
+Batch: 780; loss: 0.1; acc: 0.98
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.15; acc: 0.94
+Batch: 20; loss: 0.24; acc: 0.88
+Batch: 40; loss: 0.12; acc: 0.95
+Batch: 60; loss: 0.06; acc: 0.97
+Batch: 80; loss: 0.21; acc: 0.92
+Batch: 100; loss: 0.16; acc: 0.97
+Batch: 120; loss: 0.09; acc: 0.95
+Batch: 140; loss: 0.25; acc: 0.92
+Val Epoch over. val_loss: 0.13879341708057247; val_accuracy: 0.9560111464968153 
+
+The current subspace-distance is: None 
+
+Epoch 25 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.06; acc: 1.0
+Batch: 20; loss: 0.03; acc: 1.0
+Batch: 40; loss: 0.1; acc: 0.95
+Batch: 60; loss: 0.08; acc: 0.98
+Batch: 80; loss: 0.18; acc: 0.95
+Batch: 100; loss: 0.07; acc: 1.0
+Batch: 120; loss: 0.16; acc: 0.95
+Batch: 140; loss: 0.11; acc: 0.97
+Batch: 160; loss: 0.1; acc: 0.97
+Batch: 180; loss: 0.11; acc: 0.97
+Batch: 200; loss: 0.09; acc: 0.97
+Batch: 220; loss: 0.07; acc: 0.98
+Batch: 240; loss: 0.13; acc: 0.97
+Batch: 260; loss: 0.15; acc: 0.97
+Batch: 280; loss: 0.05; acc: 0.98
+Batch: 300; loss: 0.14; acc: 0.97
+Batch: 320; loss: 0.14; acc: 0.95
+Batch: 340; loss: 0.14; acc: 0.97
+Batch: 360; loss: 0.13; acc: 0.94
+Batch: 380; loss: 0.03; acc: 1.0
+Batch: 400; loss: 0.06; acc: 0.98
+Batch: 420; loss: 0.15; acc: 0.94
+Batch: 440; loss: 0.14; acc: 0.98
+Batch: 460; loss: 0.12; acc: 0.97
+Batch: 480; loss: 0.12; acc: 0.94
+Batch: 500; loss: 0.22; acc: 0.94
+Batch: 520; loss: 0.04; acc: 1.0
+Batch: 540; loss: 0.18; acc: 0.97
+Batch: 560; loss: 0.02; acc: 1.0
+Batch: 580; loss: 0.11; acc: 0.97
+Batch: 600; loss: 0.06; acc: 0.97
+Batch: 620; loss: 0.12; acc: 0.95
+Batch: 640; loss: 0.06; acc: 0.98
+Batch: 660; loss: 0.09; acc: 0.98
+Batch: 680; loss: 0.11; acc: 0.95
+Batch: 700; loss: 0.11; acc: 0.94
+Batch: 720; loss: 0.04; acc: 0.98
+Batch: 740; loss: 0.08; acc: 0.98
+Batch: 760; loss: 0.14; acc: 0.95
+Batch: 780; loss: 0.09; acc: 0.97
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.96 
+
+Batch: 0; loss: 0.12; acc: 0.95
+Batch: 20; loss: 0.26; acc: 0.88
+Batch: 40; loss: 0.17; acc: 0.95
+Batch: 60; loss: 0.07; acc: 0.98
+Batch: 80; loss: 0.25; acc: 0.89
+Batch: 100; loss: 0.2; acc: 0.95
+Batch: 120; loss: 0.13; acc: 0.97
+Batch: 140; loss: 0.3; acc: 0.94
+Val Epoch over. val_loss: 0.14936703709280416; val_accuracy: 0.9528264331210191 
+
+The current subspace-distance is: None 
+
+Epoch 26 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.09; acc: 0.95
+Batch: 20; loss: 0.1; acc: 0.97
+Batch: 40; loss: 0.12; acc: 0.98
+Batch: 60; loss: 0.15; acc: 0.97
+Batch: 80; loss: 0.24; acc: 0.92
+Batch: 100; loss: 0.19; acc: 0.95
+Batch: 120; loss: 0.13; acc: 0.95
+Batch: 140; loss: 0.3; acc: 0.94
+Batch: 160; loss: 0.12; acc: 0.92
+Batch: 180; loss: 0.06; acc: 0.98
+Batch: 200; loss: 0.12; acc: 0.97
+Batch: 220; loss: 0.05; acc: 1.0
+Batch: 240; loss: 0.04; acc: 1.0
+Batch: 260; loss: 0.18; acc: 0.95
+Batch: 280; loss: 0.12; acc: 0.92
+Batch: 300; loss: 0.04; acc: 1.0
+Batch: 320; loss: 0.1; acc: 0.98
+Batch: 340; loss: 0.1; acc: 0.97
+Batch: 360; loss: 0.08; acc: 0.98
+Batch: 380; loss: 0.04; acc: 0.97
+Batch: 400; loss: 0.13; acc: 0.98
+Batch: 420; loss: 0.04; acc: 1.0
+Batch: 440; loss: 0.11; acc: 0.97
+Batch: 460; loss: 0.06; acc: 0.98
+Batch: 480; loss: 0.07; acc: 0.97
+Batch: 500; loss: 0.27; acc: 0.92
+Batch: 520; loss: 0.05; acc: 0.97
+Batch: 540; loss: 0.19; acc: 0.94
+Batch: 560; loss: 0.08; acc: 0.98
+Batch: 580; loss: 0.08; acc: 0.95
+Batch: 600; loss: 0.14; acc: 0.95
+Batch: 620; loss: 0.1; acc: 0.94
+Batch: 640; loss: 0.07; acc: 0.98
+Batch: 660; loss: 0.06; acc: 0.97
+Batch: 680; loss: 0.11; acc: 0.98
+Batch: 700; loss: 0.07; acc: 1.0
+Batch: 720; loss: 0.08; acc: 0.97
+Batch: 740; loss: 0.08; acc: 0.98
+Batch: 760; loss: 0.28; acc: 0.88
+Batch: 780; loss: 0.11; acc: 0.95
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.97 
+
+Batch: 0; loss: 0.13; acc: 0.94
+Batch: 20; loss: 0.21; acc: 0.88
+Batch: 40; loss: 0.14; acc: 0.92
+Batch: 60; loss: 0.06; acc: 0.98
+Batch: 80; loss: 0.21; acc: 0.92
+Batch: 100; loss: 0.17; acc: 0.95
+Batch: 120; loss: 0.09; acc: 0.97
+Batch: 140; loss: 0.25; acc: 0.94
+Val Epoch over. val_loss: 0.13854718452711015; val_accuracy: 0.955812101910828 
+
+The current subspace-distance is: None 
+
+Epoch 27 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.05; acc: 0.98
+Batch: 20; loss: 0.19; acc: 0.94
+Batch: 40; loss: 0.13; acc: 0.95
+Batch: 60; loss: 0.05; acc: 0.98
+Batch: 80; loss: 0.12; acc: 0.97
+Batch: 100; loss: 0.05; acc: 1.0
+Batch: 120; loss: 0.16; acc: 0.95
+Batch: 140; loss: 0.05; acc: 0.98
+Batch: 160; loss: 0.15; acc: 0.92
+Batch: 180; loss: 0.14; acc: 0.97
+Batch: 200; loss: 0.05; acc: 0.98
+Batch: 220; loss: 0.03; acc: 1.0
+Batch: 240; loss: 0.13; acc: 0.97
+Batch: 260; loss: 0.09; acc: 0.97
+Batch: 280; loss: 0.09; acc: 1.0
+Batch: 300; loss: 0.04; acc: 1.0
+Batch: 320; loss: 0.13; acc: 0.95
+Batch: 340; loss: 0.13; acc: 0.95
+Batch: 360; loss: 0.11; acc: 0.95
+Batch: 380; loss: 0.18; acc: 0.97
+Batch: 400; loss: 0.04; acc: 1.0
+Batch: 420; loss: 0.18; acc: 0.94
+Batch: 440; loss: 0.16; acc: 0.95
+Batch: 460; loss: 0.13; acc: 0.97
+Batch: 480; loss: 0.11; acc: 0.97
+Batch: 500; loss: 0.05; acc: 0.98
+Batch: 520; loss: 0.05; acc: 1.0
+Batch: 540; loss: 0.1; acc: 0.97
+Batch: 560; loss: 0.08; acc: 0.98
+Batch: 580; loss: 0.22; acc: 0.94
+Batch: 600; loss: 0.11; acc: 0.97
+Batch: 620; loss: 0.13; acc: 0.98
+Batch: 640; loss: 0.12; acc: 0.95
+Batch: 660; loss: 0.1; acc: 0.98
+Batch: 680; loss: 0.06; acc: 0.98
+Batch: 700; loss: 0.05; acc: 1.0
+Batch: 720; loss: 0.11; acc: 0.97
+Batch: 740; loss: 0.11; acc: 0.95
+Batch: 760; loss: 0.07; acc: 0.98
+Batch: 780; loss: 0.1; acc: 0.97
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.97 
+
+Batch: 0; loss: 0.14; acc: 0.95
+Batch: 20; loss: 0.28; acc: 0.88
+Batch: 40; loss: 0.1; acc: 0.95
+Batch: 60; loss: 0.07; acc: 0.97
+Batch: 80; loss: 0.19; acc: 0.94
+Batch: 100; loss: 0.17; acc: 0.95
+Batch: 120; loss: 0.1; acc: 0.98
+Batch: 140; loss: 0.35; acc: 0.94
+Val Epoch over. val_loss: 0.1402461135605718; val_accuracy: 0.9555135350318471 
+
+The current subspace-distance is: None 
+
+Epoch 28 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.05; acc: 0.98
+Batch: 20; loss: 0.18; acc: 0.97
+Batch: 40; loss: 0.19; acc: 0.92
+Batch: 60; loss: 0.04; acc: 1.0
+Batch: 80; loss: 0.06; acc: 0.98
+Batch: 100; loss: 0.11; acc: 0.95
+Batch: 120; loss: 0.06; acc: 1.0
+Batch: 140; loss: 0.14; acc: 0.94
+Batch: 160; loss: 0.11; acc: 0.98
+Batch: 180; loss: 0.04; acc: 1.0
+Batch: 200; loss: 0.06; acc: 0.98
+Batch: 220; loss: 0.14; acc: 0.94
+Batch: 240; loss: 0.15; acc: 0.97
+Batch: 260; loss: 0.05; acc: 0.98
+Batch: 280; loss: 0.13; acc: 0.97
+Batch: 300; loss: 0.1; acc: 0.97
+Batch: 320; loss: 0.17; acc: 0.97
+Batch: 340; loss: 0.09; acc: 0.98
+Batch: 360; loss: 0.19; acc: 0.97
+Batch: 380; loss: 0.04; acc: 0.98
+Batch: 400; loss: 0.02; acc: 1.0
+Batch: 420; loss: 0.16; acc: 0.95
+Batch: 440; loss: 0.13; acc: 0.94
+Batch: 460; loss: 0.18; acc: 0.95
+Batch: 480; loss: 0.07; acc: 0.98
+Batch: 500; loss: 0.07; acc: 0.98
+Batch: 520; loss: 0.15; acc: 0.97
+Batch: 540; loss: 0.09; acc: 0.97
+Batch: 560; loss: 0.15; acc: 0.95
+Batch: 580; loss: 0.27; acc: 0.94
+Batch: 600; loss: 0.12; acc: 0.97
+Batch: 620; loss: 0.04; acc: 1.0
+Batch: 640; loss: 0.13; acc: 0.94
+Batch: 660; loss: 0.09; acc: 0.97
+Batch: 680; loss: 0.11; acc: 0.97
+Batch: 700; loss: 0.28; acc: 0.94
+Batch: 720; loss: 0.22; acc: 0.95
+Batch: 740; loss: 0.13; acc: 0.95
+Batch: 760; loss: 0.09; acc: 0.97
+Batch: 780; loss: 0.16; acc: 0.94
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.97 
+
+Batch: 0; loss: 0.13; acc: 0.95
+Batch: 20; loss: 0.21; acc: 0.91
+Batch: 40; loss: 0.13; acc: 0.92
+Batch: 60; loss: 0.05; acc: 0.97
+Batch: 80; loss: 0.22; acc: 0.92
+Batch: 100; loss: 0.16; acc: 0.97
+Batch: 120; loss: 0.08; acc: 0.98
+Batch: 140; loss: 0.25; acc: 0.94
+Val Epoch over. val_loss: 0.13926308865475048; val_accuracy: 0.9557125796178344 
+
+The current subspace-distance is: None 
+
+Epoch 29 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.08; acc: 0.97
+Batch: 20; loss: 0.06; acc: 0.98
+Batch: 40; loss: 0.05; acc: 0.98
+Batch: 60; loss: 0.23; acc: 0.92
+Batch: 80; loss: 0.12; acc: 0.95
+Batch: 100; loss: 0.21; acc: 0.95
+Batch: 120; loss: 0.16; acc: 0.92
+Batch: 140; loss: 0.11; acc: 0.95
+Batch: 160; loss: 0.06; acc: 1.0
+Batch: 180; loss: 0.08; acc: 0.98
+Batch: 200; loss: 0.19; acc: 0.94
+Batch: 220; loss: 0.08; acc: 0.98
+Batch: 240; loss: 0.12; acc: 0.98
+Batch: 260; loss: 0.1; acc: 0.98
+Batch: 280; loss: 0.05; acc: 1.0
+Batch: 300; loss: 0.04; acc: 1.0
+Batch: 320; loss: 0.08; acc: 0.97
+Batch: 340; loss: 0.14; acc: 0.98
+Batch: 360; loss: 0.1; acc: 0.98
+Batch: 380; loss: 0.07; acc: 0.98
+Batch: 400; loss: 0.05; acc: 1.0
+Batch: 420; loss: 0.1; acc: 0.97
+Batch: 440; loss: 0.15; acc: 0.97
+Batch: 460; loss: 0.15; acc: 0.92
+Batch: 480; loss: 0.26; acc: 0.92
+Batch: 500; loss: 0.14; acc: 0.95
+Batch: 520; loss: 0.28; acc: 0.92
+Batch: 540; loss: 0.03; acc: 1.0
+Batch: 560; loss: 0.07; acc: 0.98
+Batch: 580; loss: 0.14; acc: 0.92
+Batch: 600; loss: 0.1; acc: 0.94
+Batch: 620; loss: 0.06; acc: 0.97
+Batch: 640; loss: 0.09; acc: 0.98
+Batch: 660; loss: 0.05; acc: 0.98
+Batch: 680; loss: 0.03; acc: 1.0
+Batch: 700; loss: 0.08; acc: 0.98
+Batch: 720; loss: 0.29; acc: 0.94
+Batch: 740; loss: 0.04; acc: 1.0
+Batch: 760; loss: 0.1; acc: 0.97
+Batch: 780; loss: 0.07; acc: 0.98
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.97 
+
+Batch: 0; loss: 0.15; acc: 0.95
+Batch: 20; loss: 0.26; acc: 0.88
+Batch: 40; loss: 0.18; acc: 0.92
+Batch: 60; loss: 0.06; acc: 0.97
+Batch: 80; loss: 0.21; acc: 0.92
+Batch: 100; loss: 0.17; acc: 0.95
+Batch: 120; loss: 0.06; acc: 1.0
+Batch: 140; loss: 0.39; acc: 0.91
+Val Epoch over. val_loss: 0.15082515780902972; val_accuracy: 0.9516321656050956 
+
+The current subspace-distance is: None 
+
+Epoch 30 start
+The current lr is: 0.0009
+Batch: 0; loss: 0.1; acc: 0.95
+Batch: 20; loss: 0.18; acc: 0.92
+Batch: 40; loss: 0.06; acc: 0.98
+Batch: 60; loss: 0.16; acc: 0.94
+Batch: 80; loss: 0.16; acc: 0.95
+Batch: 100; loss: 0.1; acc: 0.94
+Batch: 120; loss: 0.06; acc: 1.0
+Batch: 140; loss: 0.2; acc: 0.92
+Batch: 160; loss: 0.12; acc: 0.97
+Batch: 180; loss: 0.09; acc: 0.97
+Batch: 200; loss: 0.06; acc: 0.98
+Batch: 220; loss: 0.06; acc: 1.0
+Batch: 240; loss: 0.07; acc: 0.98
+Batch: 260; loss: 0.05; acc: 1.0
+Batch: 280; loss: 0.19; acc: 0.94
+Batch: 300; loss: 0.11; acc: 0.94
+Batch: 320; loss: 0.14; acc: 0.97
+Batch: 340; loss: 0.22; acc: 0.95
+Batch: 360; loss: 0.12; acc: 0.95
+Batch: 380; loss: 0.08; acc: 0.97
+Batch: 400; loss: 0.09; acc: 0.98
+Batch: 420; loss: 0.13; acc: 0.95
+Batch: 440; loss: 0.12; acc: 0.97
+Batch: 460; loss: 0.11; acc: 0.97
+Batch: 480; loss: 0.1; acc: 0.95
+Batch: 500; loss: 0.18; acc: 0.92
+Batch: 520; loss: 0.14; acc: 0.95
+Batch: 540; loss: 0.07; acc: 0.98
+Batch: 560; loss: 0.09; acc: 0.97
+Batch: 580; loss: 0.14; acc: 0.95
+Batch: 600; loss: 0.09; acc: 0.97
+Batch: 620; loss: 0.21; acc: 0.95
+Batch: 640; loss: 0.05; acc: 0.98
+Batch: 660; loss: 0.11; acc: 0.95
+Batch: 680; loss: 0.14; acc: 0.95
+Batch: 700; loss: 0.18; acc: 0.92
+Batch: 720; loss: 0.15; acc: 0.95
+Batch: 740; loss: 0.08; acc: 0.98
+Batch: 760; loss: 0.07; acc: 0.97
+Batch: 780; loss: 0.14; acc: 0.95
+Train Epoch over. train_loss: 0.11; train_accuracy: 0.97 
+
+Batch: 0; loss: 0.14; acc: 0.95
+Batch: 20; loss: 0.26; acc: 0.88
+Batch: 40; loss: 0.14; acc: 0.94
+Batch: 60; loss: 0.07; acc: 0.98
+Batch: 80; loss: 0.2; acc: 0.94
+Batch: 100; loss: 0.19; acc: 0.94
+Batch: 120; loss: 0.12; acc: 0.97
+Batch: 140; loss: 0.31; acc: 0.94
+Val Epoch over. val_loss: 0.13644517820542026; val_accuracy: 0.9546178343949044 
+
+The current subspace-distance is: None 
+
+plots/no_subspace_training/table13slim/2020-01-30 13:15:15/N_1_flips_False_d_dim_1000_lr_0.01_gamma_0.3_sched_freq_10_seed_1_epochs_30_batchsize_64
