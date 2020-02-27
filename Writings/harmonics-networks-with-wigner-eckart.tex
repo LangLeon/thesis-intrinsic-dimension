@@ -1,0 +1,378 @@
+\documentclass[12pt, a4paper]{article}
+%
+%
+% Eingebundene Pakete
+%
+%
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{blindtext}
+\usepackage{amsmath, amsthm, amssymb, dsfont}
+\usepackage[lf]{Baskervaldx} % lining figures
+\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage[left=30mm,right=30mm, top=20mm, bottom=25mm]{geometry}
+%
+%
+\usepackage{hyperref}
+\hypersetup{colorlinks = true, citecolor=blue, linkcolor=blue}
+\usepackage{enumerate}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\title{Solving Kernel constraints with Wigner-Eckart}
+\date{}
+%
+%
+% Umgebungen für Theoreme, Definitionen etc.
+%
+%
+% proposition, lemma, corollary, theorem
+\theoremstyle{plain}
+\newtheorem{pro}{Proposition}[section]
+\newtheorem{lem}[pro]{Lemma}
+\newtheorem{cor}[pro]{Corollary}
+\newtheorem{thm}[pro]{Theorem}
+% definition, example
+\theoremstyle{definition}
+\newtheorem{dfn}[pro]{Definition}
+\newtheorem{exa}[pro]{Example}
+% remark
+\theoremstyle{remark}
+\newtheorem{rem}[pro]{Remark}
+%
+%
+% Commands defined
+%
+%
+% commands for well known rings
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\C}{\mathds{C}}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\lin}{Lin}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Dim}{dim}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\im}{Im}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Representation theory of the circle group over $\C$}
+
+See also \href{https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=2ahUKEwjmqryykejnAhVCjqQKHelWD64QFjABegQIBhAB&url=https%3A%2F%2Fpeople.math.ethz.ch%2F~kowalski%2Frepresentation-theory.pdf&usg=AOvVaw26KQERYwYqIMiDaXbxsZ8U}{here}, chapter 5, for explanations regarding the representation theory of the circle group.
+
+Let $G = SO(2) = \R/\Z$ be the group of rotations in dimension $2$. We'll view it as a multiplicative or additive group depending on context. If $g \in G$ then we write $g_+$ for the additive counterpart in $\R/\Z$.
+
+Let $L^2(S^1)$ be the Hilbert-space of square-integrable functions on $S^1$, with values in $\C$. It's scalar-product is given by:
+\begin{equation*}
+\langle f, g \rangle = \int_{S^1} \overline{f(s)} g(s) ds.
+\end{equation*}
+Let the ``elementary'' functions or characters $\chi_m$ be given by
+\begin{equation*}
+\chi_m(s) = e^{2 \pi i m s}
+\end{equation*}
+for $m \in \Z$ and $s \in S^1 = \R/Z$. These functions form an orthonormal basis of $L^2(S^1)$. 
+
+Let $\rho: G \to L^2(S^1)$ be the linear representation given by
+\begin{equation*}
+\left[\rho(g)(f)\right](s') = f(s' - g_{+})
+\end{equation*}
+which just shifts functions. 
+
+Furthermore, the vector space spanned by $\chi_m$ over the complex numbers
+\begin{equation*}
+\C\langle \chi_m\rangle = \left\lbrace c \cdot \chi_m \mid c \in \C \right\rbrace
+\end{equation*}
+is, as a representation, isomorphic to the $m$'th order irrep of $G$, denoted by $V_m$. Thus, we can write
+\begin{equation*}
+L^2(S^1) \cong \widehat{\bigoplus_{m \in \Z}} V_m,
+\end{equation*}
+as an isomorphism of representations, where the hat means that we take the topological closure of the direct sum.
+
+\section{The Wigner-Eckart Theorem}
+
+If we write ``$V$ is a representation'', without further clarification, then we mean that $V$ is a vector space that comes equipped with a homomorphism $\rho_V: G \to \aut (V)$.
+
+In this section, we state and prove the Wigner-Eckart theorem, which we will use for solving kernel constraints. The treatment essentially follows the basis-independent form in \cite{wigner-eckart}.
+
+The main ingredient for this theorem is Schur's Lemma, see \cite{Jeevanjee}:
+
+\begin{pro}\label{Schur}
+Let $V$ and $W$ be irreducible representations over a group $G$ and let $f: V \to W$ be a linear equivariant map. Then either $f$ is zero or an isomorphism.
+
+Furthermore, if the ground field is the complex numbers $\C$, then the set of endomorphisms, i.e. linear equivariant maps from $V$ to $V$, is isomorphic to $\C$ itself:
+\begin{equation*}
+\End(V) = \{c \cdot \Id_V \mid c \in \C\} = \C.
+\end{equation*}
+\end{pro}
+
+Furthermore, in order to state the theorem, we need the notion of representations on tensor products and spaces of linear functions between representations:
+
+If $T$, $U$ and $V$ are representations, we can build the tensor product $T \otimes U$ and the space of linear functions $\lin(U, V)$. Both carry a representation:
+
+\begin{equation*}
+\rho(g)(t \otimes u) \coloneqq \rho_t(t) \otimes \rho_U(u),
+\end{equation*}
+and
+\begin{equation*}
+\rho(g)(f) \coloneq \rho_V(g) \circ f \circ \rho_U(g)^{-1}.
+\end{equation*}
+
+\begin{dfn}
+Let $T, U$ and $V$ be three representations. Then a representation operator is a linear equivariant map $\phi: T \to \lin(U, V)$.
+\end{dfn}
+
+We have the following alternative description of representation operators, proven in \cite{wigner-eckart}:
+
+\begin{pro}\label{correspondence}
+There is a $1$–$1$ correspondence between representation operators $\phi: T \to \lin(U,V)$ and linear equivariant maps $\phi': T \otimes U \to V$. This correspondence is given by
+\begin{equation*}
+\phi'(t \otimes u) = \phi(t)(u).
+\end{equation*}
+\end{pro}
+
+\begin{thm}\label{theorem}
+Let $T, U, V$ be $G$-representations, of which $V$ is assumed to be irreducible. Let $\overline{K}: T \to \lin(U, V)$ be a representation operator. Then $\overline{K}$ is constrained as follows:
+
+Assume that $V$ appears $n$ times as a direct summand in $T \otimes U$, i.e. there is an isomorphism of representations
+\begin{equation*}
+T \otimes U \cong V^n \oplus W
+\end{equation*}
+for some other representation $W$ that splits into irreducibles that are all non-isomorphic to $V$ ($n = 0$ is possible and allowed). Let $\rho_i: T \otimes U \to V$ be the corresponding equivariant linear projections, $i = 1, \dots, n$. Then $\overline{K}$ is given by
+\begin{equation*}
+\overline{K}(t)(u) = \sum_{i = 1}^{n}c_i \left( p_i(t \otimes u) \right)
+\end{equation*}
+for endomorphisms $c_i: V \to V$ independent of $t$ and $u$. Furthermore, if the underlying field is the complex numbers $\C$, then the $c_i$ are just complex numbers and called reduced matrix elements of the representation operator. 
+\end{thm}
+
+\begin{proof}[Sketch of proof]
+The idea is to use the correspondence Proposition \ref{correspondence} in order to get an equivalent description of the space of representation operators:
+
+\begin{align*}
+\Hom_G(T, \lin(U, V)) & \cong \Hom_G(T \otimes U, V) \\
+& \cong \Hom_G(V^n \oplus W, V) \\
+& \cong \bigoplus_{i = 1}^{n} \Hom_G(V, V) \oplus \Hom_G(W, V) \\
+& = \bigoplus_{i = 1}^{n} \End_G(V).
+\end{align*}
+
+In the second isomorphism, the iso $T \otimes U \cong V^n \oplus W$ was used. The third isomorphism just uses that linear equivariant maps can be described on each direct summand individually. The last equality uses that $W$ does not contain $V$ as a direct summand, and so by Schur's Lemma \ref{Schur}, there is no homomorphism $W \to V$. Now the result follows by taking the tuple $(c_1, \dots, c_n) \in \bigoplus_{i = 1}^{n} \End_G(V)$ corresponding to the representation operator $\overline{K}$ under the above isomorphism and explicitly tracing back the isomorphisms from bottom to top to find the form of $\overline{K}$.
+
+The second statement about $c_i$ being complex numbers in the case that the field is $\C$ follows from the second part of Schur's Lemma \ref{Schur}.
+\end{proof}
+
+\section{Harmonic networks with Wigner-Eckart}
+
+Let $K: \R^2 \to \lin(V_m, V_n)$ be a continuous equivariant kernel. By definition, this means that $K$ is continuous (for that to make sense, view $\lin (V_m, V_n)$ as $\C^{\Dim V_m \cdot \Dim V_n}$) and it fulfils the equivariance property
+\begin{equation}\label{kernel-definition}
+K(g\cdot x) = \rho_n(g) \circ K(x) \circ \rho_m(g)^{-1},
+\end{equation}
+where $G = SO(2)$ acts as rotations on $\R^2$. However, $K$ is not assumed to be linear in any straightforward way. Since $V_m \cong V_n \cong \C$ when viewed as $\C$-vectorspaces, we can identify $\text{Lin}(V_m, V_n)$ with $\C$. Under this identification, we have $K: \R^ \to \C$ and are wondering how this function looks like. Note that we will freely move back and forth between these identifications. We will show the following kernel constraint, used, but not proven, for the first time in \cite{hnets}:
+
+\begin{pro}\label{Wigner-Eckart}
+There is a continuous function $c: \R_{\geq 0} \to \C$ such that $K$ is given, under the identifications from above, by
+\begin{equation*}
+K(s) = c\left(|s|\right) \cdot \chi_{n - m}\left(s/|s|\right).
+\end{equation*}
+Here, $s/|s| \in \R^2$ has norm $1$ and is thus viewed as an element in $S^1$. If $n \neq m$ then $c(0) = 0$.
+\end{pro}
+
+We will prove this statement using the Wigner-Eckart Theorem \ref{theorem} in its basis-independent form. The idea is to use $K$ to construct a representation operator $\overline{K}: L^1(S^1) \to \lin(V_m, V_n)$ for each restriction of $K$ to a ring of constant radius in $\R^2$. Since $L^1(S^1) \otimes V_m$ contains $V_n$ exactly once as a direct summand and since we are over $\C$, the theorem tells us that this representation operator is described by exactly one complex number. If we trace back what this means, we end up with the description from above.
+
+\begin{proof}[Proof of Proposition \ref{Wigner-Eckart}]
+The strategy is to consider each circle-restriction $K_r: S^1 \to \lin(V_m, V_n), s \mapsto K(rs)$ separately, where $r \in \mathbb{R}_{>0}$ acts as a scalar. Clearly, such a $K_r$ still fulfils the equivariant constraint Equation \ref{kernel-definition}. Thus, consider a fixed $r$ and write, by abuse of notation, $K = K_r$.
+
+We define an ``extension'' $\overline{K}: L^2(S^1) \to \lin(V_m, V_{n})$ to which we will apply Wigner-Eckart. It is given by:
+\begin{equation*}
+\overline{K}(f)(v) = \int_{S^1}f(s)K(s)(v)ds.
+\end{equation*}
+Clearly, $\overline{K}$ is linear in $f$ and $v$. Furthermore, it is equivariant (in the following, $G$ is written additively when acting on $f$ and multiplicatively when acting on $K$), since:
+\begin{align*}
+\overline{K}(g_+ \cdot f)(v) & = \int_{S^1} (g_+\cdot f)(s) K(s)(v) ds \\
+& = \int_{S^1} f(s - g_{+}) K(s)(v)ds \\
+& = \int_{S^1} f(s) K(g\cdot s)(v)ds \\
+& = \int_{S^1} f(s) \left[ \rho_{n}(g) \circ K(s) \circ \rho_m(g)^{-1}\right](v) ds  \\
+& = \rho_n(g) \left( \int_{S^1} f(s) K(s) \left( \rho_m(g)^{-1}(v)\right)ds \right) \\
+& = \rho_n(g) \left( \overline{K}(f)\left(\rho_m(g)^{-1}(v) \right)\right) \\
+& = \left(\rho(g)\left( \overline{K}(f) \right)\right)(v).
+\end{align*}
+Consequently, we can apply Wigner-Eckart Theorem \ref{theorem} to find the structure of $\overline{K}$. For doing so, we need to define a projection operator $p: L^2(S^1) \otimes V_m \to V_n$. We do it as follows:
+\begin{equation*}
+p(f \otimes \chi_m) = \langle f \cdot \chi_m, \chi_n\rangle \chi_n,
+\end{equation*}
+where $V_m$ and $V_n$ are viewed as generated from $\chi_m$ and $\chi_n$, respectively. $f \cdot \chi_m$ means the element-wise product. Setting $f = \chi_{n-m}$ we indeed see that this map is surjective. From Wigner-Eckart, we obtain that
+\begin{equation*}
+\overline{K}(f)(\chi_m) = c \cdot \langle f \cdot \chi_m, \chi_n \rangle \chi_n
+\end{equation*}
+for some constant $c \in \C$. With the identifications from before, $\overline{K}(f): \C \to \C$ is given by multiplication with $c \cdot \langle f \cdot \chi_m, \chi_n \rangle$.
+
+What's missing is now how to trace this back to a statement about the appearance of the original circle map $K: S^1 \to \lin(V_m, V_n)$. We do this by viewing elements of $S^1$ as functions in $L^2(S^1)$ by the corresponding Dirac delta-functions. Therefore, let $\delta_s$ be the Dirac-delta function at $s \in S^1$. Then we get:
+\begin{align*}
+\overline{K}(\delta_s)(v) = \int_{S^1} \delta_s(s') K(s')(v)ds = K(s)(v),
+\end{align*}
+by general behaviour of the Dirac-delta. Thus, we can compute $K$ as follows:
+\begin{align*}
+K(s)(\chi_m) & = \overline{K}(\delta_s)(\chi_m) \\
+& = c \cdot \langle \delta_s \cdot \chi_m , \chi_n \rangle \\
+& = c \cdot \int_{S^1} \overline{\delta_s(s')\cdot \chi_m(s')} \cdot \chi_n(s') ds' \\
+& = c \cdot \int_{S^1} \delta_s(s') \cdot \chi_{n-m}(s') ds' \\
+& = c \cdot \chi_{n - m}(s).
+\end{align*}
+
+Now, remember that we did abuse of notation, i.e. we have just computed that $K_r: S^1 \to \C$ is given by $K_r(s) = c(r) \cdot \chi_{n-m}(s)$ with $c(r)$ depending on $r$. This means that $K(s) = K_{|s|}(s/|s|) = c(|s|) \cdot \chi_{n-m}(s/|s|)$. Since the kernel $K$ is continuous, the map $c$ needs to be continuous. Furthermore, $c(0) = 0$ also due to continuity, unless $m = n$ in which case $\chi_0$ is constant and so $c(0)$ can in principle take any complex number.
+
+\end{proof}
+
+\section{Strategy for finding $SO(2)$-steerable kernels over $\R$}
+
+The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in two ways:
+
+\begin{enumerate}
+\item Since $V_n$ appeared exactly once as a direct summand in $L^1(S^1) \otimes V_m$, there was only the need to define one projection operator and not several.
+\item As $\C$ is algebraically closed, we obtained from Schur's Lemma that the endomorphisms of $V_n$ are just given by multiplication with a complex number. Over the real numbers, the theory requires us to classify the endomorphisms of the irreps in a more careful manner.
+\end{enumerate}
+
+In what comes next, we want to consider steerable kernels $K: \R^2 \to \lin(V_m, V_n)$ where $V_m$ and $V_n$ are irreps of $SO(2)$ over $\R$. The above complications mean that we are adviced to separate the treatment into several steps that are undertaken independently. Thus, our strategy will be:
+
+\begin{enumerate}
+\item Explicitly parameterize the space of endomorphisms $\End(V_m)$ for each irrep $V_m$.
+\item Write $L^1(S^1)$, the space of square-integrable functions from $S^1$ \emph{to the real numbers}, as a direct sum of the irreps $\widehat{\bigoplus_{m \geq 0}} V_m$ of $SO(2)$ over $\R$.
+\item For each irrep $V_m$, we need to decompose $L^1(S^1) \otimes V_m = \widehat{\bigoplus_{l \geq 0}} V_{l} \otimes V_m$ as a direct sum of irreps. We do this by explicitly decomposing $V_{l} \otimes V_m$ into irreps. We will remember the projection operators $p_{l,m}^k: V_{l} \otimes V_m \to V_k$ that underlie this decomposition.
+\item For our kernel extension $\overline{K}: L^1(S^1) \to \lin(V_m, V_n)$, we consider the component functions $\overline{K_l}: V(l) \to \lin(V_m, V_n)$ separately, classify them using Wigner-Eckart and the preparatory work above, and get $\overline{K} = \sum_{l}\overline{K_l}$ in the end.
+\item We trace these results back in order to get a description of the original kernel $K$.
+\end{enumerate}
+
+For simplicity, we will from now on only consider steerable kernels $K: S^1 \to \lin(V_m, V_n)$, since their description gives by continuity an immediate description of steerable kernels $K: \R^2 \to \lin(V_m, V_n)$.
+
+\section{Preparation}
+
+In this section, we do the representation-theoretic preparation. We view $S^1 = \R/{2 \pi \Z}$, that is we take the interval $[0, 2 \pi]$ as the space where our functions are defined. Consequently, we have to put the fraction $\frac{1}{2 \pi}$ before all of our integrals, different from what we did in our treatment of $SO(2)$ over $\C$.
+
+The irreps of $SO(2)$ over $\R$ are given by $V_m$, $m \in \N_{\geq 0}$, where for $m \geq 1$, $V_m = \R^2$ as a vector space. The action is given by
+\begin{equation*}
+\rho_m(\phi)(v) =
+\begin{pmatrix}
+\cos(m \phi) & -\sin(m \phi) \\
+\sin(m \phi) & \cos(m \phi)
+\end{pmatrix} \cdot v
+\end{equation*}
+for $\phi \in SO(2) \cong \R/{2 \pi \Z}$. The trivial representation is given by $V_0 = \R$ together with the trivial action.
+
+Now look at square-integrable functions $L^1(S^1)$ that we now assume to take \emph{real values}. As before, $SO(2)$ acts on this space by $(g \cdot f)(s) = f(s - g_{+})$. This space again forms a Hilbert space using the scalar product
+\begin{equation*}
+\left\langle f, g\right\rangle = \frac{1}{2 \pi} \int_{S^1} f(s) g(s) ds.
+\end{equation*}
+For notational simplicity, we write $\cos_m$ for the function that maps $s$ to $\cos(ms)$, and analogously for $\sin_m$. One then can show the following, which we take as a given:
+
+\begin{pro}\label{description_L_1}
+The functions $\cos_m$, $\sin_m$, $m \geq 1$ span an irreducible invariant subspace of $L^1(S^1)$ of dimension $2$, explicitly given by
+\begin{equation*}
+\R\langle \cos_m, \sin_m \rangle = \{\alpha \cos_m + \beta \sin_m \mid \alpha, \beta \in \R \}
+\end{equation*}
+which is equivariantly isomorphic to $V_m$ by $\cos_m \mapsto \begin{pmatrix} 1 \\ 0\end{pmatrix}$ and $\sin_m \mapsto \begin{pmatrix} 0 \\ 1 \end{pmatrix}$. Furthermore, $\sin_0 = 0$ and $\cos_0 = 1$ are constant functions and their span is $1$-dimensional and equivariantly isomorphic to $V_0$ by $\cos_0 \mapsto 1$. 
+
+Furthermore, the functions $\cos_m, \sin_m$ form an orthogonal basis of $L^1(S^1)$, i.e. every function can be written uniquely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal, since $\left\langle \cos_m, \cos_m \right\rangle = \left\langle \sin_m, \sin_m\right\rangle = \frac{1}{2}$ for $m \geq 1$}. Overall, these results mean that there is a direct sum decompostion
+\begin{equation*}
+L^1(S^1) = \widehat{\bigoplus_{m \geq 0}} V_m.
+\end{equation*}
+\end{pro}
+
+Note that in the following we will often write $V_m$ for $R \langle \cos_m, \sin_m \rangle$ etc. when from the context it is clear that the space lies in $L^1(S^1)$.
+
+We now describe the endomorphisms of the irreps:
+
+\begin{pro}\label{endomorphisms}
+We have $\End(V_0) \cong \R$, i.e. multiplications with all real numbers are valid endomorphisms of $V_0$. For $m \geq 1$, we get
+\begin{equation*}
+\End(V_m) = \left\lbrace \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \mid a, b \in \R \right\rbrace,
+\end{equation*}
+which is the set of all scaled rotations of $\R^2$. When identifying $\R^2 \cong \C$, we can also view these transformations as arbitrary multiplications with a complex number.
+\end{pro}
+
+\begin{proof}[Proof Sketch]
+For an arbitrary matrix $M = \begin{pmatrix} a & b \\ c & d\end{pmatrix}$ that commutes with all rotation matrices $\rho_m(\phi)$, i.e. $M \circ \rho_m(\phi) = \rho_m(\phi) \circ M$, one can easily show the constraints $a = d$ and $b = -c$, from which the result follows. 
+\end{proof}
+
+We now do the explicit decomposition of $V_k \otimes V_m$ into irreps. For doing so, we first need some trigonometric formulas in our disposal:
+
+\begin{pro}\label{trigonometric formulas}
+There are the following laws underlying sinus and cosinus:
+\begin{enumerate}
+\item $\sin_{l+m} = \sin_l \cos_m + \cos_l \sin_m$.
+\item $\cos_{l+m} = \cos_l\cos_m - \sin_l \sin_m$.
+\item $\cos_l \cos_m = \frac{1}{2} \left[ \cos_{l+m} + \cos_{l-m} \right]$.
+\item $\sin_l \cos_m = \frac{1}{2} \left[  \sin_{l+m} + \sin_{l-m} \right] = \frac{1}{2} \left[ \sin_{l+m} - \sin_{m - l}\right]$.
+\item $\sin_l \sin_m = \frac{1}{2} \left[ \cos_{l-m} - \cos_{l+m} \right]$
+\end{enumerate}
+\end{pro}
+
+\begin{pro}
+We have the following decomposition results:
+\begin{enumerate}
+\item For $l=0$, we have $V_0 \otimes V_m \cong V_m$ by $p_{0m}^{m}(a \otimes f) = a \cdot f$. In the same way, we get $V_l \otimes V_0 \cong V_l$.
+\item For $l, m \geq 0$ and $l \neq m$ we consider the map $p_{lm}: V_l \otimes V_m \to L^1(S^1)$, $f \otimes g \mapsto f \cdot g$. This map has image $V_{|l - m|} \oplus V_{l+m}$. Let $p_{|l-k|}: L^1(S^1) \to V_{|l-m|}$ be the corresponding projection, and similarly $p_{l+m}$. Then $p_{lm}^{k} = p_k \circ p_{lm}$ for the corresponding $p_k$ are our projections.
+\item $For l = m > 0$, the situation is as follows: ...
+\end{enumerate}
+\end{pro}
+
+\begin{proof}
+The proof of $1$ is clear.
+
+For $1$, we get as image of $p_{lm}$ the set
+\begin{equation*}
+\R\langle \cos_l \cdot \cos_m, \cos_l \cdot \sin_m, \sin_l \cdot \cos_m \sin_l \cdot \sin_m\rangle = \R \langle b_{11}, b_{12}, b_{21}, b_{22}\rangle,
+\end{equation*}
+with correspondingly defined generators $b_{ij}$. From rules $1$, $3$, $4$ and $5$ of Proposition \ref{trigonometric formulas} we obtain:
+\begin{equation*}
+b_{11} - b_{22} = \cos_{l+m}, \ b_{12} + b_{21} = \sin_{l+m}, b_{11} + b_{22} = \cos_{l-m}, b_{21} - b_{12} = \sin_{l-m}.
+\end{equation*}
+
+Since these are linearly independent generators, we obtain:
+
+\begin{equation*}
+\im(p_{lm}) = \R \langle \cos_{l+m}, \sin_{l+m}, \cos_{l-m}, \sin_{l-m}\rangle = V_{m+l} \oplus V_{|l-m|}.
+\end{equation*}
+Note for the last step that due to symmetry, $\cos_{l-m} = \cos_{m-l}$ and $\sin_{l-m} = - \sin_{m-l}$.
+
+Now, if $l = m$, then note that $b_{21} - b_{12} = 0$ and $b_{11} + b_{22} = 1$ is the constant function. Now, let $c_1 \mapsto b_{11} + b_{22}$, $c_{2} \mapsto b_{12} + b_{21}$, $c_3 \mapsto b_{11} + b_{22}$ and $c_4 \mapsto b_{21} - b_{12}$. Then $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace (since kernels are always invariant), and therefore it spans $V_0$ as well. Overall, we obtain $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$.
+\end{proof}
+
+
+
+
+
+\section{To Check/Do}
+
+\begin{enumerate}
+\item Is the projection $p$ from the proof really is equivariant?
+\item Is it a problem for Wigner-Eckart that only the \emph{closure} of the direct sum is the whole space?
+\item Think about the case $m = n$ and $r = 0$ again.
+\item Can the argument with Dirac deltas be made mathematically foolproof?
+\item Should I just once explain that I mean "linear equivariant map" when I write "homomorphism"?
+\item Unfortunately, we STILL need the explicit description of the projection in the case $V_m \oplus V_m$. So far, I only proved to what this whole thing is isomorphic to... Also I didn't describe the proposition fully I think!
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+\bibliographystyle{apalike}
+\bibliography{literature}
+
+\end{document}

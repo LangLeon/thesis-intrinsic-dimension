@@ -46,7 +46,7 @@ def MultiplePlots(xValues, allValLosses, allValAccuracies):
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width * 0.8, box.height])
     ax1.legend(loc='center left', bbox_to_anchor=(1.12, 0.5))
-    plt.savefig("flips_{}.png".format(flips))
+    plt.savefig("flips_{}.png".format(flips), dpi=300)
 
 def GetXandYValues(coordinates):
     'Method to get all coordinates from all CSV files.'

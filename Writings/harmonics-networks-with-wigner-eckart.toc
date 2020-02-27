@@ -1,0 +1,7 @@
+\babel@toc {UKenglish}{}
+\contentsline {section}{\numberline {1}Representation theory of the circle group over $\mathds {C}$}{1}{section.1}
+\contentsline {section}{\numberline {2}The Wigner-Eckart Theorem}{2}{section.2}
+\contentsline {section}{\numberline {3}Harmonic networks with Wigner-Eckart}{3}{section.3}
+\contentsline {section}{\numberline {4}Strategy for finding $SO(2)$-steerable kernels over $\mathds {R}$}{5}{section.4}
+\contentsline {section}{\numberline {5}Preparation}{6}{section.5}
+\contentsline {section}{\numberline {6}To Check/Do}{8}{section.6}
