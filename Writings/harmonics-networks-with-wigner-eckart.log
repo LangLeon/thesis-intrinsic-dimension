@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  27 FEB 2020 20:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  29 FEB 2020 12:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1661,12 +1661,11 @@ Overfull \hbox (2.81612pt too wide) in paragraph at lines 105--106
 
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/it' will be
 (Font)              scaled to size 12.0pt on input line 109.
-[2]
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 178.
+(Font)              scaled to size 8.8pt on input line 127.
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 178.
- [3] [4]
+(Font)              scaled to size 6.6pt on input line 127.
+[2] [3] [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 234.
@@ -1693,16 +1692,40 @@ LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
 (Font)              scaled to size 7.3pt on input line 282.
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 282.
-[6] [7] (./harmonics-networks-with-wigner-eckart.bbl) [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 378.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 378.
+[6] [7]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 360.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 360.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 360.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 360.
+
+
+Overfull \hbox (61.76549pt too wide) in paragraph at lines 371--372
+[]\T1/Baskervaldx-TLF/m/it/12 For $\OML/ntxmi/m/it/12 m; n > \OT1/Baskervaldx-T
+LF/m/n/12 0$\T1/Baskervaldx-TLF/m/it/12 , a basis for equivari-ant ker-nels is 
+given by $[]$, $[]$,
+ []
+
+[8] (./harmonics-networks-with-wigner-eckart.bbl) [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 414.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
 
 (./harmonics-networks-with-wigner-eckart.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 378.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 378.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 414.
 Package rerunfilecheck Info: File `harmonics-networks-with-wigner-eckart.out' h
 as not changed.
-(rerunfilecheck)             Checksum: B29F3BDD7BBC3A04FCE5D3CADC3D1F75;394.
+(rerunfilecheck)             Checksum: AFBC59FF066B26BB8603020CDAE876AC;495.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1713,13 +1736,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21622 strings out of 492982
- 398278 string characters out of 6134896
- 468399 words of memory out of 5000000
- 24597 multiletter control sequences out of 15000+600000
- 104476 words of font info for 225 fonts, out of 8000000 for 9000
+ 21636 strings out of 492982
+ 398400 string characters out of 6134896
+ 472422 words of memory out of 5000000
+ 24599 multiletter control sequences out of 15000+600000
+ 105060 words of font info for 227 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,10n,82p,911b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,12n,82p,911b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/baskervaldx/zbv_igsfta.enc}{/u
 sr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/tex
 mf-dist/fonts/enc/dvips/baskervaldx/zbv_67xtiz.enc}{/usr/share/texlive/texmf-di
@@ -1742,11 +1765,11 @@ txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txs
 yc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on harmonics-networks-with-wigner-eckart.pdf (8 pages, 199214 by
+Output written on harmonics-networks-with-wigner-eckart.pdf (9 pages, 207017 by
 tes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

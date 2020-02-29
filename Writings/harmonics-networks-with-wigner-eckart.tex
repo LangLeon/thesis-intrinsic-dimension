@@ -111,7 +111,7 @@ Let $V$ and $W$ be irreducible representations over a group $G$ and let $f: V \t
 
 Furthermore, if the ground field is the complex numbers $\C$, then the set of endomorphisms, i.e. linear equivariant maps from $V$ to $V$, is isomorphic to $\C$ itself:
 \begin{equation*}
-\End(V) = \{c \cdot \Id_V \mid c \in \C\} = \C.
+\End(V) = \{c \cdot \Id_V \mid c \in \C\} \cong \C.
 \end{equation*}
 \end{pro}
 
@@ -124,7 +124,7 @@ If $T$, $U$ and $V$ are representations, we can build the tensor product $T \oti
 \end{equation*}
 and
 \begin{equation*}
-\rho(g)(f) \coloneq \rho_V(g) \circ f \circ \rho_U(g)^{-1}.
+\left[\rho_{\text{Hom}}(g)\right](f) \coloneq \rho_V(g) \circ f \circ \rho_U(g)^{-1}.
 \end{equation*}
 
 \begin{dfn}
@@ -185,7 +185,7 @@ K(s) = c\left(|s|\right) \cdot \chi_{n - m}\left(s/|s|\right).
 Here, $s/|s| \in \R^2$ has norm $1$ and is thus viewed as an element in $S^1$. If $n \neq m$ then $c(0) = 0$.
 \end{pro}
 
-We will prove this statement using the Wigner-Eckart Theorem \ref{theorem} in its basis-independent form. The idea is to use $K$ to construct a representation operator $\overline{K}: L^1(S^1) \to \lin(V_m, V_n)$ for each restriction of $K$ to a ring of constant radius in $\R^2$. Since $L^1(S^1) \otimes V_m$ contains $V_n$ exactly once as a direct summand and since we are over $\C$, the theorem tells us that this representation operator is described by exactly one complex number. If we trace back what this means, we end up with the description from above.
+We will prove this statement using the Wigner-Eckart Theorem \ref{theorem} in its basis-independent form. The idea is to use $K$ to construct a representation operator $\overline{K}: L^2(S^1) \to \lin(V_m, V_n)$ for each restriction of $K$ to a ring of constant radius in $\R^2$. Since $L^2(S^1) \otimes V_m$ contains $V_n$ exactly once as a direct summand and since we are over $\C$, the theorem tells us that this representation operator is described by exactly one complex number. If we trace back what this means, we end up with the description from above.
 
 \begin{proof}[Proof of Proposition \ref{Wigner-Eckart}]
 The strategy is to consider each circle-restriction $K_r: S^1 \to \lin(V_m, V_n), s \mapsto K(rs)$ separately, where $r \in \mathbb{R}_{>0}$ acts as a scalar. Clearly, such a $K_r$ still fulfils the equivariant constraint Equation \ref{kernel-definition}. Thus, consider a fixed $r$ and write, by abuse of notation, $K = K_r$.
@@ -202,7 +202,7 @@ Clearly, $\overline{K}$ is linear in $f$ and $v$. Furthermore, it is equivariant
 & = \int_{S^1} f(s) \left[ \rho_{n}(g) \circ K(s) \circ \rho_m(g)^{-1}\right](v) ds  \\
 & = \rho_n(g) \left( \int_{S^1} f(s) K(s) \left( \rho_m(g)^{-1}(v)\right)ds \right) \\
 & = \rho_n(g) \left( \overline{K}(f)\left(\rho_m(g)^{-1}(v) \right)\right) \\
-& = \left(\rho(g)\left( \overline{K}(f) \right)\right)(v).
+& = \left(\rho_{\text{Hom}}(g)\left( \overline{K}(f) \right)\right)(v).
 \end{align*}
 Consequently, we can apply Wigner-Eckart Theorem \ref{theorem} to find the structure of $\overline{K}$. For doing so, we need to define a projection operator $p: L^2(S^1) \otimes V_m \to V_n$. We do it as follows:
 \begin{equation*}
@@ -236,7 +236,7 @@ Now, remember that we did abuse of notation, i.e. we have just computed that $K_
 The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in two ways:
 
 \begin{enumerate}
-\item Since $V_n$ appeared exactly once as a direct summand in $L^1(S^1) \otimes V_m$, there was only the need to define one projection operator and not several.
+\item Since $V_n$ appeared exactly once as a direct summand in $L^2(S^1) \otimes V_m$, there was only the need to define one projection operator and not several.
 \item As $\C$ is algebraically closed, we obtained from Schur's Lemma that the endomorphisms of $V_n$ are just given by multiplication with a complex number. Over the real numbers, the theory requires us to classify the endomorphisms of the irreps in a more careful manner.
 \end{enumerate}
 
@@ -244,9 +244,9 @@ In what comes next, we want to consider steerable kernels $K: \R^2 \to \lin(V_m,
 
 \begin{enumerate}
 \item Explicitly parameterize the space of endomorphisms $\End(V_m)$ for each irrep $V_m$.
-\item Write $L^1(S^1)$, the space of square-integrable functions from $S^1$ \emph{to the real numbers}, as a direct sum of the irreps $\widehat{\bigoplus_{m \geq 0}} V_m$ of $SO(2)$ over $\R$.
-\item For each irrep $V_m$, we need to decompose $L^1(S^1) \otimes V_m = \widehat{\bigoplus_{l \geq 0}} V_{l} \otimes V_m$ as a direct sum of irreps. We do this by explicitly decomposing $V_{l} \otimes V_m$ into irreps. We will remember the projection operators $p_{l,m}^k: V_{l} \otimes V_m \to V_k$ that underlie this decomposition.
-\item For our kernel extension $\overline{K}: L^1(S^1) \to \lin(V_m, V_n)$, we consider the component functions $\overline{K_l}: V(l) \to \lin(V_m, V_n)$ separately, classify them using Wigner-Eckart and the preparatory work above, and get $\overline{K} = \sum_{l}\overline{K_l}$ in the end.
+\item Write $L^2(S^1)$, the space of square-integrable functions from $S^1$ \emph{to the real numbers}, as a direct sum of the irreps $\widehat{\bigoplus}_{m \geq 0} V_m$ of $SO(2)$ over $\R$.
+\item For each irrep $V_m$, we need to decompose $L^2(S^1) \otimes V_m = \widehat{\bigoplus}_{l \geq 0} V_{l} \otimes V_m$ as a direct sum of irreps. We do this by explicitly decomposing $V_{l} \otimes V_m$ into irreps. We will remember the projection operators $p_{l,m}^k: V_{l} \otimes V_m \to V_k$ that underlie this decomposition.
+\item For our kernel extension $\overline{K}: L^2(S^1) \to \lin(V_m, V_n)$, we consider the component functions $\overline{K_l}: V(l) \to \lin(V_m, V_n)$ separately, classify them using Wigner-Eckart and the preparatory work above, and get $\overline{K} = \sum_{l}\overline{K_l}$ in the end.
 \item We trace these results back in order to get a description of the original kernel $K$.
 \end{enumerate}
 
@@ -266,26 +266,26 @@ The irreps of $SO(2)$ over $\R$ are given by $V_m$, $m \in \N_{\geq 0}$, where f
 \end{equation*}
 for $\phi \in SO(2) \cong \R/{2 \pi \Z}$. The trivial representation is given by $V_0 = \R$ together with the trivial action.
 
-Now look at square-integrable functions $L^1(S^1)$ that we now assume to take \emph{real values}. As before, $SO(2)$ acts on this space by $(g \cdot f)(s) = f(s - g_{+})$. This space again forms a Hilbert space using the scalar product
+Now look at square-integrable functions $L^2(S^1)$ that we now assume to take \emph{real values}. As before, $SO(2)$ acts on this space by $(g \cdot f)(s) = f(s - g_{+})$. This space again forms a Hilbert space using the scalar product
 \begin{equation*}
 \left\langle f, g\right\rangle = \frac{1}{2 \pi} \int_{S^1} f(s) g(s) ds.
 \end{equation*}
 For notational simplicity, we write $\cos_m$ for the function that maps $s$ to $\cos(ms)$, and analogously for $\sin_m$. One then can show the following, which we take as a given:
 
 \begin{pro}\label{description_L_1}
-The functions $\cos_m$, $\sin_m$, $m \geq 1$ span an irreducible invariant subspace of $L^1(S^1)$ of dimension $2$, explicitly given by
+The functions $\cos_m$, $\sin_m$, $m \geq 1$ span an irreducible invariant subspace of $L^2(S^1)$ of dimension $2$, explicitly given by
 \begin{equation*}
 \R\langle \cos_m, \sin_m \rangle = \{\alpha \cos_m + \beta \sin_m \mid \alpha, \beta \in \R \}
 \end{equation*}
 which is equivariantly isomorphic to $V_m$ by $\cos_m \mapsto \begin{pmatrix} 1 \\ 0\end{pmatrix}$ and $\sin_m \mapsto \begin{pmatrix} 0 \\ 1 \end{pmatrix}$. Furthermore, $\sin_0 = 0$ and $\cos_0 = 1$ are constant functions and their span is $1$-dimensional and equivariantly isomorphic to $V_0$ by $\cos_0 \mapsto 1$. 
 
-Furthermore, the functions $\cos_m, \sin_m$ form an orthogonal basis of $L^1(S^1)$, i.e. every function can be written uniquely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal, since $\left\langle \cos_m, \cos_m \right\rangle = \left\langle \sin_m, \sin_m\right\rangle = \frac{1}{2}$ for $m \geq 1$}. Overall, these results mean that there is a direct sum decompostion
+Finally, the functions $\cos_m, \sin_m$ form an orthogonal basis of $L^2(S^1)$, i.e. every function can be written uniquely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal, since $\left\langle \cos_m, \cos_m \right\rangle = \left\langle \sin_m, \sin_m\right\rangle = \frac{1}{2}$ for $m \geq 1$}. Overall, these results mean that there is a direct sum decompostion
 \begin{equation*}
-L^1(S^1) = \widehat{\bigoplus_{m \geq 0}} V_m.
+L^2(S^1) = \widehat{\bigoplus_{m \geq 0}} V_m.
 \end{equation*}
 \end{pro}
 
-Note that in the following we will often write $V_m$ for $R \langle \cos_m, \sin_m \rangle$ etc. when from the context it is clear that the space lies in $L^1(S^1)$.
+Note that in the following we will often write $V_m$ for $R \langle \cos_m, \sin_m \rangle$ etc. when from the context it is clear that the space lies in $L^2(S^1)$.
 
 We now describe the endomorphisms of the irreps:
 
@@ -304,7 +304,7 @@ For an arbitrary matrix $M = \begin{pmatrix} a & b \\ c & d\end{pmatrix}$ that c
 We now do the explicit decomposition of $V_k \otimes V_m$ into irreps. For doing so, we first need some trigonometric formulas in our disposal:
 
 \begin{pro}\label{trigonometric formulas}
-There are the following laws underlying sinus and cosinus:
+There are the following laws underlying sinus and cosinus. The first two are well-known and the last three follow directly from the first two using $\sin_{-l} = - \sin_l$ and $\cos_{-l} = \cos_l$ where needed.
 \begin{enumerate}
 \item $\sin_{l+m} = \sin_l \cos_m + \cos_l \sin_m$.
 \item $\cos_{l+m} = \cos_l\cos_m - \sin_l \sin_m$.
@@ -314,35 +314,70 @@ There are the following laws underlying sinus and cosinus:
 \end{enumerate}
 \end{pro}
 
+The following Lemma can easily be proven, so we take it as a given:
+
+\begin{lem}\label{kernel invariant subspace}
+Let $f: T \to U$ be a linear equivariant map. Then $\ker(f) = \{t \in T \mid f(t) = 0\}$ is an invariant linear subspace of T.
+\end{lem}
+
 \begin{pro}
 We have the following decomposition results:
 \begin{enumerate}
 \item For $l=0$, we have $V_0 \otimes V_m \cong V_m$ by $p_{0m}^{m}(a \otimes f) = a \cdot f$. In the same way, we get $V_l \otimes V_0 \cong V_l$.
-\item For $l, m \geq 0$ and $l \neq m$ we consider the map $p_{lm}: V_l \otimes V_m \to L^1(S^1)$, $f \otimes g \mapsto f \cdot g$. This map has image $V_{|l - m|} \oplus V_{l+m}$. Let $p_{|l-k|}: L^1(S^1) \to V_{|l-m|}$ be the corresponding projection, and similarly $p_{l+m}$. Then $p_{lm}^{k} = p_k \circ p_{lm}$ for the corresponding $p_k$ are our projections.
-\item $For l = m > 0$, the situation is as follows: ...
+\item For $l, m \geq 0$ and $l \neq m$ we consider the map $p_{lm}: V_l \otimes V_m \to L^2(S^1)$, $f \otimes g \mapsto f \cdot g$. This map has image $V_{|l - m|} \oplus V_{l+m}$. Let $p_{|l-k|}: L^2(S^1) \to V_{|l-m|}$ be the corresponding projection, and similarly $p_{l+m}$. Then $p_{lm}^{k} = p_k \circ p_{lm}$ for the corresponding $p_k$ with $k \in \{|l-m|, l+m\}$ are our projections.
+\item For $l = m > 0$, we get an isomorphism $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$. For the explicit description of the three projections $p_{mm}^{2m}: V_m \otimes V_m \to V_{2m}$, $p_{mm}^{0}, p_{mm}^{0'}: V_{m} \otimes V_{m} \to V_0$, see the proof.
 \end{enumerate}
 \end{pro}
 
 \begin{proof}
 The proof of $1$ is clear.
 
-For $1$, we get as image of $p_{lm}$ the set
+For $2$, consider the basis $\{b_{cc}, b_{cs}, b_{sc}, b_{ss}\}$ of $V_{l} \otimes V_m$, where for example $b_{cc} = \cos_l \otimes \cos_m$ etc. Let $b_{cc}' = p_{lm}(b_{cc})$ and so on. We get as image of $p_{lm}$ the set
 \begin{equation*}
-\R\langle \cos_l \cdot \cos_m, \cos_l \cdot \sin_m, \sin_l \cdot \cos_m \sin_l \cdot \sin_m\rangle = \R \langle b_{11}, b_{12}, b_{21}, b_{22}\rangle,
+\R \langle b_{cc}', b_{cs}', b_{sc}', b_{ss}' \rangle  = \R\langle \cos_l \cdot \cos_m, \cos_l \cdot \sin_m, \sin_l \cdot \cos_m \sin_l \cdot \sin_m\rangle,
 \end{equation*}
-with correspondingly defined generators $b_{ij}$. From rules $1$, $3$, $4$ and $5$ of Proposition \ref{trigonometric formulas} we obtain:
+From rules $1$, $3$, $4$ and $5$ of Proposition \ref{trigonometric formulas} we obtain:
 \begin{equation*}
-b_{11} - b_{22} = \cos_{l+m}, \ b_{12} + b_{21} = \sin_{l+m}, b_{11} + b_{22} = \cos_{l-m}, b_{21} - b_{12} = \sin_{l-m}.
+b_{cc}' - b_{ss}' = \cos_{l+m}, \ b_{cs}' + b_{sc}' = \sin_{l+m}, \ b_{cc}' + b_{ss}' = \cos_{l-m}, \ b_{sc}' - b_{cs}' = \sin_{l-m}.
 \end{equation*}
-
 Since these are linearly independent generators, we obtain:
-
 \begin{equation*}
-\im(p_{lm}) = \R \langle \cos_{l+m}, \sin_{l+m}, \cos_{l-m}, \sin_{l-m}\rangle = V_{m+l} \oplus V_{|l-m|}.
+\im(p_{lm}) = \R \langle \cos_{l+m}, \sin_{l+m}, \cos_{l-m}, \sin_{l-m}\rangle = V_{|l-m|} \oplus V_{m+l} .
 \end{equation*}
 Note for the last step that due to symmetry, $\cos_{l-m} = \cos_{m-l}$ and $\sin_{l-m} = - \sin_{m-l}$.
 
-Now, if $l = m$, then note that $b_{21} - b_{12} = 0$ and $b_{11} + b_{22} = 1$ is the constant function. Now, let $c_1 \mapsto b_{11} + b_{22}$, $c_{2} \mapsto b_{12} + b_{21}$, $c_3 \mapsto b_{11} + b_{22}$ and $c_4 \mapsto b_{21} - b_{12}$. Then $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace (since kernels are always invariant), and therefore it spans $V_0$ as well. Overall, we obtain $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$.
+Now, we prove $3$. if $l = m$, then note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Now, let $c_1 = b_{cc} - b_{ss}$, $c_{2} = b_{cs} + b_{sc}$, $c_3 = b_{cc} + b_{ss}$ and $c_4 = b_{sc} - b_{cs}$ an alternative basis of $V_l \otimes V_m$. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$, given by $c_1 \mapsto \cos_{l+m}$, $c_2 \mapsto \sin_{l+m}$, $c_3 \mapsto {1^{(1)}}$, $c_4 \mapsto 1^{(2)}$.
+
+What's missing is an explicit description of the projections corresponding to this isomorphism in terms of the standard basis of $V_m \otimes V_m$. Note that $b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right]$, $b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right]$, $b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right]$, $b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]$.
+
+The projection $p_{mm}^{2m}: V_m \otimes V_m \to V_{2m}$ is given by $b_{cc} \mapsto \frac{1}{2} \cos_{l+m}$, $b_{cs} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{sc} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{ss} \mapsto -\frac{1}{2} \cos_{l+m}$.
+
+The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $p_{mm}^{0}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto \frac{1}{2}$, $b_{cs} \mapsto 0$, $b_{sc} \mapsto 0$, $b_{ss} \mapsto \frac{1}{2}$.
+
+The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p_{mm}^{0'}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
+\end{proof}
+
+\section{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
+
+Now we have done all needed preparation and can solve the kernel constraint explicitly, using the Wigner-Eckart theorem.
+
+\begin{pro}
+Let $K: S^1 \to \lin(V_m, V_n)$ be an equivariant kernel, where $V_m$ and $V_n$ are irreps. Then the following holds:
+
+\begin{enumerate}
+\item For $m = n = 0$, we get $K(s) = a \cdot \begin{pmatrix} 1 \end{pmatrix}$ for an arbitrary real number $a \in \R$.
+\item For $m = 0$, $n > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_n \\ \sin_n \end{pmatrix}$ and $\begin{pmatrix}- \sin_n \\ \cos_n \end{pmatrix}$.
+\item For $m > 0$ and $n = 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_m & \sin_m \end{pmatrix}$, $\begin{pmatrix}  - \sin_m & \cos_m \end{pmatrix}$.
+\item For $m, n > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_{n-m} & - \sin_{n-m} \\ \sin_{n-m} & \cos_{n-m} \end{pmatrix}$, $\begin{pmatrix} - \sin_{n-m} & -\cos_{n-m} \\ \cos_{n-m} & -\sin_{n-m} \end{pmatrix}$, $\begin{pmatrix} \cos_{m+n} & \sin_{m+n} \\ \sin_{m+n} & - \cos_{m+n}\end{pmatrix}$, $\begin{pmatrix} -\sin_{m+n} & \cos_{m+n} \\ \cos_{m+n} & \sin_{m+n} \end{pmatrix}$.
+\end{enumerate}
+\end{pro}
+
+\begin{proof}
+The proof of $1$ is clear. For the proof of $2$, by means of the adjunction Proposition \ref{correspondence} we consider the representation operator $\overline{K}: L^2(S^1) \otimes V_0 \to V_n$, given by $\overline{K}(f \otimes v) = \frac{1}{2 \pi}\int_{S^1} f(s)K(s)(v)$. Since $L^2(S^1) \otimes V_0 \cong L^2(S^1)$, we can alternatively also consider the map $\overline{K}: L^2(S^1) \to V_n$ given by $\overline{K}(f) = \frac{1}{2 \pi}\int_{S^1} f(s) K(s)$. Let $p_n: L^2(S^1) \to V_n$ be the canonical projection, given by
+\begin{equation*}
+p_m(f) = \langle f, \cos_m \rangle \cos_m + \langle f, \sin_m \rangle \sin_m.
+\end{equation*}
+Then, since $V_n$ appears only once in $L^2(S^1)$, by the Wigner-Eckart Theorem \ref{Wigner-Eckart} we obtain that there is a unique endomorphism $f_{a, b}$ of $V_n$ such th
 \end{proof}
 
 
@@ -358,6 +393,8 @@ Now, if $l = m$, then note that $b_{21} - b_{12} = 0$ and $b_{11} + b_{22} = 1$ 
 \item Can the argument with Dirac deltas be made mathematically foolproof?
 \item Should I just once explain that I mean "linear equivariant map" when I write "homomorphism"?
 \item Unfortunately, we STILL need the explicit description of the projection in the case $V_m \oplus V_m$. So far, I only proved to what this whole thing is isomorphic to... Also I didn't describe the proposition fully I think!
+\item Point $4$ in the "general strategies" may be wrong to some extent.
+\item Is the footnote correct about the integral of cosinus with itself and so on?
 \end{enumerate}
 
 
