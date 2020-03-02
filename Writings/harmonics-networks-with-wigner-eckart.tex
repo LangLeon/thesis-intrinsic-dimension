@@ -149,7 +149,7 @@ T \otimes U \cong V^n \oplus W
 \end{equation*}
 for some other representation $W$ that splits into irreducibles that are all non-isomorphic to $V$ ($n = 0$ is possible and allowed). Let $\rho_i: T \otimes U \to V$ be the corresponding equivariant linear projections, $i = 1, \dots, n$. Then $\overline{K}$ is given by
 \begin{equation*}
-\overline{K}(t)(u) = \sum_{i = 1}^{n}c_i \left( p_i(t \otimes u) \right)
+\overline{K}(t)(u) = \begin{pmatrix}c_1 & \hdots & c_n \end{pmatrix} \cdot \begin{pmatrix} p_1 \\ \vdots \\ p_n \end{pmatrix} (t \otimes u)= \sum_{i = 1}^{n}c_i \left( p_i(t \otimes u) \right)
 \end{equation*}
 for endomorphisms $c_i: V \to V$ independent of $t$ and $u$. Furthermore, if the underlying field is the complex numbers $\C$, then the $c_i$ are just complex numbers and called reduced matrix elements of the representation operator. 
 \end{thm}
@@ -320,7 +320,7 @@ The following Lemma can easily be proven, so we take it as a given:
 Let $f: T \to U$ be a linear equivariant map. Then $\ker(f) = \{t \in T \mid f(t) = 0\}$ is an invariant linear subspace of T.
 \end{lem}
 
-\begin{pro}
+\begin{pro}\label{decomposition_results}
 We have the following decomposition results:
 \begin{enumerate}
 \item For $l=0$, we have $V_0 \otimes V_m \cong V_m$ by $p_{0m}^{m}(a \otimes f) = a \cdot f$. In the same way, we get $V_l \otimes V_0 \cong V_l$.
@@ -357,6 +357,48 @@ The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $
 The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p_{mm}^{0'}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
 \end{proof}
 
+\section{Version of the Wigner-Eckart theorem for steerable kernels}
+
+In this section, we provide a version of the Wigner-Eckart theorem specifically for steerable kernels. We formulate it as general as possible, so that we can apply it in many settings. The definitions are deliberately a little vague and the proofs therefore only meant as a ``hint'' for how to prove the statements in generality.
+
+In this section, let $G$ be a compact topological group, for example $SO(2)$, $O(2)$, $C_n$, $D_n$, $SO(3)$, $O(3)$, etc.
+
+Furthermore, assume $G$ acts on a space $S$ like $S^1$ or $S^2$ from the left. Also assume that $S$ carries a space of square-integrable functions $L^2(S)$ on which $G$ acts by $(g \cdot f)(s) = f(g^{-1} \cdot s)$.
+
+We also assume that the irreps are given by $(V_m)_{m \in \Z}$ (or indexed by $m \in \N$) and that every irrep appears exactly once in $L^2(S)$ as a direct summand. 
+
+\begin{pro}\label{steerable kernels = representation operators}
+There is an isomorphism
+\begin{equation*}
+\begin{tikzcd}
+\Hom_G(S, \lin(U, V)) \ar[rr, bend left = 15, "\overline{(\cdot)}"] & & \Hom(L^2(S), \lin(U, V)) \ar[ll, bend left = 15, "(\cdot)|_{S}"]
+\end{tikzcd}
+\end{equation*}
+between the space of continuous steerable kernels on the left and the space of continuous representation operators on the right, given by $\overline{K}(f)(u) = \int_{S}f(s)K(s)(u)ds$ and $K'|_{S}(s)(u) = K'(\delta_s)(u)$.
+\end{pro}
+
+Note that the Wigner-Eckart theorem \ref{Wigner-Eckart} is formulated for three $G$-representations $T, U$ and $V$ and in terms of $V$ being a direct summand of $T \otimes U$. However, as we also saw (or will see), we actually use it slightly different. Namely, we have a space $L^2(S) \otimes V_m$ and first project to all the spaces $V_l \otimes V_m$ such that $V_n$ is (possibly several times) a direct summand. Furthermore, we are not interested in the specific form of \emph{one representation operator} but want to parameterize the space of all such operators. This means that we are well-advised to make the basis of representation operators more explisit. This is the content of the following theorem:
+
+\begin{thm}\label{representation operators basis}
+Let $V_m$ and $V_n$ be irreps. Let there be the following sets of projections and endomorphisms:
+\begin{enumerate}
+\item $\left\lbrace p_l = p_l \otimes \Id: L^2(S) \otimes V_m \to V_l \otimes V_m \mid l \in L \right\rbrace$, is the set of canonical projections such that $V_n$ appears as a direct summand in $V_l \otimes V_m$.
+\item $\left\lbrace g_j^{(l)}: V_l \otimes V_m \to V_n \mid j \in \{1, \dots, k_l\} \right\rbrace$ is the set of projections from $V_l \otimes V_m$ to $V_n$ that emerge from a decomposition of $V_l \otimes V_m$ into irreps. Here, $k_l$ is the number of times $V_n$ appears in an irrep-decomposition of $V_l \otimes V_m$.
+\item $\left\lbrace \varphi_i \mid i = 1, \dots, \dim(\End_G(V_n)) \right\rbrace$ is a basis of $\End_G(V_n)$.
+\end{enumerate}
+Then the set of all possible compositions 
+\begin{equation*}
+\left\lbrace \varphi_i \circ q_j^{(l)} \circ p_l \mid i \in \{1, \dots, \dim(\End_G(V_n))\}, j \in \{1, \dots, k_l\}, l \in L \right\rbrace
+\end{equation*} 
+form a basis of $\Hom_G(L^1(S), \lin(V_m, V_n))$ by setting, with abuse of notation, $(\varphi_i \circ q_j^{(l)} \circ p_l)(f)(v) = (\varphi_i \circ q_j^{(l)} \circ p_l)(f \otimes v)$.
+
+Furthermore, the set of compositions $(\varphi_i \circ q_j^{(l)} \circ p_l)|_{S}$ forms a basis of steerable kernels $S \to \lin(V_m, V_n)$.
+\end{thm}
+
+\begin{proof}
+The projections $q_j^{(l)} \circ p_l$ correspond to the projections in the Wigner-Eckart theorem $\ref{Wigner-Eckart}$. Then it follows directly from the proof of that that the compositions $\varphi_i \circ (q_j^{(l)} \circ p_l) = \varphi_i \circ q_j^{(l)} \circ p_l$ form a basis of the space of representation operators. Consequently we see from Proposition \ref{steerable kernels = representation operators} that we get a basis of steerable kernels by restricting to $S$.
+\end{proof}
+
 \section{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
 
 Now we have done all needed preparation and can solve the kernel constraint explicitly, using the Wigner-Eckart theorem.
@@ -375,9 +417,48 @@ Let $K: S^1 \to \lin(V_m, V_n)$ be an equivariant kernel, where $V_m$ and $V_n$ 
 \begin{proof}
 The proof of $1$ is clear. For the proof of $2$, by means of the adjunction Proposition \ref{correspondence} we consider the representation operator $\overline{K}: L^2(S^1) \otimes V_0 \to V_n$, given by $\overline{K}(f \otimes v) = \frac{1}{2 \pi}\int_{S^1} f(s)K(s)(v)$. Since $L^2(S^1) \otimes V_0 \cong L^2(S^1)$, we can alternatively also consider the map $\overline{K}: L^2(S^1) \to V_n$ given by $\overline{K}(f) = \frac{1}{2 \pi}\int_{S^1} f(s) K(s)$. Let $p_n: L^2(S^1) \to V_n$ be the canonical projection, given by
 \begin{equation*}
-p_m(f) = \langle f, \cos_m \rangle \cos_m + \langle f, \sin_m \rangle \sin_m.
+p_n(f) = \langle f, \cos_n \rangle \cos_n + \langle f, \sin_n \rangle \sin_n.
 \end{equation*}
-Then, since $V_n$ appears only once in $L^2(S^1)$, by the Wigner-Eckart Theorem \ref{Wigner-Eckart} we obtain that there is a unique endomorphism $f_{a, b}$ of $V_n$ such th
+Then, since $V_n$ appears only once in $L^2(S^1)$, by the Wigner-Eckart Theorem \ref{Wigner-Eckart} we obtain that there is a unique endomorphism $g_{a, b}$ of $V_n$ such that $\overline{K} = g_{a, b} \circ p_n$. From this and the identification $\cos_m = \begin{pmatrix} 1 \\ 0\end{pmatrix}$ and $\sin_m = \begin{pmatrix} 0 \\ 1\end{pmatrix}$ from Proposition \ref{description_L_1} and the description of endomorphisms Proposition \ref{endomorphisms}:
+\begin{align*}
+\overline{K}(f) & = (g_{a, b} \circ p_n) (f) \\
+& = \langle f, \cos_n \rangle g_{a, b}(\cos_m) + \langle f, \sin_n \rangle g_{a,b}(\sin_n) \\
+& = \langle f, \cos_n \rangle \begin{pmatrix} a \\ b\end{pmatrix} + \langle f, \sin_n \rangle \begin{pmatrix} -b \\ a \end{pmatrix}.
+\end{align*}
+Therefore, we can compute $K$ as follows:
+\begin{align*}
+K(s) & = \overline{K}(\delta_s) \\
+& = \langle \delta_s, \cos_n \rangle \begin{pmatrix} a \\ b\end{pmatrix} + \langle \delta_s, \sin_n \rangle \begin{pmatrix} -b \\ a \end{pmatrix} \\
+& = \cos_n(s)  \begin{pmatrix} a \\ b\end{pmatrix} + \sin_n(s) \begin{pmatrix} -b \\ a \end{pmatrix} \\
+& = a \begin{pmatrix} \cos_n(s) \\ \sin_n(s)\end{pmatrix} + b \begin{pmatrix} - \sin_n(s) \\ \cos_n(s) \end{pmatrix},
+\end{align*}
+which proves 2.
+
+For $3$ we consider $\overline{K}: L^2(S^1) \otimes V_m \to V_0$. As we know from Proposition \ref{decomposition_results}, $V_0$ is exactly twice a direct summand of $L^2(S^1) \otimes V_m$, namely within the summand $V_m \otimes V_m$. Let $p \otimes \Id : L^2(S^1) \otimes V_m \to V_m \otimes V_m$ be the canonical projection. Furthermore, let $p_{mm}^{0}, p_{mm}^{0'}: V_m \otimes V_m \to V_0$ be the projections found in Proposition \ref{decomposition_results}. The compositions of these projections is what's used in the Wigner-Eckart theorem. We know that the endomorphisms of $V_0$ are given by arbitrary real numbers, of which we need two since $V_0$ appears twice, i.e. $a, b \in \R$. Then, by Wigner-Eckart we have 
+\begin{align*}
+\overline{K}(f \otimes v) &= \begin{pmatrix}a & b \end{pmatrix} \cdot \begin{pmatrix}p_{mm}^{0}\circ \left( p \otimes \Id\right) \\  p_{mm}^{0'}\circ \left( p \otimes \Id\right) \end{pmatrix} (f \otimes v) \\
+& = \begin{pmatrix}a & b \end{pmatrix} \cdot \begin{pmatrix}p_{mm}^{0}  \\  p_{mm}^{0'} \end{pmatrix} (p(f) \otimes v) \\
+& = \langle f, \cos_m \rangle \cdot \begin{pmatrix}a & b \end{pmatrix} \cdot \begin{pmatrix}p_{mm}^{0}  \\  p_{mm}^{0'} \end{pmatrix} (\cos_m \otimes v) + \langle f, \sin_m\rangle \cdot \begin{pmatrix}a & b \end{pmatrix} \cdot \begin{pmatrix}p_{mm}^{0}  \\  p_{mm}^{0'} \end{pmatrix} (\sin_m \otimes v).
+\end{align*} 
+Overall, we obtain the following description of $K$, first for the basis element $v = \cos_m$. Remember that $K(s)(v) = \overline{K}(\delta_s)(v)$ and that $\langle \delta_s, f \rangle = f(s)$ for all functions $f$. 
+\begin{align*}
+K(s)(\cos_m) & = \cos_m(s) \cdot \begin{pmatrix} a & b\end{pmatrix} \cdot \begin{pmatrix} p_{mm}^0(b_{cc}) \\ p_{mm}^{0'}(b_{cc})\end{pmatrix} + \sin_m(s) \cdot \begin{pmatrix} a & b\end{pmatrix} \cdot \begin{pmatrix} p_{mm}^{0}(b_{sc}) \\ p_{mm}^{0'}(b_{sc})\end{pmatrix} \\
+& = \cos_m(s) \cdot \begin{pmatrix} a & b\end{pmatrix} \begin{pmatrix} \frac{1}{2} \\ 0 \end{pmatrix} + \sin_m(s) \cdot \begin{pmatrix} a & b \end{pmatrix} \begin{pmatrix} 0 \\ \frac{1}{2}\end{pmatrix} \\
+& = \frac{1}{2} a \cos_m(s) + \frac{1}{2} b \sin_m(s).
+\end{align*}
+In the same way, plugging in the second basis element $v = \sin_m$ we obtain:
+\begin{align*}
+K(s)(\sin_m) & = \cos_m(s) \cdot \begin{pmatrix} a & b \end{pmatrix} \cdot \begin{pmatrix} 0 \\ - \frac{1}{2} \end{pmatrix} + \sin_m(s) \begin{pmatrix} a & b\end{pmatrix} \begin{pmatrix} \frac{1}{2} \\ 0 \end{pmatrix} \\
+& = - \frac{1}{2} b \cos_m(s) + \frac{1}{2} a \sin_m(s).
+\end{align*}
+Thus, as a $1 \times 2$ row-matrix we can write $K(s)$ as follows:
+\begin{align*}
+K(s) & = \begin{pmatrix} \frac{1}{2} a \cos_m(s) + \frac{1}{2}b \sin_m(s) & - \frac{1}{2} b \cos_m(s) + \frac{1}{2} a \sin_m(b) \end{pmatrix} \\
+& = \frac{1}{2} a \begin{pmatrix}  \cos_m(s) & \sin_m(s) \end{pmatrix} - \frac{1}{2} b \begin{pmatrix} - \sin_m(s) & \cos_m(s) \end{pmatrix}.
+\end{align*}
+This proves the claim.
+
+Now about statement $4$:
 \end{proof}
 
 
@@ -395,6 +476,10 @@ Then, since $V_n$ appears only once in $L^2(S^1)$, by the Wigner-Eckart Theorem 
 \item Unfortunately, we STILL need the explicit description of the projection in the case $V_m \oplus V_m$. So far, I only proved to what this whole thing is isomorphic to... Also I didn't describe the proposition fully I think!
 \item Point $4$ in the "general strategies" may be wrong to some extent.
 \item Is the footnote correct about the integral of cosinus with itself and so on?
+\item Maybe state as general property that $<\delta_s, f> = f(s)$. And in general how to connect the kernel to the "kernel expansion".
+\item In what sense, if at all, is Proposition \ref{steerable kernels = representation operators} true? Since that's what I'm building everything on!
+\item Can it happen that different projections $p_i: T \otimes U \to V$ from the original Wigner-Eckart theorem are so similar that the compositions with basis-endomorphisms from $V$ to $V$ do NOT form a basis? No, right, by means of the isomorphism in Wigner-Eckart itself!!!
+\item About the proposition that says that the steerable kernel space is the same as representation operators: If I want to prove this, I should probably generalize Lin(U,V) to being an arbitrary $G$-representation.
 \end{enumerate}
 
 
