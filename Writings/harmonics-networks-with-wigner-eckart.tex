@@ -181,7 +181,7 @@ Note that the elements $(0, \dots, 0, \varphi_i, 0, \dots, 0)$ form a basis of $
 \end{proof}
 
 
-\subsection{Solving for the kernel basis with Wigner-Eckart}
+\subsection{Solving for the kernel basis with Wigner-Eckart}\label{solution_harmonic_networks}
 
 Let $K: \R^2 \to \lin(V_m, V_n)$ be a continuous equivariant kernel. By definition, this means that $K$ is continuous (for that to make sense, view $\lin (V_m, V_n)$ as $\C^{\Dim V_m \cdot \Dim V_n}$) and it fulfils the equivariance property
 \begin{equation}\label{kernel-definition}
@@ -245,28 +245,25 @@ Now, remember that we did abuse of notation, i.e. we have just computed that $K_
 
 \section{General Steerable CNNs with Wigner-Eckart}
 
-\subsection{Strategy for finding $SO(2)$-steerable kernels over $\R$}
+\subsection{Strategy for finding steerable kernel-bases for arbitrary groups}
 
-The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in two ways:
+The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in four ways:
 
 \begin{enumerate}
-\item Since $V_n$ appeared exactly once as a direct summand in $L^2(S^1) \otimes V_m$, there was only the need to define one projection operator and not several.
 \item As $\C$ is algebraically closed, we obtained from Schur's Lemma that the endomorphisms of $V_n$ are just given by multiplication with a complex number. Over the real numbers, the theory requires us to classify the endomorphisms of the irreps in a more careful manner.
+\item Since $V_n$ appeared exactly once as a direct summand in $L^2(S^1) \otimes V_m$, there was only the need to define one projection operator and not several.
+\item The only projection-operator was extremely simple, just mapping $f \otimes \chi_m$ to $\langle f \cdot \chi_m, \chi_n \rangle \chi_n$. Later, we will see that this in general involves very non-trivial Clebsch-Gordan coefficients.
+\item The bases of the irreps $V_m$ were just given by one character $\chi_m$, which is considerably simpler than in the general theory.
 \end{enumerate}
 
-In what comes next, we want to consider steerable kernels $K: \R^2 \to \lin(V_m, V_n)$ where $V_m$ and $V_n$ are irreps of $SO(2)$ over $\R$. The above complications mean that we are adviced to separate the treatment into several steps that are undertaken independently. Thus, our strategy will be:
-
+In order to deal with these complications, we will therefore in the next subsection prove a Wigner-Eckart theorem for steerable kernel bases that works for all groups that are usually considered. The end-result will be an explicit description of the steerable kernel-bases using exactly three ingredients, already hinted at with the complications described above. These ingredients are:
 \begin{enumerate}
-\item Explicitly parameterize the space of endomorphisms $\End(V_m)$ for each irrep $V_m$.
-\item Write $L^2(S^1)$, the space of square-integrable functions from $S^1$ \emph{to the real numbers}, as a direct sum of the irreps $\widehat{\bigoplus}_{m \geq 0} V_m$ of $SO(2)$ over $\R$.
-\item For each irrep $V_m$, we need to decompose $L^2(S^1) \otimes V_m = \widehat{\bigoplus}_{l \geq 0} V_{l} \otimes V_m$ as a direct sum of irreps. We do this by explicitly decomposing $V_{l} \otimes V_m$ into irreps. We will remember the projection operators $p_{l,m}^k: V_{l} \otimes V_m \to V_k$ that underlie this decomposition.
-\item For our kernel extension $\overline{K}: L^2(S^1) \to \lin(V_m, V_n)$, we consider the component functions $\overline{K_l}: V(l) \to \lin(V_m, V_n)$ separately, classify them using Wigner-Eckart and the preparatory work above, and get $\overline{K} = \sum_{l}\overline{K_l}$ in the end.
-\item We trace these results back in order to get a description of the original kernel $K$.
+\item A basis for the $G$-endomorphisms of all irreps.
+\item All Clebsch-Gordan coefficients underlying the decompositions of all tensor products $V_l \otimes V_m$ into irreps.
+\item Orthonormal bases of $V_l$ when viewed as a direct summand in $L^2(S)$, where $S = S^1$ or $S = S^2$ in applications.
 \end{enumerate}
 
-For simplicity, we will from now on only consider steerable kernels $K: S^1 \to \lin(V_m, V_n)$, since their description gives by continuity an immediate description of steerable kernels $K: \R^2 \to \lin(V_m, V_n)$.
-
-\subsection{Version of the Wigner-Eckart theorem for general steerable kernels}
+\subsection{Version of the Wigner-Eckart theorem for general steerable kernels}\label{general_wigner_eckart}
 
 In this section, we provide a version of the Wigner-Eckart theorem specifically for steerable kernels. We formulate it as general as possible, so that we can apply it in many settings. The definitions are deliberately a little vague and the proofs therefore only meant as a ``hint'' for how to prove the statements in generality. 
 
@@ -448,11 +445,23 @@ Y^l(s)^T \cdot q^{s;n,(l,m)}_{k}
 which is exactly what we wanted to show.
 \end{proof}
 
+\subsection{Harmonic Networks Revisited}
+
+As we saw in Section \ref{solution_harmonic_networks} and proved with quite some effort, a basis of steerable kernels $S^1 \to \lin(V_m, V_n)$ for $SO(2)$ over $\C$ is given by the character $\chi_{n-m}$. How can we see this again, using what we learned in the last section? We just determine the three ``ingredients'' that the theory requires:
+\begin{enumerate}
+\item The endomorphisms $\End_{SO(2)}(V_m)$ have $\Id_{V_m}$ as a basis, due to Schur's Lemma. Thus, we can just ignore these endomorphisms altogether, since postcomposition with the identity doesn't change anything.
+\item $V_l \otimes V_m \cong V_{l+m}$, and the basis element $\chi_l \otimes \chi_m$ maps directly to the basis element $\chi_{l+m}$ by this isomorphism. Thus, the only existing Clebsch-Gordan coefficient is just $1$.
+\item The orthonormal bases of $V_m$ are just given by the characters $\chi_m$.
+\end{enumerate}
+Finally, note that $V_{n-m} \otimes V_m \cong V_n$. Thus, $l = n-m$ is the only index such that $V_n$ appears within $V_l \otimes V_m$. Plugging everything into Theorem \ref{matrix-form}, we see that $\chi_{n-m}$ is a basis for steerable kernels.
+
 
 
 \subsection{Representation Theory of the circle group over $\R$}
 
-In this section, we do the representation-theoretic preparation. We view $S^1 = \R/{2 \pi \Z}$, that is we take the interval $[0, 2 \pi]$ as the space where our functions are defined. Consequently, we have to put the fraction $\frac{1}{2 \pi}$ before all of our integrals, different from what we did in our treatment of $SO(2)$ over $\C$.
+In this section, we do the representation-theoretic preparation, determining the ``ingredients'' that we need in order to apply Theorem \ref{matrix-form} to determine bases for steerable kernels of $SO(2)$ over $\R$. 
+
+We view $S^1 = \R/{2 \pi \Z}$, that is we take the interval $[0, 2 \pi]$ as the space where our functions are defined. Consequently, we have to put the fraction $\frac{1}{2 \pi}$ before all of our integrals, different from what we did in our treatment of $SO(2)$ over $\C$.
 
 The irreps of $SO(2)$ over $\R$ are given by $V_m$, $m \in \N_{\geq 0}$, where for $m \geq 1$, $V_m = \R^2$ as a vector space. The action is given by
 \begin{equation*}
@@ -477,15 +486,15 @@ The functions $\cos_m$, $\sin_m$, $m \geq 1$ span an irreducible invariant subsp
 \end{equation*}
 which is equivariantly isomorphic to $V_m$ by $\cos_m \mapsto \begin{pmatrix} 1 \\ 0\end{pmatrix}$ and $\sin_m \mapsto \begin{pmatrix} 0 \\ 1 \end{pmatrix}$. Furthermore, $\sin_0 = 0$ and $\cos_0 = 1$ are constant functions and their span is $1$-dimensional and equivariantly isomorphic to $V_0$ by $\cos_0 \mapsto 1$. 
 
-Finally, the functions $\cos_m, \sin_m$ form an orthogonal basis of $L^2(S^1)$, i.e. every function can be written uniquely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal, since $\left\langle \cos_m, \cos_m \right\rangle = \left\langle \sin_m, \sin_m\right\rangle = \frac{1}{2}$ for $m \geq 1$}. Overall, these results mean that there is a direct sum decompostion
+Finally, the functions $\cos_m, \sin_m$ form an orthogonal basis of $L^2(S^1)$, i.e. every function can be written uniq über Lucas?uely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal I believe, since $\left\langle \cos_m, \cos_m \right\rangle = \left\langle \sin_m, \sin_m\right\rangle = \frac{1}{2}$ for $m \geq 1$ (is that correct? My brother says this is wrong)}. Overall, these results mean that there is a direct sum decompostion
 \begin{equation*}
 L^2(S^1) = \widehat{\bigoplus_{m \geq 0}} V_m.
 \end{equation*}
 \end{pro}
 
-Note that in the following we will often write $V_m$ for $R \langle \cos_m, \sin_m \rangle$ etc. when from the context it is clear that the space lies in $L^2(S^1)$.
+Note that in the following we will often write $V_m$ for $R \langle \cos_m, \sin_m \rangle$ etc. when from the context it is clear that the space lies in $L^2(S^1)$. Also note that $\cos_m = Y^{m}_1$ and $\sin_m = Y^{m}_2$ in the notation of Section \ref{general_wigner_eckart}. This already determines one of our ingredients for applying Theorem \ref{matrix-form}!
 
-We now describe the endomorphisms of the irreps:
+We now describe the endomorphisms of the irreps, our second ingredient:
 
 \begin{pro}\label{endomorphisms}
 We have $\End(V_0) \cong \R$, i.e. multiplications with all real numbers are valid endomorphisms of $V_0$. For $m \geq 1$, we get
@@ -493,13 +502,15 @@ We have $\End(V_0) \cong \R$, i.e. multiplications with all real numbers are val
 \End(V_m) = \left\lbrace \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \mid a, b \in \R \right\rbrace,
 \end{equation*}
 which is the set of all scaled rotations of $\R^2$. When identifying $\R^2 \cong \C$, we can also view these transformations as arbitrary multiplications with a complex number.
+
+As a consequence, $\Id_\R$ is a basis for $\End(V_0)$ and $\left\lbrace\Id_{\R^2}, \begin{pmatrix}0 & -1 \\ 1 & 0 \end{pmatrix}\right\rbrace$ a basis for $\End(V_m)$ for $m \geq 1$.
 \end{pro}
 
 \begin{proof}[Proof Sketch]
 For an arbitrary matrix $M = \begin{pmatrix} a & b \\ c & d\end{pmatrix}$ that commutes with all rotation matrices $\rho_m(\phi)$, i.e. $M \circ \rho_m(\phi) = \rho_m(\phi) \circ M$, one can easily show the constraints $a = d$ and $b = -c$, from which the result follows. 
 \end{proof}
 
-We now do the explicit decomposition of $V_k \otimes V_m$ into irreps. For doing so, we first need some trigonometric formulas in our disposal:
+We now do the explicit decomposition of $V_k \otimes V_m$ into irreps, which will give us the Clebsch-Gordan coefficients that we need. This will be the final ingredient needed for applying Theorem \ref{matrix-form}. For doing so, we first need some trigonometric formulas in our disposal:
 
 \begin{pro}\label{trigonometric formulas}
 There are the following laws underlying sinus and cosinus. The first two are well-known and the last three follow directly from the first two using $\sin_{-l} = - \sin_l$ and $\cos_{-l} = \cos_l$ where needed.
@@ -521,16 +532,17 @@ Let $f: T \to U$ be a linear equivariant map. Then $\ker(f) = \{t \in T \mid f(t
 \begin{pro}\label{decomposition_results}
 We have the following decomposition results:
 \begin{enumerate}
-\item For $l=0$, we have $V_0 \otimes V_m \cong V_m$ by $p_{0m}^{m}(a \otimes f) = a \cdot f$. In the same way, we get $V_l \otimes V_0 \cong V_l$.
-\item For $l, m \geq 0$ and $l \neq m$ we consider the map $p_{lm}: V_l \otimes V_m \to L^2(S^1)$, $f \otimes g \mapsto f \cdot g$. This map has image $V_{|l - m|} \oplus V_{l+m}$. Let $p_{|l-k|}: L^2(S^1) \to V_{|l-m|}$ be the corresponding projection, and similarly $p_{l+m}$. Then $p_{lm}^{k} = p_k \circ p_{lm}$ for the corresponding $p_k$ with $k \in \{|l-m|, l+m\}$ are our projections.
+\item For $l = m = 0$ we have $V_0 \otimes V_0 \cong V_0$ by $q^{0,(0,0)} = \begin{pmatrix} \begin{bmatrix} 1 \end{bmatrix}\end{pmatrix}$.
+\item For $l=0$, $m > 0$ we have $V_0 \otimes V_m \cong V_m$ by $q^{m,(0,m)} = \begin{pmatrix}\begin{bmatrix} 1 & 0\end{bmatrix} \\ \begin{bmatrix} 0 & 1\end{bmatrix}\end{pmatrix}$. \item For $l > 0$, $m = 0$, we get $V_l \otimes V_0 \cong V_l$ by $q^{l,(l,0)} = \begin{pmatrix} \begin{bmatrix}1 \\ 0 \end{bmatrix} \\ \begin{bmatrix} 0 \\ 1\end{bmatrix}\end{pmatrix}$.
+\item For $l, m \geq 0$ and $l \neq m$ we get $V_l \otimes V_m \cong V_{|l-m|} \oplus V_{l+m}$. The Clebsch-Gordan coefficients are given by $q^{|l-m|,(l,m)} =\begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & -\frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$ and $q^{l+m,(l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$
 \item For $l = m > 0$, we get an isomorphism $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$. For the explicit description of the three projections $p_{mm}^{2m}: V_m \otimes V_m \to V_{2m}$, $p_{mm}^{0}, p_{mm}^{0'}: V_{m} \otimes V_{m} \to V_0$, see the proof.
 \end{enumerate}
 \end{pro}
 
 \begin{proof}
-The proof of $1$ is clear.
+The proof of $1$, $2$ and $3$ is clear.
 
-For $2$, consider the basis $\{b_{cc}, b_{cs}, b_{sc}, b_{ss}\}$ of $V_{l} \otimes V_m$, where for example $b_{cc} = \cos_l \otimes \cos_m$ etc. Let $b_{cc}' = p_{lm}(b_{cc})$ and so on. We get as image of $p_{lm}$ the set
+For $4$, consider the standard basis $\{b_{cc}, b_{cs}, b_{sc}, b_{ss}\}$ of $V_{l} \otimes V_m$, where for example $b_{cc} = \cos_l \otimes \cos_m$ etc. Our goal is to express these basis-elements with respect to basis-elements of invariant subspaces. We do this by explicitly constructing an isomorphism to a decomposition of irreps. To that end, let $p: V_l \otimes V_m \to L^2(S^1)$ be given by $f \otimes g \mapsto f \cdot g$, which is clearly equivariant and linear. Let $b_{cc}' = p(b_{cc})$ etc. We get as image of $p$ the set
 \begin{equation*}
 \R \langle b_{cc}', b_{cs}', b_{sc}', b_{ss}' \rangle  = \R\langle \cos_l \cdot \cos_m, \cos_l \cdot \sin_m, \sin_l \cdot \cos_m \sin_l \cdot \sin_m\rangle,
 \end{equation*}
@@ -540,19 +552,35 @@ b_{cc}' - b_{ss}' = \cos_{l+m}, \ b_{cs}' + b_{sc}' = \sin_{l+m}, \ b_{cc}' + b_
 \end{equation*}
 Since these are linearly independent generators, we obtain:
 \begin{equation*}
-\im(p_{lm}) = \R \langle \cos_{l+m}, \sin_{l+m}, \cos_{l-m}, \sin_{l-m}\rangle = V_{|l-m|} \oplus V_{m+l} .
+\im(p) = \R \langle \cos_{l+m}, \sin_{l+m}, \cos_{l-m}, \sin_{l-m}\rangle = V_{|l-m|} \oplus V_{m+l} .
 \end{equation*}
-Note for the last step that due to symmetry, $\cos_{l-m} = \cos_{m-l}$ and $\sin_{l-m} = - \sin_{m-l}$.
+Note for the last step that due to symmetry, $\cos_{l-m} = \cos_{m-l}$ and $\sin_{l-m} = - \sin_{m-l}$. Now define the following second set of basis-elements in $V_l \otimes V_m$, corresponding to the basis-elements $V_{|l-m|} \oplus V_{m+l}$ by means of the isomorphism $p$:
+\begin{equation*}
+c_1 = b_{cc} - b_{ss}, \ c_2 = b_{cs} + b_{sc}, \  c_3 = b_{cc} + b_{ss}, \  c_{4} = b_{sc} - b_{cs}.
+\end{equation*}
+We obtain $V_l \otimes V_m = \R\langle c_1, c_2\rangle \oplus \R\langle c_3, c_4\rangle \cong V_{m+l} \oplus V_{|l-m|}$. From the following equations we can read off the Clebsch-Gordan coefficients:
+\begin{equation*}
+b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right], \  b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right], \  b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right], \  b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]
+\end{equation*}
+We obtain:
+\begin{equation*}
+q^{|l-m|,(l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & -\frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}, \ q^{l+m, (l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}
+\end{equation*}
 
-Now, we prove $3$. if $l = m$, then note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Now, let $c_1 = b_{cc} - b_{ss}$, $c_{2} = b_{cs} + b_{sc}$, $c_3 = b_{cc} + b_{ss}$ and $c_4 = b_{sc} - b_{cs}$ an alternative basis of $V_l \otimes V_m$. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$, given by $c_1 \mapsto \cos_{l+m}$, $c_2 \mapsto \sin_{l+m}$, $c_3 \mapsto {1^{(1)}}$, $c_4 \mapsto 1^{(2)}$.
+Now, we prove $3$. if $l = m$ and still consider the same map $p$ and overall notation. Note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_m \otimes V_m = \R\langle c_1, c_2\rangle \oplus \R\langle c_3\rangle  \oplus \R\langle c_4\rangle \cong V_{2m} \oplus V_0^2$. From this, we can as before read off the Clebsch-Gordan coefficients:
+\begin{equation*}
+3 = 3
+\end{equation*}
 
+\begin{comment}
 What's missing is an explicit description of the projections corresponding to this isomorphism in terms of the standard basis of $V_m \otimes V_m$. Note that $b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right]$, $b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right]$, $b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right]$, $b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]$.
 
-The projection $p_{mm}^{2m}: V_m \otimes V_m \to V_{2m}$ is given by $b_{cc} \mapsto \frac{1}{2} \cos_{l+m}$, $b_{cs} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{sc} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{ss} \mapsto -\frac{1}{2} \cos_{l+m}$.
+The projection $p: V_m \otimes V_m \to V_{2m}$ is given by $b_{cc} \mapsto \frac{1}{2} \cos_{l+m}$, $b_{cs} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{sc} \mapsto \frac{1}{2} \sin_{l+m}$, $b_{ss} \mapsto -\frac{1}{2} \cos_{l+m}$.
 
-The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $p_{mm}^{0}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto \frac{1}{2}$, $b_{cs} \mapsto 0$, $b_{sc} \mapsto 0$, $b_{ss} \mapsto \frac{1}{2}$.
+The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $p: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto \frac{1}{2}$, $b_{cs} \mapsto 0$, $b_{sc} \mapsto 0$, $b_{ss} \mapsto \frac{1}{2}$.
 
-The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p_{mm}^{0'}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
+The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
+\end{comment}
 \end{proof}
 
 

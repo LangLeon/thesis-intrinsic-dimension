@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  4 MAR 2020 16:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  4 MAR 2020 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1663,91 +1663,80 @@ LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
 (Font)              scaled to size 6.6pt on input line 130.
 [2] [3] [4]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 248.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 248.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 248.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 248.
+Overfull \hbox (13.67505pt too wide) in paragraph at lines 248--248
+[]\T1/Baskervaldx-TLF/b/n/14.4 Strategy for find-ing steer-able kernel-bases fo
+r ar-bit-rary groups 
+ []
 
 [5]
-Overfull \hbox (2.42105pt too wide) in paragraph at lines 287--288
+Overfull \hbox (2.42105pt too wide) in paragraph at lines 284--285
 []\T1/Baskervaldx-TLF/m/n/12 Now, with some-what in-con-veni-ent nota-tion, we 
 need to define the Clebsch-Gordan
  []
 
 [6] [7] [8]
-Overfull \hbox (64.96275pt too wide) detected at line 447
+Overfull \hbox (64.96275pt too wide) detected at line 444
 []
  []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 453.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 453.
-
 [9]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 460.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 460.
+
 
 LaTeX Font Warning: Font shape `OT1/Baskervaldx-TLF/m/n' in size <5.5> not avai
 lable
-(Font)              size <5> substituted on input line 480.
+(Font)              size <5> substituted on input line 489.
 
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 480.
+(Font)              scaled to size 7.3pt on input line 489.
 LaTeX Font Info:    Font shape `T1/Baskervaldx-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 480.
-[10] [11]
+(Font)              scaled to size 10.0pt on input line 489.
+[10] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 560.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 560.
+(hyperref)                removing `math shift' on input line 588.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 560.
+(hyperref)                removing `math shift' on input line 588.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 560.
+(hyperref)                removing `math shift' on input line 588.
 
 
-Overfull \hbox (61.76549pt too wide) in paragraph at lines 571--572
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 588.
+
+
+Overfull \hbox (61.76549pt too wide) in paragraph at lines 599--600
 []\T1/Baskervaldx-TLF/m/it/12 For $\OML/ntxmi/m/it/12 m; n > \OT1/Baskervaldx-T
 LF/m/n/12 0$\T1/Baskervaldx-TLF/m/it/12 , a basis for equivari-ant ker-nels is 
 given by $[]$, $[]$,
  []
 
-[12] [13]
-Overfull \hbox (37.18683pt too wide) in paragraph at lines 639--640
+[13] [14]
+Overfull \hbox (37.18683pt too wide) in paragraph at lines 667--668
 \T1/Baskervaldx-TLF/m/n/12 Wigner-Eckart the-orem are so sim-ilar that the com-
 pos-i-tions with basis-endomorphisms
  []
 
-(./harmonics-networks-with-wigner-eckart.bbl [14]) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 660.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 660.
+(./harmonics-networks-with-wigner-eckart.bbl [15]) [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 688.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 688.
 
 (./harmonics-networks-with-wigner-eckart.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 660.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 660.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 688.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 688.
 Package rerunfilecheck Info: File `harmonics-networks-with-wigner-eckart.out' h
 as not changed.
-(rerunfilecheck)             Checksum: 536B0EF79F9BD560C22A55AA665D2A77;890.
+(rerunfilecheck)             Checksum: 8EE9BBF5ECEB11B1CD966F9C74739882;978.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1758,10 +1747,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21737 strings out of 492982
- 400762 string characters out of 6134896
- 474591 words of memory out of 5000000
- 24674 multiletter control sequences out of 15000+600000
+ 21747 strings out of 492982
+ 400885 string characters out of 6134896
+ 475764 words of memory out of 5000000
+ 24677 multiletter control sequences out of 15000+600000
  97368 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,20n,82p,911b,1008s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1786,11 +1775,11 @@ public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
 nts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on harmonics-networks-with-wigner-eckart.pdf (15 pages, 233508 b
+Output written on harmonics-networks-with-wigner-eckart.pdf (16 pages, 237277 b
 ytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 277 compressed objects within 3 object streams
- 88 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
