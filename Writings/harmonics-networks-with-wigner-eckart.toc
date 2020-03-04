@@ -9,4 +9,4 @@
 \contentsline {subsection}{\numberline {2.3}Harmonic Networks Revisited}{10}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Representation Theory of the circle group over $\mathds {R}$}{10}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Solving the kernel constraint of $SO(2)$ over $\mathds {R}$ with Wigner-Eckart}{13}{subsection.2.5}
-\contentsline {section}{\numberline {3}To Check/Do}{15}{section.3}
+\contentsline {section}{\numberline {3}To Check/Do}{14}{section.3}

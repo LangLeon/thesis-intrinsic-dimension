@@ -535,7 +535,7 @@ We have the following decomposition results:
 \item For $l = m = 0$ we have $V_0 \otimes V_0 \cong V_0$ by $q^{0,(0,0)} = \begin{pmatrix} \begin{bmatrix} 1 \end{bmatrix}\end{pmatrix}$.
 \item For $l=0$, $m > 0$ we have $V_0 \otimes V_m \cong V_m$ by $q^{m,(0,m)} = \begin{pmatrix}\begin{bmatrix} 1 & 0\end{bmatrix} \\ \begin{bmatrix} 0 & 1\end{bmatrix}\end{pmatrix}$. \item For $l > 0$, $m = 0$, we get $V_l \otimes V_0 \cong V_l$ by $q^{l,(l,0)} = \begin{pmatrix} \begin{bmatrix}1 \\ 0 \end{bmatrix} \\ \begin{bmatrix} 0 \\ 1\end{bmatrix}\end{pmatrix}$.
 \item For $l, m \geq 0$ and $l \neq m$ we get $V_l \otimes V_m \cong V_{|l-m|} \oplus V_{l+m}$. The Clebsch-Gordan coefficients are given by $q^{|l-m|,(l,m)} =\begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & -\frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$ and $q^{l+m,(l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$
-\item For $l = m > 0$, we get an isomorphism $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$. For the explicit description of the three projections $p_{mm}^{2m}: V_m \otimes V_m \to V_{2m}$, $p_{mm}^{0}, p_{mm}^{0'}: V_{m} \otimes V_{m} \to V_0$, see the proof.
+\item For $l = m > 0$, we get an isomorphism $V_m \otimes V_m \cong V_{2m} \oplus V_0^2$. We obtain the Clebsch-Gordan coefficients $q^{1; 0,(m,m)} = \begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix}\end{pmatrix}$,  $q^{2; 0,(m,m)} = \begin{pmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$ and $q^{2m,(m,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$, the last one corresponding to the Clebsch-Gordan coefficients $q^{l+m,(l,m)}$ from above.
 \end{enumerate}
 \end{pro}
 
@@ -562,15 +562,83 @@ We obtain $V_l \otimes V_m = \R\langle c_1, c_2\rangle \oplus \R\langle c_3, c_4
 \begin{equation*}
 b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right], \  b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right], \  b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right], \  b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]
 \end{equation*}
-We obtain:
-\begin{equation*}
-q^{|l-m|,(l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & -\frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}, \ q^{l+m, (l,m)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}
-\end{equation*}
+The result follows.
 
-Now, we prove $3$. if $l = m$ and still consider the same map $p$ and overall notation. Note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_m \otimes V_m = \R\langle c_1, c_2\rangle \oplus \R\langle c_3\rangle  \oplus \R\langle c_4\rangle \cong V_{2m} \oplus V_0^2$. From this, we can as before read off the Clebsch-Gordan coefficients:
+Now, we prove $5$. We have $l = m$ and still consider the same map $p$ and overall notation. Note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2m}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_m \otimes V_m = \R\langle c_1, c_2\rangle \oplus \R\langle c_3\rangle  \oplus \R\langle c_4\rangle \cong V_{2m} \oplus V_0^2$. From this, we can as before read off the Clebsch-Gordan coefficients and obtain the claimed result.
+\end{proof}
+
+
+
+\subsection{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
+
+Now we have done all needed preparation and can solve the kernel constraint explicitly, using the matrix-form of Wigner-Eckart for steerable kernels, Theorem \ref{matrix-form}.
+
+\begin{pro}
+Let $K: S^1 \to \lin(V_m, V_n)$ be an equivariant kernel, where $V_m$ and $V_n$ are irreps. Then the following holds:
+
+\begin{enumerate}
+\item For $m = n = 0$, we get $K(s) = a \cdot \begin{pmatrix} 1 \end{pmatrix}$ for an arbitrary real number $a \in \R$.
+\item For $m = 0$, $n > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_n \\ \sin_n \end{pmatrix}$ and $\begin{pmatrix}- \sin_n \\ \cos_n \end{pmatrix}$.
+\item For $m > 0$ and $n = 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_m & \sin_m \end{pmatrix}$, $\begin{pmatrix}  \sin_m & - \cos_m \end{pmatrix}$.
+\item For $m, n > 0$, a basis for equivariant kernels is given by the results stated in the proof.
+\end{enumerate}
+\end{pro}
+
+\begin{proof}
+The proof of $1$ is clear.
+
+For $2$, note that $V_n$ can only appear in $V_l \otimes V_0$ if $l = n$. The relevant Clebsch-Gordan coefficients are therefore $q^{n,(n,0)} = \begin{pmatrix}\begin{bmatrix} 1 \\ 0\end{bmatrix} \begin{bmatrix} 0 \\ 1\end{bmatrix}\end{pmatrix}$. Furthermore, the orthonormal basis of $V_l = V_n$ is given by $\cos_n, \  \sin_n$, which we have to write as a row-vector. Our final ingredient is the endomorphism basis of $V_n$, which is given by $\varphi_1 = \Id_{\R^2}$ and $\varphi_2 = \begin{pmatrix} 0 & -1 \\ 1 & 0  \end{pmatrix}$. Overall, the basis-kernels are given by
 \begin{equation*}
-3 = 3
+\varphi_i \cdot \begin{pmatrix} \begin{bmatrix} \cos_n(s) & \sin_n(s)\end{bmatrix} \cdot \begin{bmatrix} 1 \\ 0 \end{bmatrix} \\
+\begin{bmatrix} \cos_n(s) & \sin_n(s)\end{bmatrix} \cdot \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\end{pmatrix} = \varphi_i \cdot \begin{pmatrix} \cos_n(s) \\ \sin_n(s) \end{pmatrix}.
 \end{equation*}
+The result follows.
+
+For $3$, we find $V_0$ only in $V_l \otimes V_m$ if $l = m$, and even twice so. The relevant Clebsch-Gordan coefficients are therefore given by $q^{1; 0,(m,m)} = \begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix}\end{pmatrix}$ and $q^{2;0,(m,m)} = \begin{pmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix}\end{pmatrix}$. The basis-functions in $V_l = V_m$ are $\cos_m$ and $\sin_m$, again written as a row-vector. Finally, $V_n = V_0$ has only $\Id_\R$ as a basis-endomorphism, so this can be ignored. We obtain the following basis for steerable kernels:
+\begin{align*}
+\begin{pmatrix} \begin{bmatrix} \cos_m & \sin_m \end{bmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix} \end{pmatrix} & = \begin{pmatrix}  \frac{1}{2} \cos_m & \frac{1}{2} \sin_m \end{pmatrix} \\
+\begin{pmatrix} \begin{bmatrix} \cos_m & \sin_m \end{bmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix} \end{pmatrix} & = \begin{pmatrix}  \frac{1}{2} \sin_m & -\frac{1}{2} \cos_m \end{pmatrix}.
+\end{align*}
+For $4$, we consider only the case $m > n$. The case $m = n$ and $m < 0$ can probably be considered analogously and leads by trigonometric formulae to the same result (to check). We have
+\begin{equation*}
+V_{m-n} \otimes V_m \cong V_n \oplus V_{2m-n}, \ V_{m+n} \otimes V_m \cong V_n \oplus V_{2m+n},
+\end{equation*}
+i.e. $l = m-n$ and $l = m+n$ leads to a tensor product decomposition containing $V_n$, but no other $l$. Thus, the relevant Clebsch-Gordan coefficients are $q^{n,(m-n,m)}$ and $q^{n,(m+n,m)}$, which are both equal and given by $\begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix} \\ \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix}\end{pmatrix}$. For $l = m-n$ and $l = m+n$, the basis functions of $V_{m-n}$ and $V_{m+n}$ are furthermore given by $\cos_{n-m}, \sin_{n-m}$ and $\cos_{m+n}, \sin_{m+n}$ respectively. Finally, $V_n$ has again the two basis endomorphisms $\varphi_1 = \Id_{\R^1}$ and $\varphi_2$. Now, we do the computation for $l = m-n$, since for $l = m+n$ it is exactly the same and obtain the following two basis-kernels:
+\begin{equation*}
+\varphi_i \cdot \begin{pmatrix} \begin{bmatrix} \cos_{m-n} & \sin_{m-n} \end{bmatrix}\cdot \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\
+\begin{bmatrix} \cos_{m-n} & \sin_{m-n} \end{bmatrix}\cdot \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix} = \varphi_i \cdot \begin{pmatrix} \frac{1}{2} \cos_{m-n} & \frac{1}{2} \sin_{m-n} \\ \frac{1}{2} \sin_{m-n} & - \frac{1}{2} \cos_{m-n}\end{pmatrix}.
+\end{equation*} 
+The result follows.
+\end{proof}
+
+
+
+
+
+\section{To Check/Do}
+
+\begin{enumerate}
+\item Is the projection $p$ from the proof really is equivariant?
+\item Is it a problem for Wigner-Eckart that only the \emph{closure} of the direct sum is the whole space?
+\item Think about the case $m = n$ and $r = 0$ again.
+\item Can the argument with Dirac deltas be made mathematically foolproof?
+\item Should I just once explain that I mean "linear equivariant map" when I write "homomorphism"?
+\item Unfortunately, we STILL need the explicit description of the projection in the case $V_m \oplus V_m$. So far, I only proved to what this whole thing is isomorphic to... Also I didn't describe the proposition fully I think!
+\item Point $4$ in the "general strategies" may be wrong to some extent.
+\item Is the footnote correct about the integral of cosinus with itself and so on?
+\item Maybe state as general property that $<\delta_s, f> = f(s)$. And in general how to connect the kernel to the "kernel expansion".
+\item In what sense, if at all, is Proposition \ref{steerable kernels = representation operators} true? Since that's what I'm building everything on!
+\item Can it happen that different projections $p_i: T \otimes U \to V$ from the original Wigner-Eckart theorem are so similar that the compositions with basis-endomorphisms from $V$ to $V$ do NOT form a basis? No, right, by means of the isomorphism in Wigner-Eckart itself!!!
+\item About the proposition that says that the steerable kernel space is the same as representation operators: If I want to prove this, I should probably generalize Lin(U,V) to being an arbitrary $G$-representation.
+\item Do the Clebsch-Gordan coefficients really induce such equivariant projections? Didn't really check that.
+\item About the matrix-form of the basis-kernels: Can this be viewed in terms of "vectorization", in order to make a connection to Maurice's proof in the 3d-steerable CNNs paper? Because I think this thing where $Y^l$ appears several times could be written simpler by first putting q into "rows" in a sense. But maybe it's bullshit.
+\item Is it better to write $cos_n(s)$ or $\cos_n$ in the matrix-form of Wigner-Eckart?
+\item In the last proof, I only consider the case $m > n$ so far. That's a bit ugly, does that need to be?
+\end{enumerate}
+
+
+
 
 \begin{comment}
 What's missing is an explicit description of the projections corresponding to this isomorphism in terms of the standard basis of $V_m \otimes V_m$. Note that $b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right]$, $b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right]$, $b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right]$, $b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]$.
@@ -581,26 +649,8 @@ The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $
 
 The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
 \end{comment}
-\end{proof}
 
-
-
-\subsection{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
-
-Now we have done all needed preparation and can solve the kernel constraint explicitly, using the Wigner-Eckart theorem.
-
-\begin{pro}
-Let $K: S^1 \to \lin(V_m, V_n)$ be an equivariant kernel, where $V_m$ and $V_n$ are irreps. Then the following holds:
-
-\begin{enumerate}
-\item For $m = n = 0$, we get $K(s) = a \cdot \begin{pmatrix} 1 \end{pmatrix}$ for an arbitrary real number $a \in \R$.
-\item For $m = 0$, $n > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_n \\ \sin_n \end{pmatrix}$ and $\begin{pmatrix}- \sin_n \\ \cos_n \end{pmatrix}$.
-\item For $m > 0$ and $n = 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_m & \sin_m \end{pmatrix}$, $\begin{pmatrix}  - \sin_m & \cos_m \end{pmatrix}$.
-\item For $m, n > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_{n-m} & - \sin_{n-m} \\ \sin_{n-m} & \cos_{n-m} \end{pmatrix}$, $\begin{pmatrix} - \sin_{n-m} & -\cos_{n-m} \\ \cos_{n-m} & -\sin_{n-m} \end{pmatrix}$, $\begin{pmatrix} \cos_{m+n} & \sin_{m+n} \\ \sin_{m+n} & - \cos_{m+n}\end{pmatrix}$, $\begin{pmatrix} -\sin_{m+n} & \cos_{m+n} \\ \cos_{m+n} & \sin_{m+n} \end{pmatrix}$.
-\end{enumerate}
-\end{pro}
-
-\begin{proof}
+\begin{comment}
 The proof of $1$ is clear. For the proof of $2$, by means of the adjunction Proposition \ref{correspondence} we consider the representation operator $\overline{K}: L^2(S^1) \otimes V_0 \to V_n$, given by $\overline{K}(f \otimes v) = \frac{1}{2 \pi}\int_{S^1} f(s)K(s)(v)$. Since $L^2(S^1) \otimes V_0 \cong L^2(S^1)$, we can alternatively also consider the map $\overline{K}: L^2(S^1) \to V_n$ given by $\overline{K}(f) = \frac{1}{2 \pi}\int_{S^1} f(s) K(s)$. Let $p_n: L^2(S^1) \to V_n$ be the canonical projection, given by
 \begin{equation*}
 p_n(f) = \langle f, \cos_n \rangle \cos_n + \langle f, \sin_n \rangle \sin_n.
@@ -645,35 +695,7 @@ K(s) & = \begin{pmatrix} \frac{1}{2} a \cos_m(s) + \frac{1}{2}b \sin_m(s) & - \f
 This proves the claim.
 
 Now about statement $4$:
-\end{proof}
-
-
-
-
-
-\section{To Check/Do}
-
-\begin{enumerate}
-\item Is the projection $p$ from the proof really is equivariant?
-\item Is it a problem for Wigner-Eckart that only the \emph{closure} of the direct sum is the whole space?
-\item Think about the case $m = n$ and $r = 0$ again.
-\item Can the argument with Dirac deltas be made mathematically foolproof?
-\item Should I just once explain that I mean "linear equivariant map" when I write "homomorphism"?
-\item Unfortunately, we STILL need the explicit description of the projection in the case $V_m \oplus V_m$. So far, I only proved to what this whole thing is isomorphic to... Also I didn't describe the proposition fully I think!
-\item Point $4$ in the "general strategies" may be wrong to some extent.
-\item Is the footnote correct about the integral of cosinus with itself and so on?
-\item Maybe state as general property that $<\delta_s, f> = f(s)$. And in general how to connect the kernel to the "kernel expansion".
-\item In what sense, if at all, is Proposition \ref{steerable kernels = representation operators} true? Since that's what I'm building everything on!
-\item Can it happen that different projections $p_i: T \otimes U \to V$ from the original Wigner-Eckart theorem are so similar that the compositions with basis-endomorphisms from $V$ to $V$ do NOT form a basis? No, right, by means of the isomorphism in Wigner-Eckart itself!!!
-\item About the proposition that says that the steerable kernel space is the same as representation operators: If I want to prove this, I should probably generalize Lin(U,V) to being an arbitrary $G$-representation.
-\item Do the Clebsch-Gordan coefficients really induce such equivariant projections? Didn't really check that.
-\item About the matrix-form of the basis-kernels: Can this be viewed in terms of "vectorization", in order to make a connection to Maurice's proof in the 3d-steerable CNNs paper? Because I think this thing where $Y^l$ appears several times could be written simpler by first putting q into "rows" in a sense. But maybe it's bullshit.
-\end{enumerate}
-
-
-
-
-
+\end{comment}
 
 
 
