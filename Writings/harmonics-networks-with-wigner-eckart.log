@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  4 MAR 2020 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.1)  4 MAR 2020 22:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1714,19 +1714,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 572.
 
-[13] [14]
-Overfull \hbox (37.18683pt too wide) in paragraph at lines 632--633
-\T1/Baskervaldx-TLF/m/n/12 Wigner-Eckart the-orem are so sim-ilar that the com-
-pos-i-tions with basis-endomorphisms
- []
-
-(./harmonics-networks-with-wigner-eckart.bbl) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 710.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 710.
+[13] [14] (./harmonics-networks-with-wigner-eckart.bbl) [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 704.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 704.
 
 (./harmonics-networks-with-wigner-eckart.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 710.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 710.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 704.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 704.
 Package rerunfilecheck Info: File `harmonics-networks-with-wigner-eckart.out' h
 as not changed.
 (rerunfilecheck)             Checksum: 8EE9BBF5ECEB11B1CD966F9C74739882;978.
@@ -1740,8 +1734,8 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21748 strings out of 492982
- 400892 string characters out of 6134896
+ 21742 strings out of 492982
+ 400850 string characters out of 6134896
  472764 words of memory out of 5000000
  24677 multiletter control sequences out of 15000+600000
  97368 words of font info for 201 fonts, out of 8000000 for 9000
@@ -1768,11 +1762,11 @@ public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
 nts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on harmonics-networks-with-wigner-eckart.pdf (15 pages, 235851 b
+Output written on harmonics-networks-with-wigner-eckart.pdf (15 pages, 234736 b
 ytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 291 compressed objects within 3 object streams
- 96 named destinations out of 1000 (max. 500000)
+ 323 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 90 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
