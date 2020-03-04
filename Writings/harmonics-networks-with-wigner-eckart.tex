@@ -52,6 +52,7 @@
 \newcommand{\Q}{\mathds{Q}}
 \newcommand{\R}{\mathds{R}}
 \newcommand{\C}{\mathds{C}}
+\newcommand{\K}{\mathds{K}}
 
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\lin}{Lin}
@@ -66,7 +67,9 @@
 
 \tableofcontents
 
-\section{Representation theory of the circle group over $\C$}
+\section{Harmonic Networks with Wigner-Eckart}
+
+\subsection{Representation theory of the circle group over $\C$}
 
 See also \href{https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=2ahUKEwjmqryykejnAhVCjqQKHelWD64QFjABegQIBhAB&url=https%3A%2F%2Fpeople.math.ethz.ch%2F~kowalski%2Frepresentation-theory.pdf&usg=AOvVaw26KQERYwYqIMiDaXbxsZ8U}{here}, chapter 5, for explanations regarding the representation theory of the circle group.
 
@@ -98,7 +101,7 @@ L^2(S^1) \cong \widehat{\bigoplus_{m \in \Z}} V_m,
 \end{equation*}
 as an isomorphism of representations, where the hat means that we take the topological closure of the direct sum.
 
-\section{The Wigner-Eckart Theorem}
+\subsection{The Wigner-Eckart Theorem}
 
 If we write ``$V$ is a representation'', without further clarification, then we mean that $V$ is a vector space that comes equipped with a homomorphism $\rho_V: G \to \aut (V)$.
 
@@ -169,7 +172,16 @@ In the second isomorphism, the iso $T \otimes U \cong V^n \oplus W$ was used. Th
 The second statement about $c_i$ being complex numbers in the case that the field is $\C$ follows from the second part of Schur's Lemma \ref{Schur}.
 \end{proof}
 
-\section{Harmonic networks with Wigner-Eckart}
+\begin{cor}\label{corollary}
+Let $\{ \varphi_i \mid i \in I \}$ be a basis of $\End_G(V)$. Then the compositions $\{ \varphi_i \circ p_j \mid i \in I, j \in \{1, \dots, n\} \}$ form a basis of $\Hom_G(T \otimes U, V) = \Hom_G(T, \lin(U, V))$.
+\end{cor}
+
+\begin{proof}
+Note that the elements $(0, \dots, 0, \varphi_i, 0, \dots, 0)$ form a basis of $\End_G(V)^n$. From the proof of Theorem \ref{theorem} it follows that they get mapped by an isomorphism to $\varphi_i \circ p_j$, with $j$ being the index containing $\varphi_i$.
+\end{proof}
+
+
+\subsection{Solving for the kernel basis with Wigner-Eckart}
 
 Let $K: \R^2 \to \lin(V_m, V_n)$ be a continuous equivariant kernel. By definition, this means that $K$ is continuous (for that to make sense, view $\lin (V_m, V_n)$ as $\C^{\Dim V_m \cdot \Dim V_n}$) and it fulfils the equivariance property
 \begin{equation}\label{kernel-definition}
@@ -231,7 +243,9 @@ Now, remember that we did abuse of notation, i.e. we have just computed that $K_
 
 \end{proof}
 
-\section{Strategy for finding $SO(2)$-steerable kernels over $\R$}
+\section{General Steerable CNNs with Wigner-Eckart}
+
+\subsection{Strategy for finding $SO(2)$-steerable kernels over $\R$}
 
 The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in two ways:
 
@@ -252,7 +266,191 @@ In what comes next, we want to consider steerable kernels $K: \R^2 \to \lin(V_m,
 
 For simplicity, we will from now on only consider steerable kernels $K: S^1 \to \lin(V_m, V_n)$, since their description gives by continuity an immediate description of steerable kernels $K: \R^2 \to \lin(V_m, V_n)$.
 
-\section{Preparation}
+\subsection{Version of the Wigner-Eckart theorem for general steerable kernels}
+
+In this section, we provide a version of the Wigner-Eckart theorem specifically for steerable kernels. We formulate it as general as possible, so that we can apply it in many settings. The definitions are deliberately a little vague and the proofs therefore only meant as a ``hint'' for how to prove the statements in generality. 
+
+In this section, let $G$ be a compact topological group, for example $SO(2)$, $O(2)$, $C_n$, $D_n$, $SO(3)$, $O(3)$, $SU(1)$, $SU(2)$, $SU(3)$ etc.
+
+Furthermore, assume $G$ acts on a space $S$ like $S^1$ or $S^2$ from the left. Also assume that $S$ carries a space of square-integrable functions $L^2(S)$ with values in a field $\K$, with $\K = \R$ or $\K = \C$. $G$ acts on this space by $(g \cdot f)(s) = f(g^{-1} \cdot s)$. Furthermore, $L^2(S)$ is assumed to be a Hilbert-space by means of the scalar product
+\begin{equation*}
+\left\langle f, g \right\rangle = \int_{S} \overline{f(s)} g(s) ds.
+\end{equation*}
+In that formula, the complex conjugation does not do anything if $\K = \R$. 
+
+We also assume that the irreps are given by $(V_m)_{m \in \Z}$ (or indexed by $m \in \N$) and that every irrep appears exactly once in $L^2(S)$ as a direct summand. 
+
+For $m$, let $[m]$ denote the $\K$-dimension of $V_m$. Let $\{Y^m_i \mid i \in \{1, \dots, [m] \}\}$ be an orthonormal standard basis of $V_m \subseteq L^2(S)$, such that the union of all these functions is an orthonormal basis of $L^2(S)$. For example, if $G = SO(2)$, $S = S^1 = \R/{2\pi\Z}$ and $\K = \C$, then these functions are just the characters $Y^m_1 = \chi_{m}$. For $\K = \R$, these function are given by $Y^m_1 = \cos_m$ and $Y^m_2 = \sin_m$ (probably up to some scalar!). For $G = SO(3)$ and $S = S^2$, we obtain the spherical harmonics.
+
+For lack of a better notation, let $\overline{m}$ denote the $\K$-dimension of $\End_G(V_m)$. Denote by $\{ \varphi_r \mid r \in \{1 ,\dots, \overline{m} \}$ a basis of this space.
+
+Now, with somewhat inconvenient notation, we need to define the Clebsch-Gordan coefficients. Thus, assume that we have given two irreps $V_l, V_m$. For a third irrep $V_n$, let $[n,(l,m)]$ denote the number of times $V_n$ appears in a direct sum decomposition of $V_l \otimes V_m$ (This number can be larger than $1$! For example, it turns out that $V_0$ is twice a direct summand of $V_m \otimes V_m$ for $m \geq 1$ and $\K = \R$). Thus, for $n \in \Z$ and $s \in \{1, \dots, [n,(l,m)]\}$ there are copies $V_n^s \subseteq V_l \otimes V_m$ of $V_n$ in the tensor product such that we get an inner direct sum decomposition
+\begin{equation*}
+V_l \otimes V_m = \bigoplus_{n \in \Z} \bigoplus_{s = 1}^{[n,(l,m)]} V_n^s.
+\end{equation*}
+Let $Y_k^{s;n}$ be basis elements in $V_n^s$ corresponding to the standard basis elements $Y_k^n$ of $V_n$. Then, we can write the standard basis elements $Y_i^l \otimes Y_j^m$ of $V_l \otimes V_m$ by means of these basis elements as follows:
+\begin{equation*}
+Y_i^l \otimes Y_j^m = \sum_{n \in \Z} \sum_{s = 1}^{[n, (l,m) ]} \sum_{k = 1}^{[n]} q_{k,(i,j)}^{s; n, (l,m)}Y_k^{s; n}.
+\end{equation*}
+The indices $q_{k,(i,j)}^{s;n,(l,m)}$ are called the \emph{Clebsch-Gordan coefficients} corresponding to an explicit decomposition of $V_l \otimes V_m$ into irreps.
+
+Note that the Clebsch-Gordan coefficients immediately induce equivariant projections $q^{s;n,(l,m)}: V_l \otimes V_m \to V_n$, given on the basis by
+\begin{equation*}
+q^{s;n,(l,m)}(Y^l_i \otimes Y^m_j) = \sum_{k = 1}^{[n]} q_{k,(i,j)}^{s;n,(l,m)} Y_k^{n}.
+\end{equation*}
+Thus, for fixed $s,n,l$ and $m$, $q^{s;n,(l,m)}$ can be viewed as a matrix of shape $[n]\times ([l]\cdot [m])$. If $[n,(l,m)] = 1$, then for convenience we drop the index $s$ and just write $q^{n,(l,m)}$.
+
+Our final ingredient is the following: for $l \in \Z$, let $p_l: L^2(S) \to V_l$ be the canonical projection, given explicitly by
+\begin{equation*}
+p_l(f) = \sum_{i = 1}^{[l]} \left\langle  f, Y^l_i \right\rangle Y^l_i.
+\end{equation*}
+To reduce clutter, we denote by $p_l$ also the projection $p_l = p_l \otimes \Id: L^2(S) \otimes V_m \to V_l \otimes V_m$. By means of the correspondence from Proposition \ref{correspondence}, we also view $p_l$ as a homomorphism $p_l: \Hom_G(L^2(S), \Hom_\K(V_m, V_l \otimes V_m))$ when need arises.
+
+\begin{pro}\label{steerable kernels = representation operators}
+There is an isomorphism
+\begin{equation*}
+\begin{tikzcd}
+\Hom_G(S, \Hom_{\K}(U, V)) \ar[rr, bend left = 15, "\overline{(\cdot)}"] & & \Hom_G(L^2(S), \Hom_{\K}(U, V)) \ar[ll, bend left = 15, "(\cdot)|_{S}"]
+\end{tikzcd}
+\end{equation*}
+between the space of continuous steerable kernels on the left and the space of continuous representation operators on the right, given by $\overline{K}(f)(u) = \int_{S}f(s)K(s)(u)ds$ and $K'|_{S}(s)(u) = K'(\delta_s)(u)$, where $\delta_s$ is the Dirac Delta function.
+\end{pro}
+
+Note that the Wigner-Eckart theorem \ref{Wigner-Eckart} is formulated for three $G$-representations $T, U$ and $V$ and in terms of $V$ being a direct summand of $T \otimes U$. However, as we also saw (or will see), we actually use it slightly different. Namely, we have a space $L^2(S) \otimes V_m$ and first project to all the spaces $V_l \otimes V_m$ such that $V_n$ is (possibly several times) a direct summand. Furthermore, we are not interested in the specific form of \emph{one representation operator} but want to parameterize the space of all such operators. This means that we are well-advised to make the basis of representation operators more explisit. This is the content of the following theorem:
+
+\begin{thm}\label{representation operators basis}
+Let $V_m$ and $V_n$ be irreps. Let there be the following sets of projections and endomorphisms, as defined above:
+\begin{enumerate}
+\item $\left\lbrace p_l = p_l \otimes \Id: L^2(S) \otimes V_m \to V_l \otimes V_m \mid l \in \Z \right\rbrace$, is the set of canonical projections.
+\item $\left\lbrace q^{s;n,(l,m)}: V_l \otimes V_m \to V_n \mid s \in \{1, \dots, [n,(l,m)]\} \right\rbrace$ is the set of projections from $V_l \otimes V_m$ to $V_n$ that emerge from the Clebsch-Gordan coefficients.
+\item $\left\lbrace \varphi_r \mid r = 1, \dots, \overline{n} \right\rbrace$ is a basis of $\End_G(V_n)$.
+\end{enumerate}
+Then the set of all possible compositions 
+\begin{equation*}
+\left\lbrace \varphi_r \circ q^{s;n,(l,m)} \circ p_l \right\rbrace
+\end{equation*} 
+form a basis of $\Hom_G(L^1(S), \lin(V_m, V_n))$ by setting, with abuse of notation, 
+\begin{equation*}
+(\varphi_r \circ q^{s;n,(l,m)} \circ p_l)(f)(v) = (\varphi_r \circ q^{s;n,(l,m)} \circ p_l)(f \otimes v).
+\end{equation*}
+Furthermore, the set of compositions $\varphi_r \circ q^{s;n,(l,m)} \circ p_l|_{S}$ forms a basis of steerable kernels $S \to \lin(V_m, V_n)$.
+\end{thm}
+
+\begin{proof}
+The projections $q^{s;n,(l,m)} \circ p_l$ correspond to the projections in the Wigner-Eckart theorem $\ref{theorem}$ and Corollary \ref{corollary}. Then it follows directly from that Corollary that the compositions $\varphi_r \circ (q^{s;n,(l,m)} \circ p_l) = \varphi_r \circ q^{s;n,(l,m)} \circ p_l$ form a basis of the space of representation operators. Consequently we see from Proposition \ref{steerable kernels = representation operators} that we get a basis of steerable kernels by restricting to $S$.
+\end{proof}
+
+The final goal is to get more insight into how the Steerable kernel-basis, given by the compositions $\varphi_r \circ q^{s;n,(l,m)} \circ p_l|_S$, looks like more explicitly. Fortunately, the projections $q$ are already given in matrix-form. We now do the same for $p$:
+
+\begin{cor}
+For $s \in S$, let $p_l|_S(s): V_m \to V_l \otimes V_m$. Then, with respect to the standard bases of $V_l \otimes V_m$ and $V_m$, the matrix-elements of this are given by:
+\begin{equation*}
+\left[ p_l|_S(s) \right]_{(i,j),h} = \begin{cases}
+Y_i^{l}(s), \ j = h \\
+0, j \neq h
+\end{cases}
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+This follows directly from the computation
+\begin{align*}
+\left[ p_l|_S(s)\right] (Y_h^{m}) & = p_l(\delta_s \otimes Y_h^m) \\
+& = p_l(\delta_s) \otimes Y_h^m \\
+& = \sum_{i = 1}^{[l]} \left\langle \delta_s, Y_i^l\right\rangle \left( Y_i^l \otimes Y_h^m \right) \\
+& = \sum_{i = 1}^{[l]}Y_i^l(s) \left( Y_i^l \otimes Y_h^m\right).
+\end{align*}
+In the last step, the following computation was used, which follows from the properties of the Dirac-delta:
+\begin{equation*}
+\left\langle \delta_s, f \right\rangle = \int_{S} \delta_s(s') f(s') ds' = f(s).
+\end{equation*}
+\end{proof}
+
+We note the following intuitive interpretation of this Corollary: Let $p_l|_S(s) \in \Hom_\K(V_m, V_l \otimes V_m)$ be given by a $([l] \times [m]) \times [m]$-matrix. Let $Y^l(s)$ be the column-vector with entries $Y^l_i(s)$. Then this matrix is given by:
+\begin{equation*}
+p_l|_S(s) = \begin{pmatrix}
+\begin{bmatrix}
+Y^l(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\begin{bmatrix}
+0 & Y^l(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\hdots
+&
+\begin{bmatrix}
+0 & \hdots & 0 & Y^l(s)
+\end{bmatrix}
+\end{pmatrix}
+\end{equation*}
+
+Thus far, we have written all projections explicitly in matrix-form. We furthermore assume that also the basis-endomorphisms $\varphi_r: V_n \to V_n$ are given by their corresponding bases, i.e. we have
+\begin{equation*}
+\varphi_r(Y^n_k) = \sum_{k' = 1}^{[n]} \left( \varphi_r\right)_{k'k} Y^n_{k'}.
+\end{equation*}
+
+Finally, we get the explicit matrix-form of the basis-kernels:
+
+\begin{thm}[Basis-Kernels, matrix-form]\label{matrix-form}
+The basis-kernels are given by
+\begin{equation*}
+\varphi_r \circ q^{s;n,(l,m)} \circ p_l|_S(s) = \varphi_r \cdot \begin{pmatrix} 
+Y^l(s)^T \cdot q_1^{s;n,(l,m)} \\
+\vdots \\
+Y^l(s)^T \cdot q_{[n]}^{s;n,(l,m)}
+\end{pmatrix},
+\end{equation*}
+Where each ``dot'' denotes just conventional matrix multiplication.
+\end{thm}
+
+Before we prove this, note that the shapes of the involved matrices makes sense:
+\begin{enumerate}
+\item $Y^l(s)^T$ is of shape $1 \times [l]$ and $q^{s;n,(l,m)}$ of shape $[l] \times [m]$, so they can be multiplied. The result is of size $1 \times [m]$. When stacking all these results, the outcome is of shape $[n] \times [m]$.
+\item $\varphi_r$ is of shape $[n] \times [n]$ and thus can be multiplied with the right outcome to something of shape $[n] \times [m]$ again.
+\item Shape $[n] \times [m]$ is exactly what we expect for a linear map $V_m \to V_n$, so the outcome is of the required form.
+\end{enumerate}
+
+\begin{proof}
+Since $\varphi$ does not change in the computation, we only need to engage with the second and third factor. Denote by $\odot$ the elementwise product of two matrices, followed by a sum over all resulting entries. Then we obtain:
+\begin{align*}
+q^{s;n,(l,m)} \circ p_l|_S(s) & = 
+\begin{pmatrix}
+q^{s;n,(l,m)}_1 \\
+\vdots \\
+q^{s;n,(l,m)}_{[n]}
+\end{pmatrix} \cdot  \begin{pmatrix}
+\begin{bmatrix}
+Y^l(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\begin{bmatrix}
+0 & Y^l(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\hdots
+&
+\begin{bmatrix}
+0 & \hdots & 0 & Y^l(s)
+\end{bmatrix}
+\end{pmatrix}\\
+& = 
+\begin{pmatrix}
+q^{s;n,(l,m)}_{k} \odot \begin{bmatrix}0 & \hdots & 0 & Y^l(s) & 0 & \hdots & 0 \end{bmatrix}
+\end{pmatrix}_{k, j = 1}^{[n], [m]} \\
+& = \begin{pmatrix}
+Y^l(s)^T \cdot q^{s;n,(l,m)}_{k, (-,j)}
+\end{pmatrix}_{k, j = 1}^{[n], [m]} \\
+& = \begin{pmatrix}
+Y^l(s)^T \cdot q^{s;n,(l,m)}_{k}
+\end{pmatrix}_{k=1}^{[n]},
+\end{align*}
+which is exactly what we wanted to show.
+\end{proof}
+
+
+
+\subsection{Representation Theory of the circle group over $\R$}
 
 In this section, we do the representation-theoretic preparation. We view $S^1 = \R/{2 \pi \Z}$, that is we take the interval $[0, 2 \pi]$ as the space where our functions are defined. Consequently, we have to put the fraction $\frac{1}{2 \pi}$ before all of our integrals, different from what we did in our treatment of $SO(2)$ over $\C$.
 
@@ -357,49 +555,9 @@ The first projection to $V_0$ (corresponding to the span of $c_3$) is given by $
 The second projection to $V_0$ (corresponding to the span of $c_4$) is given by $p_{mm}^{0'}: V_m \otimes V_m \to V_0$, $b_{cc} \mapsto 0$, $b_{cs} \mapsto - \frac{1}{2}$, $b_{sc} \mapsto \frac{1}{2}$, $b_{ss} \mapsto 0$.
 \end{proof}
 
-\section{Version of the Wigner-Eckart theorem for steerable kernels}
 
-In this section, we provide a version of the Wigner-Eckart theorem specifically for steerable kernels. We formulate it as general as possible, so that we can apply it in many settings. The definitions are deliberately a little vague and the proofs therefore only meant as a ``hint'' for how to prove the statements in generality.
 
-In this section, let $G$ be a compact topological group, for example $SO(2)$, $O(2)$, $C_n$, $D_n$, $SO(3)$, $O(3)$, etc.
-
-Furthermore, assume $G$ acts on a space $S$ like $S^1$ or $S^2$ from the left. Also assume that $S$ carries a space of square-integrable functions $L^2(S)$ on which $G$ acts by $(g \cdot f)(s) = f(g^{-1} \cdot s)$.
-
-We also assume that the irreps are given by $(V_m)_{m \in \Z}$ (or indexed by $m \in \N$) and that every irrep appears exactly once in $L^2(S)$ as a direct summand. 
-
-\begin{pro}\label{steerable kernels = representation operators}
-There is an isomorphism
-\begin{equation*}
-\begin{tikzcd}
-\Hom_G(S, \lin(U, V)) \ar[rr, bend left = 15, "\overline{(\cdot)}"] & & \Hom(L^2(S), \lin(U, V)) \ar[ll, bend left = 15, "(\cdot)|_{S}"]
-\end{tikzcd}
-\end{equation*}
-between the space of continuous steerable kernels on the left and the space of continuous representation operators on the right, given by $\overline{K}(f)(u) = \int_{S}f(s)K(s)(u)ds$ and $K'|_{S}(s)(u) = K'(\delta_s)(u)$.
-\end{pro}
-
-Note that the Wigner-Eckart theorem \ref{Wigner-Eckart} is formulated for three $G$-representations $T, U$ and $V$ and in terms of $V$ being a direct summand of $T \otimes U$. However, as we also saw (or will see), we actually use it slightly different. Namely, we have a space $L^2(S) \otimes V_m$ and first project to all the spaces $V_l \otimes V_m$ such that $V_n$ is (possibly several times) a direct summand. Furthermore, we are not interested in the specific form of \emph{one representation operator} but want to parameterize the space of all such operators. This means that we are well-advised to make the basis of representation operators more explisit. This is the content of the following theorem:
-
-\begin{thm}\label{representation operators basis}
-Let $V_m$ and $V_n$ be irreps. Let there be the following sets of projections and endomorphisms:
-\begin{enumerate}
-\item $\left\lbrace p_l = p_l \otimes \Id: L^2(S) \otimes V_m \to V_l \otimes V_m \mid l \in L \right\rbrace$, is the set of canonical projections such that $V_n$ appears as a direct summand in $V_l \otimes V_m$.
-\item $\left\lbrace g_j^{(l)}: V_l \otimes V_m \to V_n \mid j \in \{1, \dots, k_l\} \right\rbrace$ is the set of projections from $V_l \otimes V_m$ to $V_n$ that emerge from a decomposition of $V_l \otimes V_m$ into irreps. Here, $k_l$ is the number of times $V_n$ appears in an irrep-decomposition of $V_l \otimes V_m$.
-\item $\left\lbrace \varphi_i \mid i = 1, \dots, \dim(\End_G(V_n)) \right\rbrace$ is a basis of $\End_G(V_n)$.
-\end{enumerate}
-Then the set of all possible compositions 
-\begin{equation*}
-\left\lbrace \varphi_i \circ q_j^{(l)} \circ p_l \mid i \in \{1, \dots, \dim(\End_G(V_n))\}, j \in \{1, \dots, k_l\}, l \in L \right\rbrace
-\end{equation*} 
-form a basis of $\Hom_G(L^1(S), \lin(V_m, V_n))$ by setting, with abuse of notation, $(\varphi_i \circ q_j^{(l)} \circ p_l)(f)(v) = (\varphi_i \circ q_j^{(l)} \circ p_l)(f \otimes v)$.
-
-Furthermore, the set of compositions $(\varphi_i \circ q_j^{(l)} \circ p_l)|_{S}$ forms a basis of steerable kernels $S \to \lin(V_m, V_n)$.
-\end{thm}
-
-\begin{proof}
-The projections $q_j^{(l)} \circ p_l$ correspond to the projections in the Wigner-Eckart theorem $\ref{Wigner-Eckart}$. Then it follows directly from the proof of that that the compositions $\varphi_i \circ (q_j^{(l)} \circ p_l) = \varphi_i \circ q_j^{(l)} \circ p_l$ form a basis of the space of representation operators. Consequently we see from Proposition \ref{steerable kernels = representation operators} that we get a basis of steerable kernels by restricting to $S$.
-\end{proof}
-
-\section{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
+\subsection{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
 
 Now we have done all needed preparation and can solve the kernel constraint explicitly, using the Wigner-Eckart theorem.
 
@@ -480,6 +638,8 @@ Now about statement $4$:
 \item In what sense, if at all, is Proposition \ref{steerable kernels = representation operators} true? Since that's what I'm building everything on!
 \item Can it happen that different projections $p_i: T \otimes U \to V$ from the original Wigner-Eckart theorem are so similar that the compositions with basis-endomorphisms from $V$ to $V$ do NOT form a basis? No, right, by means of the isomorphism in Wigner-Eckart itself!!!
 \item About the proposition that says that the steerable kernel space is the same as representation operators: If I want to prove this, I should probably generalize Lin(U,V) to being an arbitrary $G$-representation.
+\item Do the Clebsch-Gordan coefficients really induce such equivariant projections? Didn't really check that.
+\item About the matrix-form of the basis-kernels: Can this be viewed in terms of "vectorization", in order to make a connection to Maurice's proof in the 3d-steerable CNNs paper? Because I think this thing where $Y^l$ appears several times could be written simpler by first putting q into "rows" in a sense. But maybe it's bullshit.
 \end{enumerate}
 
 
