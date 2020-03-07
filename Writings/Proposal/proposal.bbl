@@ -1,0 +1,39 @@
+\begin{thebibliography}{}
+
+\bibitem[Agrawala, 1980]{wigner-eckart}
+Agrawala, V. (1980).
+\newblock Wigner-eckart theorem for an arbitrary group or lie algebra.
+\newblock {\em Journal of Mathematical Physics}, 21.
+
+\bibitem[Cohen et~al., 2018]{general_theory}
+Cohen, T., Geiger, M., and Weiler, M. (2018).
+\newblock A general theory of equivariant cnns on homogeneous spaces.
+\newblock {\em CoRR}, abs/1811.02017.
+
+\bibitem[Cohen et~al., 2019]{gauge_cnns}
+Cohen, T., Weiler, M., Kicanaoglu, B., and Welling, M. (2019).
+\newblock Gauge equivariant convolutional networks and the icosahedral {CNN}.
+\newblock In Chaudhuri, K. and Salakhutdinov, R., editors, {\em Proceedings of
+  the 36th International Conference on Machine Learning}, volume~97 of {\em
+  Proceedings of Machine Learning Research}, pages 1321--1330, Long Beach,
+  California, USA. PMLR.
+
+\bibitem[Cohen and Welling, 2016]{cohen2016steerable}
+Cohen, T.~S. and Welling, M. (2016).
+\newblock Steerable cnns.
+
+\bibitem[Jeevanjee, 2011]{Jeevanjee}
+Jeevanjee, N. (2011).
+\newblock {\em {An introduction to tensors and group theory for physicists}}.
+\newblock Birkhäuser, New York, NY.
+
+\bibitem[Weiler and Cesa, 2019]{general_e2_cnns}
+Weiler, M. and Cesa, G. (2019).
+\newblock General $e(2)$-equivariant steerable cnns.
+
+\bibitem[Weiler et~al., 2018]{3d_cnns}
+Weiler, M., Geiger, M., Welling, M., Boomsma, W., and Cohen, T. (2018).
+\newblock 3d steerable cnns: Learning rotationally equivariant features in
+  volumetric data.
+
+\end{thebibliography}
