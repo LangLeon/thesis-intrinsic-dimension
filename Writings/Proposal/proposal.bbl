@@ -36,4 +36,9 @@ Weiler, M., Geiger, M., Welling, M., Boomsma, W., and Cohen, T. (2018).
 \newblock 3d steerable cnns: Learning rotationally equivariant features in
   volumetric data.
 
+\bibitem[Worrall et~al., 2016]{hnets}
+Worrall, D.~E., Garbin, S.~J., Turmukhambetov, D., and Brostow, G.~J. (2016).
+\newblock Harmonic networks: Deep translation and rotation equivariance.
+\newblock {\em CoRR}, abs/1612.04642.
+
 \end{thebibliography}

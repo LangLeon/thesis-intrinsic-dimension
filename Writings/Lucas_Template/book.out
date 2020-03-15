@@ -1,0 +1,47 @@
+\BOOKMARK [0][-]{chapter*.3}{List of Tables}{}% 1
+\BOOKMARK [0][-]{chapter*.4}{List of Figures}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Status quo of quantum chemical methods}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Multireference perturbation theory}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.3}{The DCD-CAS\(2\) and HQD-NEVPT2 methods}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.4}{Applications}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Theoretical foundations}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Conventions}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Quantum-chemical Hamiltonians}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Nonrelativistic and scalar-relativistic Hamiltonians}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{Spin-dependent operators}{section.2.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Multireference quantum chemistry}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Theory of effective Hamiltonians}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.4.1}{General framework of effective Hamiltonian theory}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.2}{Choices for the decoupling operator}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.3}{Concepts of intermediate Hamiltonian theory}{section.2.4}% 17
+\BOOKMARK [1][-]{section.2.5}{Different flavors of perturbation theory}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.5.1}{Quasidegenerate perturbation theory}{section.2.5}% 19
+\BOOKMARK [2][-]{subsection.2.5.2}{Multi-partitioning QDPT}{section.2.5}% 20
+\BOOKMARK [2][-]{subsection.2.5.3}{Generalized degenerate perturbation theory}{section.2.5}% 21
+\BOOKMARK [2][-]{subsection.2.5.4}{NEVPT}{section.2.5}% 22
+\BOOKMARK [1][-]{section.2.6}{Treatment of spin-dependent effects via 1st order QDPT}{chapter.2}% 23
+\BOOKMARK [1][-]{section.2.7}{Model Hamiltonians in chemistry}{chapter.2}% 24
+\BOOKMARK [2][-]{subsection.2.7.1}{Spin Hamiltonians}{section.2.7}% 25
+\BOOKMARK [2][-]{subsection.2.7.2}{Ligand field theory}{section.2.7}% 26
+\BOOKMARK [1][-]{section.2.8}{Ab initio calculation of spin Hamiltonian parameters}{chapter.2}% 27
+\BOOKMARK [2][-]{subsection.2.8.1}{Derivation of spin Hamiltonians by DPT}{section.2.8}% 28
+\BOOKMARK [2][-]{subsection.2.8.2}{Exact effective Hamiltonian treatment}{section.2.8}% 29
+\BOOKMARK [2][-]{subsection.2.8.3}{Extraction and analysis of effective spin Hamiltonian parameters}{section.2.8}% 30
+\BOOKMARK [1][-]{section.2.9}{Ab initio ligand field theory}{chapter.2}% 31
+\BOOKMARK [0][-]{chapter.3}{Theory and implementation}{}% 32
+\BOOKMARK [1][-]{section.3.1}{DCD-CAS\(2\)}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.1.1}{Application of the intermediate Hamiltonian to the multireference dynamic correlation problem}{section.3.1}% 34
+\BOOKMARK [2][-]{subsection.3.1.2}{Perturbative correction for excitation energies}{section.3.1}% 35
+\BOOKMARK [2][-]{subsection.3.1.3}{Implementation}{section.3.1}% 36
+\BOOKMARK [2][-]{subsection.3.1.4}{Different variants of DCD-CAS\(2\) investigated in this work}{section.3.1}% 37
+\BOOKMARK [1][-]{section.3.2}{HQD-NEVPT2}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.3}{Incorporation of spin-dependent effects}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.4}{Evaluation of matrix elements of spin-dependent operators}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.4.1}{One-electron operators}{section.3.4}% 41
+\BOOKMARK [2][-]{subsection.3.4.2}{The spin-spin coupling operator}{section.3.4}% 42
+\BOOKMARK [1][-]{section.3.5}{Formal properties of the methods}{chapter.3}% 43
+\BOOKMARK [2][-]{subsection.3.5.1}{Lack of size consistency of DCD-CAS\(2\)}{section.3.5}% 44
+\BOOKMARK [2][-]{subsection.3.5.2}{Orbital invariance and preservation of orbital degeneracy of DCD-CAS\(2\)}{section.3.5}% 45
+\BOOKMARK [2][-]{subsection.3.5.3}{Computational cost of DCD-CAS\(2\)}{section.3.5}% 46
+\BOOKMARK [2][-]{subsection.3.5.4}{Model space non-invariance}{section.3.5}% 47
