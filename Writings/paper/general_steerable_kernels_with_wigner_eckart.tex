@@ -1,0 +1,1089 @@
+\documentclass[12pt, a4paper]{article}
+%
+%
+% Eingebundene Pakete
+%
+%
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{blindtext}
+\usepackage{amsmath, amsthm, amssymb, dsfont}
+\usepackage[lf]{Baskervaldx} % lining figures
+\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage[left=30mm,right=30mm, top=20mm, bottom=25mm]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true, citecolor=blue, linkcolor=blue}
+\usepackage{enumerate}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage[colorinlistoftodos]{todonotes}
+%
+%
+%
+%
+\title{Solving Kernel constraints with Wigner-Eckart}
+\date{}
+%
+%
+% Umgebungen für Theoreme, Definitionen etc.
+%
+%
+% proposition, lemma, corollary, theorem
+\theoremstyle{plain}
+\newtheorem{pro}{Proposition}[section]
+\newtheorem{lem}[pro]{Lemma}
+\newtheorem{cor}[pro]{Corollary}
+\newtheorem{thm}[pro]{Theorem}
+% definition, example
+\theoremstyle{definition}
+\newtheorem{dfn}[pro]{Definition}
+\newtheorem{exa}[pro]{Example}
+% remark
+\theoremstyle{remark}
+\newtheorem{rem}[pro]{Remark}
+%
+%
+% Commands defined
+%
+%
+% commands for well known rings/monoids
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\K}{\mathds{K}}
+\newcommand{\uu}{U_{i_k(s)}^k}
+%
+%
+% Commands for Math operators
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Dim}{dim}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\diam}{Diam}
+\DeclareMathOperator{\spann}{span}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Harmonic Networks with Wigner-Eckart}
+
+\subsection{Representation theory of the circle group over $\C$}
+
+See also \href{www.math.ethz.ch/~kowalski/representation-theory.pdf}{here}, chapter 5, for explanations regarding the representation theory of the circle group.
+
+Let $G = SO(2) = \R/\Z$ be the group of rotations in dimension $2$. \todo[inline]{Or better $U(1)$. Be Consistent with viewing it *not* as R/Z.} We'll view it as a multiplicative or additive group depending on context. If $g \in G$ then we write $g_+$ for the additive counterpart in $\R/\Z$.
+
+Let $L^2\left(S^1\right)$ be the Hilbert-space of square-integrable functions on $S^1$, with values in $\C$. It's scalar-product is given by:
+\begin{equation*}
+\langle f, g \rangle = \int_{S^1} \overline{f(s)} g(s) ds.
+\end{equation*}
+Let the basis functions $Y_l$ be given by
+\begin{equation*}
+Y_l(s) = e^{2 \pi i l s}
+\end{equation*}
+for $l \in \Z$ and $s \in S^1 = \R/\Z$\todo{distinguish S1 from parametrization!}. These functions form an orthonormal basis of $L^2\left(S^1\right)$.
+
+Let $\rho: G \to L^2\left(S^1\right)$ be the linear representation given by
+\begin{equation*}
+\left[\rho(g)(f)\right](s') = f(s' - g_{+})
+\end{equation*}
+which just shifts periodic functions. \todo[inline]{$f(g^{-1}s')$, i.e. be consistent with viewing it multiplicative, also in later parts of paper!}
+
+Furthermore, the vector space spanned by $Y_l$ over the complex numbers
+\begin{equation*}
+\spann_{\C}(Y_l) = \left\lbrace c \cdot Y_l \mid c \in \C \right\rbrace
+\end{equation*}
+is, as a representation, isomorphic to the $l$'th order irrep of $G$, denoted by $V_l$.\todo[inline]{Unterscheide die Irrep in der Notation, jenachdem ob sie als Raum von Funktionen oder als $\K^{[l]}$ aufgefasst wird} Thus\todo{Doesn't really follow}, we can write
+\begin{equation*}
+L^2\left(S^1\right) \cong \widehat{\bigoplus_{l \in \Z}} V_l,
+\end{equation*}
+as an isomorphism of representations, where the hat means that we take the topological closure\todo{explain} of the direct sum.
+
+\subsection{The Wigner-Eckart Theorem}
+
+If we write ``$V$ is a representation'', without further clarification, then we mean that $V$ is a vector space that comes equipped with a homomorphism $\rho_V: G \to \aut (V)$.\todo{Arbitrary group?}
+
+In this section, we state and prove the Wigner-Eckart theorem, which we will use for solving kernel constraints. The treatment essentially follows the basis-independent form in \cite{wigner-eckart}.
+
+The main ingredient for this theorem is Schur's Lemma, see \cite{Jeevanjee}:
+
+\begin{pro}[Schur's Lemma]\label{Schur}
+Let $V$ and $W$ be irreducible representations\todo[inline]{finite-dim? Express correct assumptions} over a group $G$ and let $f: V \to W$ be a linear equivariant map. Then either $f$ is zero or an isomorphism.
+
+Furthermore, if the underlying field is the complex numbers $\C$, then the set of endomorphisms, i.e. linear equivariant maps from $V$ to $V$, is isomorphic to $\C$ itself:
+\begin{equation*}
+\End_{G}(V) = \{c \cdot \Id_V \mid c \in \C\} \cong \C.
+\end{equation*}
+Here, the automorphisms correspond to the non-zero elements of $\C$, $\C^{*}$. Elements that emerge by multiplication with a fixed scalar are also called \emph{homotheties}.
+\end{pro}
+
+Furthermore, in order to state the theorem, we need the notion of representations on tensor products and spaces of linear functions between representations:
+
+If $T$, $U$ and $V$ are representations, we can build the tensor product $T \otimes U$ and the space of linear functions $\Hom_{\K}(U, V)$. Both carry a representation:
+
+\begin{equation*}
+\rho_{\otimes}(g)(t \otimes u) \coloneqq \left[\rho_T(g)(t)\right] \otimes \left[\rho_U(g)(u)\right],
+\end{equation*}
+and
+\begin{equation*}
+\rho_{\text{Hom}}(g)(f) \coloneq \rho_V(g) \circ f \circ \rho_U(g)^{-1}.
+\end{equation*}
+
+\begin{dfn}
+Let $T, U$ and $V$ be three representations. Then a representation operator is a linear equivariant map $\overline{K}: T \to \Hom_{\K}(U, V)$.
+\end{dfn}
+
+The notation $\overline{K}$ comes from that fact that, as we will see later, certain representation operators can be identified with equivariant kernels. See Proposition \ref{steerable kernels = representation operators}
+We have the following alternative description of representation operators, proven in \cite{wigner-eckart}:
+
+\begin{pro}\label{correspondence}
+There is a $1$–$1$ correspondence between representation operators $\overline{K}: T \to \Hom_{\K}(U,V)$ and linear equivariant maps $\overline{K}': T \otimes U \to V$. This correspondence is given by
+\begin{equation*}
+\overline{K}'(t \otimes u) = \overline{K}(t)(u).
+\end{equation*}
+\end{pro}
+
+\todo[inline]{can we give explicit names for theorems like Wigner-Eckart ?}
+\begin{thm}[Wigner-Eckart]\label{theorem}
+Let $T, U, V$ be $G$-representations, of which $V$ is assumed to be irreducible. Let $\overline{K}: T \to \Hom_{\K}(U, V)$ be a representation operator. Then $\overline{K}$ is constrained as follows:
+
+Assume that $V$ appears $n$ times as a direct summand in $T \otimes U$, i.e. there is an isomorphism of representations
+\begin{equation*}
+T \otimes U \cong V^n \oplus W
+\end{equation*}
+for some other representation $W$ that splits into irreducibles that are all non-isomorphic to $V$ ($n = 0$ is possible and allowed). Let $p_i: T \otimes U \to V$ be the corresponding equivariant linear projections, $i = 1, \dots, n$. Then $\overline{K}$ is given by
+\begin{equation*}
+\overline{K}(t)(u) = \begin{pmatrix}c_1 & \hdots & c_n \end{pmatrix} \cdot \begin{pmatrix} p_1 \\ \vdots \\ p_n \end{pmatrix} (t \otimes u)= \sum_{i = 1}^{n}c_i \left( p_i(t \otimes u) \right)
+\end{equation*}
+for endomorphisms $c_i: V \to V$ independent of $t$ and $u$. Furthermore, if the underlying field is the complex numbers $\C$, then the $c_i$ are just complex numbers and called reduced matrix elements of the representation operator.\todo[inline]{Maybe try to align it more to physicists-notation with Bra-Kets!}
+\end{thm}
+
+\begin{proof}[Sketch of proof]
+The idea is to use the correspondence Proposition \ref{correspondence} in order to get an equivalent description of the space of representation operators:
+
+\begin{align*}
+\Hom_G(T, \Hom_{\K}(U, V)) & \cong \Hom_G(T \otimes U, V) \\
+& \cong \Hom_G(V^n \oplus W, V) \\
+& \cong \bigoplus_{i = 1}^{n} \Hom_G(V, V) \oplus \underbrace{\Hom_G(W, V)}_{=0} \\
+& = \bigoplus_{i = 1}^{n} \End_G(V).
+\end{align*}
+
+In the second isomorphism, the iso $T \otimes U \cong V^n \oplus W$ was used. The third isomorphism just uses that linear equivariant maps can be described on each direct summand individually. The last equality uses that $W$ does not contain $V$ as a direct summand, and so by Schur's Lemma \ref{Schur}, there is no homomorphism $W \to V$. Now the result follows by taking the tuple $(c_1, \dots, c_n) \in \bigoplus_{i = 1}^{n} \End_G(V)$ corresponding to the representation operator $\overline{K}$ under the above isomorphism and explicitly tracing back the isomorphisms from bottom to top to find the form of $\overline{K}$.
+
+The second statement about $c_i$ being complex numbers in the case that the field is $\C$ follows from the second part of Schur's Lemma \ref{Schur}.
+\end{proof}
+
+\begin{cor}\label{corollary}
+Let $\{ \varphi_i \mid i \in I \}$ be a basis of $\End_G(V)$. Then the compositions $\{ \varphi_i \circ p_j \mid i \in I, j \in \{1, \dots, n\} \}$ form a basis of $\Hom_G(T \otimes U, V) = \Hom_G(T, \Hom_{\K}(U, V))$.
+\end{cor}
+
+\begin{proof}
+Note that the elements $(0, \dots, 0, \varphi_i, 0, \dots, 0)$ form a basis of $\End_G(V)^n$. From the proof of Theorem \ref{theorem} it follows that they get mapped by an isomorphism to $\varphi_i \circ p_j$, with $j$ being the index containing $\varphi_i$.
+\end{proof}
+
+
+\subsection{Solving for the kernel basis with Wigner-Eckart}\label{solution_harmonic_networks}
+\todo[inline]{Mention that we're back to the theory over $\C$.}
+Let $K: \R^2 \to \Hom_{\C}(V_l, V_J)$ be an equivariant kernel. We also assume $K$ is continuous (for that to make sense, view $\Hom_{\C} (V_l, V_J)$ as $\C^{\Dim V_l \cdot \Dim V_J}$\todo[inline]{Explain in general somewhere what continuity means. Since $V_l$ and $V_J$ are Banach spaces, we can define continuity with respect to their norms, which coincides with the identification used above!}). Being equivariant means that 
+\begin{equation}\label{kernel-definition}
+K(g\cdot x) = \rho_n(g) \circ K(x) \circ \rho_m(g)^{-1},
+\end{equation}
+where $G = SO(2)$\todo{Or $U(1)$} acts as rotations on $\R^2$. However, $K$ is not assumed to be linear in any straightforward way. Since $V_l \cong V_J \cong \C$ when viewed as $\C$-vectorspaces, we can identify $\text{Lin}(V_l, V_J)$ with $\C$. Under this identification, we have $K: \R^2 \to \C$ and are wondering how this function looks like. Note that we will freely move back and forth between these identifications. We will show the following kernel constraint, used, but not proven, for the first time in \cite{hnets}:
+
+\begin{pro}\label{Wigner-Eckart}
+There is a continuous function $c: \R_{\geq 0} \to \C$ such that $K$ is given, under the identifications from above, by
+\begin{equation*}
+K(s) = c\left(|s|\right) \cdot Y_{J-l}\left(s/|s|\right).
+\end{equation*}
+Here, $s/|s| \in \R^2$ has norm $1$ and is thus viewed as an element in $S^1$. If $J \neq l$ then $c(0) = 0$.
+\end{pro}
+\todo[inline]{make case for $s=0$ more explicit (and fix $s/|s|$ for $s=0$)}
+
+We will prove this statement using the Wigner-Eckart Theorem \ref{theorem} in its basis-independent form. The idea is to use $K$ to construct a representation operator $\overline{K}: L^2\left(S^1\right) \to \Hom_{\C}(V_l, V_J)$ for each restriction of $K$ to a ring of constant radius in $\R^2$. Since $L^2\left(S^1\right) \otimes V_l$ contains $V_J$ exactly once as a direct summand and since we are over $\C$, the theorem tells us that this representation operator is described by exactly one complex number. If we trace back what this means, we end up with the description from above.
+
+\begin{proof}[Proof of Proposition \ref{Wigner-Eckart}]
+The strategy is to consider each circle-restriction $K_r: S^1 \to \Hom_{\C}(V_l, V_J), s \mapsto K(rs)$ separately, where $r \in \mathbb{R}_{>0}$ acts as a scalar. Clearly, such a $K_r$ still fulfils the equivariant constraint Equation \ref{kernel-definition}. Thus, consider a fixed $r$ and write, by abuse of notation, $K = K_r$.
+
+We define an ``extension'' $\overline{K}: L^2\left(S^1\right) \to \Hom_{\C}(V_l, V_{J})$ to which we will apply Wigner-Eckart. It is given by:
+\todo[inline]{do we need the $(v)$ here or can it be omitted?}
+\begin{equation*}
+\overline{K}(f)(v) = \int_{S^1}f(s)K(s)(v)ds.
+\end{equation*}
+Clearly, $\overline{K}$ is linear in $f$ and $v$. Furthermore, it is equivariant
+\todo[inline]{equivariant with the same representations acting as before}
+\todo[inline]{choose for either additive or multiplicative action}
+(in the following, $G$ is written additively when acting on $f$ and multiplicatively when acting on $K$), since:
+\begin{align*}
+\overline{K}(g_+ \cdot f)(v) & = \int_{S^1} (g_+\cdot f)(s) K(s)(v) ds \\
+& = \int_{S^1} f(s - g_{+}) K(s)(v)ds \\
+& = \int_{S^1} f(s) K(g\cdot s)(v)ds \\
+& = \int_{S^1} f(s) \left[ \rho_{n}(g) \circ K(s) \circ \rho_m(g)^{-1}\right](v) ds  \\
+& = \rho_n(g) \left( \int_{S^1} f(s) K(s) \left( \rho_m(g)^{-1}(v)\right)ds \right) \\
+& = \rho_n(g) \left( \overline{K}(f)\left(\rho_m(g)^{-1}(v) \right)\right) \\
+& = \left(\rho_{\text{Hom}}(g)\left( \overline{K}(f) \right)\right)(v).
+\end{align*}
+Consequently, we can apply Wigner-Eckart Theorem \ref{theorem} to find the structure of $\overline{K}$. For doing so, we need to define a projection operator $p: L^2\left(S^1\right) \otimes V_l \to V_J$. We do it as follows:
+\begin{equation*}
+p(f \otimes Y_l) = \langle f \cdot Y_l, Y_{J}\rangle Y_{J},
+\end{equation*}
+where $V_l$ and $V_J$ are viewed as generated from $Y_l$ and $Y_{J}$, respectively. $f \cdot Y_l$ means the element-wise product. Setting $f = Y_{J-l}$ we indeed see that this map is surjective. From Wigner-Eckart, we obtain that
+\begin{equation*}
+\overline{K}(f)(Y_l) = c \cdot \langle f \cdot Y_l, Y_{J} \rangle Y_{J}
+\end{equation*}
+for some constant $c \in \C$. With the identifications from before, $\overline{K}(f): \C \to \C$ is given by multiplication with $c \cdot \langle f \cdot Y_l, Y_{J} \rangle$.
+
+What's missing is now how to trace this back to a statement about the appearance of the original circle map $K: S^1 \to \Hom_{\C}(V_l, V_J)$. We do this by viewing elements of $S^1$ as functions in $L^2\left(S^1\right)$ by the corresponding Dirac delta-functions. Therefore, let $\delta_s$ be the Dirac-delta function at $s \in S^1$. Then we get:
+\begin{align*}
+\overline{K}(\delta_s)(v) = \int_{S^1} \delta_s(s') K(s')(v)ds = K(s)(v),
+\end{align*}
+by general behaviour of the Dirac-delta. Thus, we can compute $K$ as follows:
+\begin{align*}
+K(s)(Y_l) & = \overline{K}(\delta_s)(Y_l) \\
+& = c \cdot \langle \delta_s \cdot Y_l , Y_{J} \rangle \\
+& = c \cdot \int_{S^1} \overline{\delta_s(s')\cdot Y_l(s')} \cdot Y_{J}(s') ds' \\
+& = c \cdot \int_{S^1} \delta_s(s') \cdot Y_{J-l}(s') ds' \\
+& = c \cdot Y_{J-l}(s).
+\end{align*}
+
+Now, remember that we did abuse of notation, i.e. we have just computed that $K_r: S^1 \to \C$ is given by $K_r(s) = c(r) \cdot Y_{J-l}(s)$ with $c(r)$ depending on $r$. This means that $K(s) = K_{|s|}(s/|s|) = c(|s|) \cdot Y_{J-l}(s/|s|)$. Since the kernel $K$ is continuous, the map $c$ needs to be continuous. Furthermore, $c(0) = 0$ also due to continuity, unless $l = J$ in which case $Y_0$ is constant and so $c(0)$ can in principle be any complex number.
+
+\end{proof}
+
+\section{General Steerable CNNs with Wigner-Eckart}
+
+\subsection{Strategy for finding steerable kernel-bases for arbitrary groups}
+
+The example of harmonic networks in the last section highlights how the Wigner-Eckart theorem can be applied in order to find a basis for steerable kernels. However, this treatment was rather simple in four ways:
+
+\begin{enumerate}
+\item As $\C$ is algebraically closed, we obtained from Schur's Lemma that the endomorphisms of $V_J$ are just given by multiplication with a complex number. Over the real numbers, the theory requires us to classify the endomorphisms of the irreps in a more careful manner.
+\item Since $V_J$ appeared exactly once as a direct summand in $L^2\left(S^1\right) \otimes V_l$, there was only the need to define one projection operator and not several.
+\item The only projection-operator was extremely simple, just mapping $f \otimes Y_l$ to $\langle f \cdot Y_l, Y_{J} \rangle Y_{J}$. Later, we will see that this in general involves very non-trivial Clebsch-Gordan coefficients.
+\item The bases of the irreps $V_l$ were just given by one basis element $Y_l$, which is considerably simpler than in the general theory.
+\end{enumerate}
+
+In order to deal with these complications, we will therefore in the next subsection prove a Wigner-Eckart theorem for steerable kernel bases that works for all groups that are usually considered. The end-result will be an explicit description of the steerable kernel-bases using exactly three ingredients, already hinted at with the complications described above. These ingredients are:
+\begin{enumerate}
+\item A basis for the $G$-endomorphisms of all irreps.
+\item All Clebsch-Gordan coefficients underlying the decompositions of all tensor products $V_j \otimes V_l$ into irreps $V_J$.
+\item Orthonormal bases of $V_j$ when viewed as a direct summand in $L^2(S)$, where $S = S^1$ or $S = S^2$ in applications.
+\end{enumerate}
+
+\subsection{Version of the Wigner-Eckart theorem for general steerable kernels}\label{general_wigner_eckart}
+
+In this section, we provide a version of the Wigner-Eckart theorem specifically for steerable kernels. We formulate it as general as possible, so that we can apply it in many settings. The definitions are a little vague and the proofs therefore only meant as a ``hint'' for how to prove the statements in generality. 
+
+In this section, let $G$ be a compact topological group, for example $SO(2)$, $O(2)$, $C_n$, $D_n$, $SO(3)$, $O(3)$, $SU(1)$, $SU(2)$, $SU(3)$ etc.
+
+\todo[inline]{switch to orbit notation (this also allows for other domains like $\R^d$}
+Furthermore, assume $G$ acts continuously on a space $X$ like $\R^n$. Let $x \in X$ be some point and $S \coloneq G\cdot x$ be the orbit of $x$. $S$ could be a space like $S^1$ or $S^2$, and $G$ acts transitively on it. Since $G$ is compact, $S$ is automatically compact as well. We assume it carries a measure $\mu$ with $\mu(S) = 1$ and that the action of $G$ on $S$ leaves this measure invariant. All in all, $S$ carries a space of square-integrable functions $L^2(S)$ with values in a field $\K$, with $\K = \R$ or $\K = \C$. $G$ acts on this space by $(g \cdot f)(s) = f(g^{-1} \cdot s)$. Furthermore, $L^2(S)$ is assumed to be a Hilbert-space by means of the scalar product
+\begin{equation*}
+\left\langle f, g \right\rangle = \int_{S} \overline{f(s)} g(s) ds.
+\end{equation*}
+In that formula, the complex conjugation does not do anything if $\K = \R$. 
+
+We also assume that the irreps are given by $(V_l)_{l \in \Z}$ (or indexed by $l \in \N$) and that every irrep appears exactly once in $L^2(S)$ as a direct summand. 
+
+For $l$, let $[l]$ denote the $\K$-dimension of $V_l$. Let $\{Y_l^n \mid n \in \{1, \dots, [l] \}\}$ be an orthonormal standard basis of $V_l \subseteq L^2(S)$, such that the union of all these functions is an orthonormal basis of $L^2(S)$. For example, if $G = SO(2)$, $S = S^1 = \R/{2\pi\Z}$ and $\K = \C$, then these functions are just given by $Y_l^1 = Y_{l}$ with $Y_{l}(s) = e^{2 \pi i l s}$. For $\K = \R$, these function are given by $Y_l^1 = \cos_l$ and $Y_l^2 = \sin_l$ (probably up to some scalar!). For $G = SO(3)$ and $S = S^2$, we obtain the spherical harmonics.
+
+Denote by $\{ \varphi_r \mid r \in \{1 ,\dots, \dim_{\K}\left(\End_G(V_l)\right \}$ a basis of the space of endomorphisms of $V_l$.
+
+Now, with somewhat inconvenient notation, we need to define the Clebsch-Gordan coefficients. Thus, assume that we have given two irreps $V_j, V_l$. For a third irrep $V_J$, let $[J,(j,l)]$ denote the number of times $V_J$ appears in a direct sum decomposition of $V_j \otimes V_l$ (This number can be larger than $1$! For example, it turns out that $V_0$ is twice a direct summand of $V_l \otimes V_l$ for $l \geq 1$ and $\K = \R$). Thus, for $J \in \Z$ and $s \in \{1, \dots, [J,(j,l)]\}$ there are copies $V_{s;J} \subseteq V_j \otimes V_l$ of $V_J$ in the tensor product such that we get an inner direct sum decomposition
+\begin{equation*}
+V_j \otimes V_l = \bigoplus_{J \in \Z} \bigoplus_{s = 1}^{[J,(j,l)]} V_{s;J}.
+\end{equation*}
+Let $Y_{s;J}^M$ be basis elements in $V_{s;J}$ corresponding to the standard basis elements $Y_{J}^M$ of $V_J$. Then, we can write the standard basis elements $Y_j^m \otimes Y_l^n$ of $V_j \otimes V_l$ by means of these basis elements as follows:
+\begin{equation*}
+Y_j^m \otimes Y_l^n = \sum_{J \in \Z} \sum_{s = 1}^{[J, (j,l) ]} \sum_{M = 1}^{[J]} q^{M,(m,n)}_{s; J, (j,l)}Y^M_{s; J}.
+\end{equation*}
+The indices $q^{M,(m,n)}_{s; J, (j,l)}$ are called the \emph{Clebsch-Gordan coefficients} corresponding to an explicit decomposition of $V_j \otimes V_l$ into irreps.
+
+Note that the Clebsch-Gordan coefficients immediately induce equivariant projections $q_{s; J, (j,l)}: V_j \otimes V_l \to V_J$, given on the basis by
+\begin{equation*}
+q_{s; J, (j,l)}(Y_j^m \otimes Y_l^n) = \sum_{M = 1}^{[J]} q^{M,(m,n)}_{s; J, (j,l)} Y_J^{M}.
+\end{equation*}
+Thus, for fixed $s,J,j$ and $l$, $q_{s;J,(j,l)}$ can be viewed as a matrix of shape $[J]\times ([j]\cdot [l])$. If $[J,(j,l)] = 1$, then for convenience we drop the index $s$ and just write $q_{J,(j,l)}$.
+
+Our final ingredient is the following: for $j \in \Z$, let $p_j: L^2(S) \to V_j$ be the canonical projection, given explicitly by
+\begin{equation*}
+p_j(f) = \sum_{m = 1}^{[j]} \left\langle  f, Y_j^m \right\rangle Y_j^m.
+\end{equation*}
+To reduce clutter, we denote by $p_j$ also the projection $p_j = p_j \otimes \Id: L^2(S) \otimes V_l \to V_j \otimes V_l$. By means of the correspondence from Proposition \ref{correspondence}, we also view $p_j$ as a homomorphism $p_j: \Hom_G(L^2(S), \Hom_\K(V_l, V_j \otimes V_l))$ when need arises. The following proposition lies at the heart of our investigations and establishes that continuous steerable kernels are the same as continuous representation operators on the space of square-integrable functions. For the interested reader, we discuss some of the topological considerations in Appendix \ref{topological_closures} and a some intuitions and a proof in Appendix \ref{proof_of_main}.
+
+\begin{pro}\label{steerable kernels = representation operators}
+There is an isomorphism
+\begin{equation*}
+\begin{tikzcd}
+\Hom_G(S, \Hom_{\K}(U, V)) \ar[rr, bend left = 15, "\overline{(\cdot)}"] & & \Hom_G(L^2(S), \Hom_{\K}(U, V)) \ar[ll, bend left = 15, "(\cdot)|_{S}"]
+\end{tikzcd}
+\end{equation*}
+between the space of continuous steerable kernels on the left and the space of continuous representation operators on the right, given by $\overline{K}(f)(u) = \int_{S}f(s)K(s)(u)ds$ and $K'|_{S}(s)(u) = K'(\delta_s)(u)$, where $\delta_s$ is the Dirac Delta function.
+\end{pro}
+
+Note that the Wigner-Eckart theorem \ref{Wigner-Eckart} is formulated for three $G$-representations $T, U$ and $V$ and in terms of $V$ being a direct summand of $T \otimes U$. However, as we also saw (or will see), we actually use it slightly different. Namely, we have a space $L^2(S) \otimes V_l$ and first project to all the spaces $V_j \otimes V_l$ such that $V_J$ is (possibly several times) a direct summand. Furthermore, we are not interested in the specific form of \emph{one representation operator} but want to parameterize the space of all such operators. This means that we are well-advised to make the basis of representation operators more explisit. This is the content of the following theorem:
+
+\begin{pro}\label{representation operators basis}
+Let $V_l$ and $V_J$ be irreps. Let there be the following sets of projections and endomorphisms, as defined above:
+\begin{enumerate}
+\item $\left\lbrace p_j = p_j \otimes \Id: L^2(S) \otimes V_l \to V_j \otimes V_l \mid j \in \Z \right\rbrace$, is the set of canonical projections.
+\item $\left\lbrace q_{s; J, (j,l)}: V_j \otimes V_l \to V_J \mid s \in \{1, \dots, [J,(j,l)]\} \right\rbrace$ is the set of projections from $V_j \otimes V_l$ to $V_J$ that emerge from the Clebsch-Gordan coefficients.
+\item $\left\lbrace \varphi_r \mid r = 1, \dots, \dim_{\K}\left(\End_{G}\left(V_J\right)\right) \right\rbrace$ is a basis of $\End_G(V_J)$.
+\end{enumerate}
+Then the set of all possible compositions 
+\begin{equation*}
+\left\lbrace \varphi_r \circ q_{s; J, (j,l)} \circ p_j \right\rbrace
+\end{equation*} 
+form a basis of $\Hom_G(L^1(S), \Hom_{\K}(V_l, V_J))$ by setting, with abuse of notation, 
+\begin{equation*}
+(\varphi_r \circ q_{s; J, (j,l)} \circ p_j)(f)(v) = (\varphi_r \circ q_{s; J, (j,l)} \circ p_j)(f \otimes v).
+\end{equation*}
+Furthermore, the set of compositions $\varphi_r \circ q_{s; J, (j,l)} \circ p_j|_{S}$ forms a basis of steerable kernels $S \to \Hom_{\K}(V_l, V_J)$.
+\end{pro}
+
+\begin{proof}
+The projections $q_{s; J, (j,l)} \circ p_j$ correspond to the projections in the Wigner-Eckart theorem $\ref{theorem}$ and Corollary \ref{corollary}. Then it follows directly from that Corollary that the compositions $\varphi_r \circ (q_{s; J, (j,l)} \circ p_j) = \varphi_r \circ q_{s; J, (j,l)} \circ p_j$ form a basis of the space of continuous representation operators $L^2(S) \to \Hom_{\K}(V_l, V_J)$\footnote{A subtlety is that $L^2(S)$ is not the actual direct sum of the irreps $V_j$, but the \emph{topological closure} of this direct sum. We will see in Appendix \ref{topological_closures} that this does not change the results}. Consequently we see from Proposition \ref{steerable kernels = representation operators} that we get a basis of steerable kernels by restricting to $S$.
+\end{proof}
+
+The final goal is to get more insight into how the Steerable kernel-basis, given by the compositions $\varphi_r \circ q_{s; J, (j,l)} \circ p_l|_S$, looks like more explicitly. Fortunately, the projections $q$ are already given in matrix-form. We now do the same for $p$:
+
+\todo[inline]{why not $p_l|_S: S \otimes V_m \to V_l \otimes V_m$ ?}
+\begin{pro}
+For $s \in S$, let $p_j|_S(s): V_l \to V_j \otimes V_l$. Then, with respect to the standard bases of $V_j \otimes V_l$ and $V_l$, the matrix-elements of this are given by:
+\begin{equation*}
+\left[ p_j|_S(s) \right]_{(m,n),n'} = \begin{cases}
+Y_j^{m}(s), \ n = n', \\
+0, n \neq n'
+\end{cases}
+\end{equation*}
+\end{pro}
+
+\begin{proof}
+This follows directly from the computation
+\begin{align*}
+\left[ p_j|_S(s)\right] \left(Y_{l}^{n'}\right) & = p_j\left(\delta_s \otimes Y_l^{n'}\right) \\
+& = p_j(\delta_s) \otimes Y_l^{n'} \\
+& = \sum_{m = 1}^{[j]} \left\langle \delta_s, Y_j^m\right\rangle \left( Y_j^m \otimes Y_l^{n'} \right) \\
+& = \sum_{m = 1}^{[j]}Y_j^m(s) \left( Y_j^m \otimes Y_l^{n'}\right).
+\end{align*}
+In the last step, the following computation was used, which follows from the properties of the Dirac-delta:
+\begin{equation*}
+\left\langle \delta_s, f \right\rangle = \int_{S} \delta_s(s') f(s') ds' = f(s).
+\end{equation*}
+A more precise statement and argument for this last step can be found in Lemma \ref{delta_property} in the appendix.
+\end{proof}
+
+We note the following intuitive interpretation of this Corollary: Let $p_j|_S(s) \in \Hom_\K(V_l, V_j \otimes V_l)$ be given by a $([j] \times [l]) \times [l]$-matrix. Let $Y_j(s)$ be the column-vector with entries $Y_j^m(s)$. Then this matrix is given by:
+\begin{equation*}
+p_j|_S(s) = \begin{pmatrix}
+\begin{bmatrix}
+Y_j(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\begin{bmatrix}
+0 & Y_j(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\hdots
+&
+\begin{bmatrix}
+0 & \hdots & 0 & Y_j(s)
+\end{bmatrix}
+\end{pmatrix}
+\end{equation*}
+
+Thus far, we have written all projections explicitly in matrix-form. We furthermore assume that also the basis-endomorphisms $\varphi_r: V_J \to V_J$ are given by their corresponding bases, i.e. we have
+\begin{equation*}
+\varphi_r(Y_J^M) = \sum_{M' = 1}^{[J]} \left( \varphi_r\right)_{M'M} Y_J^{M'}.
+\end{equation*}
+
+Finally, we get the explicit matrix-form of the basis-kernels:
+
+\begin{thm}[Basis-Kernels, matrix-form]\label{matrix-form}
+The basis-kernels are given by
+\begin{equation*}
+\varphi_r \circ q_{s; J, (j,l)} \circ p_j|_S(s) = \varphi_r \cdot \begin{pmatrix} 
+Y_j(s)^T \cdot q^1_{s; J, (j,l)} \\
+\vdots \\
+Y_j(s)^T \cdot q^{[J]}_{s; J, (j,l)}
+\end{pmatrix},
+\end{equation*}
+Where each ``dot'' denotes just conventional matrix multiplication.
+\end{thm}
+
+Before we prove this, note that the shapes of the involved matrices makes sense:
+\begin{enumerate}
+\item $Y_j(s)^T$ is of shape $1 \times [j]$ and $q_{s;J,(j,l)}$ of shape $[j] \times [l]$, so they can be multiplied. The result is of size $1 \times [l]$. When stacking all these results, the outcome is of shape $[J] \times [l]$.
+\item $\varphi_r$ is of shape $[J] \times [J]$ and thus can be multiplied with the right outcome to something of shape $[J] \times [l]$ again.
+\item Shape $[J] \times [l]$ is exactly what we expect for a linear map $V_l \to V_J$, so the outcome is of the required form.
+\end{enumerate}
+
+\begin{proof}
+Since $\varphi$ does not change in the computation, we only need to engage with the second and third factor. Denote by $\odot$ the elementwise product of two matrices, followed by a sum over all resulting entries. Then we obtain:
+\begin{align*}
+q_{s;J,(j,l)} \circ p_j|_S(s) & = 
+\begin{pmatrix}
+q_{s;J,(j,l)}^1 \\
+\vdots \\
+q_{s;J,(j,l)}^{[J]}
+\end{pmatrix} \cdot  \begin{pmatrix}
+\begin{bmatrix}
+Y_j(s) & 0 & \hdots & 0
+\end{bmatrix}
+&
+\hdots
+&
+\begin{bmatrix}
+0 & \hdots & 0 & Y_j(s)
+\end{bmatrix}
+\end{pmatrix}\\
+& = 
+\begin{pmatrix}
+q_{s;J,(j,l)}^{M} \odot \begin{bmatrix}0 & \hdots & 0 & Y_j(s) & 0 & \hdots & 0 \end{bmatrix}
+\end{pmatrix}_{M, n = 1}^{[J], [l]} \\
+& = \begin{pmatrix}
+Y_j(s)^T \cdot q_{s;J,(j,l)}^{M, (-,n)}
+\end{pmatrix}_{M, n = 1}^{[J], [l]} \\
+& = \begin{pmatrix}
+Y_j(s)^T \cdot q_{s;J,(j,l)}^{M}
+\end{pmatrix}_{M=1}^{[J]},
+\end{align*}
+which is exactly what we wanted to show.
+\end{proof}
+
+\subsection{Harmonic Networks Revisited}
+
+As we saw in Section \ref{solution_harmonic_networks} and proved with quite some effort, a basis of steerable kernels $S^1 \to \Hom_{\C}(V_l, V_J)$ for $SO(2)$ over $\C$ is given by the the basis function $Y_{J-l}$. How can we see this again, using what we learned in the last section? We just determine the three ``ingredients'' that the theory requires:
+\begin{enumerate}
+\item The endomorphisms $\End_{SO(2)}(V_J)$ have $\Id_{V_J}$ as a basis, due to Schur's Lemma. Thus, we can just ignore these endomorphisms altogether, since postcomposition with the identity doesn't change anything.
+\item $V_j \otimes V_l \cong V_{j+l}$, and the basis element $Y_j \otimes Y_l$ maps directly to the basis element $Y_{j+l}$ by this isomorphism. Thus, the only existing Clebsch-Gordan coefficient is just $1$.
+\item The orthonormal bases of $V_l$ are just given by one basis element $Y_l$.
+\end{enumerate}
+Finally, note that $V_{J-l} \otimes V_l \cong V_J$. Thus, $j = J-l$ is the only index such that $V_J$ appears within $V_j \otimes V_l$. Plugging everything into Theorem \ref{matrix-form}, we see that $Y_{J-l}$ is a basis for steerable kernels.
+
+
+
+\subsection{Representation Theory of the circle group over $\R$}
+
+In this section, we do the representation-theoretic preparation, determining the ``ingredients'' that we need in order to apply Theorem \ref{matrix-form} to determine bases for steerable kernels of $SO(2)$ over $\R$. 
+
+We view $S^1 = \R/{2 \pi \Z}$, that is we take the interval $[0, 2 \pi]$ as the space where our functions are defined. Consequently, we have to put the fraction $\frac{1}{2 \pi}$ before all of our integrals, different from what we did in our treatment of $SO(2)$ over $\C$.
+
+The irreps of $SO(2)$ over $\R$ are given by $V_l$, $l \in \N_{\geq 0}$, where for $l \geq 1$, $V_l = \R^2$ as a vector space. The action is given by
+\begin{equation*}
+\rho_l(\phi)(v) =
+\begin{pmatrix}
+\cos(l \phi) & -\sin(l \phi) \\
+\sin(l \phi) & \cos(l \phi)
+\end{pmatrix} \cdot v
+\end{equation*}
+for $\phi \in SO(2) \cong \R/{2 \pi \Z}$. The trivial representation is given by $V_0 = \R$ together with the trivial action.
+
+Now look at square-integrable functions $L^2\left(S^1\right)$ that we now assume to take \emph{real values}. As before, $SO(2)$ acts on this space by $(g \cdot f)(s) = f(s - g_{+})$. This space again forms a Hilbert space using the scalar product
+\begin{equation*}
+\left\langle f, g\right\rangle = \frac{1}{2 \pi} \int_{S^1} f(s) g(s) ds.
+\end{equation*}
+For notational simplicity, we write $\cos_l$ for the function that maps $s$ to $\cos(ls)$, and analogously for $\sin_l$. One then can show the following, which we take as a given:
+
+\begin{pro}\label{description_L_1}
+The functions $\cos_l$, $\sin_l$, $l \geq 1$ span an irreducible invariant subspace of $L^2\left(S^1\right)$ of dimension $2$, explicitly given by
+\begin{equation*}
+\R\langle \cos_l, \sin_l \rangle = \{\alpha \cos_l + \beta \sin_l \mid \alpha, \beta \in \R \}
+\end{equation*}
+which is equivariantly isomorphic to $V_l$ by $\cos_l \mapsto \begin{pmatrix} 1 \\ 0\end{pmatrix}$ and $\sin_l \mapsto \begin{pmatrix} 0 \\ 1 \end{pmatrix}$. Furthermore, $\sin_0 = 0$ and $\cos_0 = 1$ are constant functions and their span is $1$-dimensional and equivariantly isomorphic to $V_0$ by $\cos_0 \mapsto 1$. 
+
+Finally, the functions $\cos_l, \sin_l$ form an orthogonal basis of $L^2\left(S^1\right)$, i.e. every function can be written uniquely as a (possibly infinite) linear combination of these basis functions (This is a standard result about Fourier series')\footnote{They are \emph{not quite} orthonormal I believe, since $\left\langle \cos_l, \cos_l \right\rangle = \left\langle \sin_l, \sin_l\right\rangle = \frac{1}{2}$ for $l \geq 1$ (is that correct? My brother says this is wrong)}. Overall, these results mean that there is a direct sum decompostion
+\begin{equation*}
+L^2\left(S^1\right) = \widehat{\bigoplus_{l \geq 0}} V_l.
+\end{equation*}
+\end{pro}
+
+Note that in the following we will often write $V_l$ for $R \langle \cos_l, \sin_l \rangle$ etc. when from the context it is clear that the space lies in $L^2\left(S^1\right)$. Also note that $\cos_l = Y^{l}_1$ and $\sin_l = Y^{l}_2$ in the notation of Section \ref{general_wigner_eckart}. This already determines one of our ingredients for applying Theorem \ref{matrix-form}!
+
+We now describe the endomorphisms of the irreps, our second ingredient:
+
+\begin{pro}\label{endomorphisms}
+We have $\End_{SO(2)}(V_0) \cong \R$, i.e. multiplications with all real numbers are valid endomorphisms of $V_0$. For $l \geq 1$, we get
+\begin{equation*}
+\End_{SO(2)}(V_l) = \left\lbrace \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \mid a, b \in \R \right\rbrace,
+\end{equation*}
+which is the set of all scaled rotations of $\R^2$. When identifying $\R^2 \cong \C$, we can also view these transformations as arbitrary multiplications with a complex number.
+
+As a consequence, $\Id_\R$ is a basis for $\End_{SO(2)}(V_0)$ and $\left\lbrace\Id_{\R^2}, \begin{pmatrix}0 & -1 \\ 1 & 0 \end{pmatrix}\right\rbrace$ a basis for $\End_{SO(2)}(V_l)$ for $l \geq 1$.
+\end{pro}
+
+\begin{proof}[Proof Sketch]
+For an arbitrary matrix $E = \begin{pmatrix} a & b \\ c & d\end{pmatrix}$ that commutes with all rotation matrices $\rho_l(\phi)$, i.e. $E \circ \rho_l(\phi) = \rho_l(\phi) \circ E$, one can easily show the constraints $a = d$ and $b = -c$, from which the result follows. 
+\end{proof}
+
+We now do the explicit decomposition of $V_j \otimes V_l$ into irreps, which will give us the Clebsch-Gordan coefficients that we need. This will be the final ingredient needed for applying Theorem \ref{matrix-form}. For doing so, we first need some trigonometric formulas in our disposal:
+
+\begin{pro}\label{trigonometric formulas}
+There are the following laws underlying sinus and cosinus. The first two are well-known and the last three follow directly from the first two using $\sin_{-j} = - \sin_j$ and $\cos_{-j} = \cos_j$ where needed.
+\begin{enumerate}
+\item $\sin_{j+l} = \sin_j \cos_l + \cos_j \sin_l$.
+\item $\cos_{j+l} = \cos_j\cos_l - \sin_j \sin_l$.
+\item $\cos_j \cos_l = \frac{1}{2} \left[ \cos_{j+l} + \cos_{j-l} \right]$.
+\item $\sin_j \cos_l = \frac{1}{2} \left[  \sin_{j+l} + \sin_{j-l} \right] = \frac{1}{2} \left[ \sin_{j+l} - \sin_{j - l}\right]$.
+\item $\sin_j \sin_l = \frac{1}{2} \left[ \cos_{j-l} - \cos_{j+l} \right]$
+\end{enumerate}
+\end{pro}
+
+The following Lemma can easily be proven, so we take it as a given:
+
+\begin{lem}\label{kernel invariant subspace}
+Let $f: T \to U$ be a linear equivariant map. Then $\ker(f) = \{t \in T \mid f(t) = 0\}$ is an invariant linear subspace of T.
+\end{lem}
+
+\begin{pro}\label{decomposition_results}
+We have the following decomposition results:
+\begin{enumerate}
+\item For $j = l = 0$ we have $V_0 \otimes V_0 \cong V_0$ by $q_{0,(0,0)} = \begin{pmatrix} \begin{bmatrix} 1 \end{bmatrix}\end{pmatrix}$.
+\item For $j=0$, $l > 0$ we have $V_0 \otimes V_l \cong V_l$ by $q_{l,(0,l)} = \begin{pmatrix}\begin{bmatrix} 1 & 0\end{bmatrix} \\ \begin{bmatrix} 0 & 1\end{bmatrix}\end{pmatrix}$. \item For $j > 0$, $l = 0$, we get $V_j \otimes V_0 \cong V_j$ by $q_{j,(j,0)} = \begin{pmatrix} \begin{bmatrix}1 \\ 0 \end{bmatrix} \\ \begin{bmatrix} 0 \\ 1\end{bmatrix}\end{pmatrix}$.
+\item For $j, l \geq 0$ and $j \neq l$ we get $V_j \otimes V_l \cong V_{|j-l|} \oplus V_{j+l}$. The Clebsch-Gordan coefficients are given by $q_{|j-l|,(j,l)} =\begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & -\frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$ and $q_{j+l,(j,l)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$
+\item For $j = l > 0$, we get an isomorphism $V_l \otimes V_l \cong V_{2l} \oplus V_0^2$. We obtain the Clebsch-Gordan coefficients $q_{1; 0,(l,l)} = \begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix}\end{pmatrix}$,  $q_{2; 0,(l,l)} = \begin{pmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$ and $q_{2l,(l,l)} = \begin{pmatrix}\begin{bmatrix} \frac{1}{2} & 0 \\ 0 & -\frac{1}{2}\end{bmatrix} \\ \begin{bmatrix} 0 & \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix}$, the last one corresponding to the Clebsch-Gordan coefficients $q_{j+l,(j,l)}$ from above.
+\end{enumerate}
+\end{pro}
+
+\begin{proof}
+The proof of $1$, $2$ and $3$ is clear.
+
+For $4$, consider the standard basis $\{b_{cc}, b_{cs}, b_{sc}, b_{ss}\}$ of $V_{j} \otimes V_l$, where for example $b_{cc} = \cos_j \otimes \cos_l$ etc. Our goal is to express these basis-elements with respect to basis-elements of invariant subspaces. We do this by explicitly constructing an isomorphism to a decomposition of irreps. To that end, let $p: V_j \otimes V_l \to L^2\left(S^1\right)$ be given by $f \otimes g \mapsto f \cdot g$, which is clearly equivariant and linear. Let $b_{cc}' = p(b_{cc})$ etc. We get as image of $p$ the set
+\begin{equation*}
+\R \langle b_{cc}', b_{cs}', b_{sc}', b_{ss}' \rangle  = \R\langle \cos_j \cdot \cos_l, \cos_j \cdot \sin_l, \sin_j \cdot \cos_l \sin_j \cdot \sin_l\rangle,
+\end{equation*}
+From rules $1$, $3$, $4$ and $5$ of Proposition \ref{trigonometric formulas} we obtain:
+\begin{equation*}
+b_{cc}' - b_{ss}' = \cos_{j+l}, \ b_{cs}' + b_{sc}' = \sin_{j+l}, \ b_{cc}' + b_{ss}' = \cos_{j-l}, \ b_{sc}' - b_{cs}' = \sin_{j-l}.
+\end{equation*}
+Since these are linearly independent generators, we obtain:
+\begin{equation*}
+\im(p) = \R \langle \cos_{j+l}, \sin_{j+l}, \cos_{j-l}, \sin_{j-l}\rangle = V_{|j-l|} \oplus V_{j+l} .
+\end{equation*}
+Note for the last step that due to symmetry, $\cos_{j-l} = \cos_{l-j}$ and $\sin_{j-l} = - \sin_{l-j}$. Now define the following second set of basis-elements in $V_j \otimes V_l$, corresponding to the basis-elements $V_{|j-l|} \oplus V_{l+j}$ by means of the isomorphism $p$:
+\begin{equation*}
+c_1 = b_{cc} - b_{ss}, \ c_2 = b_{cs} + b_{sc}, \  c_3 = b_{cc} + b_{ss}, \  c_{4} = b_{sc} - b_{cs}.
+\end{equation*}
+We obtain $V_j \otimes V_l = \R\langle c_1, c_2\rangle \oplus \R\langle c_3, c_4\rangle \cong V_{l+j} \oplus V_{|j-l|}$. From the following equations we can read off the Clebsch-Gordan coefficients:
+\begin{equation*}
+b_{cc} = \frac{1}{2} \left[ c_1 + c_3\right], \  b_{cs} = \frac{1}{2} \left[ c_2 - c_4\right], \  b_{sc} = \frac{1}{2} \left[ c_2 + c_4 \right], \  b_{ss} = \frac{1}{2} \left[ c_3 - c_1\right]
+\end{equation*}
+The result follows.
+
+Now, we prove $5$. We have $j = l$ and still consider the same map $p$ and overall notation. Note that $b_{sc}' - b_{cs}' = 0$ and $b_{cc}' + b_{ss}' = 1$ is the constant function. Then by what was proven above, $\{c_1, c_2\}$ spans a space isomorphic to $V_{2l}$, $c_3$ a space isomorphic to the span of $\cos_0$, i.e. $V_0$, and $c_4$ spans the kernel, which is one-dimensional and also an invariant subspace due to Lemma \ref{kernel invariant subspace}, and therefore it spans a space isomorphic to $V_0$ as well. Overall, we obtain $V_l \otimes V_l = \R\langle c_1, c_2\rangle \oplus \R\langle c_3\rangle  \oplus \R\langle c_4\rangle \cong V_{2l} \oplus V_0^2$. From this, we can as before read off the Clebsch-Gordan coefficients and obtain the claimed result.
+\end{proof}
+
+
+
+\subsection{Solving the kernel constraint of $SO(2)$ over $\R$ with Wigner-Eckart}
+
+Now we have done all needed preparation and can solve the kernel constraint explicitly, using the matrix-form of Wigner-Eckart for steerable kernels, Theorem \ref{matrix-form}.
+
+\begin{pro}
+Let $K: S^1 \to \Hom_{\R}(V_l, V_J)$ be an equivariant kernel, where $V_l$ and $V_J$ are irreps. Then the following holds:
+
+\begin{enumerate}
+\item For $l = J = 0$, we get $K(s) = a \cdot \begin{pmatrix} 1 \end{pmatrix}$ for an arbitrary real number $a \in \R$.
+\item For $l = 0$, $J > 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_J \\ \sin_J \end{pmatrix}$ and $\begin{pmatrix}- \sin_J \\ \cos_J \end{pmatrix}$.
+\item For $l > 0$ and $J = 0$, a basis for equivariant kernels is given by $\begin{pmatrix} \cos_l & \sin_l \end{pmatrix}$, $\begin{pmatrix}  \sin_l & - \cos_l \end{pmatrix}$.
+\item For $l, J > 0$, a basis for equivariant kernels is given by the results stated in the proof.
+\end{enumerate}
+\end{pro}
+
+\begin{proof}
+The proof of $1$ is clear.
+
+For $2$, note that $V_J$ can only appear in $V_j \otimes V_0$ if $j = J$. The relevant Clebsch-Gordan coefficients are therefore $q_{J,(J,0)} = \begin{pmatrix}\begin{bmatrix} 1 \\ 0\end{bmatrix} \begin{bmatrix} 0 \\ 1\end{bmatrix}\end{pmatrix}$. Furthermore, the orthonormal basis of $V_j = V_J$ is given by $\cos_J, \  \sin_J$, which we have to write as a row-vector. Our final ingredient is the endomorphism basis of $V_J$, which is given by $\varphi_1 = \Id_{\R^2}$ and $\varphi_2 = \begin{pmatrix} 0 & -1 \\ 1 & 0  \end{pmatrix}$. Overall, the basis-kernels are given by
+\begin{equation*}
+\varphi_i \cdot \begin{pmatrix} \begin{bmatrix} \cos_J & \sin_J\end{bmatrix} \cdot \begin{bmatrix} 1 \\ 0 \end{bmatrix} \\
+\begin{bmatrix} \cos_J & \sin_J\end{bmatrix} \cdot \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\end{pmatrix} = \varphi_i \cdot \begin{pmatrix} \cos_J \\ \sin_J \end{pmatrix}.
+\end{equation*}
+The result follows.
+
+For $3$, we find $V_0$ only in $V_j \otimes V_l$ if $j = l$, and even twice so. The relevant Clebsch-Gordan coefficients are therefore given by $q_{1; 0,(l,l)} = \begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix}\end{pmatrix}$ and $q_{2;0,(l,l)} = \begin{pmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix}\end{pmatrix}$. The basis-functions in $V_j = V_l$ are $\cos_l$ and $\sin_l$, again written as a row-vector. Finally, $V_J = V_0$ has only $\Id_\R$ as a basis-endomorphism, so this can be ignored. We obtain the following basis for steerable kernels:
+\begin{align*}
+\begin{pmatrix} \begin{bmatrix} \cos_l & \sin_l \end{bmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix} \end{pmatrix} & = \begin{pmatrix}  \frac{1}{2} \cos_l & \frac{1}{2} \sin_l \end{pmatrix} \\
+\begin{pmatrix} \begin{bmatrix} \cos_l & \sin_l \end{bmatrix} \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix} \end{pmatrix} & = \begin{pmatrix}  \frac{1}{2} \sin_l & -\frac{1}{2} \cos_l \end{pmatrix}.
+\end{align*}
+For $4$, we consider only the case $l > J$. The case $l = J$ and $l < 0$ can be considered analogously and leads by trigonometric formulae to the same result. We have
+\begin{equation*}
+V_{l-J} \otimes V_l \cong V_J \oplus V_{2l-J}, \ V_{l+J} \otimes V_l \cong V_J \oplus V_{2l+J},
+\end{equation*}
+i.e. $j = l-J$ and $j = l+J$ leads to a tensor product decomposition containing $V_J$, but no other $j$ does this. Thus, the relevant Clebsch-Gordan coefficients are $q_{J,(l-J,l)}$ and $q_{J,(l+J,l)}$, which are both equal and given by $\begin{pmatrix} \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{bmatrix} \\ \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix}\end{pmatrix}$. For $j = l-J$ and $j = l+J$, the basis functions of $V_{l-J}$ and $V_{l+J}$ are furthermore given by $\cos_{J-l}, \sin_{J-l}$ and $\cos_{l+J}, \sin_{l+J}$ respectively. Finally, $V_J$ has again the two basis endomorphisms $\varphi_1 = \Id_{\R^1}$ and $\varphi_2$. Now, we do the computation for $j = l-J$, since for $j = l+J$ it is exactly the same and obtain the following two basis-kernels:
+\begin{equation*}
+\varphi_i \cdot \begin{pmatrix} \begin{bmatrix} \cos_{l-J} & \sin_{l-J} \end{bmatrix}\cdot \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2}\end{bmatrix} \\
+\begin{bmatrix} \cos_{l-J} & \sin_{l-J} \end{bmatrix}\cdot \begin{bmatrix} 0 & - \frac{1}{2} \\ \frac{1}{2} & 0\end{bmatrix} \end{pmatrix} = \varphi_i \cdot \begin{pmatrix} \frac{1}{2} \cos_{l-J} & \frac{1}{2} \sin_{l-J} \\ \frac{1}{2} \sin_{l-J} & - \frac{1}{2} \cos_{l-J}\end{pmatrix}.
+\end{equation*} 
+The result follows.
+\end{proof}
+
+
+
+
+
+\section{To Check/Do}
+
+\begin{enumerate}
+\item Continuous functions dense in square-integrable functions: Better citation needed!
+\item Maybe state the basis-independent form of the topology on $\Hom_{\K}(V_l, V_J)$?
+\item I use several times the continuity of the basis functions $Y_l^n$ in the proofs in the appendix. Probably need a source that this is true. (I guess the $Y_l^n$ are in general just matrix coefficients and thus it follows from the specific form of those?)
+\item In the projection operators, I'm wrong by complex conjugation I think.
+\item Probably we don't need to state explicitly that the kernel $K$, defined on the orbit, is continuous: This follows automatically if we assume that the action of $G$ on the space considered is continuous, using the transitivity of the action on the orbit. 
+\item Indices von Irreps sind immer unten, von Basiselementen immer oben, anders als in Maurice's Paper. Sollte das so bleiben? Ist wie auf Wikipedia (erledigt sich evtl. sowieso, wenn ich mehr die Physiker Bra-Ket Schreibweise benutze)
+\item $S$ ersetzen durch Orbits $G.x$. (Ist bereits so definiert, aber evtl. kann das noch klarer gemacht werden in der Notation, i.e. nicht mehr $S$ sondern $G \cdot x$ überall schreiben?)
+\item In Proposition \ref{steerable kernels = representation operators}, wenn allgemeiner: S lokal kompakt, S complete separable metric space, S polish space? Um Maße auf Raum zu haben, wo $G$ wirkt: Amenable Group betrachten! Außerdem muss man sich im Allgemeinen auch Eigenschaften der Wirkung GxS ---> S überlegen. (Measurable, continuous, smooth)
+\item Need to find a reference somewhere that every finite-dimensional representation over the groups we consider breaks into irreps (Since we apply it to $\Hom(V_l, V_J)$.)
+\item Something is ``weird'' about the projections $p_j|_S$. They map elements from $S$ to functions. With them, we can compose, i.e. $q \circ p_j|_S(s)$ makes sense. But what, mathematically, did I mean with $q \circ p_j|_S$? (I don't think that's an actual problem, more a subtle notation issue)
+\item Should I just once explain that I mean "linear equivariant map" when I write "homomorphism"?
+\item Is the footnote correct about the integral of cosinus with itself and so on?
+\item Do the Clebsch-Gordan coefficients really induce such equivariant projections? Didn't really check that.
+\item About the matrix-form of the basis-kernels: Can this be viewed in terms of "vectorization", in order to make a connection to Maurice's proof in the 3d-steerable CNNs paper? Because I think this thing where $Y_j$ appears several times could be written simpler by first putting $q$ into "rows" in a sense. But maybe that's nonsense.
+\item In the last proof on $SO(2)$ over $\R$, I only consider the case $l > J$ so far. That's a bit ugly, does that need to be?
+\item Are the $Y_j^m$ a \emph{basis} of $L^2(S)$ in the sense that the linear combinations of these elements are dense in the norm induced by the inner product? Probably! (Note btw. that ONLY orthonormal sets of vectors can be called basis in \cite{hilbert_spaces})
+\end{enumerate}
+
+\begin{comment}
+\section{Potentially helpful notes}
+
+\begin{enumerate}
+\item All norms on a finite dimensional normed space induce the same topology \cite{hilbert_spaces}, Section 2. (This maybe means that I don't need to worry about the precise definition of the topology on Lin(Vm,Vn))
+\item Hilbert spaces are Banach spaces. Maybe interesting to think about why L2(S) is one.
+\item Being separable exactly means having a numerable basis. So all our spaces are separable hilbert spaces (note that the basis elements are orthonormal, which they need to be by definition etc.)
+\item Every separable Hilbert space is isomorphic to $l^2$ (not considering the representation on it). Thus, maybe we can completely "think in terms of sequences"?
+\item $L^2(S)$ is probably the completion of $\bigoplus_{m}V_m$ in the metric space sense: I.e., any uniformly continuous map on $\bigoplus V_m$ extends uniquely to a uniformly continuous map on the completion. Then, strategy for showing that $\Hom_{G}(L^2(S), V) = \Hom_G(\bigoplus_m V_m, V)$ would be (The first space only should contain uniformly continuous maps then!):
+\begin{enumerate}
+\item Show that linear equivariant maps $\bigoplus V_m \to V$ are uniformly continuous (They probably are, since they are defined by FINITELY many linear maps, and since linear maps are probably uniformly continuous)
+\item Thus, get the extension
+\item Then, we also need to show in the end that the extension $\overline{K}$ is uniformly continuous, so that it even is in the correct space to which we can apply Wigner-Eckart.
+\end{enumerate}
+\end{enumerate}
+\end{comment}
+
+
+
+
+ 
+
+
+
+\bibliographystyle{apalike}
+\bibliography{literature}
+
+\appendix
+
+\section{The Wigner-Eckart Theorem and topological considerations}\label{topological_closures}
+
+The usual Wigner-Eckart Theorem \ref{theorem} is a purely algebraic statement. In this section, we explain some of the topological considerations that allow it to be extended to \emph{continuous} representation operators defined on the Hilbert space $L^2(S)$. In order to discuss continuity, we consider the metrics given on all considered spaces.
+
+Note that $\Hom_{\K}(V_l, V_J)$ can be identified with matrices in $\K^{[l] \times [J]}$, on which we have the usual Euclidean distance as a metric. $S$ is a metric space since it is a subset of the space where our group acts on and inherits the metric from there. Furthermore, $L^2(S)$ inherits a metric from its scalar product: Scalar products induce norms, which in turn induce a metric. Concretely, this metric is given as:
+\begin{equation*}
+d_{L^2(S)}(f, g) = \left\| f - g\right\|_{L^2(S)} = \left(\int_{S} |f(s) - g(s)|^2 ds\right)^{\frac{1}{2}}
+\end{equation*}
+
+A function $f: X \to Y$ between metric spaces is continuous if for each sequence $(x_k)_k$ of points $x_k \in X$ converging to a point $x \in X$, we obtain that the sequence $f(x_k)$ converges to $f(x)$. This can be understood in terms of ``f commuting with limits'':
+\begin{equation*}
+\lim_{k \to \infty} f(x_k) = f\left(\lim_{k \to \infty} x_k\right).
+\end{equation*}
+Of course, there is also an $\epsilon-\delta$ definition for continuity that we will also use. With these notions in mind, we can clarify what we mean with \emph{continuous} representation operators. We define $\Hom_{G}(L^2(S), \Hom_{\K}(V_l, V_J))$ as the set of all functions $K': L^2(S) \to \Hom_{\K}(V_l, V_J)$ with the following properties:
+\begin{enumerate}
+\item $K'$ is linear.
+\item $K'$ is equivariant, i.e. for all $g \in G$ and $f \in L^2(S)$ we have $K'(g \cdot f) = \rho_{J}(g) \circ K'(f) \circ \rho_l(g)^{-1}$.
+\item $K'$ is continuous, that is: For each sequence $(f_k)$ of functions $f_k \in L^2(S)$ that converges to a function $f \in L^2(S)$, i.e. $ \lim_{k \to \infty} \left\| f_k - f\right\| = 0$, we obtain: $\lim_{k \to \infty} K'(f_k) = K'(f)$.
+\end{enumerate}
+The most important fact about these continuous representation operators is that they are essentially the same as the set of ``usual'' representation operators (without continuity constraint) on the (non-closed) direct sum $\bigoplus_{l} V_l$. For that to make sense, we must work a bit.
+
+\begin{dfn}[Uniform continuity]
+A function $f: X \to Y$ between metric spaces is called \emph{uniformly} continuous if for each $\epsilon > 0$ there is $\delta > 0$ such that for all $x, x'$ with $d_X(x, x') < \delta$ we obtain $d_Y(f(x), f(x')) < \epsilon$.
+\end{dfn}
+
+A standard fact, which we will prove hear since it is easy to see, is that uniform continuity is actually the same as continuity in only the origin $0$ for normed vector spaces (so in particular for Hilbert spaces):
+
+\begin{lem}\label{characterization_continuity}
+Let $f: V \to V'$ be a linear map between normed vector spaces. Then the following are equivalent:
+\begin{enumerate}
+\item $f$ is uniformly continuous.
+\item $f$ is continuous.
+\item $f$ is continuous in $0$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Trivially, $1$ implies $2$, which in turn implies $3$. Now assume $3$, i.e. $f$ is continuous in $0$. Let $\epsilon > 0$. Then by continuity in $0$, there exists $\delta > 0$ such that for all $v \in V$ with $\|v\| = \|v - 0\|<\delta$ we obtain $\|f(v)\| = \|f(v) - f(0)\| < \epsilon$. Now let $v, v' \in V$ be arbitrary with $\|v - v'\| < \delta$. Then by linearity of $f$ we obtain:
+\begin{equation*}
+\|f(v) - f(v')\| = \|f(v - v')\| < \epsilon,
+\end{equation*}
+which is exactly what we wanted to show.
+\end{proof}
+
+We now show that the linear equivariant maps on $\bigoplus_{l} V_l$ (without topological closure) to an irrep are always continuous:
+
+\begin{lem}\label{always_continuous}
+Let $K': \bigoplus_{l} V_l \to V$ be a linear equivariant map, where $V$ is an irrep. Then $K'$ is continuous.
+\end{lem}
+
+\begin{proof}
+By the same arguments as in the proof of Theorem \ref{theorem}, we know that $K'$ factors through the unique irrep that is isomorphic to $V$. That is, let $V_j$ be that irrep and $p_j: \bigoplus_{l} V_l \to V_j$ be the canonical projection. Then there is a linear equivariant map $\varphi: V_j \to V$ such that $K' = \varphi \circ p_j$. $\varphi$ is continuous since it is a linear map between \emph{finite-dimensional} normed vector spaces. Thus, we only need to show that the projection $p_j$ is continuous.
+
+But this follows from the following fact on how the norm on $\bigoplus_{l}V_l$ is composed from the norms on each $V_l$: For an element $f = \sum_{l} f^l \in \bigoplus_{l} V_l$ with $f^l \in V_l$, we have:
+\begin{equation*}
+\|f\|^2 = \sum_{l} \|f^l\|^2.
+\end{equation*}
+Thus, if $f_k$ converges to $0$, in particular $p_j(f_k) = f_k^j$ converges to $0$, which shows continuity in $0$ and thus general continuity by Lemma \ref{characterization_continuity}.
+\end{proof}
+
+\begin{rem}
+Note the curious fact that we cannot get rid of the equivariance condition in the preceding Lemma. I.e., if we have a linear map $K': \bigoplus_l V_l \to V$, then we cannot deduce that $K'$ is continuous. Indeed, we can identify $\bigoplus_l V_l$ by reordering with $\bigoplus_{l} \K$ and assume without loss of generality that $V = \K$. Then the map $K': \bigoplus_{l} \K \to \K$ given by
+\begin{equation*}
+\left( a^l\right)_{l} \mapsto \sum_{l} l \cdot a^l
+\end{equation*}
+is linear but not continuous in $0$. The latter can be seen by considering the sequence $a_k = (0, \dots, 0, \frac{1}{k}, 0, \dots)$ that has value $\frac{1}{k}$ on position $k$ and otherwise only zeros. This sequence converges to the $0$-sequence in norm. However, we have $K'(a_k) = 1$ for all $k$, thus the images do not converge to $0 = K'(0)$.
+\end{rem}
+
+The final piece is the following: $L^2(S)$ is the topological closure of $\bigoplus_l V_l$ and thus the metric \emph{completion} of that space. For metric completions, there is the following universal property, which we state without proof:
+
+\begin{lem}\label{universal_property}
+Let $X \subseteq \hat{X}$ be a pair of metric spaces, where $\hat{X}$ is complete and $X$ is dense in $\hat{X}$. Then for each uniformly continuous map $K': X \to Y$ there is a unique uniformly continuous map $\hat{K'}: \hat{X} \to Y$ that extends $K'$, i.e. such that $\hat{K'}|_X = K'$.
+\end{lem}
+
+With these properties in mind, we can state our main fact. It is the reason why we can work with continuous representation operators on $L^2(S)$ the same as with representation operators on $\bigoplus_l V_l$ and apply the Wigner-Eckart Theorem to it.
+
+\begin{pro}\label{ignore_closure}
+There is an isomorphism of vector spaces
+\begin{equation*}
+\Hom_{G}(L^2(S), \Hom_{\K}(V_l, V_J)) \cong \Hom_{G}\left( \bigoplus_{j}V_j, \Hom_{\K}(V_l, V_J) \right)
+\end{equation*}
+between the \emph{continuous} representation operators on the left and the (not a priori assumed to be continuous) linear equivariant maps on the right. This isomorphism is given by restriction:
+\begin{equation*}
+K' \mapsto K'|_{\bigoplus_{j} V_j}.
+\end{equation*}
+\end{pro}
+
+\begin{proof}
+First of all, the continuous representation operators on the left are actually uniformly continuous by Lemma \ref{characterization_continuity}. Thus, by Lemma \ref{universal_property}, they embed into linear equivariant uniformly continuous maps on $\bigoplus_j V_j$. These maps are the same as the linear equivariant maps (without assumed continuity) by Lemma \ref{characterization_continuity} and \ref{always_continuous}.
+
+Thus, in order to be finished, we only need to see that the unique extension of representation operator $K': \bigoplus_{j} V_j \to \Hom_{\K}(V_l, V_J)$ to a continuous map $\hat{K'}: L^2(S) \to \Hom_{K}(V_l, V_J)$ is again linear and equivariant. Based on the following facts:
+\begin{enumerate}
+\item For each $f \in L^2(S)$, there is a sequence of functions $f_k \in \bigoplus_j V_j$ such that $\lim_k f_k = f$;
+\item The action of $G$ on $L^2(S)$ is continuous;
+\end{enumerate}
+the reader may verify this for themselves.
+\end{proof}
+
+
+\section{Proof of Proposition \ref{steerable kernels = representation operators}}\label{proof_of_main}
+
+In this section, we want to prove Proposition \ref{steerable kernels = representation operators}. Since the proof is technical, we first go through the intuition as to why such a statement \emph{might} be true.
+
+\subsection{Reformulation and Intuition}\label{reformulation_intuition}
+
+But first, we reformulate it by decomposing $\Hom_{\K}(V_l, V_J)$ into irreps and engaging with the statement for each irrep individually. Let $\Hom_{\K}(V_l,V_J) \cong \bigoplus_{i \in I} U_i$ be a decomposition of the representation of linear mappings from $V_l$ to $V_J$ into finitely many irreps. Then we get isomorphisms
+\begin{equation*}
+\Hom(S, \Hom_{\K}(V_l, V_J)) \cong \bigoplus_{i \in I} \Hom_{\K}(S, U_i)
+\end{equation*}
+and
+\begin{equation*}
+\Hom(L^2(S), \Hom_{\K}(V_l, V_J)) \cong  \bigoplus_{i \in I}\Hom_{\K}(L^2(S), U_i).
+\end{equation*}
+Thus, we can show Proposition \ref{steerable kernels = representation operators} for each irrep individually and thus obtain the proof for the decomposable representation $\Hom_{\K}(V_l, V_J)$. That is, we want to actually prove the following:
+
+\begin{pro}\label{altered_prop}
+Let $V$ be an irrep. Then there is an isomorphism 
+\begin{equation*}
+\begin{tikzcd}
+\Hom_G(S, V) \ar[rr, bend left = 15, "\overline{(\cdot)}"] & & \Hom_G(L^2(S), V) \ar[ll, bend left = 15, "(\cdot)|_{S}"]
+\end{tikzcd}
+\end{equation*}
+where $\overline{K}(f) = \int_{S} f(s) K(s) ds$ and $K'|_S(s) = K'(\delta_s)$, with $\delta_s$ being the Dirac-Delta at point $s$.
+\end{pro}
+
+Now note that $\delta_s$ is not actually a square-integrable function, but we ignore this for now. In order to show that this is an isomorphism, we need to show that $\overline{K}|_S = K$ for all $K$ and $\overline{K'|_S} = K'$ for all $K'$. We explain this now intuitively. The first statement follows from:
+\begin{align*}
+\overline{K}|_S(s) & = \overline{K}(\delta_s) \\
+& = \int_S \delta_s(s')K(s')ds' \\
+& = K(s)
+\end{align*}
+by standard properties of the Dirac-delta. This already shows that $\overline{(\cdot)}$ is injective and thus that steerable kernels can be regarded as a \emph{subset} of representation operators. With only this property, however, we couldn't be sure that a basis of representation operators actually gets mapped to a basis of steerable kernels by $(\cdot)|_S$, instead of only to a generating set. Thus, the other direction is crucial. The computation starts as follows:
+\begin{align*}
+\overline{K'|_S}(f) & = \int_{S} f(s) K'|_S(s) ds \\
+& = \int_S f(s) K'(\delta_s)ds.
+\end{align*}
+To get an intuition as to why this might be equal to $K'(f)$, imagine for a moment that $S$ is finite. Then $\delta_s$ gets replaced by a Kronecka-delta, the discrete analogue of Dirac deltas, and the integral gets replaced by a sum. Also note that $K'$ is linear by assumption. Thus, we obtain:
+\begin{align*}
+\overline{K'|_S}(f) & = \sum_{S} f(s)K'(\delta_s) \\
+& = K'\left(\sum_{S} f(s) \delta_s \right) \\
+& = K'(f),
+\end{align*}
+where in the last step we used that trivially, we have the equality $\sum_{S} f(s) \delta_s = f$. This shows the discrete analogue of the statement. In the next section, we make everything precise and engage with an actual proof. In this proof, we will approximate $f$ with a sequence of step functions and thus make it possible to engage similar arguments as in the case where $S$ is finite.
+
+\subsection{Proof}
+
+We do it step by step. In this whole section, we assume that $\mu: S \to \R$ is a measure on the compact space $S$ with $\mu(S) = 1$. See also Appendix \ref{topological_closures} for more on topological considerations, in particular how continuity of functions on $L^2(S)$ is defined.
+
+\begin{lem}\label{well-defined}
+The map $\overline{(\cdot)}: \Hom_G(S, V) \to \Hom_{G}(L^2(S), V)$ is well-defined, i.e.: For a continuous equivariant map $K: S \to V$, the map $\overline{K}: L^2(S) \to V$ is linear, equivariant and continuous.
+\end{lem}
+
+\begin{proof}
+Linearity of $\overline{K}$ is clear. Equivariance can essentially be proven as in the example given in Proposition \ref{Wigner-Eckart} using the equivariance of $K$:
+\begin{align*}
+\overline{K}(g \cdot f) & = \int_{S} (g \cdot f)(s) K(s) ds \\
+& = \int_S f(g^{-1} \cdot s) K(s) ds \\
+& = \int_{S} f(s) K(g \cdot s) ds \\
+& = \int_{S} f(s) \left[\rho_{V}(g) \left(K(s)\right)\right] ds \\
+& = \rho_V(g) \left[ \int_S f(s) K(s) ds \right] \\
+& = \rho_V(g)\left[ \overline{K}(f)\right].
+\end{align*}
+The action by $\rho_V(g)$ could be put out of the integral since it is linear and continuous, and since integrals can be approximated by finite sums. 
+
+Now about continuity: By Lemma \ref{characterization_continuity}, we only need to show continuity in $0$. Thus, let $(f_k)_k$ be a sequence of functions $f_k \in L^2(S)$ with $\lim_k \|f_k\| = 0$. Then we obtain
+\begin{align*}
+\|\overline{K}(f_k)\|_V & = \left\| \int_S f_k(s) K(s) ds \right\|_V \\
+& \leq \int_S |f_k(s)| \cdot \|K(s)\| ds \\
+& \leq \max_{s'} \left( K(s') \right)  \cdot \int_S |f_k(s)| ds,
+\end{align*}
+where the continuity of $K$ was used (since $K$ is continuous on a compact set, it is actually uniformly continuous by the Heine-Cantor Theorem and thus achieves a maximum in norm). For the right expression, using the Cauchy-Schwartz inequality we obtain
+\begin{align*}
+\int_S |f_k(s)| ds & = \int_S |f_k(s)| \cdot 1 ds \\
+& = \left| \left\langle |f_k(s)|, 1 \right\rangle \right| \\
+& \leq \|f_k\|_{L^2} \cdot \|1\|_{L^2} \\
+& = \|f_k\|_{L^2}.
+\end{align*}
+So, overall, if $\lim_k\|f_k\| = 0$, then $\lim_k \|\overline{K}(f_k)\|_V = 0$ as well, which proves continuity.
+\end{proof}
+
+In order to show the well-definedness of the map $K' \mapsto K'|_S$, we first need to get clearer about the definition of this map. The following Lemma is stated without proof, but the reader may convince themselves that it is true:
+
+\begin{lem}
+There exists a sequence of subsets $U_i^k \subseteq S$ for $k \in \N$ and $i \in \{1, \dots, N_k\}$, with the following properties:
+\begin{enumerate}
+\item For each $k$, the $U_i^k$ together cover $S$: $\bigcup_{i = 1}^{N_k} U_i^k = S$ for all $k \in \N$.
+\item For each $k$, the $U_i^k$ have measure-zero intersection: $\mu\left(U_i^k \cap U_j^k\right) = 0$ if $i \neq j$, for all $k \in \N$.
+\item The diameter $\diam(U_i^k)$ of the $U_i^k$ goes uniformly to zero, that is: for each $\delta > 0$ there is an $k_\delta \in \N$ such that for all $k \geq k_\delta$ and all $i \in \{1, \dots, N_k\}$ we have $\diam(U_i^k) < \delta$. 
+\item The volume or measure of each $U_i^k$ is greater than zero: $\mu(U_i^k) > 0$ for all $k \in \N$ and $i \in \{1, \dots, N_k\}$.
+\end{enumerate}
+\end{lem}
+
+We fix the notation of the $U_i^k$ from now on, with the properties as in the Lemma before. They allow us to define approximations of the Dirac delta:
+
+\begin{dfn}[Approximated Dirac Delta]
+For $k \in \N$ and $i \in \{1, \dots, N_k\}$, we define the approximated Dirac-delta by
+\begin{equation*}
+\delta_{U_i^k}(s) = \begin{cases}
+\frac{1}{\mu(U_i^k)}, \ s \in U_i^k \\
+0, \ \text{else}.
+\end{cases}
+\end{equation*}
+This is well-defined since $\mu(U_i^k) > 0$ by assumption.
+\end{dfn}
+
+The most important property of the Dirac delta is that, in the limit, it is able to ``plug in'' elements of $s$ into a continuous function, which is made precise in the following Lemma:
+
+\begin{lem}\label{delta_property}
+For each $s \in S$ and $Y: S \to \K$ continuous we have $\lim_{k \to \infty} \left\langle \delta_{U_{i_k(s)}^k}, Y \right\rangle = Y(s)$.
+\end{lem}
+
+\begin{proof}
+We have
+\begin{align*}
+\left| \left\langle  \delta_{\uu}, Y\right\rangle - Y(s)\right| & = \left| \int_{S} \delta_{\uu}(s')Y(s') ds' - Y(s) \right| \\
+& = \left| \int_{\uu} \frac{1}{\mu\left(\uu \right)}Y(s') ds' - \mu\left(\uu\right) \frac{1}{\mu\left(\uu\right)}Y(s) \right| \\
+& = \left| \int_{\uu} \frac{1}{\mu\left( \uu\right)} \left( Y(s') - Y(s)\right) ds' \right| \\
+& \leq \int_{\uu} \frac{1}{\mu\left( \uu\right)} \left| Y(s') - Y(s) \right|ds'.
+\end{align*}
+Now let $\epsilon > 0$. Since $Y$ is continuous on a compact set, it is actually \emph{uniformly} continuous by the Heine-Cantor Theorem. Thus we find $\delta_{\epsilon} > 0$ such that for all $s, s'$ with $d(s,s')< \delta_\epsilon$ we have $|Y(s) - Y(s')| < \epsilon$. Also, by definition of the $U_i^k$, we find $k_{\delta_{\epsilon}}$ such that for all $n \geq k_{\delta_{\epsilon}}$, we have $\diam\left(\uu\right) < \delta_{\epsilon}$. Together, we find for all such $n$ that
+\begin{align*}
+\left| \left\langle  \delta_{\uu}, Y\right\rangle - Y(s)\right| & = \int_{\uu} \frac{1}{\mu\left( \uu\right)} \left| Y(s') - Y(s) \right|ds' \\
+& < \int_{\uu} \frac{1}{\mu\left( \uu\right)} \cdot \epsilon ds' \\
+& = \mu\left( \uu\right) \cdot \frac{1}{\mu\left( \uu\right)} \cdot \epsilon \\
+& = \epsilon.
+\end{align*}
+This finishes the proof.
+\end{proof}
+
+With the approximations of the Dirac Delta at our disposal, we can finally rigorously define what we mean with $K'(\delta_s)$:
+
+\begin{dfn}[Restriction of linear equivariant map]
+Let $K': L^2(S) \to V$ be linear and equivariant. Then the restriction $K'|_S: S \to V$ is defined by
+\begin{equation*}
+K'|_S(s) \coloneq K'(\delta_s) \coloneq \lim_{k \to \infty} K'\left(\delta_{U_{i_k(s)}^k}\right),
+\end{equation*}
+where for each $k$ and $s$, $i_k(s) \in \{1, \dots, N_k\}$ is the unique index $i$ such that $s \in U_{i}^{k}$.
+\end{dfn}
+
+It is not entirely clear that this restriction is well-defined, since a priori, the limit could not exist or depend on the specific choice of the $U_i^k$. Therefore, in the next lemma, we will first describe continuous linear equivariant maps $K'$ and then see in a corollary that their destriction is well-defined.
+
+\begin{lem}\label{form_K_prime}
+Let $l \in \Z$ be the unique index such that $V \cong V_l$. Let $p_l: L^2(S) \to V_l$ be the canonical projection. Then there is a linear equivariant map $\varphi: V_l \to V$ such that $K' = \varphi \circ p_l$. In particular, $K'$ is given explicitly by
+\begin{equation*}
+K'(f) = \sum_{n= 1}^{[l]} \left\langle f, Y_l^n \right\rangle \varphi(Y_l^n),
+\end{equation*}
+where $Y_l^n$, $n = 1, \dots, [l]$, is the orthonormal basis of $V_l$.
+\end{lem}
+
+\begin{proof}
+The proof of the first statement follows by the same arguments as the proof of Wigner-Eckart Theorem \ref{theorem}. For the second statement, note that the canonical projection $p_l$ is given by $p_l(f) = \sum_{n = 1}^{[l]}\left\langle f, Y_l^n \right\rangle Y_l^n$. We conclude with the linearity of $\varphi$.
+\end{proof}
+
+\begin{cor}\label{form_K_prime_final}
+We have $K'(\delta_s) = \sum_{n = 1}^{[l]} Y_l^n(s) \varphi(Y_l^n)$. In particular, this limit exists and does not depend on the specific choice of the sets $U_i^k$, $k \in \N$.
+\end{cor}
+
+\begin{proof}
+From Lemma \ref{delta_property} and \ref{form_K_prime} together we obtain:
+\begin{align*}
+K'(\delta_s) & = \lim_{k \to \infty} K'\left( \delta_{U_{i_k(s)}^k}\right) \\
+& = \lim_{k \to \infty} \sum_{n = 1}^{[l]} \left\langle \delta_{U_{i_k(s)}^k}, Y_l^n \right\rangle \varphi(Y_l^n) \\
+& = \sum_{n = 1}^{[l]} \left[ \lim_{k \to \infty} \left\langle \delta_{U_{i_k(s)}^k}, Y_l^n\right\rangle \right] \varphi(Y_l^n) \\
+& = \sum_{n = 1}^{[l]} Y_l^n(s) \varphi(Y_l^n).
+\end{align*}
+\end{proof}
+
+Thus, we can finally prove the well-definedness of $K' \mapsto K'|_S$, since we now know that $K'|_S$ \emph{as a function} makes sense:
+
+\begin{lem}\label{well-definedness_other_direction}
+The map $(\cdot)|_S: \Hom_G(L^2(S), V) \to \Hom_G(S, V)$ is well-defined, i.e.: For a linear, equivariant and continuous map $K': L^2(S) \to V$, the restriction $K'|_S: S \to V$ is equivariant and continuous.
+\end{lem}
+
+\begin{proof}
+For equivariance, we get
+\begin{align*}
+K'|_S(g \cdot s) & = \lim_{k \to \infty} K'\left(\delta_{U_{i_k(g \cdot s)}^k}\right) \\
+& = \lim_{k \to \infty} K'\left(\delta_{g \cdot U_{i_k(s)}^k}\right) \\
+& = \lim_{k \to \infty} K'\left(g \cdot \delta_{U_{i_k(s)}^k}\right) \\
+& = \lim_{k \to \infty} \rho_V(g) \left[ K'\left(\delta_{U_{i_k(s)}^k}\right)\right] \\
+& = \rho_V(g) \left[ \lim_{k \to \infty} K'\left(\delta_{U_{i_k(s)}^k}\right)\right] \\
+& = \rho_V(g) \left[ K'|_S(s)\right],
+\end{align*}
+where the steps are justified as follows: The first step is just the definition of $K'|_S$. The second step uses that in Corollary \ref{form_K_prime_final}, we saw that the choice of the sets $U_i^k$ was ultimately arbitrary, and so $g \cdot U_{i}^k$ would have been just as good of a choice. The third step is easy to check. The fourth step uses the equivariance of $K'$. The fifth step uses the continuity of the $\rho_V(g)$, which follows since they are linear on \emph{finite-dimensional} spaces. The last step is again the definition of $K'|_S$.
+
+For continuity, we use the formula from Corollary \ref{form_K_prime_final} and obtain:
+\begin{align*}
+K'|_S\left( \lim_{k \to \infty} s_k\right) & = K'\left( \delta_{\lim_k s_k}\right) \\
+& = \sum_{n = 1}^{[l]} Y_l^n\left(\lim_{k \to \infty} s_k\right) \varphi(Y_l^n) \\
+& = \sum_{n = 1}^{[l]} \left[ \lim_{k \to \infty} Y_l^n(s_k)\right] \varphi(Y_l^n) \\
+& = \lim_{k \to \infty} \left[ \sum_{n = 1}^{[l]} Y_l^n(s_k) \varphi(Y_l^n)\right] \\
+& = \lim_{k \to \infty} K'\left(\delta_{s_k}\right) \\
+& = \lim_{k \to \infty} K'|_S(s_k).
+\end{align*}
+The main step was the third, in which the continuity of the basis functions $Y_l^n$ was used.
+\end{proof}
+
+With all this preparation, we can already proof one direction of Proposition \ref{altered_prop}:
+
+\begin{proof}[Proof of $\overline{K}|_S = K$]
+We want to show $\overline{K}|_S = K$, i.e. the injectivity of the map $K \mapsto \overline{K}$ and surjectivity of the map $K' \mapsto K'|_S$:
+\begin{align*}
+\overline{K}|_S(s) & = \overline{K}(\delta_s) \\
+& = \lim_{k \to \infty} \overline{K}\left( \delta_{\uu}\right) \\
+& = \lim_{k \to \infty} \int_{S} \delta_{\uu} (s') K(s') ds' \\
+& = K(s).
+\end{align*}
+The last step follows from Lemma \ref{delta_property} by identifying $V = V_l$ with $\K^{[l]}$ and viewing $K$ as being composed of continuous component functions $K^n: S \to \K$, $n \in \{1, \dots, [l]\}$.
+\end{proof}
+
+For the other direction, i.e. $\overline{K'|_S} = K'$, we need to show their equality when evaluated on arbitrary square integrable functions $f$. The strategy is to show the statement for continuous functions first, which can in turn be approximated by locally constant functions, for which the statement is considerably easier to proof. Thus, we need too more lemmas:
+
+\begin{lem}\label{approximate_step}
+For each $k \in \N$ and all $i \in \{1, \dots, N_k\}$, let $u_i^k \in U_i^k$ be an arbitrary point. Let $f: S \to \K$ be any continuous function. Define the function $f_k: S \to \K$ by
+\begin{equation*}
+f_k(s) = f(u_i^k), \ s \in U_i^k.
+\end{equation*}
+Then $f_k \in L^2(S)$ for all $k \in \N$ and $\lim_{k} f_k = f$ in the norm induced by the inner product on $L^2(S)$.
+\end{lem}
+
+\begin{proof}
+We first show that $f_k \in L^2(S)$. That is, we need to show that it has finite norm:
+\begin{align*}
+\|f_k\|_{L^2}^2 & = \int_{S} |f_k(s)|^2 ds \\
+& = \sum_{i= 1}^{N_k} \int_{U_i^k} |f_k(s)|^2 ds \\
+& = \sum_{i= 1}^{N_k} \int_{U_i^k} |f(u_i^k)|^2 ds \\
+& = \sum_{i = 1}^{N_k} \mu(U_i^k) |f(u_i^k)|^2 \\
+& < \infty.
+\end{align*}
+Now, we show that $f_k \to f$ in the $L^2$-norm. We have
+\begin{align*}
+\|f_k - f\|_{L^2}^2 & = \int_S |f_k(s) - f(s)|^2 ds \\
+& = \sum_{i = 1}^{N_k} \int_{U_i^k} |f_k(s) - f(s)|^2 ds \\
+& = \sum_{i = 1}^{N_k} \int_{U_i^k} |f(u_i^k) - f(s)|^2 ds.
+\end{align*}
+Now we use the continuity of $f$. Let $\epsilon > 0$. As in the proof of Lemma \ref{delta_property} there exists $\delta_{\epsilon} > 0$ such that for all $s, s' \in S$ with $d(s, s') < \delta_{\epsilon}$, we have $|f(s) - f(s')|^2 < \epsilon$. Also, there is $k_{\delta_{\epsilon}} \in \N$ such that for all $k > k_{\delta_{\epsilon}}$ and all $i \in \{1, \dots, N_k\}$, we have $\diam(U_i^k) < \delta_{\epsilon}$. Consequently, for these $k$, we in particular obtain $d(s, u_i^k) < \delta_{\epsilon}$ and thus $|f(u_i^k) - f(s)|^2 < \epsilon$ for all $s \in U_i^k$. Thus, for all $k > k_{\delta_{\epsilon}}$:
+\begin{align*}
+\|f_k - f\|_{L^2} & = \sum_{i = 1}^{N_k} \int_{U_i^k} |f(u_i^k) - f(s)|^2 ds \\
+& < \sum_{i = 1}^{N_k} \int_{U_i^k} \epsilon ds \\
+& = \epsilon \sum_{i = 1}^{N_k} \mu(U_i^k) \\
+& = \epsilon \mu(S) \\
+& = \epsilon,
+\end{align*}
+where in the last step it was used that $\mu(S) = 1$ by assumption. This concludes the proof.
+\end{proof}
+
+From now on, for each $f: S \to \K$ continuous, we fix the notation of the functions $f_k$ from the lemma before, including the points $u_i^k \in U_i^k$. We state without proof:
+
+\begin{lem}\label{continuous dense}
+Page 247 of the representation theory book says that continuous functions are dense in the space of square-integrable functions, with respect to the norm induced by the inner product (I assume).
+\end{lem}
+
+Now, we're ready:
+
+\begin{proof}[Proof of $\overline{K'|_S} = K'$]
+
+Now we show $\overline{K'|_S} = K'$, i.e. the surjectivity of $K \mapsto \overline{K}$ and injectivity of $K' \mapsto K'|_S$. We first show their equality if applied to \emph{continuous} $f: S \to \K$. Fix a sequence $f_k: S \to \K$ as in Lemma \ref{approximate_step} that converges to $f$. Then we obtain:
+\begin{align*}
+\overline{K'|_S}(f) & = \int_{S} f(s) K'(\delta_s) ds \\
+& = \int_S \lim_{k \to \infty}f_k(s) \lim_{k \to \infty} K'\left( \delta_{\uu}\right) ds \\
+& = \lim_{k \to \infty} \int_S f_k(s) K'\left( \delta_{\uu}\right) ds \\
+& = \lim_{k \to \infty} \sum_{i = 1}^{N_k} \int_{U_i^k}f\left(u_i^k\right) K'\left(\delta_{U_i^k} \right) ds \\
+& = \lim_{k \to \infty} \sum_{i = 1}^{N_k} \mu\left(U_i^k \right) f\left( u_i^k\right)K'\left( \delta_{U_i^k}\right) \\
+& = \lim_{k \to \infty} K'\left( \sum_{i = 1}^{N_k} \mu(U_i^k) f(u_i^k) \delta_{U_i^k} \right),
+\end{align*}
+where in the last step the linearity of $K'$ was used. That the limit could be swapped with the integral in the third step is a result of the Bounded Convergence Theorem, whose assumptions we investigate in a final Lemma \ref{final_lemma} after this proof.
+Now, since trivially we have $\sum_{i = 1}^{N_k} \mu(U_i^k) f(u_i^k) \delta_{U_i^k} = f_k$,  due to the continuity of $K'$ and since $\lim_{k \to \infty} f_k = f$, we obtain $\overline{K'|_S}(f) = K'(f)$.
+
+This shows the statement for continuous $f$. For arbitrary $f \in L^2(S)$, we find a sequence $f'_k: S \to \K$ of continuous functions such that $\lim_{k \to \infty} f'_k = f$ by Lemma \ref{continuous dense}. We conclude with
+\begin{equation*}
+\overline{K'|_S}(f) = \lim_{k \to \infty} \overline{K'|_S}(f'_k) = \lim_{k \to \infty} K'(f'_k) = K'(f)
+\end{equation*}
+using the continuity of both $K'$ and $\overline{K'|_S}$. This finishes the proof.
+\end{proof}
+
+A final step, as mentioned in the above proof, is to check for the assumptions of the bounded convergence theorem. This requires that the sequence of functions we integrate over is uniformly bounded by some constant:
+
+\begin{lem}\label{final_lemma}
+The norm of the functions $g_k: S \to V$, $s \mapsto f_k(s) \cdot K'\left(\delta_{\uu}\right)$, is uniformly bounded.
+\end{lem}
+
+\begin{proof}
+We have
+\begin{align*}
+\left\| f_k(s) \cdot K'\left( \delta_{\uu} \right) \right\| & = |f_k(s)| \cdot \left\|  K' \left( \delta_{\uu}\right)\right\|.
+\end{align*}
+The left factor is bounded by $\max_{s \in S}|f(s)|$, which exists since $f$ is continuous on a compact set. For the right factor, note that by Lemma \ref{form_K_prime} we have
+\begin{align*}
+\left\|  K' \left( \delta_{\uu}\right)\right\| & = \left\|  \sum_{n = 1}^{[l]} \left\langle \delta_{\uu}, Y_l^n\right\rangle  \varphi(Y_l^n)\right\| \\
+& \leq \sum_{n = 1}^{[l]} \left| \left\langle  \delta_{\uu}, Y_l^n \right\rangle \right| \cdot \left\| \varphi(Y_l^n)\right\| \\
+& \leq \max_{n'} \left\| \varphi\left(Y_l^{n'}\right)\right\| \cdot \sum_{n = 1}^{[l]} \left| \left\langle  \delta_{\uu}, Y_l^n \right\rangle \right|
+\end{align*}
+Thus, we need to uniformly (i.e., uniformly over $k$ and $s$) bound each summand on the right. This intuitively works since $\left\langle \delta_{\uu} \right|$ averages $Y_l^n$ over $\uu$, and thus we can bound by the maximum of $Y_l^n$, which exists since $Y_l^n$ is continuous on the compact set $S$:
+\begin{align*}
+\left| \left\langle \delta_{\uu}, Y_l^n \right\rangle \right| & = \left| \int_{S} \delta_{\uu}(s') Y_l^n(s') ds' \right| \\
+& \leq \int_S \delta_{\uu}(s') \left| Y_l^n(s') \right| ds' \\
+& \leq \max_{s''} \left| Y_l^n(s'')\right| \cdot \mu\left( \uu\right) \cdot \frac{1}{\mu \left( \uu\right)} \\
+& = \max_{s''} \left| Y_l^n(s'')\right|.
+\end{align*}
+This finishes the proof.
+\end{proof}
+
+
+
+
+\end{document}
